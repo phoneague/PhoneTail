@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-<h1>Main</h1>
+<h1>Phonetail</h1>
 <a href="phonetail.do?command=productList">상품목록</a>
 <a href="phonetail.do?command=chatList">채팅게시판</a>
 <a href="phonetail.do?command=qnaList">qna게시판</a>
