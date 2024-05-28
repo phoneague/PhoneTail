@@ -14,5 +14,6 @@
 <a href="phonetail.do?command=qnaList">qna게시판</a>
 <a href="phonetail.do?command=loginForm">로그인</a><br><br>
 ${login.userid}(${login.name})님이 로그인 하셨습니다<br>
+<h2>내이름은정빈</h2>
 </body>
 </html>
