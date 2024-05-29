@@ -5,20 +5,43 @@ import java.sql.Timestamp;
 public class ChatListDTO {
 
 	private int lseq;
-	private String userid;
+	private String sid;
+	private String bid;
 	private int pseq;
+	private int price;
 	private Timestamp indate;
+	private String model;
+	
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public String getModel() {
+		return model;
+	}
+	public void setModel(String model) {
+		this.model = model;
+	}
 	public int getLseq() {
 		return lseq;
 	}
 	public void setLseq(int lseq) {
 		this.lseq = lseq;
 	}
-	public String getUserid() {
-		return userid;
+	
+	public String getSid() {
+		return sid;
 	}
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setSid(String sid) {
+		this.sid = sid;
+	}
+	public String getBid() {
+		return bid;
+	}
+	public void setBid(String bid) {
+		this.bid = bid;
 	}
 	public int getPseq() {
 		return pseq;

@@ -7,6 +7,7 @@ select*from member;
 select*from product;
 
 -- 기존 테이블 삭제
+
 --DROP TABLE IF EXISTS address;
 DROP TABLE IF EXISTS admin;
 DROP TABLE IF EXISTS chat;
@@ -14,7 +15,7 @@ DROP TABLE IF EXISTS report;
 DROP TABLE IF EXISTS product;
 DROP TABLE IF EXISTS question;
 DROP TABLE IF EXISTS member;
-
+DROP TABLE IF EXISTS chatlist;
 -- 테이블 생성
 CREATE TABLE address
 (
@@ -52,7 +53,6 @@ CREATE TABLE member
     name varchar(45) NOT NULL,
     phone varchar(45) NOT NULL,
     email varchar(100) NOT NULL,
-    zip_num varchar(45) NOT NULL,
     address1 varchar(100) NOT NULL,
     address2 varchar(100) NOT NULL,
     usestate char(1) DEFAULT 'Y' NOT NULL,
@@ -60,6 +60,7 @@ CREATE TABLE member
     PRIMARY KEY (userid)
 );
 -- zip_code 삭제(우편번호 찾기에서 찾아줌)
+-- zip_num 삭제(우편번호 찾기에서 찾아줌)
 
 CREATE TABLE product
 (
@@ -123,8 +124,8 @@ ALTER TABLE chat
 
 ALTER TABLE report
     ADD FOREIGN KEY (pseq) REFERENCES product (pseq) ON UPDATE RESTRICT ON DELETE RESTRICT;
+    
 
--- 샘플 데이터 삽입
 INSERT INTO address (zip_num, sido, gugun, dong, bunji, zip_code) VALUES
 -- 수업시간 때 받은 샘플 데이터로 인서트 대체 
 
@@ -132,9 +133,9 @@ INSERT INTO admin (adminid, pwd, name, phone) VALUES
 ('admin1', 'password1', '관리자1', '010-1234-5678'),
 ('admin2', 'password2', '관리자2', '010-8765-4321');
 
-INSERT INTO member (userid, pwd, name, phone, email, zip_num, address1, address2, usestate, indate) VALUES
-('user1', 'pwd1', '사용자1', '010-1111-2222', 'user1@example.com', '12345', '서울특별시 강남구 삼성동', '123-45', 'Y', now()),
-('user2', 'pwd2', '사용자2', '010-3333-4444', 'user2@example.com', '67890', '부산광역시 해운대구 우동', '678-90', 'Y', now());
+INSERT INTO member (userid, pwd, name, phone, email, address1, address2, usestate, indate) VALUES
+('user1', 'pwd1', '사용자1', '010-1111-2222', 'user1@example.com', '서울특별시 강남구 삼성동', '123-45', 'Y', now()),
+('user2', 'pwd2', '사용자2', '010-3333-4444', 'user2@example.com', '부산광역시 해운대구 우동', '678-90', 'Y', now());
 
 INSERT INTO product (brand, series, model, price, comment, image, saveimagefile, sellstate, indate, userid) VALUES
 ('Apple', 'iPhone', 'iPhone 13', 1000000, '최신 아이폰 모델', 'iphone13.jpg', 'iphone13.jpg', 'Y', now(), 'user1'),
@@ -151,7 +152,7 @@ INSERT INTO question (title, content, indate, userid, qreply) VALUES
 ('배송 문의', '언제 배송되나요?', now(), 'user2', '답변 대기 중');
 
 --24.05.29 샘플 수정(indate는 알아서 now()로 들어갑니다)
-INSERT INTO report (pseq, userid, retype, recontent, restate,indate) VALUES
+INSERT INTO report (pseq, userid, retype, recontent, restate, indate) VALUES
 (1, 'user2', 3, '사기가 의심됩니다.', 'N',now()),
 (2, 'user1', 1, '상품 정보가 부정확합니다.', 'Y',now());
 
@@ -159,13 +160,20 @@ INSERT INTO report (pseq, userid, retype, recontent, restate,indate) VALUES
 -- 채팅 테이블 추가
 CREATE TABLE chatlist(
  lseq INT NOT NULL AUTO_INCREMENT,
- userid varchar(45) NOT NULL,
+ sid varchar(45) NOT NULL,
+ bid varchar(45) NOT NULL,
  indate datetime DEFAULT now() NOT NULL,
  pseq int NOT NULL,
  PRIMARY KEY (lseq)
 ) 
+
 ALTER TABLE chatlist
 ADD FOREIGN KEY (pseq) REFERENCES product (pseq) ON UPDATE CASCADE ON DELETE CASCADE;
-(2, 'user1', 1, '상품 정보가 부정확합니다.', 'N');
-(3, 'user1', 4, '테스트테스트', 'N');
+
+
+-- chatlist 테이블에 예시 데이터 삽입
+INSERT INTO chatlist (sid, bid, pseq) VALUES ('S123', 'B456', 1);
+INSERT INTO chatlist (sid, bid, pseq) VALUES ('S456', 'B789', 2);
+INSERT INTO chatlist (sid, bid, pseq) VALUES ('S456', 'B123', 2);
+
 

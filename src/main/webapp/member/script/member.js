@@ -10,11 +10,6 @@ function idcheck(){
 	window.open(url, "idcheck", opt);
 }
 
-function idok( userid ){
-	opener.joinForm.userid.value = userid;
-	opener.joinForm.reid.value = userid;
-	self.close();
-}
 
 function post_zip(){
 	var url = "phonetail.do?command=findZipnum";

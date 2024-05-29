@@ -18,8 +18,9 @@ import com.miniproject.phonetail.controller.action.admin.AdminAction;
 import com.miniproject.phonetail.controller.action.admin.AdminLoginAction;
 import com.miniproject.phonetail.controller.action.admin.AdminLogoutAction;
 import com.miniproject.phonetail.controller.action.admin.AdminReportListAction;
-import com.miniproject.phonetail.controller.action.member.FindZipnumAction;
+import com.miniproject.phonetail.controller.action.member.FindZipNumAction;
 import com.miniproject.phonetail.controller.action.member.IdCheckAction;
+import com.miniproject.phonetail.controller.action.member.JoinAction;
 import com.miniproject.phonetail.controller.action.member.JoinFormAction;
 import com.miniproject.phonetail.controller.action.member.LoginAction;
 import com.miniproject.phonetail.controller.action.member.LoginFormAction;
@@ -44,9 +45,10 @@ public class ActionFactory {
 		// member
 		else if(command.equals("loginForm")) ac = new LoginFormAction();
 		else if(command.equals("login")) ac = new LoginAction();
-    else if(command.equals("logout")) ac = new LogoutAction();
+		else if(command.equals("logout")) ac = new LogoutAction();
 		else if(command.equals("joinForm")) ac = new JoinFormAction();
-		else if(command.equals("findZipnum")) ac = new FindZipnumAction();
+		else if(command.equals("join")) ac = new JoinAction();
+		else if(command.equals("findZipnum")) ac = new FindZipNumAction();
 		else if(command.equals("idcheck")) ac = new IdCheckAction();
 		
 		// customer

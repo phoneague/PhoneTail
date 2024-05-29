@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.miniproject.phonetail.DTO.AddressVO;
+import com.miniproject.phonetail.DTO.AddressDTO;
 import com.miniproject.phonetail.DTO.MemberDTO;
 import com.miniproject.phonetail.util.DB;
 
@@ -35,21 +35,21 @@ public class MemberDAO {
 				mdto.setPwd(rs.getString("pwd"));
 				mdto.setName(rs.getString("name"));
 				mdto.setEmail(rs.getString("email"));
-				mdto.setZip_num(rs.getString("zip_num"));
 				mdto.setAddress1(rs.getString("address1"));
 				mdto.setAddress2(rs.getString("address2"));
 				mdto.setPhone(rs.getString("phone"));
 				mdto.setUsestate(rs.getString("usestate"));
 				mdto.setIndate(rs.getTimestamp("indate"));
+				System.out.println(mdto.toString());
 			}
 		} catch (SQLException e) { e.printStackTrace();
 		} finally { DB.close(con, pstmt, rs); }
 		return mdto;
 	}
 
-	public ArrayList<AddressVO> selectAddressByDong(String dong) {
+	public ArrayList<AddressDTO> selectAddressByDong(String dong) {
 		
-		ArrayList<AddressVO> list = new ArrayList<AddressVO>();
+		ArrayList<AddressDTO> list = new ArrayList<AddressDTO>();
 		con = DB.getConnection();
 		String sql = "select * from address where dong like concat('%', ?, '%') ";
 		try {
@@ -57,18 +57,38 @@ public class MemberDAO {
 			pstmt.setString(1, dong);
 			rs = pstmt.executeQuery();
 		    while( rs.next() ) {
-		    	AddressVO avo = new AddressVO();
-		    	avo.setZip_num(rs.getString("zip_num"));
-		    	avo.setSido(rs.getString("sido"));
-		    	avo.setGugun(rs.getString("gugun"));
-		    	avo.setDong(rs.getString("dong"));
-		    	avo.setZip_code(rs.getString("zip_code"));
-		    	avo.setBunji(rs.getString("bunji"));
-		    	list.add(avo);
+		    	AddressDTO adto = new AddressDTO();
+		    	adto.setZip_num(rs.getString("zip_num"));
+		    	adto.setSido(rs.getString("sido"));
+		    	adto.setGugun(rs.getString("gugun"));
+		    	adto.setDong(rs.getString("dong"));
+		    	adto.setZip_code(rs.getString("zip_code"));
+		    	adto.setBunji(rs.getString("bunji"));
+		    	list.add(adto);
 		    }
 		} catch (SQLException e) { e.printStackTrace();
 		} finally { DB.close(con, pstmt, rs);		}
 		return list;
+	}
+
+	public int insertMember(MemberDTO mdto) {
+		int result = 0;
+		con = DB.getConnection();
+		String sql = "insert into member(userid, pwd, name, email, phone, address1, address2) values(?,?,?,?,?,?,?)";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mdto.getUserid());
+			pstmt.setString(2, mdto.getPwd());
+			pstmt.setString(3, mdto.getName());
+			pstmt.setString(4, mdto.getEmail());
+			pstmt.setString(5, mdto.getPhone());
+			pstmt.setString(6, mdto.getAddress1());
+			pstmt.setString(7, mdto.getAddress2());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) { e.printStackTrace();
+		}  finally { DB.close(con, pstmt, rs);	}
+		return result;
 	}
 	
 }
