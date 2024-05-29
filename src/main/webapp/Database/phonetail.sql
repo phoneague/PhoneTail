@@ -4,6 +4,7 @@ USE phonetail;
 SET SESSION FOREIGN_KEY_CHECKS=0;
 
 select*from member;
+select*from product;
 
 -- 기존 테이블 삭제
 DROP TABLE IF EXISTS address;
@@ -54,11 +55,11 @@ CREATE TABLE member
     zip_num varchar(45) NOT NULL,
     address1 varchar(100) NOT NULL,
     address2 varchar(100) NOT NULL,
-    zip_code varchar(45) NOT NULL,
     usestate char(1) DEFAULT 'Y' NOT NULL,
     indate datetime DEFAULT now() NOT NULL,
     PRIMARY KEY (userid)
 );
+-- zip_code 삭제(우편번호 찾기에서 찾아줌)
 
 CREATE TABLE product
 (
@@ -99,6 +100,8 @@ CREATE TABLE report
    --4 - 전문업자 같아요',
     recontent varchar(300) NOT NULL,
     restate char(1) DEFAULT 'N' NOT NULL COMMENT 'N:대기상태 Y:처리완료',
+    -- 24.05.29 신고시 해당 날짜 추가해서 list에서 정렬기준을 삼을수 있게 필드 추가했습니다
+    indate datetime DEFAULT now() NOT NULL,
     PRIMARY KEY (reseq)
 );
 
@@ -123,20 +126,21 @@ ALTER TABLE report
 
 -- 샘플 데이터 삽입
 INSERT INTO address (zip_num, sido, gugun, dong, bunji, zip_code) VALUES
-('12345', '서울특별시', '강남구', '삼성동', '123-45', '06100'),
-('67890', '부산광역시', '해운대구', '우동', '678-90', '48095');
+-- 수업시간 때 받은 샘플 데이터로 인서트 대체 
 
 INSERT INTO admin (adminid, pwd, name, phone) VALUES
 ('admin1', 'password1', '관리자1', '010-1234-5678'),
 ('admin2', 'password2', '관리자2', '010-8765-4321');
 
-INSERT INTO member (userid, pwd, name, phone, email, zip_num, address1, address2, zip_code, usestate, indate) VALUES
-('user1', 'pwd1', '사용자1', '010-1111-2222', 'user1@example.com', '12345', '서울특별시 강남구 삼성동', '123-45', '06100', 'Y', now()),
-('user2', 'pwd2', '사용자2', '010-3333-4444', 'user2@example.com', '67890', '부산광역시 해운대구 우동', '678-90', '48095', 'Y', now());
+INSERT INTO member (userid, pwd, name, phone, email, zip_num, address1, address2, usestate, indate) VALUES
+('user1', 'pwd1', '사용자1', '010-1111-2222', 'user1@example.com', '12345', '서울특별시 강남구 삼성동', '123-45', 'Y', now()),
+('user2', 'pwd2', '사용자2', '010-3333-4444', 'user2@example.com', '67890', '부산광역시 해운대구 우동', '678-90', 'Y', now());
 
 INSERT INTO product (brand, series, model, price, comment, image, saveimagefile, sellstate, indate, userid) VALUES
 ('Apple', 'iPhone', 'iPhone 13', 1000000, '최신 아이폰 모델', 'iphone13.jpg', 'iphone13.jpg', 'Y', now(), 'user1'),
 ('Samsung', 'Galaxy', 'Galaxy S21', 900000, '최신 갤럭시 모델', 'galaxys21.jpg', 'galaxys21.jpg', 'N', now(), 'user2');
+
+
 
 INSERT INTO chat (content, indate, userid, pseq) VALUES
 ('이 제품에 대해 질문이 있습니다.', now(), 'user2', 1),
@@ -146,6 +150,22 @@ INSERT INTO question (title, content, indate, userid, qreply) VALUES
 ('제품 문의', '이 제품의 기능에 대해 알고 싶습니다.', now(), 'user1', '답변 대기 중'),
 ('배송 문의', '언제 배송되나요?', now(), 'user2', '답변 대기 중');
 
+--24.05.29 샘플 수정(indate는 알아서 now()로 들어갑니다)
 INSERT INTO report (pseq, userid, retype, recontent, restate) VALUES
 (1, 'user2', 3, '사기가 의심됩니다.', 'N'),
 (2, 'user1', 1, '상품 정보가 부정확합니다.', 'Y');
+
+
+-- 채팅 테이블 추가
+CREATE TABLE chatlist(
+ lseq INT NOT NULL AUTO_INCREMENT,
+ userid varchar(45) NOT NULL,
+ indate datetime DEFAULT now() NOT NULL,
+ pseq int NOT NULL,
+ PRIMARY KEY (lseq)
+) 
+ALTER TABLE chatlist
+ADD FOREIGN KEY (pseq) REFERENCES product (pseq) ON UPDATE CASCADE ON DELETE CASCADE;
+(2, 'user1', 1, '상품 정보가 부정확합니다.', 'N');
+(3, 'user1', 4, '테스트테스트', 'N');
+

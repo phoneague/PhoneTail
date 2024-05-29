@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +19,7 @@
 			<div class="reply_col reply_title">작성일시</div>
 			<div class="reply_col reply_title">작성/삭제</div>
 		</div>
-		<form action="board.do" name="reply">
+		<form action="phonetail.do" name="reply">
 				<input type="hidden" name="command" value="insertReply" /> 
 				<input type="hidden" name="userid" value="${loginUser.userid}" />
 				<input type="hidden" name="boardnum" value="${board.num}" />
@@ -45,7 +46,7 @@
 				<div class="reply_col">
 					<c:if test="${reply.userid == loginUser.userid}">
 						<input type="button" value="삭제"  
-						onClick="location.href='board.do?command=deleteReply&replynum=${reply.replynum}&boardnum=${reply.boardnum}'"/>
+						onClick="location.href='phonetail.do?command=deleteReply&replynum=${reply.replynum}&boardnum=${reply.boardnum}'"/>
 					</c:if>
 				</div>
 			</div>

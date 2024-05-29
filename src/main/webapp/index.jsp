@@ -7,7 +7,5 @@
 </head>
 <body>
 <% response.sendRedirect("phonetail.do?command=index"); %>
-
-
 </body>
 </html>
