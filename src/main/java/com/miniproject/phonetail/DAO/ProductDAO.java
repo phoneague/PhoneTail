@@ -53,6 +53,28 @@ public class ProductDAO {
 		ProductDTO pdto = new ProductDTO();
 		return pdto;
 	}
-	
+
+
+	public void insertProduct(ProductDTO pdto) {
+		
+		con = DB.getConnection();
+		String sql = "insert into product(brand, series, model, price, comment, image, saveimagefile, userid) values(?,?,?,?,?,?,?,?)";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, pdto.getBrand());
+			pstmt.setString(2, pdto.getSeries());
+			pstmt.setString(3, pdto.getModel());
+			pstmt.setInt(4, pdto.getPrice());
+			pstmt.setString(5, pdto.getComment());
+			pstmt.setString(6, pdto.getImage());
+			pstmt.setString(7, pdto.getSaveimagefile());
+			pstmt.setString(8, pdto.getUserid());
+			pstmt.executeUpdate();
+		} catch (SQLException e) { e.printStackTrace();
+		} finally { DB.close(con, pstmt, rs);  }
+	}
+		
+		
 
 }
