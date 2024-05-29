@@ -4,6 +4,7 @@ USE phonetail;
 SET SESSION FOREIGN_KEY_CHECKS=0;
 
 select*from member;
+select*from product;
 
 -- 기존 테이블 삭제
 DROP TABLE IF EXISTS address;
@@ -137,6 +138,8 @@ INSERT INTO member (userid, pwd, name, phone, email, zip_num, address1, address2
 INSERT INTO product (brand, series, model, price, comment, image, saveimagefile, sellstate, indate, userid) VALUES
 ('Apple', 'iPhone', 'iPhone 13', 1000000, '최신 아이폰 모델', 'iphone13.jpg', 'iphone13.jpg', 'Y', now(), 'user1'),
 ('Samsung', 'Galaxy', 'Galaxy S21', 900000, '최신 갤럭시 모델', 'galaxys21.jpg', 'galaxys21.jpg', 'N', now(), 'user2');
+
+
 
 INSERT INTO chat (content, indate, userid, pseq) VALUES
 ('이 제품에 대해 질문이 있습니다.', now(), 'user2', 1),
