@@ -44,7 +44,7 @@
 	${productDTO.price}<br>
 	${productDTO.comment}<br>
 	${productDTO.image}<br>
-	${productDTO.saveimagefile}<br>
+	<img src="product/images/${productDTO.saveimagefile}" width="300" />
 	${productDTO.sellstate}<br>
 	${productDTO.indate}<br>
 	${productDTO.userid}<br>

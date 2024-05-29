@@ -161,7 +161,6 @@ INSERT INTO product (brand, series, model, price, comment, image, saveimagefile,
 ('Samsung', 'Galaxy', 'Galaxy S21', 900000, '최신 갤럭시 모델', 'galaxys21.jpg', 'galaxys21.jpg', 'N', now(), 'user2');
 
 
-
 INSERT INTO chat (content, indate, userid, pseq) VALUES
 ('이 제품에 대해 질문이 있습니다.', now(), 'user2', 1),
 ('언제 배송되나요?', now(), 'user1', 2);
