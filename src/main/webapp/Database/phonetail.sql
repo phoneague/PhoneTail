@@ -272,3 +272,4 @@ INSERT INTO question (title, content, indate, userid, qreply) VALUES
 ('배송 문의', '배송 시간대를 지정할 수 있나요?', now(), 'user2', '답변 대기 중'),
 ('환불 문의', '환불 절차를 알고 싶습니다.', now(), 'user1', '답변 대기 중'),
 ('AS 문의', 'AS 접수를 하고 싶습니다.', now(), 'user2', '답변 대기 중');
+
