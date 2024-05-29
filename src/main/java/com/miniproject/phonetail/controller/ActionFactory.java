@@ -3,6 +3,10 @@ package com.miniproject.phonetail.controller;
 import com.miniproject.phonetail.controller.action.Action;
 import com.miniproject.phonetail.controller.action.IndexAction;
 import com.miniproject.phonetail.controller.action.MainAction;
+import com.miniproject.phonetail.controller.customer.QnaListAction;
+import com.miniproject.phonetail.controller.customer.QnaViewAction;
+import com.miniproject.phonetail.controller.customer.WriteQnaAction;
+import com.miniproject.phonetail.controller.customer.WriteQnaFormAction;
 import com.miniproject.phonetail.controller.action.chat.ChatListAction;
 import com.miniproject.phonetail.controller.product.ProductDetailAction;
 import com.miniproject.phonetail.controller.product.ProductInsertAction;
@@ -40,11 +44,16 @@ public class ActionFactory {
 		// member
 		else if(command.equals("loginForm")) ac = new LoginFormAction();
 		else if(command.equals("login")) ac = new LoginAction();
-		else if(command.equals("logout")) ac = new LogoutAction();
+    else if(command.equals("logout")) ac = new LogoutAction();
 		else if(command.equals("joinForm")) ac = new JoinFormAction();
 		else if(command.equals("findZipnum")) ac = new FindZipnumAction();
 		else if(command.equals("idcheck")) ac = new IdCheckAction();
-    
+		
+		// customer
+		else if(command.equals("qnaList"))ac = new QnaListAction();
+		else if(command.equals("qnaView"))ac = new QnaViewAction();
+		else if(command.equals("writeQnaForm"))ac = new WriteQnaFormAction();
+		else if(command.equals("writeQna"))ac = new WriteQnaAction();
     
 		//admin
 		else if(command.equals("admin")) ac = new AdminAction();
