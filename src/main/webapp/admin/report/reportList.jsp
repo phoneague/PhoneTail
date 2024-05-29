@@ -3,7 +3,7 @@
 <%@ include file="/admin/header.jsp"%>
 <%@ include file="../sub_menu.jsp"%>
 <h2>
-Report List hihi
+Report List
 </h2>
 <article>
 	<form method="post" name="frm">

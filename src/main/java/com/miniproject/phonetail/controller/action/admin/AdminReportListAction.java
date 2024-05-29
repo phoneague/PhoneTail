@@ -49,7 +49,7 @@ public class AdminReportListAction implements Action {
 			paging.setPage(page);
 			
 			AdminDAO adao = AdminDAO.getInstance();
-			int count = adao.getAllCount("report","name",key);
+			int count = adao.getAllCount("report","userid",key);
 			paging.setTotalCount(count);
 			
 			ArrayList<ReportDTO> reportList = adao.adminReportList(paging,key);

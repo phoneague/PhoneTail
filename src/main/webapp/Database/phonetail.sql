@@ -7,7 +7,6 @@ select*from member;
 select*from product;
 
 -- 기존 테이블 삭제
-
 --DROP TABLE IF EXISTS address;
 DROP TABLE IF EXISTS admin;
 DROP TABLE IF EXISTS chat;
@@ -16,16 +15,17 @@ DROP TABLE IF EXISTS product;
 DROP TABLE IF EXISTS question;
 DROP TABLE IF EXISTS member;
 DROP TABLE IF EXISTS chatlist;
+
 -- 테이블 생성
-CREATE TABLE address
-(
-    zip_num varchar(15),
-    sido varchar(30),
-    gugun varchar(30),
-    dong varchar(30),
-    bunji varchar(20),
-    zip_code varchar(30)
-);
+--CREATE TABLE address
+--(
+--    zip_num varchar(15),
+--    sido varchar(30),
+--    gugun varchar(30),
+--    dong varchar(30),
+--    bunji varchar(20),
+--    zip_code varchar(30)
+--);
 
 CREATE TABLE admin
 (
@@ -106,6 +106,16 @@ CREATE TABLE report
     PRIMARY KEY (reseq)
 );
 
+-- 채팅 테이블 추가
+CREATE TABLE chatlist(
+ lseq INT NOT NULL AUTO_INCREMENT,
+ sid varchar(45) NOT NULL,
+ bid varchar(45) NOT NULL,
+ indate datetime DEFAULT now() NOT NULL,
+ pseq int NOT NULL,
+ PRIMARY KEY (lseq)
+);
+
 -- 외래 키 추가
 ALTER TABLE chat
     ADD FOREIGN KEY (userid) REFERENCES member (userid) ON UPDATE CASCADE ON DELETE CASCADE;
@@ -124,18 +134,26 @@ ALTER TABLE chat
 
 ALTER TABLE report
     ADD FOREIGN KEY (pseq) REFERENCES product (pseq) ON UPDATE RESTRICT ON DELETE RESTRICT;
-    
 
-INSERT INTO address (zip_num, sido, gugun, dong, bunji, zip_code) VALUES
+ALTER TABLE chatlist
+    ADD FOREIGN KEY (pseq) REFERENCES product (pseq) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+-- 샘플 데이터 삽입
+--INSERT INTO address (zip_num, sido, gugun, dong, bunji, zip_code) VALUES
 -- 수업시간 때 받은 샘플 데이터로 인서트 대체 
 
 INSERT INTO admin (adminid, pwd, name, phone) VALUES
 ('admin1', 'password1', '관리자1', '010-1234-5678'),
-('admin2', 'password2', '관리자2', '010-8765-4321');
+('admin2', 'password2', '관리자2', '010-8765-4321'),
+('ad', 'ad', '관리자짱짱', '010-8765-1234');
+
 
 INSERT INTO member (userid, pwd, name, phone, email, address1, address2, usestate, indate) VALUES
 ('user1', 'pwd1', '사용자1', '010-1111-2222', 'user1@example.com', '서울특별시 강남구 삼성동', '123-45', 'Y', now()),
 ('user2', 'pwd2', '사용자2', '010-3333-4444', 'user2@example.com', '부산광역시 해운대구 우동', '678-90', 'Y', now());
+('a', 'a', '테스트계정', '010-3333-4444', 'user2@example.com', '부산광역시 해운대구 우동', '678-90', 'Y', now());
+
 
 INSERT INTO product (brand, series, model, price, comment, image, saveimagefile, sellstate, indate, userid) VALUES
 ('Apple', 'iPhone', 'iPhone 13', 1000000, '최신 아이폰 모델', 'iphone13.jpg', 'iphone13.jpg', 'Y', now(), 'user1'),
@@ -151,29 +169,66 @@ INSERT INTO question (title, content, indate, userid, qreply) VALUES
 ('제품 문의', '이 제품의 기능에 대해 알고 싶습니다.', now(), 'user1', '답변 대기 중'),
 ('배송 문의', '언제 배송되나요?', now(), 'user2', '답변 대기 중');
 
---24.05.29 샘플 수정(indate는 알아서 now()로 들어갑니다)
-INSERT INTO report (pseq, userid, retype, recontent, restate, indate) VALUES
+
+--24.05.29 샘플 수정(indate는 알아서 now()로 들어갑니다)->not null과 충돌되는 듯 하여 indate를 추가했습니다
+INSERT INTO report (pseq, userid, retype, recontent, restate,indate) VALUES
 (1, 'user2', 3, '사기가 의심됩니다.', 'N',now()),
 (2, 'user1', 1, '상품 정보가 부정확합니다.', 'Y',now());
 
 
--- 채팅 테이블 추가
-CREATE TABLE chatlist(
- lseq INT NOT NULL AUTO_INCREMENT,
- sid varchar(45) NOT NULL,
- bid varchar(45) NOT NULL,
- indate datetime DEFAULT now() NOT NULL,
- pseq int NOT NULL,
- PRIMARY KEY (lseq)
-) 
 
-ALTER TABLE chatlist
-ADD FOREIGN KEY (pseq) REFERENCES product (pseq) ON UPDATE CASCADE ON DELETE CASCADE;
+
 
 
 -- chatlist 테이블에 예시 데이터 삽입
 INSERT INTO chatlist (sid, bid, pseq) VALUES ('S123', 'B456', 1);
 INSERT INTO chatlist (sid, bid, pseq) VALUES ('S456', 'B789', 2);
 INSERT INTO chatlist (sid, bid, pseq) VALUES ('S456', 'B123', 2);
+
+
+-- report 테이블 샘플 데이터 40개 삽입 (pseq를 1 또는 2로 설정하고 restate를 모두 'N'으로 설정)
+INSERT INTO report (pseq, userid, retype, recontent, restate) VALUES
+(1, 'user1', 0, '광고성 콘텐츠입니다.', 'N'),
+(2, 'user2', 1, '상품 정보가 부정확합니다.', 'N'),
+(1, 'user1', 2, '안전거래를 거부합니다.', 'N'),
+(2, 'user2', 3, '사기가 의심됩니다.', 'N'),
+(1, 'user1', 4, '전문업자 같아요.', 'N'),
+(2, 'user2', 0, '거래와 관련없는 글입니다.', 'N'),
+(1, 'user1', 1, '정보가 부정확합니다.', 'N'),
+(2, 'user2', 2, '거래를 거부해요.', 'N'),
+(1, 'user1', 3, '사기 의심돼요.', 'N'),
+(2, 'user2', 4, '전문업자 같아요.', 'N'),
+(1, 'user1', 0, '광고성 콘텐츠입니다.', 'N'),
+(2, 'user2', 1, '상품 정보가 부정확합니다.', 'N'),
+(1, 'user1', 2, '안전거래를 거부합니다.', 'N'),
+(2, 'user2', 3, '사기가 의심됩니다.', 'N'),
+(1, 'user1', 4, '전문업자 같아요.', 'N'),
+(2, 'user2', 0, '거래와 관련없는 글입니다.', 'N'),
+(1, 'user1', 1, '정보가 부정확합니다.', 'N'),
+(2, 'user2', 2, '거래를 거부해요.', 'N'),
+(1, 'user1', 3, '사기 의심돼요.', 'N'),
+(2, 'user2', 4, '전문업자 같아요.', 'N'),
+(1, 'user1', 0, '광고성 콘텐츠입니다.', 'N'),
+(2, 'user2', 1, '상품 정보가 부정확합니다.', 'N'),
+(1, 'user1', 2, '안전거래를 거부합니다.', 'N'),
+(2, 'user2', 3, '사기가 의심됩니다.', 'N'),
+(1, 'user1', 4, '전문업자 같아요.', 'N'),
+(2, 'user2', 0, '거래와 관련없는 글입니다.', 'N'),
+(1, 'user1', 1, '정보가 부정확합니다.', 'N'),
+(2, 'user2', 2, '거래를 거부해요.', 'N'),
+(1, 'user1', 3, '사기 의심돼요.', 'N'),
+(2, 'user2', 4, '전문업자 같아요.', 'N'),
+(1, 'user1', 0, '광고성 콘텐츠입니다.', 'N'),
+(2, 'user2', 1, '상품 정보가 부정확합니다.', 'N'),
+(1, 'user1', 2, '안전거래를 거부합니다.', 'N'),
+(2, 'user2', 3, '사기가 의심됩니다.', 'N'),
+(1, 'user1', 4, '전문업자 같아요.', 'N'),
+(2, 'user2', 0, '거래와 관련없는 글입니다.', 'N'),
+(1, 'user1', 1, '정보가 부정확합니다.', 'N'),
+(2, 'user2', 2, '거래를 거부해요.', 'N'),
+(1, 'user1', 3, '사기 의심돼요.', 'N'),
+(2, 'user2', 4, '전문업자 같아요.', 'N');
+
+
 
 
