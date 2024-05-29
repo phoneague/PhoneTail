@@ -48,6 +48,7 @@ public class AdminDAO {
 	public int getAllCount(String tablename, String fieldname, String key) {
 		int count = 0;
 		con = DB.getConnection();
+		System.out.println(tablename+"/"+fieldname+"/"+key);
 		String sql = "SELECT COUNT(*) AS cnt FROM " + tablename + " WHERE " + fieldname + " LIKE CONCAT('%', ?, '%')";
 		// 검색어가 '부츠' CONCAT의 결과 '%부츠%' -> 부츠를 포함한 상품명 검색
 		// 검색어가 '' CONCAT의 결과 '%%' -> 모두검색
