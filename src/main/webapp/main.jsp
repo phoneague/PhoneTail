@@ -13,6 +13,7 @@
 <a href="phonetail.do?command=chatList">채팅게시판</a>
 <a href="phonetail.do?command=qnaList">qna게시판</a>
 <a href="phonetail.do?command=loginForm">로그인</a><br><br>
+<a href="phonetail.do?command=admin">admin</a><br><br>
 <h1>hihi</h1>
 ${login.userid}(${login.name})님이 로그인 하셨습니다<br>
 </body>

@@ -99,6 +99,8 @@ CREATE TABLE report
    --4 - 전문업자 같아요',
     recontent varchar(300) NOT NULL,
     restate char(1) DEFAULT 'N' NOT NULL COMMENT 'N:대기상태 Y:처리완료',
+    -- 24.05.29 신고시 해당 날짜 추가해서 list에서 정렬기준을 삼을수 있게 필드 추가했습니다
+    indate datetime DEFAULT now() NOT NULL,
     PRIMARY KEY (reseq)
 );
 
@@ -146,6 +148,8 @@ INSERT INTO question (title, content, indate, userid, qreply) VALUES
 ('제품 문의', '이 제품의 기능에 대해 알고 싶습니다.', now(), 'user1', '답변 대기 중'),
 ('배송 문의', '언제 배송되나요?', now(), 'user2', '답변 대기 중');
 
+--24.05.29 샘플 수정(indate는 알아서 now()로 들어갑니다)
 INSERT INTO report (pseq, userid, retype, recontent, restate) VALUES
 (1, 'user2', 3, '사기가 의심됩니다.', 'N'),
-(2, 'user1', 1, '상품 정보가 부정확합니다.', 'Y');
+(2, 'user1', 1, '상품 정보가 부정확합니다.', 'N');
+(3, 'user1', 4, '테스트테스트', 'N');

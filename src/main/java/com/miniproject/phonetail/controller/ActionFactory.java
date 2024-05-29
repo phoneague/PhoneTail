@@ -5,6 +5,10 @@ import com.miniproject.phonetail.controller.action.IndexAction;
 import com.miniproject.phonetail.controller.action.LoginAction;
 import com.miniproject.phonetail.controller.action.LoginFormAction;
 import com.miniproject.phonetail.controller.action.MainAction;
+import com.miniproject.phonetail.controller.action.admin.AdminAction;
+import com.miniproject.phonetail.controller.action.admin.AdminLoginAction;
+import com.miniproject.phonetail.controller.action.admin.AdminLogoutAction;
+import com.miniproject.phonetail.controller.action.admin.AdminReportListAction;
 
 
 public class ActionFactory {
@@ -12,7 +16,7 @@ public class ActionFactory {
 	private ActionFactory() {}
 	private static ActionFactory itc = new ActionFactory();
 	public static ActionFactory getInstance() {
-		System.out.println("af 생성");
+//		System.out.println("af 생성");
 		return itc;
 		}
 	
@@ -24,6 +28,13 @@ public class ActionFactory {
 		else if(command.equals("loginForm")) ac = new LoginFormAction();
 		else if(command.equals("login")) ac = new LoginAction();
 	
+		//admin
+		else if(command.equals("admin")) ac = new AdminAction();
+		else if(command.equals("adminLogin")) ac = new AdminLoginAction();
+		else if(command.equals("adminLogout")) ac = new AdminLogoutAction();
+		else if(command.equals("adminReportList")) ac = new AdminReportListAction();
+		
+		
 		return ac;
 	}
 	
