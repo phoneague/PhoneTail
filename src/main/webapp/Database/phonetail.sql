@@ -7,14 +7,14 @@ select*from member;
 select*from product;
 
 -- 기존 테이블 삭제
-DROP TABLE IF EXISTS address;
+
 DROP TABLE IF EXISTS admin;
 DROP TABLE IF EXISTS chat;
 DROP TABLE IF EXISTS report;
 DROP TABLE IF EXISTS product;
 DROP TABLE IF EXISTS question;
 DROP TABLE IF EXISTS member;
-
+DROP TABLE IF EXISTS chatlist;
 -- 테이블 생성
 CREATE TABLE address
 (
@@ -154,18 +154,25 @@ INSERT INTO question (title, content, indate, userid, qreply) VALUES
 INSERT INTO report (pseq, userid, retype, recontent, restate) VALUES
 (1, 'user2', 3, '사기가 의심됩니다.', 'N'),
 (2, 'user1', 1, '상품 정보가 부정확합니다.', 'Y');
+(2, 'user1', 1, '상품 정보가 부정확합니다.', 'N');
+(3, 'user1', 4, '테스트테스트', 'N');
 
 
 -- 채팅 테이블 추가
 CREATE TABLE chatlist(
  lseq INT NOT NULL AUTO_INCREMENT,
- userid varchar(45) NOT NULL,
+ sid varchar(45) NOT NULL,
+ bid varchar(45) NOT NULL,
  indate datetime DEFAULT now() NOT NULL,
  pseq int NOT NULL,
  PRIMARY KEY (lseq)
 ) 
 ALTER TABLE chatlist
 ADD FOREIGN KEY (pseq) REFERENCES product (pseq) ON UPDATE CASCADE ON DELETE CASCADE;
-(2, 'user1', 1, '상품 정보가 부정확합니다.', 'N');
-(3, 'user1', 4, '테스트테스트', 'N');
+
+-- chatlist 테이블에 예시 데이터 삽입
+INSERT INTO chatlist (sid, bid, pseq) VALUES ('S123', 'B456', 1);
+INSERT INTO chatlist (sid, bid, pseq) VALUES ('S456', 'B789', 2);
+INSERT INTO chatlist (sid, bid, pseq) VALUES ('S456', 'B123', 2);
+
 
