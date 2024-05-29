@@ -6,9 +6,9 @@
 <meta charset="UTF-8">
 <title>idcheck</title>
 <script type="text/javascript">
-	function idok(id){
-		opener.document.join.userid.value = id;
-		opener.document.join.reid.value = id;
+	function idok(userid){
+		opener.document.joinForm.userid.value = userid;
+		opener.document.joinForm.reid.value = userid;
 		self.close();
 	}
 </script>

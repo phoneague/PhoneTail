@@ -9,13 +9,10 @@ public class MemberDTO {
 	private String name;
 	private String phone;
 	private String email;
-	private String zip_num;
 	private String address1;
 	private String address2;
-	private String zip_code;
 	private String usestate; 
     private Timestamp indate;
-    
 	public String getUserid() {
 		return userid;
 	}
@@ -46,12 +43,6 @@ public class MemberDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getZip_num() {
-		return zip_num;
-	}
-	public void setZip_num(String zip_num) {
-		this.zip_num = zip_num;
-	}
 	public String getAddress1() {
 		return address1;
 	}
@@ -63,12 +54,6 @@ public class MemberDTO {
 	}
 	public void setAddress2(String address2) {
 		this.address2 = address2;
-	}
-	public String getZip_code() {
-		return zip_code;
-	}
-	public void setZip_code(String zip_code) {
-		this.zip_code = zip_code;
 	}
 	public String getUsestate() {
 		return usestate;
@@ -82,5 +67,15 @@ public class MemberDTO {
 	public void setIndate(Timestamp indate) {
 		this.indate = indate;
 	}
+	
+	@Override
+	public String toString() {
+		return "MemberDTO [userid=" + userid + ", pwd=" + pwd + ", name=" + name + ", phone=" + phone + ", email="
+				+ email + ", address1=" + address1 + ", address2=" + address2 + ", usestate=" + usestate + ", indate="
+				+ indate + "]";
+	}
+    
+    
+	
     
 }
