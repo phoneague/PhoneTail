@@ -6,66 +6,79 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
 import com.miniproject.phonetail.DTO.QuestionDTO;
 import com.miniproject.phonetail.util.DB;
 
 public class QuestionDAO {
- 
 
-	private QuestionDAO() {}
-	private static QuestionDAO ist = new QuestionDAO();
-	public static QuestionDAO getInstance() {return ist;}
+		    private static QuestionDAO instance = new QuestionDAO();
+
+		    private QuestionDAO() {}
+
+		    public static QuestionDAO getInstance() {
+		        return instance;
+		    }
+		    
+		    Connection con = null;
+	    	PreparedStatement pstmt = null;
+	    	ResultSet rs = null;
+	    	
+		    // 모든 질문을 가져오는 메서드
+		    public ArrayList<QuestionDTO> getAllQuestions() {
+		        ArrayList<QuestionDTO> questionList = new ArrayList<>();
+
+		        try {
+		            con = DB.getConnection();
+		            String sql = "SELECT * FROM question ORDER BY indate DESC";
+		            pstmt = con.prepareStatement(sql);
+		            rs = pstmt.executeQuery();
+
+		            while (rs.next()) {
+		                QuestionDTO question = new QuestionDTO();
+		                question.setQseq(rs.getInt("qseq"));
+		                question.setUserid(rs.getString("userid"));
+		                question.setTitle(rs.getString("title"));
+		                question.setIndate(rs.getTimestamp("indate"));
+		                question.setContent(rs.getString("content"));
+		                // 필요한 다른 속성들도 마찬가지로 설정해주세요.
+		                questionList.add(question);
+		            }
+		        } catch (SQLException e) { e.printStackTrace();
+		        } finally { DB.close(con, pstmt, rs); }
+
+		          return questionList;
+		    }
+
+			public QuestionDTO getQna(int qseq) {
 	
-	Connection con = null;
-	PreparedStatement pstmt = null;
-	ResultSet rs = null;
-
-	public int getAllCount() {
-			int count = 0;
-			con = DB.getConnection();
-			String sql = "select count(*) as cnt from qna";
-			try {
-				pstmt = con.prepareStatement(sql);
-				rs = pstmt.executeQuery();
-				if(rs.next()) count = rs.getInt("cnt");
-			} catch (SQLException e) { e.printStackTrace();
-			} finally { DB.close(con, pstmt, rs); }	
-			
-			return count;
-	}
-
-	public QuestionDTO getQna(int qseq) {
-		
-		QuestionDTO qvo = new QuestionDTO();
-		String sql = "select * from qna where qseq=?";
-		con = DB.getConnection();
-		try {
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, qseq);
-			rs = pstmt.executeQuery();
-			if( rs.next() ) {
-				qvo.setQseq(qseq);
-				qvo.setContent(rs.getString("content"));
-				qvo.setUserid(rs.getString("userid"));
-				qvo.setIndate(rs.getDate("indate"));
-				qvo.setQreply(rs.getString("qreply"));
+				QuestionDTO question = new QuestionDTO();
+				String sql = "SELECT * FROM question WHERE qseq=?";
+				con = DB.getConnection();
+				
+				try {
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, qseq);
+					rs = pstmt.executeQuery();
+					if( rs.next() ) {
+						question.setQseq(qseq);
+						question.setUserid(rs.getString("userid"));
+						question.setContent(rs.getString("content"));
+						question.setIndate(rs.getTimestamp("indate"));
+						question.setQreply(rs.getString("qreply"));
+					}
+				} catch (SQLException e) { e.printStackTrace();
+				} finally { DB.close(con, pstmt, rs); }	
+				return question;
 			}
-		} catch (SQLException e) { e.printStackTrace();
-		} finally { DB.close(con, pstmt, rs); }	
-		return qvo;
-	}
+			}
 
-	public void insertQna(QuestionDTO qvo) {
-		
-		String sql = "insert into qna (content, userid) values (?, ?)";
-		con = DB.getConnection();
-		try {
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, qvo.getContent());
-			pstmt.setString(2, qvo.getUserid());
-			pstmt.executeUpdate();
-		} catch (SQLException e) { e.printStackTrace();
-		} finally { DB.close(con, pstmt, rs); }	
-		
-	}
-}
+
+
+
+
+
+
+	
+
+	
