@@ -18,7 +18,7 @@
 <a href="phonetail.do?command=logout">로그아웃</a>
 <a href="phonetail.do?command=joinForm">회원가입</a>
 <br>${login.userid}(${login.name})님이 로그인 하셨습니다<br>
-<br>${adminUser.admind}(${login.name})님이 로그인 하셨습니다<br>
+<br>관리자접속 여부:${adminUser.adminid}<br>
 <a href="phonetail.do?command=admin">admin</a><br><br>
 </body>
 </html>

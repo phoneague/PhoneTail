@@ -230,7 +230,7 @@ INSERT INTO report (pseq, userid, retype, recontent, restate) VALUES
 (1, 'user1', 3, '사기 의심돼요.', 'N'),
 (2, 'user2', 4, '전문업자 같아요.', 'N');
 
-
+-- paging확인을 위한 question 테이블 샘플 데이터 삽입
 INSERT INTO question (title, content, indate, userid, qreply) VALUES
 ('제품 문의', '이 제품의 기능에 대해 알고 싶습니다.', now(), 'user1', '답변 대기 중'),
 ('배송 문의', '언제 배송되나요?', now(), 'user2', '답변 대기 중'),
@@ -272,8 +272,4 @@ INSERT INTO question (title, content, indate, userid, qreply) VALUES
 ('배송 문의', '배송 시간대를 지정할 수 있나요?', now(), 'user2', '답변 대기 중'),
 ('환불 문의', '환불 절차를 알고 싶습니다.', now(), 'user1', '답변 대기 중'),
 ('AS 문의', 'AS 접수를 하고 싶습니다.', now(), 'user2', '답변 대기 중');
-
-
-
-
 

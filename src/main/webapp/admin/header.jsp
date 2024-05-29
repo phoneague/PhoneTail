@@ -14,7 +14,7 @@
 <div id="wrap">
 	<header>
 		<div id="logo">
-			<a href="phonetail.do?command=main">
+			<a href="phonetail.do?command=index">
     			<img style="width:200px" src="admin/images/templogo.png" alt="Logo">
 			</a>
 			<img src="admin/images/text.gif">
