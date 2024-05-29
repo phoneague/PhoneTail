@@ -24,7 +24,7 @@ public class ProductInsertAction implements Action {
 		pdto.setBrand( request.getParameter("brand"));
 		pdto.setSeries( request.getParameter("series"));
 		pdto.setModel( request.getParameter("model"));
-		pdto.setPrice( Integer.parseInt( request.getParameter("price")) );
+		//pdto.setPrice( Integer.parseInt( request.getParameter("price")) );
 		pdto.setComment( request.getParameter("comment"));
 		pdto.setUserid( request.getParameter("userid"));
 		

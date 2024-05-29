@@ -34,6 +34,7 @@ public class ProductDAO {
 				pdto.setBrand(rs.getString("brand") );
 				pdto.setSeries(rs.getString("series") );
 				pdto.setModel(rs.getString("model") );
+				pdto.setPrice(rs.getInt("price"));
 				pdto.setComment(rs.getString("comment") );
 				pdto.setImage(rs.getString("image") );
 				pdto.setSaveimagefile(rs.getString("saveimagefile") );
@@ -51,6 +52,28 @@ public class ProductDAO {
 
 	public ProductDTO getProduct(int pseq) {
 		ProductDTO pdto = new ProductDTO();
+		con = DB.getConnection();
+		String sql = "select * from product where pseq=?";
+		try {
+			pstmt= con.prepareStatement(sql);
+			pstmt.setInt(1, pseq);
+			rs = pstmt.executeQuery();
+			while( rs.next()) {
+				pdto.setPseq(rs.getInt("pseq") );
+				pdto.setBrand(rs.getString("brand") );
+				pdto.setSeries(rs.getString("series") );
+				pdto.setModel(rs.getString("model") );
+				pdto.setPrice(rs.getInt("price"));
+				pdto.setComment(rs.getString("comment") );
+				pdto.setImage(rs.getString("image") );
+				pdto.setSaveimagefile(rs.getString("saveimagefile") );
+				pdto.setSellstate(rs.getString("sellstate") );
+				pdto.setIndate(rs.getTimestamp("indate") );
+				pdto.setUserid(rs.getString("userid") );
+			}
+		} catch (SQLException e) { e.printStackTrace();
+		} finally {DB.close(con, pstmt, rs);
+		}
 		return pdto;
 	}
 

@@ -20,5 +20,7 @@
 <br>${login.userid}(${login.name})님이 로그인 하셨습니다<br>
 <br>관리자접속 여부:${adminUser.adminid}<br>
 <a href="phonetail.do?command=admin">admin</a><br><br>
-</body>
-</html>
+
+
+<%@ include file="footer.jsp" %>
+
