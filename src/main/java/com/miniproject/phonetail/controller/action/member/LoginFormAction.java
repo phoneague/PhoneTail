@@ -1,6 +1,8 @@
-package com.miniproject.phonetail.controller.action;
+package com.miniproject.phonetail.controller.action.member;
 
 import java.io.IOException;
+
+import com.miniproject.phonetail.controller.action.Action;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
