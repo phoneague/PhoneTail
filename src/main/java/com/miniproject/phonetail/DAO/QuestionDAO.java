@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import com.miniproject.phonetail.DTO.QuestionDTO;
 import com.miniproject.phonetail.util.DB;
+import com.miniproject.phonetail.util.Paging;
 
 public class QuestionDAO {
 
@@ -25,15 +26,18 @@ public class QuestionDAO {
 	    	ResultSet rs = null;
 	    	
 		    // 모든 질문을 가져오는 메서드
-		    public ArrayList<QuestionDTO> getAllQuestions() {
+		    public ArrayList<QuestionDTO> getAllQuestions(Paging paging, String key) {
 		        ArrayList<QuestionDTO> questionList = new ArrayList<>();
 
 		        try {
 		            con = DB.getConnection();
-		            String sql = "SELECT * FROM question ORDER BY indate DESC";
-		            pstmt = con.prepareStatement(sql);
+		            String sql =  "SELECT * FROM question WHERE userid LIKE CONCAT('%',?,'%') "
+		    				+ " ORDER BY indate DESC, qseq DESC LIMIT ? OFFSET ?";
+		        	pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, key);
+					pstmt.setInt(2, paging.getDisplayRow());
+					pstmt.setInt(3, paging.getStartNum() - 1);
 		            rs = pstmt.executeQuery();
-
 		            while (rs.next()) {
 		                QuestionDTO question = new QuestionDTO();
 		                question.setQseq(rs.getInt("qseq"));
@@ -55,7 +59,6 @@ public class QuestionDAO {
 				QuestionDTO question = new QuestionDTO();
 				String sql = "SELECT * FROM question WHERE qseq=?";
 				con = DB.getConnection();
-				
 				try {
 					pstmt = con.prepareStatement(sql);
 					pstmt.setInt(1, qseq);
@@ -70,6 +73,24 @@ public class QuestionDAO {
 				} catch (SQLException e) { e.printStackTrace();
 				} finally { DB.close(con, pstmt, rs); }	
 				return question;
+			}
+
+			public int getAllCount(String tablename, String fieldname, String key) {
+				int count = 0;
+				con = DB.getConnection();
+				String sql = "SELECT COUNT(*) AS cnt FROM " + tablename + " WHERE " + fieldname + " LIKE CONCAT('%', ?, '%')";
+				try {
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, key);
+					rs = pstmt.executeQuery();
+					if (rs.next())
+						count = rs.getInt("cnt");
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					DB.close(con, pstmt, rs);
+				}
+				return count;
 			}
 			}
 

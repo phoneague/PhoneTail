@@ -3,11 +3,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%-- <%@ include file="../main.jsp"%> --%>
 
-<%-- <%@ page import="com.miniproject.phonetail.DTO.QuestionDTO" %> --%>
-
 <!DOCTYPE html>
 <html>
 <head>
+<script src="customer/script/customer.js"></script>
     <meta charset="UTF-8">
     <title>Q&A List</title>
     <style>
@@ -17,12 +16,19 @@
             padding: 8px;
         }
         th {
-            background-color: #f2f2f2;
+            background-color: gray;
         }
     </style>
 </head>
 <body>
+<form method="post" name="frm">
     <h2>Q&A List</h2>
+    	<div class="field" style="border-top:2px solid gold;">
+				아이디 &nbsp; <input type="text" name="key" value="${key}" /> &nbsp;
+					&nbsp; &nbsp; <input class="btn" type="button" name="btn_search"
+						value="검색" onClick="go_search('qnaList')" />
+					&nbsp;&nbsp;&nbsp; 
+				</div>
     <table>
         <tr>
             <th>번호</th>
@@ -35,35 +41,16 @@
             <tr>
                 <td>${qna.qseq}</td>
                 <td>${qna.userid}</td>
-                <td><a href="qnaView.jsp?qseq=${qna.qseq}">${qna.title}</a></td>
+                <%-- <td><a href="qnaView.jsp?qseq=${qna.qseq}">${qna.title}</a></td> --%>
+               <td><a href="phonetail.do?command=qnaView&qseq=${qna.qseq}">${qna.title}</a></td> 
                 <td><fmt:formatDate value="${qna.indate}" type="date"/></td>
                 <td>${qna.qreply == null ? 'NO' : 'YES'}</td>
             </tr>
         </c:forEach>
     </table>
-
-    <!-- 페이징 처리 -->
-  <%--   <div>
-        <c:if test="${paging.hasPreviousPage}">
-            <a href="?page=${paging.getPreviousPage}">이전</a>
-        </c:if>
-
-        <c:forEach begin="1" end="${paging.getTotalPages}" varStatus="page">
-            <c:choose>
-                <c:when test="${paging.currentPage == page.index}">
-                    <span>${page.index}</span>
-                </c:when>
-                <c:otherwise>
-                    <c:if test="${paging.getTotalPages > 0}">
-                        <a href="?page=${page.index}">${page.index}</a>
-                    </c:if>
-                </c:otherwise>
-            </c:choose>
-        </c:forEach>
-
-        <c:if test="${paging.hasNextPage}">
-            <a href="?page=${paging.getNextPage}">다음</a>
-        </c:if>
-    </div> --%>
+	<jsp:include page="/paging/paging.jsp">
+				<jsp:param value="phonetail.do?command=qnaList" name="address" />
+	</jsp:include>
+	</form>	
 </body>
 </html>
