@@ -149,3 +149,17 @@ INSERT INTO question (title, content, indate, userid, qreply) VALUES
 INSERT INTO report (pseq, userid, retype, recontent, restate) VALUES
 (1, 'user2', 3, '사기가 의심됩니다.', 'N'),
 (2, 'user1', 1, '상품 정보가 부정확합니다.', 'Y');
+
+
+
+
+-- 채팅 테이블 추가
+CREATE TABLE chatlist(
+ lseq INT NOT NULL AUTO_INCREMENT,
+ userid varchar(45) NOT NULL,
+ indate datetime DEFAULT now() NOT NULL,
+ pseq int NOT NULL,
+ PRIMARY KEY (lseq)
+) 
+ALTER TABLE chatlist
+ADD FOREIGN KEY (pseq) REFERENCES product (pseq) ON UPDATE CASCADE ON DELETE CASCADE;

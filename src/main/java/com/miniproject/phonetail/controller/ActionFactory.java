@@ -5,6 +5,8 @@ import com.miniproject.phonetail.controller.action.IndexAction;
 import com.miniproject.phonetail.controller.action.LoginAction;
 import com.miniproject.phonetail.controller.action.LoginFormAction;
 import com.miniproject.phonetail.controller.action.MainAction;
+import com.miniproject.phonetail.controller.action.chat.ChatListAction;
+
 
 
 public class ActionFactory {
@@ -24,6 +26,11 @@ public class ActionFactory {
 		else if(command.equals("loginForm")) ac = new LoginFormAction();
 		else if(command.equals("login")) ac = new LoginAction();
 	
+		
+		// chat 
+		else if(command.equals("chatList")) ac = new ChatListAction(); 
+		
+		
 		return ac;
 	}
 	
