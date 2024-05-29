@@ -19,6 +19,7 @@ import com.miniproject.phonetail.controller.action.admin.AdminAction;
 import com.miniproject.phonetail.controller.action.admin.AdminLoginAction;
 import com.miniproject.phonetail.controller.action.admin.AdminLogoutAction;
 import com.miniproject.phonetail.controller.action.admin.AdminReportListAction;
+import com.miniproject.phonetail.controller.action.member.DeleteMemberAction;
 import com.miniproject.phonetail.controller.action.member.FindZipNumAction;
 import com.miniproject.phonetail.controller.action.member.IdCheckAction;
 import com.miniproject.phonetail.controller.action.member.JoinAction;
@@ -51,6 +52,7 @@ public class ActionFactory {
 		else if(command.equals("join")) ac = new JoinAction();
 		else if(command.equals("findZipnum")) ac = new FindZipNumAction();
 		else if(command.equals("idcheck")) ac = new IdCheckAction();
+		else if(command.equals("deleteMember")) ac = new DeleteMemberAction();
 		
 		// customer
 		else if(command.equals("qnaList"))ac = new QnaListAction();

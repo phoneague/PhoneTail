@@ -50,3 +50,12 @@ function go_save(){
 	    document.joinForm.submit();
 	}
 }
+
+function withDraw(userid){
+	var ans = confirm("정말로 탈퇴할까요?");
+	if(ans){
+		location.href='phonetail.do?command=deleteMember';
+	}else{
+		return;
+	}
+}
