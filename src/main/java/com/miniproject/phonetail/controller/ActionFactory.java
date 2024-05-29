@@ -5,6 +5,10 @@ import com.miniproject.phonetail.controller.action.IndexAction;
 import com.miniproject.phonetail.controller.action.LoginAction;
 import com.miniproject.phonetail.controller.action.LoginFormAction;
 import com.miniproject.phonetail.controller.action.MainAction;
+import com.miniproject.phonetail.controller.customer.QnaListAction;
+import com.miniproject.phonetail.controller.customer.QnaViewAction;
+import com.miniproject.phonetail.controller.customer.WriteQnaAction;
+import com.miniproject.phonetail.controller.customer.WriteQnaFormAction;
 
 
 public class ActionFactory {
@@ -23,6 +27,12 @@ public class ActionFactory {
 		else if(command.equals("main")) ac = new MainAction();
 		else if(command.equals("loginForm")) ac = new LoginFormAction();
 		else if(command.equals("login")) ac = new LoginAction();
+		
+		// customer
+		else if(command.equals("qnaList"))ac = new QnaListAction();
+		else if(command.equals("qnaView"))ac = new QnaViewAction();
+		else if(command.equals("writeQnaForm"))ac = new WriteQnaFormAction();
+		else if(command.equals("writeQna"))ac = new WriteQnaAction();
 	
 		return ac;
 	}
