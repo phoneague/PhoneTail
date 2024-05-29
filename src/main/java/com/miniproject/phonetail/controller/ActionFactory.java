@@ -3,6 +3,10 @@ package com.miniproject.phonetail.controller;
 import com.miniproject.phonetail.controller.action.Action;
 import com.miniproject.phonetail.controller.action.IndexAction;
 import com.miniproject.phonetail.controller.action.MainAction;
+import com.miniproject.phonetail.controller.action.admin.AdminAction;
+import com.miniproject.phonetail.controller.action.admin.AdminLoginAction;
+import com.miniproject.phonetail.controller.action.admin.AdminLogoutAction;
+import com.miniproject.phonetail.controller.action.admin.AdminReportListAction;
 import com.miniproject.phonetail.controller.action.member.FindZipnumAction;
 import com.miniproject.phonetail.controller.action.member.IdCheckAction;
 import com.miniproject.phonetail.controller.action.member.JoinFormAction;
@@ -16,7 +20,7 @@ public class ActionFactory {
 	private ActionFactory() {}
 	private static ActionFactory itc = new ActionFactory();
 	public static ActionFactory getInstance() {
-		System.out.println("af 생성");
+//		System.out.println("af 생성");
 		return itc;
 		}
 	
@@ -33,6 +37,15 @@ public class ActionFactory {
 		else if(command.equals("joinForm")) ac = new JoinFormAction();
 		else if(command.equals("findZipnum")) ac = new FindZipnumAction();
 		else if(command.equals("idcheck")) ac = new IdCheckAction();
+    
+    
+		//admin
+		else if(command.equals("admin")) ac = new AdminAction();
+		else if(command.equals("adminLogin")) ac = new AdminLoginAction();
+		else if(command.equals("adminLogout")) ac = new AdminLogoutAction();
+		else if(command.equals("adminReportList")) ac = new AdminReportListAction();
+		
+	
 		
 		return ac;
 	}
