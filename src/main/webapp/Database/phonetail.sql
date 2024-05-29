@@ -54,11 +54,11 @@ CREATE TABLE member
     zip_num varchar(45) NOT NULL,
     address1 varchar(100) NOT NULL,
     address2 varchar(100) NOT NULL,
-    zip_code varchar(45) NOT NULL,
     usestate char(1) DEFAULT 'Y' NOT NULL,
     indate datetime DEFAULT now() NOT NULL,
     PRIMARY KEY (userid)
 );
+-- zip_code 삭제(우편번호 찾기에서 찾아줌)
 
 CREATE TABLE product
 (
@@ -125,16 +125,15 @@ ALTER TABLE report
 
 -- 샘플 데이터 삽입
 INSERT INTO address (zip_num, sido, gugun, dong, bunji, zip_code) VALUES
-('12345', '서울특별시', '강남구', '삼성동', '123-45', '06100'),
-('67890', '부산광역시', '해운대구', '우동', '678-90', '48095');
+-- 수업시간 때 받은 샘플 데이터로 인서트 대체 
 
 INSERT INTO admin (adminid, pwd, name, phone) VALUES
 ('admin1', 'password1', '관리자1', '010-1234-5678'),
 ('admin2', 'password2', '관리자2', '010-8765-4321');
 
-INSERT INTO member (userid, pwd, name, phone, email, zip_num, address1, address2, zip_code, usestate, indate) VALUES
-('user1', 'pwd1', '사용자1', '010-1111-2222', 'user1@example.com', '12345', '서울특별시 강남구 삼성동', '123-45', '06100', 'Y', now()),
-('user2', 'pwd2', '사용자2', '010-3333-4444', 'user2@example.com', '67890', '부산광역시 해운대구 우동', '678-90', '48095', 'Y', now());
+INSERT INTO member (userid, pwd, name, phone, email, zip_num, address1, address2, usestate, indate) VALUES
+('user1', 'pwd1', '사용자1', '010-1111-2222', 'user1@example.com', '12345', '서울특별시 강남구 삼성동', '123-45', 'Y', now()),
+('user2', 'pwd2', '사용자2', '010-3333-4444', 'user2@example.com', '67890', '부산광역시 해운대구 우동', '678-90', 'Y', now());
 
 INSERT INTO product (brand, series, model, price, comment, image, saveimagefile, sellstate, indate, userid) VALUES
 ('Apple', 'iPhone', 'iPhone 13', 1000000, '최신 아이폰 모델', 'iphone13.jpg', 'iphone13.jpg', 'Y', now(), 'user1'),
