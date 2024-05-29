@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="srcipt/product.js"></script>
+<script src="script/product.js"></script>
 
 
 </head>
@@ -36,7 +36,7 @@
 <div>
 <c:forEach items="${productList}" var="productDTO">
 	<div>
-<a href="#" onClick="go_detail('${productDTO.pseq}');">상품열람</a>
+<a href="phonetail.do?command=productDetail&pseq=${productDTO.pseq}">상품열람</a>
 	${productDTO.pseq}<br>
 	${productDTO.brand}<br>
 	${productDTO.series}<br>

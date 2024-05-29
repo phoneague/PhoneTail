@@ -7,7 +7,7 @@ select*from member;
 select*from product;
 
 -- 기존 테이블 삭제
-DROP TABLE IF EXISTS address;
+--DROP TABLE IF EXISTS address;
 DROP TABLE IF EXISTS admin;
 DROP TABLE IF EXISTS chat;
 DROP TABLE IF EXISTS report;
@@ -151,9 +151,9 @@ INSERT INTO question (title, content, indate, userid, qreply) VALUES
 ('배송 문의', '언제 배송되나요?', now(), 'user2', '답변 대기 중');
 
 --24.05.29 샘플 수정(indate는 알아서 now()로 들어갑니다)
-INSERT INTO report (pseq, userid, retype, recontent, restate) VALUES
-(1, 'user2', 3, '사기가 의심됩니다.', 'N'),
-(2, 'user1', 1, '상품 정보가 부정확합니다.', 'Y');
+INSERT INTO report (pseq, userid, retype, recontent, restate,indate) VALUES
+(1, 'user2', 3, '사기가 의심됩니다.', 'N',now()),
+(2, 'user1', 1, '상품 정보가 부정확합니다.', 'Y',now());
 
 
 -- 채팅 테이블 추가
