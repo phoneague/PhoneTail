@@ -25,7 +25,6 @@ public class JoinAction implements Action {
 		mdto.setPhone(request.getParameter("phone"));
 		mdto.setAddress1(request.getParameter("address1"));
 		mdto.setAddress2(request.getParameter("address2"));
-		mdto.setZip_num(request.getParameter("zip_num"));
 		
 		MemberDAO mdao = MemberDAO.getInstance();
 		int result = mdao.insertMember( mdto );
