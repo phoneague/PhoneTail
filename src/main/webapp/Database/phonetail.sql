@@ -10,11 +10,12 @@ select*from product;
 --DROP TABLE IF EXISTS address;
 DROP TABLE IF EXISTS admin;
 DROP TABLE IF EXISTS chat;
+DROP TABLE IF EXISTS chatlist;
 DROP TABLE IF EXISTS report;
 DROP TABLE IF EXISTS product;
 DROP TABLE IF EXISTS question;
 DROP TABLE IF EXISTS member;
-DROP TABLE IF EXISTS chatlist;
+
 
 -- 테이블 생성
 --CREATE TABLE address

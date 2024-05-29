@@ -21,10 +21,12 @@
 				<div class="row">
 					<div class="col">${chatList.lseq}</div>
 					<div class="col">${chatList.model}</div>
+					<div class="col">${chatList.model}</div>
 					<div class="col">${chatList.sid}</div>
 					<div class="col">${chatList.bid}</div>
-					<div class="col"><fmt:formatDate value="${chatList.indate}" /></div>
-					<div class="col"><input type="button" value="입장"></div>
+					<div class="col">
+						<fmt:formatDate value="${chatList.indate}" pattern="MM/dd hh:mm"/></div>
+					<div class="col"><input type="button" value="입장" onClick="location.href='phonetail.do?command=chating&lseq=${chatList.lseq}'"></div>
 				</div>
 		</c:forEach>
 	</div>

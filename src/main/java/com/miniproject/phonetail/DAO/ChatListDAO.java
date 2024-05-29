@@ -47,7 +47,7 @@ public class ChatListDAO {
 		return list;
 	}
 	
-	 /* public ChatListDTO getChatList(int lseq) { 
+	  public ChatListDTO getChatList(int lseq) { 
 		  ChatListDTO cdto = null; 
 		  con =  DB.getConnection();
 		  String sql = "select * from chatlist where lseq=?"; 
@@ -59,12 +59,14 @@ public class ChatListDAO {
 				  cdto = new ChatListDTO();
 				  cdto.setLseq(rs.getInt("lseq")); 
 				  cdto.setPseq(rs.getInt("pseq"));
+				  cdto.setPrice(rs.getInt("price"));
 				  cdto.setSid(rs.getString("userid"));
 				  cdto.setBid(rs.getString("userid"));
-				  cdto.setmodel(rs.getString("model"));
+				  cdto.setModel(rs.getString("model"));
 				  cdto.setIndate(rs.getTimestamp("indate")); } 
 			  } catch (SQLException e) {e.printStackTrace(); 
 			  } finally { DB.close(con, pstmt, rs);} 
-		  } */
+		  	return cdto;
+		  }
 	 
 }

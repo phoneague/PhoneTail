@@ -8,6 +8,7 @@ import com.miniproject.phonetail.controller.customer.QnaViewAction;
 import com.miniproject.phonetail.controller.customer.WriteQnaAction;
 import com.miniproject.phonetail.controller.customer.WriteQnaFormAction;
 import com.miniproject.phonetail.controller.action.chat.ChatListAction;
+import com.miniproject.phonetail.controller.action.chat.ChatingAction;
 import com.miniproject.phonetail.controller.product.ProductDetailAction;
 import com.miniproject.phonetail.controller.product.ProductInsertAction;
 import com.miniproject.phonetail.controller.product.ProductInsertFormAction;
@@ -66,6 +67,7 @@ public class ActionFactory {
 	
 		// chat 
 		else if(command.equals("chatList")) ac = new ChatListAction(); 
+		else if(command.equals("chating")) ac = new ChatingAction();
 		
 		//product (정빈)
 		else if(command.equals("productList")) ac = new ProductListAction();
