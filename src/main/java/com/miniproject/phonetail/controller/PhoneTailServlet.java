@@ -27,7 +27,7 @@ public class PhoneTailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("pservlet 실행");
+//		System.out.println("pservlet 실행");
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");	
 		
