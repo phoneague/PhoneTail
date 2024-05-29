@@ -20,7 +20,8 @@
 						<textarea name="content" rows="10" cols="85"></textarea>
 				</div>
 				<div class="btn" >
-					<input type="submit" value="작성하기" />
+					<input type="submit" value="작성완료" />
+					<input type="button" value="작성취소" />
 				</div>													
 			</form>
 		</article>

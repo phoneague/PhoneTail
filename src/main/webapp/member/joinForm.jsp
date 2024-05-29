@@ -6,12 +6,12 @@
 <meta charset="UTF-8">
 <title>joinForm</title>
 <script src="script/jquery-3.7.1.min.js"></script>
-<script src="script/member.js"></script>
+<script src="member/script/member.js"></script>
 </head>
 <body>
 <section>
 		<article>
-				<form action="phnetail.do?command=join" method="post" name="joinForm">
+				<form action="phonetail.do?command=join" method="post" name="joinForm">
 					<h2>Join Us</h2>
 					<div class="field">
 						<label>User ID</label>

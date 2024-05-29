@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>findZipNum</title>
-<script src="script/member.js"></script>
+<script src="member/script/member.js"></script>
 </head>
 <body>
 <div id="popup">

@@ -1,18 +1,72 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<script src="product/script/product.js"></script>
+
+
+<title>productInsert</title>
 </head>
 <body>
-<h2>상품을 입력하면 form에서 productinsert로 간다 
-productInsert액션 수행하면서 DB에 insert</h2>
 
-<h2>상품 입력, 메인으로돌아가기</h2>
+	<article>
+		<form name="productInsertForm" method="post"
+			enctype="multipart/form-data">
+			<h2>Product Insert Form</h2>
+			<div>
+				<label>판매자명</label> ${loginUser}
+			</div>
+
+			<div>
+				<label>상품분류</label>
+				<div>
+					<select name="brand">
+						<option value="">선택하세요</option>
+						<c:forEach items="${brandList}" var="brand" varStatus="status">
+							<option value="${brand}">${brand}</option>
+						</c:forEach>
+					</select>
+				</div>
+			</div>
+
+			<div>
+				<label>상품시리즈</label> <input type="text" name="series" />
+			</div>
+
+			<div>
+				<label>모델명</label> <input type="text" name="model" />
+			</div>
+
+			<div>
+				<label>상품가격</label> <input type="text" name="price" />
+
+			</div>
+
+			<div>
+				<label>글 내용</label>
+				<textarea name="content" rows="8"></textarea>
+			</div>
+
+			<div>
+				<label>이미지</label> <input type="file" name="image">
+			</div>
+
+			<div>
+				<input type="button" value="상품등록" onClick="go_insert()"> <input
+					type="button" value="목록으로"
+					onClick="location.href='phonetail.do?command=productList'">
+
+			</div>
+
+
+
+		</form>
+	</article>
+
 
 </body>
 </html>
