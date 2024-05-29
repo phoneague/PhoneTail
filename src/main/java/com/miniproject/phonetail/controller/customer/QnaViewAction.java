@@ -16,12 +16,12 @@ public class QnaViewAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int qseq = Integer.parseInt( request.getParameter("qseq"));
-		QuestionDAO qdao = QuestionDAO.getInstance();
+		QuestionDAO qdao =  QuestionDAO.getInstance();
 		QuestionDTO qvo = qdao.getQna(qseq);
 		
-		request.setAttribute("questionDTO", qvo);
+		request.setAttribute("QuestionDTO", qvo);
 		request.getRequestDispatcher("customer/qnaView.jsp").forward(request, response);
-
 	}
 
 }
+
