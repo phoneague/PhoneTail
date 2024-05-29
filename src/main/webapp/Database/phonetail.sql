@@ -151,8 +151,9 @@ INSERT INTO admin (adminid, pwd, name, phone) VALUES
 
 INSERT INTO member (userid, pwd, name, phone, email, address1, address2, usestate, indate) VALUES
 ('user1', 'pwd1', '사용자1', '010-1111-2222', 'user1@example.com', '서울특별시 강남구 삼성동', '123-45', 'Y', now()),
-('user2', 'pwd2', '사용자2', '010-3333-4444', 'user2@example.com', '부산광역시 해운대구 우동', '678-90', 'Y', now());
+('user2', 'pwd2', '사용자2', '010-3333-4444', 'user2@example.com', '부산광역시 해운대구 우동', '678-90', 'Y', now()),
 ('a', 'a', '테스트계정', '010-3333-4444', 'user2@example.com', '부산광역시 해운대구 우동', '678-90', 'Y', now());
+
 
 
 INSERT INTO product (brand, series, model, price, comment, image, saveimagefile, sellstate, indate, userid) VALUES
