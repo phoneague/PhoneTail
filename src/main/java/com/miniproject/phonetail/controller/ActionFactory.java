@@ -3,6 +3,7 @@ package com.miniproject.phonetail.controller;
 import com.miniproject.phonetail.controller.action.Action;
 import com.miniproject.phonetail.controller.action.IndexAction;
 import com.miniproject.phonetail.controller.action.MainAction;
+import com.miniproject.phonetail.controller.action.chat.ChatListAction;
 import com.miniproject.phonetail.controller.product.ProductDetailAction;
 import com.miniproject.phonetail.controller.product.ProductInsertAction;
 import com.miniproject.phonetail.controller.product.ProductInsertFormAction;
@@ -52,6 +53,8 @@ public class ActionFactory {
 		else if(command.equals("adminReportList")) ac = new AdminReportListAction();
 		
 	
+		// chat 
+		else if(command.equals("chatList")) ac = new ChatListAction(); 
 		
 		//product (정빈)
 		else if(command.equals("productList")) ac = new ProductListAction();
