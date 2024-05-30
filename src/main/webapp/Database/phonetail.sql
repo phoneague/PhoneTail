@@ -37,16 +37,6 @@ CREATE TABLE admin
     PRIMARY KEY (adminid)
 );
 
-CREATE TABLE chat
-(
-	cseq int not null AUTO_INCREMENT,
-	lseq int not null,
-	userid varchar(45) not null,
-	indate datetime not null DEFAULT now(),
-	content varchar(500) not null,
-	PRIMARY KEY (cseq)
-);
-
 CREATE TABLE member
 (
     userid varchar(45) NOT NULL,
@@ -60,8 +50,6 @@ CREATE TABLE member
     indate datetime DEFAULT now() NOT NULL,
     PRIMARY KEY (userid)
 );
--- zip_code 삭제(우편번호 찾기에서 찾아줌)
--- zip_num 삭제(우편번호 찾기에서 찾아줌)
 
 CREATE TABLE product
 (
@@ -77,6 +65,24 @@ CREATE TABLE product
     indate datetime DEFAULT now() NOT NULL,
     userid varchar(45) NOT NULL,
     PRIMARY KEY (pseq)
+);
+
+CREATE TABLE chatlist(
+ lseq INT NOT NULL AUTO_INCREMENT,
+ sid varchar(45) NOT NULL,
+ bid varchar(45) NOT NULL,
+ pseq int NOT NULL,
+ PRIMARY KEY (lseq)
+);
+
+CREATE TABLE chat
+(
+	cseq int not null AUTO_INCREMENT,
+	lseq int not null,
+	userid varchar(45) not null,
+	indate datetime not null DEFAULT now(),
+	content varchar(500) not null,
+	PRIMARY KEY (cseq)
 );
 
 CREATE TABLE question
@@ -108,15 +114,7 @@ CREATE TABLE report
     PRIMARY KEY (reseq)
 );
 
--- 채팅 테이블 추가
-CREATE TABLE chatlist(
- lseq INT NOT NULL AUTO_INCREMENT,
- sid varchar(45) NOT NULL,
- bid varchar(45) NOT NULL,
- indate datetime,
- pseq int NOT NULL,
- PRIMARY KEY (lseq)
-);
+
 
 -- 외래 키 추가
 ALTER TABLE chat
@@ -130,23 +128,19 @@ ALTER TABLE question
 ALTER TABLE report
     ADD FOREIGN KEY (userid) REFERENCES member (userid) ON UPDATE RESTRICT ON DELETE RESTRICT;
 
-ALTER TABLE chat
-    ADD FOREIGN KEY (pseq) REFERENCES product (pseq) ON UPDATE CASCADE ON DELETE CASCADE;
-
 ALTER TABLE report
     ADD FOREIGN KEY (pseq) REFERENCES product (pseq) ON UPDATE RESTRICT ON DELETE RESTRICT;
 
 ALTER TABLE chatlist
     ADD FOREIGN KEY (pseq) REFERENCES product (pseq) ON UPDATE CASCADE ON DELETE CASCADE;
 
--- ALTER TABLE member change usestate userstete char(1); 
--- 컬럼명 변경(그러나 멤버테이블 자체를 수정했기 때문에 정말 죄송하지만 주소제외 모든 테이블을 삭제했다 다시 넣는걸 추천드립니다...ㅠ)
+CREATE VIEW hak AS
+SELECT cl.lseq, cl.sid, cl.bid, p.pseq, p.model, p.price
+FROM chatlist cl
+JOIN product p ON cl.pseq = p.pseq;
+
     
-
--- 샘플 데이터 삽입
---INSERT INTO address (zip_num, sido, gugun, dong, bunji, zip_code) VALUES
--- 수업시간 때 받은 샘플 데이터로 인서트 대체 
-
+    
 INSERT INTO admin (adminid, pwd, name, phone) VALUES
 ('admin1', 'password1', '관리자1', '010-1234-5678'),
 ('admin2', 'password2', '관리자2', '010-8765-4321'),
@@ -156,7 +150,24 @@ INSERT INTO admin (adminid, pwd, name, phone) VALUES
 INSERT INTO member (userid, pwd, name, phone, email, address1, address2, userstate, indate) VALUES
 ('user1', 'pwd1', '사용자1', '010-1111-2222', 'user1@example.com', '서울특별시 강남구 삼성동', '123-45', 'Y', now()),
 ('user2', 'pwd2', '사용자2', '010-3333-4444', 'user2@example.com', '부산광역시 해운대구 우동', '678-90', 'Y', now()),
-('a', 'a', '테스트계정', '010-3333-4444', 'user2@example.com', '부산광역시 해운대구 우동', '678-90', 'Y', now());
+('a', 'a', '테스트계정', '010-3333-4444', 'user2@example.com', '부산광역시 해운대구 우동', '678-90', 'Y', now()),
+('superman', 'kryptonite', 'Clark Kent', '123-456-7890', 'clark@dailyplanet.com', '123 Metropolis Lane', 'Apt 3B', 'Y', now()),
+('batman', 'robin', 'Bruce Wayne', '987-654-3210', 'bruce@wayneenterprises.com', '456 Wayne Manor', 'Gotham City', 'Y', now()),
+('spidey', 'webhead', 'Peter Parker', '555-555-5555', 'peter@bugle.com', '789 Queens Boulevard', 'Apt 10A', 'Y', now()),
+('wonderwoman', 'amazon', 'Diana Prince', '333-333-3333', 'diana@themyscira.com', 'Paradise Island', '', 'Y', now()),
+('flash', 'speedforce', 'Barry Allen', '777-777-7777', 'barry@ccpd.com', '123 Central City Blvd', 'Suite 4', 'Y', now()),
+('ironman', 'arcreactor', 'Tony Stark', '222-222-2222', 'tony@starkindustries.com', '10880 Malibu Point', 'Malibu, CA', 'Y', now()),
+('captainamerica', 'shield', 'Steve Rogers', '333-333-3333', 'steve@avengers.com', '569 Leaman Place', 'Brooklyn, NY', 'Y', now()),
+('thor', 'mjolnir', 'Thor Odinson', '444-444-4444', 'thor@asgard.com', 'Asgard Palace', 'Bifrost Bridge', 'Y', now()),
+('hulk', 'smash', 'Bruce Banner', '555-555-5555', 'bruce@smash.com', '123 Gamma Labs', 'Sakaar', 'Y', now()),
+('blackwidow', 'spies', 'Natasha Romanoff', '666-666-6666', 'natasha@redroom.com', '456 Red Room Street', 'Moscow, Russia', 'Y', now()),
+('hawkeye', 'arrows', 'Clint Barton', '777-777-7777', 'clint@bowandarrow.com', '789 Archer Avenue', 'New York, NY', 'Y', now()),
+('wolverine', 'adamantium', 'Logan', '888-888-8888', 'logan@xmen.com', '123 Xavier School', 'Westchester, NY', 'Y', now()),
+('storm', 'weather', 'Ororo Munroe', '999-999-9999', 'ororo@xmen.com', '456 Xavier School', 'Westchester, NY', 'Y', now()),
+('cyclops', 'beam', 'Scott Summers', '101-101-1010', 'scott@xmen.com', '789 Xavier School', 'Westchester, NY', 'Y', now()),
+('jeangrey', 'phoenix', 'Jean Grey', '202-202-2020', 'jean@xmen.com', '321 Xavier School', 'Westchester, NY', 'Y', now()),
+('beast', 'intellect', 'Henry McCoy', '303-303-3030', 'henry@xmen.com', '555 Xavier School', 'Westchester, NY', 'Y', now()),
+('iceman', 'ice', 'Bobby Drake', '404-404-4040', 'bobby@xmen.com', '777 Xavier School', 'Westchester, NY', 'Y', now());
 
 
 
@@ -165,76 +176,49 @@ INSERT INTO product (brand, series, model, price, comment, image, saveimagefile,
 ('Samsung', 'S Series', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
 ('Samsung', 'Z Series', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
 ('LG', 'G8', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
+('Samsung', 'S Series', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
+('Samsung', 'Z Series', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
+('LG', 'G8', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
+('Samsung', 'S Series', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
+('Samsung', 'Z Series', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
+('LG', 'G8', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
+('Samsung', 'S Series', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
+('Samsung', 'Z Series', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
+('LG', 'G8', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
+('Samsung', 'S Series', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
+('Samsung', 'Z Series', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
+('LG', 'G8', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
+('Samsung', 'S Series', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
+('Samsung', 'Z Series', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
+('LG', 'G8', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
+('Samsung', 'S Series', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
+('Samsung', 'Z Series', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
+('LG', 'G8', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
+('Samsung', 'S Series', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
+('Samsung', 'Z Series', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
+('LG', 'G8', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'user1'),
 ('Samsung', 'S Series', 'GalaxyS24', 900000, '최신 모델', 'GalaxyS24.jpg', 'GalaxyS24.jpg', 'N', now(), 'user2');
 
--- chatlist 테이블에 예시 데이터 삽입
-INSERT INTO chatlist (sid, bid, pseq) VALUES ('user1', 'a', 1);
-INSERT INTO chatlist (sid, bid, pseq) VALUES ('user2', 'ad', 2);
-INSERT INTO chatlist (sid, bid, pseq) VALUES ('user2', 'a', 2);
+
+INSERT INTO chatlist (sid, bid, pseq) VALUES
+('user1', 'a', 5),
+('user2', 'a', 6),
+('user2', 'ad', 6);
 
 INSERT INTO chat (content, indate, userid, pseq, lseq) VALUES
-('언제 배송되나요?', now(), 'user2', 2, 1),
-('왜 읽씹하시나요?', now(), 'a', 2, 2);
+('언제 배송되나요?', now(), 'user2', 6, 1),
+('왜 읽씹하시나요?', now(), 'a', 6, 2);
 
 INSERT INTO question (title, content, indate, userid, qreply) VALUES
 ('제품 문의', '이 제품의 기능에 대해 알고 싶습니다.', now(), 'user1', '답변 대기 중'),
-('배송 문의', '언제 배송되나요?', now(), 'user2', '답변 대기 중');
-
-
---24.05.29 샘플 수정(indate는 알아서 now()로 들어갑니다)->not null과 충돌되는 듯 하여 indate를 추가했습니다
-INSERT INTO report (pseq, userid, retype, recontent, restate,indate) VALUES
-(1, 'user2', 3, '사기가 의심됩니다.', 'N',now()),
-(2, 'user1', 1, '상품 정보가 부정확합니다.', 'Y',now());
-
-
-
-
-
--- report 테이블 샘플 데이터 40개 삽입 (pseq를 1 또는 2로 설정하고 restate를 모두 'N'으로 설정)
-INSERT INTO report (pseq, userid, retype, recontent, restate) VALUES
-(1, 'user1', 0, '광고성 콘텐츠입니다.', 'N'),
-(2, 'user2', 1, '상품 정보가 부정확합니다.', 'N'),
-(1, 'user1', 2, '안전거래를 거부합니다.', 'N'),
-(2, 'user2', 3, '사기가 의심됩니다.', 'N'),
-(1, 'user1', 4, '전문업자 같아요.', 'N'),
-(2, 'user2', 0, '거래와 관련없는 글입니다.', 'N'),
-(1, 'user1', 1, '정보가 부정확합니다.', 'N'),
-(2, 'user2', 2, '거래를 거부해요.', 'N'),
-(1, 'user1', 3, '사기 의심돼요.', 'N'),
-(2, 'user2', 4, '전문업자 같아요.', 'N'),
-(1, 'user1', 0, '광고성 콘텐츠입니다.', 'N'),
-(2, 'user2', 1, '상품 정보가 부정확합니다.', 'N'),
-(1, 'user1', 2, '안전거래를 거부합니다.', 'N'),
-(2, 'user2', 3, '사기가 의심됩니다.', 'N'),
-(1, 'user1', 4, '전문업자 같아요.', 'N'),
-(2, 'user2', 0, '거래와 관련없는 글입니다.', 'N'),
-(1, 'user1', 1, '정보가 부정확합니다.', 'N'),
-(2, 'user2', 2, '거래를 거부해요.', 'N'),
-(1, 'user1', 3, '사기 의심돼요.', 'N'),
-(2, 'user2', 4, '전문업자 같아요.', 'N'),
-(1, 'user1', 0, '광고성 콘텐츠입니다.', 'N'),
-(2, 'user2', 1, '상품 정보가 부정확합니다.', 'N'),
-(1, 'user1', 2, '안전거래를 거부합니다.', 'N'),
-(2, 'user2', 3, '사기가 의심됩니다.', 'N'),
-(1, 'user1', 4, '전문업자 같아요.', 'N'),
-(2, 'user2', 0, '거래와 관련없는 글입니다.', 'N'),
-(1, 'user1', 1, '정보가 부정확합니다.', 'N'),
-(2, 'user2', 2, '거래를 거부해요.', 'N'),
-(1, 'user1', 3, '사기 의심돼요.', 'N'),
-(2, 'user2', 4, '전문업자 같아요.', 'N'),
-(1, 'user1', 0, '광고성 콘텐츠입니다.', 'N'),
-(2, 'user2', 1, '상품 정보가 부정확합니다.', 'N'),
-(1, 'user1', 2, '안전거래를 거부합니다.', 'N'),
-(2, 'user2', 3, '사기가 의심됩니다.', 'N'),
-(1, 'user1', 4, '전문업자 같아요.', 'N'),
-(2, 'user2', 0, '거래와 관련없는 글입니다.', 'N'),
-(1, 'user1', 1, '정보가 부정확합니다.', 'N'),
-(2, 'user2', 2, '거래를 거부해요.', 'N'),
-(1, 'user1', 3, '사기 의심돼요.', 'N'),
-(2, 'user2', 4, '전문업자 같아요.', 'N');
-
--- paging확인을 위한 question 테이블 샘플 데이터 삽입
-INSERT INTO question (title, content, indate, userid, qreply) VALUES
+('배송 문의', '언제 배송되나요?', now(), 'user2', '답변 대기 중'),
 ('제품 문의', '이 제품의 기능에 대해 알고 싶습니다.', now(), 'user1', '답변 대기 중'),
 ('배송 문의', '언제 배송되나요?', now(), 'user2', '답변 대기 중'),
 ('환불 문의', '환불 절차가 궁금합니다.', now(), 'user1', '답변 대기 중'),
@@ -278,34 +262,51 @@ INSERT INTO question (title, content, indate, userid, qreply) VALUES
 
 
 
-INSERT INTO member (userid, pwd, name, phone, email, address1, address2, userstate, indate) VALUES
-('superman', 'kryptonite', 'Clark Kent', '123-456-7890', 'clark@dailyplanet.com', '123 Metropolis Lane', 'Apt 3B', 'Y', now()),
-('batman', 'robin', 'Bruce Wayne', '987-654-3210', 'bruce@wayneenterprises.com', '456 Wayne Manor', 'Gotham City', 'Y', now()),
-('spidey', 'webhead', 'Peter Parker', '555-555-5555', 'peter@bugle.com', '789 Queens Boulevard', 'Apt 10A', 'Y', now()),
-('wonderwoman', 'amazon', 'Diana Prince', '333-333-3333', 'diana@themyscira.com', 'Paradise Island', '', 'Y', now()),
-('flash', 'speedforce', 'Barry Allen', '777-777-7777', 'barry@ccpd.com', '123 Central City Blvd', 'Suite 4', 'Y', now()),
-('ironman', 'arcreactor', 'Tony Stark', '222-222-2222', 'tony@starkindustries.com', '10880 Malibu Point', 'Malibu, CA', 'Y', now()),
-('captainamerica', 'shield', 'Steve Rogers', '333-333-3333', 'steve@avengers.com', '569 Leaman Place', 'Brooklyn, NY', 'Y', now()),
-('thor', 'mjolnir', 'Thor Odinson', '444-444-4444', 'thor@asgard.com', 'Asgard Palace', 'Bifrost Bridge', 'Y', now()),
-('hulk', 'smash', 'Bruce Banner', '555-555-5555', 'bruce@smash.com', '123 Gamma Labs', 'Sakaar', 'Y', now()),
-('blackwidow', 'spies', 'Natasha Romanoff', '666-666-6666', 'natasha@redroom.com', '456 Red Room Street', 'Moscow, Russia', 'Y', now()),
-('hawkeye', 'arrows', 'Clint Barton', '777-777-7777', 'clint@bowandarrow.com', '789 Archer Avenue', 'New York, NY', 'Y', now()),
-('wolverine', 'adamantium', 'Logan', '888-888-8888', 'logan@xmen.com', '123 Xavier School', 'Westchester, NY', 'Y', now()),
-('storm', 'weather', 'Ororo Munroe', '999-999-9999', 'ororo@xmen.com', '456 Xavier School', 'Westchester, NY', 'Y', now()),
-('cyclops', 'beam', 'Scott Summers', '101-101-1010', 'scott@xmen.com', '789 Xavier School', 'Westchester, NY', 'Y', now()),
-('jeangrey', 'phoenix', 'Jean Grey', '202-202-2020', 'jean@xmen.com', '321 Xavier School', 'Westchester, NY', 'Y', now()),
-('beast', 'intellect', 'Henry McCoy', '303-303-3030', 'henry@xmen.com', '555 Xavier School', 'Westchester, NY', 'Y', now()),
-('iceman', 'ice', 'Bobby Drake', '404-404-4040', 'bobby@xmen.com', '777 Xavier School', 'Westchester, NY', 'Y', now());
+INSERT INTO report (pseq, userid, retype, recontent, restate) VALUES
+(1, 'user1', 0, '광고성 콘텐츠입니다.', 'N'),
+(2, 'user2', 1, '상품 정보가 부정확합니다.', 'N'),
+(1, 'user1', 2, '안전거래를 거부합니다.', 'N'),
+(2, 'user2', 3, '사기가 의심됩니다.', 'N'),
+(1, 'user1', 4, '전문업자 같아요.', 'N'),
+(2, 'user2', 0, '거래와 관련없는 글입니다.', 'N'),
+(1, 'user1', 1, '정보가 부정확합니다.', 'N'),
+(2, 'user2', 2, '거래를 거부해요.', 'N'),
+(1, 'user1', 3, '사기 의심돼요.', 'N'),
+(2, 'user2', 4, '전문업자 같아요.', 'N'),
+(1, 'user1', 0, '광고성 콘텐츠입니다.', 'N'),
+(2, 'user2', 1, '상품 정보가 부정확합니다.', 'N'),
+(1, 'user1', 2, '안전거래를 거부합니다.', 'N'),
+(2, 'user2', 3, '사기가 의심됩니다.', 'N'),
+(1, 'user1', 4, '전문업자 같아요.', 'N'),
+(2, 'user2', 0, '거래와 관련없는 글입니다.', 'N'),
+(1, 'user1', 1, '정보가 부정확합니다.', 'N'),
+(2, 'user2', 2, '거래를 거부해요.', 'N'),
+(1, 'user1', 3, '사기 의심돼요.', 'N'),
+(2, 'user2', 4, '전문업자 같아요.', 'N'),
+(1, 'user1', 0, '광고성 콘텐츠입니다.', 'N'),
+(2, 'user2', 1, '상품 정보가 부정확합니다.', 'N'),
+(1, 'user1', 2, '안전거래를 거부합니다.', 'N'),
+(2, 'user2', 3, '사기가 의심됩니다.', 'N'),
+(1, 'user1', 4, '전문업자 같아요.', 'N'),
+(2, 'user2', 0, '거래와 관련없는 글입니다.', 'N'),
+(1, 'user1', 1, '정보가 부정확합니다.', 'N'),
+(2, 'user2', 2, '거래를 거부해요.', 'N'),
+(1, 'user1', 3, '사기 의심돼요.', 'N'),
+(2, 'user2', 4, '전문업자 같아요.', 'N'),
+(1, 'user1', 0, '광고성 콘텐츠입니다.', 'N'),
+(2, 'user2', 1, '상품 정보가 부정확합니다.', 'N'),
+(1, 'user1', 2, '안전거래를 거부합니다.', 'N'),
+(2, 'user2', 3, '사기가 의심됩니다.', 'N'),
+(1, 'user1', 4, '전문업자 같아요.', 'N'),
+(2, 'user2', 0, '거래와 관련없는 글입니다.', 'N'),
+(1, 'user1', 1, '정보가 부정확합니다.', 'N'),
+(2, 'user2', 2, '거래를 거부해요.', 'N'),
+(1, 'user1', 3, '사기 의심돼요.', 'N'),
+(2, 'user2', 4, '전문업자 같아요.', 'N');
 
 
-SELECT * FROM question;
 
--- qna 쿼리문 답변 공백으로 세팅
 UPDATE question SET qreply='';
 
 
--- 채팅게시판 뷰
-CREATE VIEW hak AS
-SELECT cl.lseq, cl.sid, cl.bid, p.pseq, p.model, p.price
-FROM chatlist cl
-JOIN product p ON cl.pseq = p.pseq;
+
