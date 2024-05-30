@@ -23,7 +23,7 @@ public class AdminReportListAction implements Action {
 		AdminDTO adto = (AdminDTO) session.getAttribute("adminUser");
 
 		if (adto == null) {
-			response.sendRedirect("shop.do?command=admin");
+			response.sendRedirect("phonetail.do?command=admin");
 		}else {
 			int page=1;
 			if(request.getParameter("page")!=null) {

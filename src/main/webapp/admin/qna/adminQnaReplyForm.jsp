@@ -21,28 +21,30 @@
 <body>
    <article>
 			<form>
-				<h2>QnA View</h2>
+				<h2>QnA Reply</h2>
 				
-				<div class="field" style="border-top:2px solid gold;">
+				<div class="field" style="border-top:2px solid red;">
 						<label>작성자</label><div>${QuestionDTO.userid}</div>
 				</div>
-				<div class="field" style="border-top:1px solid gold;">
+				<div class="field" style="border-top:1px solid red;">
 						<label>제 목</label><div>${QuestionDTO.title}</div>
 				</div>			
-				<div class="field" style="border-top:1px solid gold;">
+				<div class="field" style="border-top:1px solid red;">
 						<label>등록일</label><div><fmt:formatDate value="${QuestionDTO.indate}" type="date"/></div>
 				</div>
-				<div class="field" style="border-top:1px solid gold;">
+				<div class="field" style="border-top:1px solid red;">
 						<label>질문내용</label><div>${QuestionDTO.content}</div>
 				</div>
-				<div class="field" style="border-top:2px solid gold; border-bottom:2px solid gold;">
-						<label>답변내용</label><div style="padding:10px;">${QuestionDTO.qreply == '' ? '답변 대기중' : QuestionDTO.qreply}</div>
+				<div class="field" style="border-top:2px solid red; border-bottom:2px solid red;">
+						<label>답변내용</label>
+						<div style="padding:10px;">
+							<textarea id="story" name="story" rows="8" cols="40">
+							</textarea>
+						</div>
 				</div>
-				<div class="btn" style="border-bottom:2px solid gold;">
+				<div class="btn" style="border-bottom:2px solid red;">
 					<input type="button" value="목록으로" onClick="location.href='phonetail.do?command=qnaList'">
-					<c:if test="${!empty adminUser.adminid}">
-						<input type="button" value="답변하기" onClick="location.href='phonetail.do?command=adminQnaReplyForm&qseq=${QuestionDTO.qseq}'">
-					</c:if>	
+						<input type="button" value="답변완료" onClick="location.href='phonetail.do?command=adminQnaReply'">
 				</div>	
 					
 							
