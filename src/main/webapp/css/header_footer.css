@@ -3,8 +3,6 @@
 #wrap{ width:1400px; margin: 0 auto;}
 
 a{ text-decoration: none;
-display:flex;
-justify-content:center;
 }
 
 header{
@@ -37,6 +35,8 @@ footer{
 	margin-left:20px;
 	font-family: "Roboto", sans-serif;
 	color:#3f4549;
+	display:flex;
+	justify-content:center;
 }
 
 #category_menu{
@@ -50,6 +50,7 @@ footer{
 	width:300px;
 	display:flex;
 	flex:1;
+	
 }
 #category_menu a:nth-child(2){
 	width:300px;
@@ -67,6 +68,7 @@ footer{
 	color: #3f4549;
 	font-family: "Roboto", sans-serif;
 	font-size:1.2em;
+	justify-content:center;
 }
 
 .hmenu{

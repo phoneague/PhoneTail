@@ -16,6 +16,7 @@
 <body>
 
 
+
 <h2>당신 주변 3명 중 1명은 중고폰을 구매했다.</h2>
 <div id="container" style="display:flex;width=100%;justify-contents:center; align-items:center;">
 <img src="images/mainimg.jpg" width="80%" >

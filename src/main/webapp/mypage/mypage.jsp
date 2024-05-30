@@ -3,6 +3,8 @@
 <%@ include file="../header.jsp" %>
 <section>
 		<article>
+		<input type="button" value="회원탈퇴" onClick="withDraw('${userid}')"/>
+		<a href="phonetail.do?command=updateMemberForm">회원정보수정</a>
 				<form name="orderFrm" >
 						<h2> ${title} </h2>					
 						<c:choose>

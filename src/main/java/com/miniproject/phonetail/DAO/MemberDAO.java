@@ -38,7 +38,7 @@ public class MemberDAO {
 				mdto.setAddress1(rs.getString("address1"));
 				mdto.setAddress2(rs.getString("address2"));
 				mdto.setPhone(rs.getString("phone"));
-				mdto.setUsestate(rs.getString("usestate"));
+				mdto.setUserstate(rs.getString("userstate"));
 				mdto.setIndate(rs.getTimestamp("indate"));
 				System.out.println(mdto.toString());
 			}

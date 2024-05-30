@@ -28,7 +28,7 @@ public class LoginAction implements Action {
 			request.setAttribute("message", "아이디가 없습니다");
 		else if( !mdto.getPwd().equals(pwd) ) 
 			request.setAttribute("message", "패스워드가 틀립니다");
-		else if( mdto.getUsestate().equals("N") ) 
+		else if( mdto.getUserstate().equals("N") ) 
 			request.setAttribute("message", "해당 계정은 휴면상태이거나 탈퇴상태입니다. 관리자에게 문의하세요");
 		else if( mdto.getPwd().equals(pwd) ) {
 			url = "phonetail.do?command=main";

@@ -29,6 +29,7 @@ public class UpdateMemberAction implements Action {
 		MemberDAO mdao = MemberDAO.getInstance();
 		int result = mdao.updateMember(mdto);
 		
+		
 		if( result == 1) {// 수정된 정보로 세션의  login으로 수정 업데이트 합니다
 			HttpSession session = request.getSession();
 			session.setAttribute("login", mdto);
@@ -36,5 +37,5 @@ public class UpdateMemberAction implements Action {
 		RequestDispatcher dp = request.getRequestDispatcher("phonetail.do?command=main");
 		dp.forward(request, response);
 	}
-
 }
+
