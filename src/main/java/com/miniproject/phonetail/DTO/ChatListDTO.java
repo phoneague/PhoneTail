@@ -8,16 +8,9 @@ public class ChatListDTO {
 	private String sid;
 	private String bid;
 	private int pseq;
-	private int price;
 	private Timestamp indate;
 	private String model;
-	
-	public int getPrice() {
-		return price;
-	}
-	public void setPrice(int price) {
-		this.price = price;
-	}
+
 	public String getModel() {
 		return model;
 	}

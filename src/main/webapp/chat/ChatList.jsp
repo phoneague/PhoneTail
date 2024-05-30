@@ -9,11 +9,10 @@
 </head>
 <body>
 	<div class="board">
+		<h2>${loginUser}님의 채팅방</h2>
 		<div class="title_row">
 			<div class="title_col">채팅방번호</div><div class="title_col">제품명</div>
 			<div class="title_col">제품가격</div>
-			<div class="title_col">판매자id</div><div class="title_col">구매자 id</div>
-			<div class="title_col">시간</div>
 		</div>
 		<h2></h2>
 
@@ -21,12 +20,8 @@
 				<div class="row">
 					<div class="col">${chatList.lseq}</div>
 					<div class="col">${chatList.model}</div>
-					<div class="col">${chatList.model}</div>
-					<div class="col">${chatList.sid}</div>
-					<div class="col">${chatList.bid}</div>
-					<div class="col">
-						<fmt:formatDate value="${chatList.indate}" pattern="MM/dd hh:mm"/></div>
 					<div class="col"><input type="button" value="입장" onClick="location.href='phonetail.do?command=chating&lseq=${chatList.lseq}'"></div>
+					<div class="col"><input type="button" value="나가기" onClick=""></div> <!-- 딜리트 lseq 하면됨 -->
 				</div>
 		</c:forEach>
 	</div>
