@@ -44,8 +44,11 @@ CREATE TABLE chat
     indate datetime DEFAULT now() NOT NULL,
     userid varchar(45) NOT NULL,
     pseq int NOT NULL,
+    lseq int,
     PRIMARY KEY (cseq)
 );
+
+ 
 
 CREATE TABLE member
 (
@@ -121,6 +124,9 @@ CREATE TABLE chatlist(
 ALTER TABLE chat
     ADD FOREIGN KEY (userid) REFERENCES member (userid) ON UPDATE CASCADE ON DELETE CASCADE;
 
+ALTER TABLE chat
+    ADD FOREIGN KEY (lseq) REFERENCES chatlist (lseq) ON UPDATE CASCADE ON DELETE CASCADE;    
+    
 ALTER TABLE product
     ADD FOREIGN KEY (userid) REFERENCES member (userid) ON UPDATE CASCADE ON DELETE CASCADE;
 
@@ -161,10 +167,10 @@ INSERT INTO product (brand, series, model, price, comment, image, saveimagefile,
 ('Apple', 'iPhone', 'iPhone 13', 1000000, '최신 아이폰 모델', 'iphone13.jpg', 'iphone13.jpg', 'Y', now(), 'user1'),
 ('Samsung', 'Galaxy', 'Galaxy S21', 900000, '최신 갤럭시 모델', 'galaxys21.jpg', 'galaxys21.jpg', 'N', now(), 'user2');
 
-
-INSERT INTO chat (content, indate, userid, pseq) VALUES
-('이 제품에 대해 질문이 있습니다.', now(), 'user2', 1),
-('언제 배송되나요?', now(), 'user1', 2);
+INSERT INTO chat (content, indate, userid, pseq, lseq) VALUES
+('이 제품에 대해 질문이 있습니다.', now(), 'user2', 1 , 1),
+('언제 배송되나요?', now(), 'user1', 2, 1);
+('왜 읽씹하시나요?', now(), 'user1', 1, 1);
 
 INSERT INTO question (title, content, indate, userid, qreply) VALUES
 ('제품 문의', '이 제품의 기능에 대해 알고 싶습니다.', now(), 'user1', '답변 대기 중'),
@@ -273,3 +279,5 @@ INSERT INTO question (title, content, indate, userid, qreply) VALUES
 ('환불 문의', '환불 절차를 알고 싶습니다.', now(), 'user1', '답변 대기 중'),
 ('AS 문의', 'AS 접수를 하고 싶습니다.', now(), 'user2', '답변 대기 중');
 
+SELECT * FROM question;
+UPDATE question SET qreply='';

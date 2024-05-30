@@ -24,13 +24,13 @@ public class ProductInsertAction implements Action {
 		pdto.setBrand( request.getParameter("brand"));
 		pdto.setSeries( request.getParameter("series"));
 		pdto.setModel( request.getParameter("model"));
-		//pdto.setPrice( Integer.parseInt( request.getParameter("price")) );
-		pdto.setComment( request.getParameter("comment"));
+		pdto.setPrice( Integer.parseInt( request.getParameter("price")) );
+		pdto.setComment( request.getParameter("content"));
 		pdto.setUserid( request.getParameter("userid"));
-		
+
 		HttpSession session = request.getSession();
 		ServletContext context = session.getServletContext();
-		String uploadFilePath = context.getRealPath("product_images");
+		String uploadFilePath = context.getRealPath("product/images");
 		
 		File uploadDir = new File(uploadFilePath);
 		if(!uploadDir.exists()) uploadDir.mkdir();
@@ -54,11 +54,11 @@ public class ProductInsertAction implements Action {
 				pdto.setSaveimagefile(saveimagefile);
 			}
 		}
+		
+		
 		ProductDAO pdao = ProductDAO.getInstance();
 		pdao.insertProduct( pdto );
 		response.sendRedirect("phonetail.do?command=productList");
-
-		
 
 	}
 

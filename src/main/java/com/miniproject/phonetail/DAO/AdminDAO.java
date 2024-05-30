@@ -85,7 +85,7 @@ public class AdminDAO {
 				rdto.setRetype(rs.getInt("retype"));	
 				rdto.setRecontent(rs.getString("recontent"));	
 				rdto.setRestate(rs.getString("restate"));	
-				System.out.println(rdto.toString());
+//				System.out.println(rdto.toString());
 				list.add(rdto);
 			}
 		} catch (SQLException e) {

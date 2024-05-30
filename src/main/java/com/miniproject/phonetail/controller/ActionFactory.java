@@ -10,6 +10,7 @@ import com.miniproject.phonetail.controller.customer.WriteQnaFormAction;
 import com.miniproject.phonetail.controller.mypage.MyPageAction;
 import com.miniproject.phonetail.controller.action.chat.ChatListAction;
 import com.miniproject.phonetail.controller.action.chat.ChatingAction;
+import com.miniproject.phonetail.controller.action.chat.InsertChatAction;
 import com.miniproject.phonetail.controller.product.ProductDetailAction;
 import com.miniproject.phonetail.controller.product.ProductInsertAction;
 import com.miniproject.phonetail.controller.product.ProductInsertFormAction;
@@ -19,6 +20,9 @@ import com.miniproject.phonetail.controller.product.ProductUpdateFormAction;
 import com.miniproject.phonetail.controller.action.admin.AdminAction;
 import com.miniproject.phonetail.controller.action.admin.AdminLoginAction;
 import com.miniproject.phonetail.controller.action.admin.AdminLogoutAction;
+import com.miniproject.phonetail.controller.action.admin.AdminQnaListAction;
+import com.miniproject.phonetail.controller.action.admin.AdminQnaReplyAction;
+import com.miniproject.phonetail.controller.action.admin.AdminQnaReplyFormAction;
 import com.miniproject.phonetail.controller.action.admin.AdminReportListAction;
 import com.miniproject.phonetail.controller.action.member.DeleteMemberAction;
 import com.miniproject.phonetail.controller.action.member.FindZipNumAction;
@@ -70,12 +74,15 @@ public class ActionFactory {
 		else if(command.equals("adminLogin")) ac = new AdminLoginAction();
 		else if(command.equals("adminLogout")) ac = new AdminLogoutAction();
 		else if(command.equals("adminReportList")) ac = new AdminReportListAction();
+		else if(command.equals("adminQnaList")) ac = new AdminQnaListAction();
+		else if(command.equals("adminQnaReplyForm")) ac = new AdminQnaReplyFormAction();
+		else if(command.equals("adminQnaReply")) ac = new AdminQnaReplyAction();
 		
 	
 		// chat 
 		else if(command.equals("chatList")) ac = new ChatListAction(); 
 		else if(command.equals("chating")) ac = new ChatingAction();
-		
+		else if(command.equals("insertChat")) ac = new InsertChatAction();
 		//product (정빈)
 		else if(command.equals("productList")) ac = new ProductListAction();
 		else if(command.equals("productDetail")) ac = new ProductDetailAction();
