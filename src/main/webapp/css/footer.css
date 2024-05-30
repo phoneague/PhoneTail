@@ -1,0 +1,13 @@
+
+footer{
+	font-family: "Roboto", sans-serif;
+	font-size:80%;
+}
+
+.admin{
+	display:flex;
+}
+
+.admin a{
+	width:20px;
+}

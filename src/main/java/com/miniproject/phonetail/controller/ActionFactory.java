@@ -7,6 +7,7 @@ import com.miniproject.phonetail.controller.customer.QnaListAction;
 import com.miniproject.phonetail.controller.customer.QnaViewAction;
 import com.miniproject.phonetail.controller.customer.WriteQnaAction;
 import com.miniproject.phonetail.controller.customer.WriteQnaFormAction;
+import com.miniproject.phonetail.controller.mypage.MyPageAction;
 import com.miniproject.phonetail.controller.action.chat.ChatListAction;
 import com.miniproject.phonetail.controller.action.chat.ChatingAction;
 import com.miniproject.phonetail.controller.action.chat.InsertChatAction;
@@ -31,6 +32,8 @@ import com.miniproject.phonetail.controller.action.member.JoinFormAction;
 import com.miniproject.phonetail.controller.action.member.LoginAction;
 import com.miniproject.phonetail.controller.action.member.LoginFormAction;
 import com.miniproject.phonetail.controller.action.member.LogoutAction;
+import com.miniproject.phonetail.controller.action.member.UpdateMemberAction;
+import com.miniproject.phonetail.controller.action.member.UpdateMemberFormAction;
 
 
 public class ActionFactory {
@@ -57,6 +60,8 @@ public class ActionFactory {
 		else if(command.equals("findZipnum")) ac = new FindZipNumAction();
 		else if(command.equals("idcheck")) ac = new IdCheckAction();
 		else if(command.equals("deleteMember")) ac = new DeleteMemberAction();
+		else if(command.equals("updateMemberForm")) ac = new UpdateMemberFormAction();
+		else if(command.equals("updateMember")) ac = new UpdateMemberAction();
 		
 		// customer
 		else if(command.equals("qnaList"))ac = new QnaListAction();
@@ -85,7 +90,11 @@ public class ActionFactory {
 		else if(command.equals("productInsert")) ac = new ProductInsertAction();
 		else if(command.equals("productUpdate")) ac = new ProductUpdateAction();
 		else if(command.equals("productUpdateForm")) ac = new ProductUpdateFormAction();
-
+		
+		
+		
+		// mypage
+		else if(command.equals("mypage")) ac = new MyPageAction();
 		
 		return ac;
 	}

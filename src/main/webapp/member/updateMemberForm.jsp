@@ -11,22 +11,19 @@
 <body>
 <section>
 		<article>
-				<form action="phonetail.do?command=join" method="post" name="joinForm">
-					<h2>Join Us</h2>
+				<form name="joinForm" action="phonetail.do" method="post">
+				<input type="hidden" name="command" value="updateMember" />
+        		<h2>Update Member</h2>
 					<div class="field">
 						<label>User ID</label>
-						<div>
-							<input type="text" name="userid" size="12">
-							<input type="hidden" name="reid" >
-				        	<input type="button" value="중복 체크" onclick="idcheck()">
-				        </div>
+						<input type="text" name="userid" value="${login.userid}" readonly />
 					</div>
 					<div class="field"><label>Password</label><input type="password"  name="pwd"></div>
 					<div class="field">
 						<label>Retype Password</label><input type="password"  name="pwdCheck"></div>
-					<div class="field"><label>Name</label><input type="text"  name="name" ></div>
-					<div class="field"><label>Phone</label><input type="text"  name="phone"  /></div>
-					<div class="field"><label>E-Mail</label><input type="text"  name="email"  /></div>
+					<div class="field"><label>name</label><input type="text" name="name" value="${login.name}"></div>
+					<label>Phone</label><input type="text" name="phone" value="${login.phone}"></div>
+					<div class="field"><label>E-mail</label><input type="text" name="email" value="${login.email}"></div>
 					<div class="field">
 						<label>Zip Code</label>
 						<div>
@@ -38,13 +35,14 @@
 						<label>Address</label><input type="text"  name="address1"  readonly />
 					</div>
 					<div class="field">
-						<label>detail Address</label><input type="text" name="address2" />
+						<label>detail Address</label><input type="text" name="address2" value="${login.address2}">
 					</div>
 					
 					<div class="btn">
-			   			<input type="button" value="Join" onclick="go_save()">
+			   			<input type="submit" value="수정" onClick="return updateCheck()">
 			   			<input type="button" value="Main" onClick="location.href='phonetail.do?command=main'">	
 			   		</div>
+					
 				</form>
 		</article>
 	</div>
