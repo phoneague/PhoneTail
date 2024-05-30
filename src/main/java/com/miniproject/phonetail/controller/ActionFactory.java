@@ -34,6 +34,8 @@ import com.miniproject.phonetail.controller.action.member.LoginFormAction;
 import com.miniproject.phonetail.controller.action.member.LogoutAction;
 import com.miniproject.phonetail.controller.action.member.UpdateMemberAction;
 import com.miniproject.phonetail.controller.action.member.UpdateMemberFormAction;
+import com.miniproject.phonetail.controller.action.report.ReportAction;
+import com.miniproject.phonetail.controller.action.report.ReportFormAction;
 
 
 public class ActionFactory {
@@ -83,6 +85,7 @@ public class ActionFactory {
 		else if(command.equals("chatList")) ac = new ChatListAction(); 
 		else if(command.equals("chating")) ac = new ChatingAction();
 		else if(command.equals("insertChat")) ac = new InsertChatAction();
+		
 		//product (정빈)
 		else if(command.equals("productList")) ac = new ProductListAction();
 		else if(command.equals("productDetail")) ac = new ProductDetailAction();
@@ -91,6 +94,9 @@ public class ActionFactory {
 		else if(command.equals("productUpdate")) ac = new ProductUpdateAction();
 		else if(command.equals("productUpdateForm")) ac = new ProductUpdateFormAction();
 		
+		//report
+		else if(command.equals("reportForm")) ac = new ReportFormAction();
+		else if(command.equals("report")) ac = new ReportAction();
 		
 		
 		// mypage

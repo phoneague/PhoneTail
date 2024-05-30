@@ -23,3 +23,7 @@ function go_insert(){
 		Form.submit();
 	}
 }
+
+
+
+
