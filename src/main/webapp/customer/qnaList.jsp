@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ include file="../header.jsp"%>
 
 <!DOCTYPE html>
 <html>
@@ -47,7 +46,7 @@
                 <%-- <td><a href="qnaView.jsp?qseq=${qna.qseq}">${qna.title}</a></td> --%>
                <td><a href="phonetail.do?command=qnaView&qseq=${qna.qseq}">${qna.title}</a></td> 
                 <td><fmt:formatDate value="${qna.indate}" type="date"/></td>
-                <td>${qna.qreply == null ? 'NO' : 'YES'}</td>
+                <td>${empty qna.qreply ? 'NO' : 'YES'}</td>
             </tr>
         </c:forEach>
     </table>
@@ -57,4 +56,3 @@
 	</form>	
 </body>
 </html>
-<%@ include file="../footer.jsp"%>

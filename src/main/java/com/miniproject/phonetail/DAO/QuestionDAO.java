@@ -95,7 +95,7 @@ public class QuestionDAO {
 			}
 
 			public void insertQna(QuestionDTO qdto) {
-				String sql = "INSERT INTO qna (title, content, userid) VALUES (?, ?, ?)";
+				String sql = "INSERT INTO question (title, content, userid) VALUES (?, ?, ?)";
 				con = DB.getConnection();
 				try {
 					pstmt = con.prepareStatement(sql);
