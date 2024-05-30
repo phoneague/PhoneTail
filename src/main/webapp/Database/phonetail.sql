@@ -273,3 +273,5 @@ INSERT INTO question (title, content, indate, userid, qreply) VALUES
 ('환불 문의', '환불 절차를 알고 싶습니다.', now(), 'user1', '답변 대기 중'),
 ('AS 문의', 'AS 접수를 하고 싶습니다.', now(), 'user2', '답변 대기 중');
 
+SELECT * FROM question;
+UPDATE question SET qreply='';

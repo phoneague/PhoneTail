@@ -18,6 +18,9 @@ import com.miniproject.phonetail.controller.product.ProductUpdateFormAction;
 import com.miniproject.phonetail.controller.action.admin.AdminAction;
 import com.miniproject.phonetail.controller.action.admin.AdminLoginAction;
 import com.miniproject.phonetail.controller.action.admin.AdminLogoutAction;
+import com.miniproject.phonetail.controller.action.admin.AdminQnaListAction;
+import com.miniproject.phonetail.controller.action.admin.AdminQnaReplyAction;
+import com.miniproject.phonetail.controller.action.admin.AdminQnaReplyFormAction;
 import com.miniproject.phonetail.controller.action.admin.AdminReportListAction;
 import com.miniproject.phonetail.controller.action.member.DeleteMemberAction;
 import com.miniproject.phonetail.controller.action.member.FindZipNumAction;
@@ -65,6 +68,9 @@ public class ActionFactory {
 		else if(command.equals("adminLogin")) ac = new AdminLoginAction();
 		else if(command.equals("adminLogout")) ac = new AdminLogoutAction();
 		else if(command.equals("adminReportList")) ac = new AdminReportListAction();
+		else if(command.equals("adminQnaList")) ac = new AdminQnaListAction();
+		else if(command.equals("adminQnaReplyForm")) ac = new AdminQnaReplyFormAction();
+		else if(command.equals("adminQnaReply")) ac = new AdminQnaReplyAction();
 		
 	
 		// chat 
