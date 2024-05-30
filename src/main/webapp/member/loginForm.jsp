@@ -18,9 +18,9 @@
 							<label>Password</label><input name="pwd" type="password" >
 					</div>
 					<div class="btn">
-	  				        	<input type="submit" value="LOGIN" />
+	  				        	<input type="submit" value="Login" />
 					</div>
-					<div style="font-size:80%; font-weight:bold">${message} </div>
+					<div style="font-size:80%; font-weight:bold padding:30px;">${message} </div>
 			</form>
 	</article>
 </div>

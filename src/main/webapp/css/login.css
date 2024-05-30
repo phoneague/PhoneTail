@@ -1,19 +1,16 @@
 @charset "UTF-8";
 
-#wrap{ width:1024px; margin: 0 auto; border:1px solid red;}
+#wrap{ width:1024px; margin: 0 auto;}
 
 article{
-	/*border:2px solid dimgray;
-	margin:2px;*/
 	flex:4;
 	display: flex;
+	margin:100px auto;
 	
 }
 
 article form{
 	flex:1;
-	/*border:2px solid red;
-	margin:2px;*/
 	display: flex;
 	flex-direction: column;
 }
@@ -65,7 +62,7 @@ article form .btn{
 article form .btn input{
 	flex:1;
 	margin:10px 3px;
-	background-color: blueviolet;
+	background-color: black;
 	border:none;
 	color:white;
 	border-radius: 5px;
