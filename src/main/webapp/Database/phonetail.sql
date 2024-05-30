@@ -59,7 +59,7 @@ CREATE TABLE member
     email varchar(100) NOT NULL,
     address1 varchar(100) NOT NULL,
     address2 varchar(100) NOT NULL,
-    usestate char(1) DEFAULT 'Y' NOT NULL,
+    userstate char(1) DEFAULT 'Y' NOT NULL,
     indate datetime DEFAULT now() NOT NULL,
     PRIMARY KEY (userid)
 );
@@ -145,6 +145,9 @@ ALTER TABLE report
 ALTER TABLE chatlist
     ADD FOREIGN KEY (pseq) REFERENCES product (pseq) ON UPDATE CASCADE ON DELETE CASCADE;
 
+-- ALTER TABLE member change usestate userstete char(1); 
+-- 컬럼명 변경(그러나 멤버테이블 자체를 수정했기 때문에 정말 죄송하지만 주소제외 모든 테이블을 삭제했다 다시 넣는걸 추천드립니다...ㅠ)
+    
 
 -- 샘플 데이터 삽입
 --INSERT INTO address (zip_num, sido, gugun, dong, bunji, zip_code) VALUES
@@ -156,7 +159,7 @@ INSERT INTO admin (adminid, pwd, name, phone) VALUES
 ('ad', 'ad', '관리자짱짱', '010-8765-1234');
 
 
-INSERT INTO member (userid, pwd, name, phone, email, address1, address2, usestate, indate) VALUES
+INSERT INTO member (userid, pwd, name, phone, email, address1, address2, userstate, indate) VALUES
 ('user1', 'pwd1', '사용자1', '010-1111-2222', 'user1@example.com', '서울특별시 강남구 삼성동', '123-45', 'Y', now()),
 ('user2', 'pwd2', '사용자2', '010-3333-4444', 'user2@example.com', '부산광역시 해운대구 우동', '678-90', 'Y', now()),
 ('a', 'a', '테스트계정', '010-3333-4444', 'user2@example.com', '부산광역시 해운대구 우동', '678-90', 'Y', now());
@@ -278,6 +281,28 @@ INSERT INTO question (title, content, indate, userid, qreply) VALUES
 ('배송 문의', '배송 시간대를 지정할 수 있나요?', now(), 'user2', '답변 대기 중'),
 ('환불 문의', '환불 절차를 알고 싶습니다.', now(), 'user1', '답변 대기 중'),
 ('AS 문의', 'AS 접수를 하고 싶습니다.', now(), 'user2', '답변 대기 중');
+
+
+
+INSERT INTO member (userid, pwd, name, phone, email, address1, address2, userstate, indate) VALUES
+('superman', 'kryptonite', 'Clark Kent', '123-456-7890', 'clark@dailyplanet.com', '123 Metropolis Lane', 'Apt 3B', 'Y', now()),
+('batman', 'robin', 'Bruce Wayne', '987-654-3210', 'bruce@wayneenterprises.com', '456 Wayne Manor', 'Gotham City', 'Y', now()),
+('spidey', 'webhead', 'Peter Parker', '555-555-5555', 'peter@bugle.com', '789 Queens Boulevard', 'Apt 10A', 'Y', now()),
+('wonderwoman', 'amazon', 'Diana Prince', '333-333-3333', 'diana@themyscira.com', 'Paradise Island', '', 'Y', now()),
+('flash', 'speedforce', 'Barry Allen', '777-777-7777', 'barry@ccpd.com', '123 Central City Blvd', 'Suite 4', 'Y', now()),
+('ironman', 'arcreactor', 'Tony Stark', '222-222-2222', 'tony@starkindustries.com', '10880 Malibu Point', 'Malibu, CA', 'Y', now()),
+('captainamerica', 'shield', 'Steve Rogers', '333-333-3333', 'steve@avengers.com', '569 Leaman Place', 'Brooklyn, NY', 'Y', now()),
+('thor', 'mjolnir', 'Thor Odinson', '444-444-4444', 'thor@asgard.com', 'Asgard Palace', 'Bifrost Bridge', 'Y', now()),
+('hulk', 'smash', 'Bruce Banner', '555-555-5555', 'bruce@smash.com', '123 Gamma Labs', 'Sakaar', 'Y', now()),
+('blackwidow', 'spies', 'Natasha Romanoff', '666-666-6666', 'natasha@redroom.com', '456 Red Room Street', 'Moscow, Russia', 'Y', now()),
+('hawkeye', 'arrows', 'Clint Barton', '777-777-7777', 'clint@bowandarrow.com', '789 Archer Avenue', 'New York, NY', 'Y', now()),
+('wolverine', 'adamantium', 'Logan', '888-888-8888', 'logan@xmen.com', '123 Xavier School', 'Westchester, NY', 'Y', now()),
+('storm', 'weather', 'Ororo Munroe', '999-999-9999', 'ororo@xmen.com', '456 Xavier School', 'Westchester, NY', 'Y', now()),
+('cyclops', 'beam', 'Scott Summers', '101-101-1010', 'scott@xmen.com', '789 Xavier School', 'Westchester, NY', 'Y', now()),
+('jeangrey', 'phoenix', 'Jean Grey', '202-202-2020', 'jean@xmen.com', '321 Xavier School', 'Westchester, NY', 'Y', now()),
+('beast', 'intellect', 'Henry McCoy', '303-303-3030', 'henry@xmen.com', '555 Xavier School', 'Westchester, NY', 'Y', now()),
+('iceman', 'ice', 'Bobby Drake', '404-404-4040', 'bobby@xmen.com', '777 Xavier School', 'Westchester, NY', 'Y', now());
+
 
 SELECT * FROM question;
 UPDATE question SET qreply='';

@@ -11,8 +11,10 @@ public class MemberDTO {
 	private String email;
 	private String address1;
 	private String address2;
-	private String usestate; 
+	private String userstate; 
     private Timestamp indate;
+    
+    
 	public String getUserid() {
 		return userid;
 	}
@@ -55,11 +57,11 @@ public class MemberDTO {
 	public void setAddress2(String address2) {
 		this.address2 = address2;
 	}
-	public String getUsestate() {
-		return usestate;
+	public String getUserstate() {
+		return userstate;
 	}
-	public void setUsestate(String usestate) {
-		this.usestate = usestate;
+	public void setUserstate(String userstate) {
+		this.userstate = userstate;
 	}
 	public Timestamp getIndate() {
 		return indate;
@@ -67,15 +69,13 @@ public class MemberDTO {
 	public void setIndate(Timestamp indate) {
 		this.indate = indate;
 	}
-	
 	@Override
 	public String toString() {
 		return "MemberDTO [userid=" + userid + ", pwd=" + pwd + ", name=" + name + ", phone=" + phone + ", email="
-				+ email + ", address1=" + address1 + ", address2=" + address2 + ", usestate=" + usestate + ", indate="
+				+ email + ", address1=" + address1 + ", address2=" + address2 + ", userstate=" + userstate + ", indate="
 				+ indate + "]";
 	}
-    
-    
 	
+    
     
 }

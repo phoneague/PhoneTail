@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.miniproject.phonetail.DTO.AdminDTO;
+import com.miniproject.phonetail.DTO.MemberDTO;
 import com.miniproject.phonetail.DTO.ReportDTO;
 import com.miniproject.phonetail.util.DB;
 import com.miniproject.phonetail.util.Paging;
@@ -95,4 +96,65 @@ public class AdminDAO {
 		}
 		return list;
 	}
+
+	public ArrayList<MemberDTO> adminMemberList(Paging paging, String key) {
+		ArrayList<MemberDTO> list = new ArrayList<MemberDTO>();
+		String sql = "select * from member "
+				+ " where name like concat('%', ? , '%') "
+				+ " order by indate desc "
+				+ " limit ? offset ?";
+		con = DB.getConnection();
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, key);
+			pstmt.setInt(2,  paging.getDisplayRow() );
+			pstmt.setInt(3,  paging.getStartNum()-1);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				MemberDTO mdto = new MemberDTO();
+				mdto.setUserid( rs.getString("userid") );
+				mdto.setPwd(rs.getString("pwd"));
+				mdto.setName(rs.getString("name"));
+				mdto.setEmail(rs.getString("email"));
+				mdto.setAddress1(rs.getString("address1"));
+				mdto.setAddress2(rs.getString("address2"));
+				mdto.setPhone(rs.getString("phone"));
+				mdto.setUserstate(rs.getString("userstate"));
+				mdto.setIndate(rs.getTimestamp("indate"));
+				
+				list.add(mdto);
+			}
+		} catch (SQLException e) { e.printStackTrace();
+		} finally { DB.close(con, pstmt, rs);  }
+		return list;
+	}
+
+
+	public String adminUserStateChangeB(String userid) {
+        String result = "failure"; // 초기값을 실패로 설정
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        
+        try {
+            con = DB.getConnection();
+            String sql = "UPDATE member SET userstate='B' WHERE userid=?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, userid);
+            
+            int rowsUpdated = pstmt.executeUpdate();
+            if (rowsUpdated > 0) {
+                result = "success"; // 변경 성공
+                System.out.println("(DAO)다음 회원을 블랙리스트에 올린다 userid: " + userid); // 로그 추가
+            } else {
+                System.out.println("(DAO)다음 회원을 블랙리스트에 올리는 데에 실패했다 userid: " + userid); // 로그 추가
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DB.close(con, pstmt, null);
+        }
+        
+        return result;
+    }
+
 }
