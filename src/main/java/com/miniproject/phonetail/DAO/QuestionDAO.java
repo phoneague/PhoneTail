@@ -66,6 +66,7 @@ public class QuestionDAO {
 					if( rs.next() ) {
 						question.setQseq(qseq);
 						question.setUserid(rs.getString("userid"));
+						question.setTitle(rs.getString("title"));
 						question.setContent(rs.getString("content"));
 						question.setIndate(rs.getTimestamp("indate"));
 						question.setQreply(rs.getString("qreply"));

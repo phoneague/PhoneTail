@@ -1,4 +1,4 @@
-package com.miniproject.phonetail.controller.customer;
+package com.miniproject.phonetail.controller.action.admin;
 
 import java.io.IOException;
 
@@ -10,19 +10,17 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class QnaViewAction implements Action {
+public class AdminQnaReplyFormAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		int qseq = Integer.parseInt( request.getParameter("qseq"));
 		
 		QuestionDAO qdao =  QuestionDAO.getInstance();
 		QuestionDTO qdto  = qdao.getQna(qseq);
 		
 		request.setAttribute("QuestionDTO", qdto);
-		request.getRequestDispatcher("customer/qnaView.jsp").forward(request, response);
+		request.getRequestDispatcher("admin/qna/adminQnaReplyForm.jsp").forward(request, response);
 	}
 
 }
-
