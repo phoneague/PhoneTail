@@ -3,3 +3,7 @@ function go_search(command){
 	document.frm.action = url;
 	document.frm.submit();
 }
+
+function go_write(){
+	
+}

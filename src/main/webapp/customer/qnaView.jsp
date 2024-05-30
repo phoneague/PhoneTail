@@ -40,8 +40,7 @@
 				</div>
 				<div class="btn" style="border-bottom:2px solid gold;">
 					<input type="button" value="목록으로" onClick="location.href='phonetail.do?command=qnaList'">
-				</div>				
-							
+				</div>		
 			</form>
 		</article>
 </body>

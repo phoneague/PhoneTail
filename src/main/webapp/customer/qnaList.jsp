@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%-- <%@ include file="../main.jsp"%> --%>
+<%@ include file="../header.jsp"%>
 
 <!DOCTYPE html>
 <html>
@@ -26,8 +26,11 @@
     	<div class="field" style="border-top:2px solid gold;">
 				아이디 &nbsp; <input type="text" name="key" value="${key}" /> &nbsp;
 					&nbsp; &nbsp; <input class="btn" type="button" name="btn_search"
-						value="검색" onClick="go_search('qnaList')" />
-					&nbsp;&nbsp;&nbsp; 
+						value="검색" onClick="go_search('qnaList')"/>
+						<div class="btn" >
+					<input type="button" value="글 작성"  onclick="location.href='phonetail.do?command=writeQnaForm'"/>
+				</div>	
+				&nbsp;&nbsp;&nbsp; 
 				</div>
     <table>
         <tr>
@@ -54,3 +57,4 @@
 	</form>	
 </body>
 </html>
+<%@ include file="../footer.jsp"%>

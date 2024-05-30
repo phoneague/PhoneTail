@@ -14,16 +14,17 @@ public class WriteQnaAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 전달된 내용의 레코드를 추가하고 qnaList 로 되돌아가기
-		/*
-		 * QuestionDTO qvo = new QuestionDTO();
-		 * qvo.setUserid(request.getParameter("userid"));
-		 * qvo.setContent(request.getParameter("content"));
-		 * 
-		 * QuestionDAO qdao = QuestionDAO.getInstance(); qdao.insertQna(qvo);
-		 * 
-		 * response.sendRedirect("phonetail.do?customer=qnaList");
-		 */
-			}
+		
+		QuestionDTO qdto = new QuestionDTO();
+		
+		qdto.setUserid(request.getParameter("userid"));
+		qdto.setTitle(request.getParameter("title"));
+		qdto.setContent(request.getParameter("content"));
+		
+		QuestionDAO qdao = QuestionDAO.getInstance();
+		qdao.insertQna(qdto);
+		
+		response.sendRedirect("phonetail.do?command=qnaList");
 	}
+}
 
