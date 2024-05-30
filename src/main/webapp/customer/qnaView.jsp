@@ -40,12 +40,11 @@
 				</div>
 				<div class="btn" style="border-bottom:2px solid gold;">
 					<input type="button" value="목록으로" onClick="location.href='phonetail.do?command=qnaList'">
-					<c:if test="${!empty adminUser.adminid}">
+          <c:if test="${!empty adminUser.adminid}">
 						<input type="button" value="답변하기" onClick="location.href='phonetail.do?command=adminQnaReplyForm&qseq=${QuestionDTO.qseq}'">
 					</c:if>	
-				</div>	
+				</div>		
 					
-							
 			</form>
 		</article>
 </body>

@@ -93,7 +93,22 @@ public class QuestionDAO {
 				}
 				return count;
 			}
+
+			public void insertQna(QuestionDTO qdto) {
+				String sql = "INSERT INTO qna (title, content, userid) VALUES (?, ?, ?)";
+				con = DB.getConnection();
+				try {
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, qdto.getTitle());
+					pstmt.setString(2, qdto.getContent());
+					pstmt.setString(3, qdto.getUserid());
+					pstmt.executeUpdate();
+				} catch (SQLException e) { e.printStackTrace();
+				} finally { DB.close(con, pstmt, rs); }	
+				
 			}
+			
+}
 
 
 

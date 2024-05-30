@@ -58,5 +58,4 @@ public class QuestionDTO {
 	public void setQreply(String qreply) {
 		this.qreply = qreply;
 	}
-
 }
