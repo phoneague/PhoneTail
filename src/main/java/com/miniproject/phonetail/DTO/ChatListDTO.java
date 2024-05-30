@@ -1,16 +1,20 @@
 package com.miniproject.phonetail.DTO;
 
-import java.sql.Timestamp;
-
 public class ChatListDTO {
 
 	private int lseq;
 	private String sid;
 	private String bid;
 	private int pseq;
-	private Timestamp indate;
 	private String model;
+	private int price;
 
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
 	public String getModel() {
 		return model;
 	}
@@ -41,11 +45,5 @@ public class ChatListDTO {
 	}
 	public void setPseq(int pseq) {
 		this.pseq = pseq;
-	}
-	public Timestamp getIndate() {
-		return indate;
-	}
-	public void setIndate(Timestamp indate) {
-		this.indate = indate;
 	}
 }

@@ -25,21 +25,23 @@ public class ChatListDAO {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 
-	public ArrayList<ChatListDTO> getAllList() {
+	public ArrayList<ChatListDTO> getAllList(String id) {
 		ArrayList<ChatListDTO> list = new ArrayList<ChatListDTO>();
 		con = DB.getConnection();
-		String sql = "select * from chatlist order by lseq desc";
+		String sql = "SELECT * FROM hak WHERE sid = ? OR bid = ? ORDER BY lseq DESC;";
 		try {
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, id);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				ChatListDTO cdto = new ChatListDTO();
 				cdto.setLseq(rs.getInt("lseq"));
 				cdto.setSid(rs.getString("sid"));
 				cdto.setBid(rs.getString("bid"));
-				// cdto.setModel(rs.getString("model"));
 				cdto.setPseq(rs.getInt("pseq"));
-				cdto.setIndate(rs.getTimestamp("indate"));
+				cdto.setModel(rs.getString("model"));
+				cdto.setPrice(rs.getInt("price"));
 
 				list.add(cdto);
 			}
@@ -51,17 +53,20 @@ public class ChatListDAO {
 	  public ChatListDTO getChatList(int lseq) { 
 		  ChatListDTO cdto = null; 
 		  con =  DB.getConnection();
-		  String sql = "select * from chatlist where lseq=?"; 
+		  String sql = "select * from hak where lseq=?"; 
 		  try {
 			  pstmt = con.prepareStatement(sql); 
 			  pstmt.setInt(1, lseq); 
 			  rs = pstmt.executeQuery();
 			  while(rs.next()) { 
 				  cdto = new ChatListDTO();
-				  cdto.setLseq(rs.getInt("lseq")); 
+				  cdto.setLseq(rs.getInt("lseq"));
+				  cdto.setSid(rs.getString("sid"));
+				  cdto.setBid(rs.getString("bid"));
 				  cdto.setPseq(rs.getInt("pseq"));
 				  cdto.setModel(rs.getString("model"));
-				  cdto.setIndate(rs.getTimestamp("indate")); } 
+				  cdto.setPrice(rs.getInt("price"));
+				} 
 			  } catch (SQLException e) {e.printStackTrace(); 
 			  } finally { DB.close(con, pstmt, rs);} 
 		  	return cdto;
@@ -89,8 +94,8 @@ public class ChatListDAO {
 			
 			return list;
 		}
-
-	public void insertReply(ChatingDTO cdto) {
+	  
+	public void insertChat(ChatingDTO cdto) {
 		con = DB.getConnection();
 		String sql = "insert into chat( lseq, userid, content) values(?,?,?)";
 		try {
