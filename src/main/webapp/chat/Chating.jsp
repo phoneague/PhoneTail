@@ -24,7 +24,6 @@
 			<div class="reply_col reply_title">작성자</div>
 			<div class="reply_col reply_title">작성일시</div>
 			<div class="reply_col reply_title">내용</div>
-			<div class="reply_col reply_title">작성/삭제</div>
 		</div>
 		<c:forEach items="${chatingList}" var="chating">
 			<div class="reply_row">
@@ -40,9 +39,8 @@
 				<input type="hidden" name="loginUser" value="${loginUser}" />
 				<input type="hidden" name="lseq" value="${chatList.lseq}" />
 				<div class="reply_row">
-						<div class="reply_col">${loginUser}</div>
-						<div class="reply_col"><input type="text" name="content" size="75"></div>
-						<div class="reply_col">
+						<div class="reply_coll"><input type="text" name="content" size="75"></div>
+						<div class="reply_coll">
 							<input type="submit" value="전송" onClick="return replyCheck();">
 						</div>
 				</div>

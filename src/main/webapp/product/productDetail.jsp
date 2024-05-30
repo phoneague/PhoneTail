@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="report/script/report.js"></script>
 </head>
 <body>
 <h2>여기는 프로덕트 디테일 페이지</h2>
@@ -28,10 +29,11 @@
 
 <a href="phonetail.do?command=productUpdateForm">상품수정</a>
 <a href="phonetail.do?command=">상품삭제(js로 처리)</a>
+<input type="button" onClick="go_report(${productDTO.pseq},'${login.userid}')" value="신고하기">
 
 
 
-<a href="phonetail.do?command=">댓글쓰기 학현!</a>
+<a href="phonetail.do?command=chatList&pseq=${productDTO.pseq}">댓글쓰기 학현!</a>
 
 
 
