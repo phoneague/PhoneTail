@@ -19,17 +19,18 @@ public class ChatingAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int lseq = Integer.parseInt(request.getParameter("lseq"));
-		ChatListDAO cdao = ChatListDAO.getInstance();
-		ChatListDTO cdto = cdao.getChatList(lseq);
-		ArrayList<ChatingDTO> list= cdao.getChating(lseq);
-		
 		HttpSession session = request.getSession();
 		MemberDTO mdto = (MemberDTO)session.getAttribute("login");
 		
-			request.setAttribute("chatingList", list);
-			request.setAttribute("chatList", cdto);
-			request.setAttribute("loginUser", mdto.getUserid());
-			request.getRequestDispatcher("chat/Chating.jsp").forward(request, response);
+		
+		ChatListDAO cdao = ChatListDAO.getInstance();
+		ChatListDTO cdto = cdao.getChatList(lseq);
+		
+		ArrayList<ChatingDTO> list= cdao.getChating(lseq);
+		request.setAttribute("loginUser", mdto.getUserid());
+		request.setAttribute("chatingList", list);
+		request.setAttribute("chatList", cdto);
+		request.getRequestDispatcher("chat/Chating.jsp").forward(request, response);
 		
 			
 		
