@@ -23,6 +23,5 @@ public class QnaViewAction implements Action {
 		request.setAttribute("QuestionDTO", qdto);
 		request.getRequestDispatcher("customer/qnaView.jsp").forward(request, response);
 	}
-
 }
 

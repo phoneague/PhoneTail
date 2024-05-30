@@ -271,11 +271,13 @@ INSERT INTO question (title, content, indate, userid, qreply) VALUES
 ('AS 문의', 'AS 접수를 하고 싶습니다.', now(), 'user2', '답변 대기 중');
 
 SELECT * FROM question;
+
+-- qna 쿼리문 답변 공백으로 세팅
 UPDATE question SET qreply='';
+
 
 -- 채팅게시판 뷰
 CREATE VIEW hak AS
 SELECT cl.lseq, cl.sid, cl.bid, p.pseq, p.model, p.price
 FROM chatlist cl
 JOIN product p ON cl.pseq = p.pseq;
-
