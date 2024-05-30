@@ -33,7 +33,7 @@
 
 
 
-<a href="phonetail.do?command=">댓글쓰기 학현!</a>
+<a href="phonetail.do?command=chatList&pseq=${productDTO.pseq}">댓글쓰기 학현!</a>
 
 
 

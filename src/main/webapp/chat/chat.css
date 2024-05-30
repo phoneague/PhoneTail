@@ -1,1 +1,18 @@
 @charset "UTF-8";
+
+.reply{ display: flex; flex-direction: column; margin-top:20px;}
+.reply_row{ display: flex;  }
+.reply_col{ padding:10px; margin:1px; border-radius: 3px; 
+	border:1px dotted blue;}
+.reply_col:nth-child(1){flex:1; text-align:center;}
+.reply_col:nth-child(2){flex:5; text-align:center;}
+.reply_col:nth-child(3){flex:1; text-align:left;}
+.reply_coll{ margin:1px; border-radius: 3px; 
+	border:1px dotted blue;}
+.reply_coll:nth-child(1){flex:5; text-align:center;}
+.reply_coll:nth-child(2){flex:1; text-align:center;}
+.reply_col reply_title{ font-weight:bold;}
+
+.title_row{ display: flex; }
+.title_col{ flex:1; background: blue; color:white; text-align: center; height:20px; line-height: 20px; 
+padding:10px; margin:2px;}
