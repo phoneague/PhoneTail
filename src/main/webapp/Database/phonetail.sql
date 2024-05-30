@@ -99,7 +99,8 @@ CREATE TABLE report
    --1 - 상품정보 부정확
    --2 - 안전거래를 거부해요
    --3 - 사기가 의심돼요(외부 채널 유도)
-   --4 - 전문업자 같아요',
+   --4 - 전문업자 같아요
+   --5 - 기타',
     recontent varchar(300) NOT NULL,
     restate char(1) DEFAULT 'N' NOT NULL COMMENT 'N:대기상태 Y:처리완료',
     -- 24.05.29 신고시 해당 날짜 추가해서 list에서 정렬기준을 삼을수 있게 필드 추가했습니다
@@ -272,9 +273,9 @@ INSERT INTO question (title, content, indate, userid, qreply) VALUES
 SELECT * FROM question;
 UPDATE question SET qreply='';
 
-
-
+-- 채팅게시판 뷰
 CREATE VIEW hak AS
 SELECT cl.lseq, cl.sid, cl.bid, p.pseq, p.model, p.price
 FROM chatlist cl
 JOIN product p ON cl.pseq = p.pseq;
+
