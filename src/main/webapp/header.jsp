@@ -6,32 +6,36 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link  rel="stylesheet" href="css/header.css">
-
+<link  rel="stylesheet" href="css/header_footer.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
 <script src="script/jquery-3.7.1.min.js"></script>
-<script src="member/script/member.js"></script>
+<script src="member/script/member.js" ></script>
 </head>
 <body>
 
 <div id="wrap">
 	<header>
 		<nav id="top_menu">
-				<div id="logo"><img src="images/logo.png" height="150">	</div>
+				<div id="logo"><img src="images/logo.png" height="150" onClick="location.href='phonetail.do?command=main'"></div>
 				<div class="gnb">
 						<c:choose>
-								<c:when test="${empty loginUser}">
+								<c:when test="${empty login}">
 										<a href="phonetail.do?command=loginForm">LOGIN</a>
-										<a href="phonetail.do?command=contract">JOIN</a>
+										<a href="phonetail.do?command=joinForm">JOIN</a>
 								</c:when>
 								<c:otherwise>
-										<a href="#">${loginUser.name}(${loginUser.userid})</a>
+										<a href="#">${login.name}(${login.userid})</a>
 				       					<a href="phonetail.do?command=logout">LOGOUT</a>
 								</c:otherwise>
 						</c:choose>
-						<a href="phonetail.do?command=">Sell</a>
-						<a href="phonetail.do?command=">MY PAGE</a>
-						<a href="phonetail.do?command=">QnA</a>	
+						<a href="phonetail.do?command=productList">PRODUCT LIST</a>
+						<a href="phonetail.do?command=">SELL</a>
+						<a href="phonetail.do?command=mypage">MY PAGE</a>
+						<a href="phonetail.do?command=qnaList">QnA</a>	
+						<a href="phonetail.do?command=chatList">CHAT</a>	
 				</div>
 				<div class="hmenu"><div></div>	<div></div>	<div></div> 	</div>
 		</nav>

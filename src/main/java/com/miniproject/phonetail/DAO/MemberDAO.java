@@ -103,6 +103,24 @@ public class MemberDAO {
 		} catch (SQLException e) { e.printStackTrace();
 		} finally { DB.close(con, pstmt, rs);	}
 		return result;
-	}	
-	
+	}
+
+	public int updateMember(MemberDTO mdto) {
+		int result = 0;
+		con = DB.getConnection();
+		String sql = "update member set pwd=?, name=?, email=?, phone=?, address1=?, address2=?  where userid=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mdto.getPwd());
+			pstmt.setString(2, mdto.getName());
+			pstmt.setString(3, mdto.getEmail());
+			pstmt.setString(4, mdto.getPhone());
+			pstmt.setString(5, mdto.getAddress1());
+			pstmt.setString(6, mdto.getAddress2());
+			pstmt.setString(7, mdto.getUserid());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) { e.printStackTrace();
+		}finally { DB.close(con, pstmt, rs);	}
+		return result;
+	}
 }
