@@ -23,7 +23,32 @@ function go_insert(){
 		Form.submit();
 	}
 }
+function go_search(command){
+	let Form = document.productListForm;
+	var url="phonetail.do?command="	+command+"&page=1"
+	Form.action = url;
+	Form.submit();
+}
+
+function clear_brand(){
+	sessionStorage.setItem('brand', null);
+	window.location.href = "phonetail.do?command=productList";
+}
+
+function go_updateForm(pseq){
+	
+}
+
+function go_update(){
+	
+}
+
+function go_delete(pseq){
+	
+}
 
 
-
+function go_chat(pseq){
+	
+}
 

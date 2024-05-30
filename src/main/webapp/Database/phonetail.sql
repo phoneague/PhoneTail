@@ -158,8 +158,11 @@ INSERT INTO member (userid, pwd, name, phone, email, address1, address2, usestat
 
 
 INSERT INTO product (brand, series, model, price, comment, image, saveimagefile, sellstate, indate, userid) VALUES
-('Apple', 'iPhone', 'iPhone 13', 1000000, '최신 아이폰 모델', 'iphone13.jpg', 'iphone13.jpg', 'Y', now(), 'user1'),
-('Samsung', 'Galaxy', 'Galaxy S21', 900000, '최신 갤럭시 모델', 'galaxys21.jpg', 'galaxys21.jpg', 'N', now(), 'user2');
+('Apple', 'iPhone', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
+('Samsung', 'S Series', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
+('Samsung', 'Z Series', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
+('LG', 'G8', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'user1'),
+('Samsung', 'S Series', 'GalaxyS24', 900000, '최신 모델', 'GalaxyS24.jpg', 'GalaxyS24.jpg', 'N', now(), 'user2');
 
 -- chatlist 테이블에 예시 데이터 삽입
 INSERT INTO chatlist (sid, bid, pseq) VALUES ('user1', 'a', 1);
