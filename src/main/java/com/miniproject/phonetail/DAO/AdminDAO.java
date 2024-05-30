@@ -157,7 +157,7 @@ public class AdminDAO {
         return result;
     }
 
-}
+
 
 	public void questionReply(int qseq, String qreply) {
 		con = DB.getConnection();
