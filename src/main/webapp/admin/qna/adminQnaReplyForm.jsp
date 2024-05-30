@@ -20,8 +20,9 @@
 </head>
 <body>
    <article>
-			<form>
+			<form action="phonetail.do?command=adminQnaReply"  method="post">
 				<h2>QnA Reply</h2>
+				<input type="hidden" name="qseq" value="${ QuestionDTO.qseq}" />
 				
 				<div class="field" style="border-top:2px solid red;">
 						<label>작성자</label><div>${QuestionDTO.userid}</div>
@@ -38,16 +39,13 @@
 				<div class="field" style="border-top:2px solid red; border-bottom:2px solid red;">
 						<label>답변내용</label>
 						<div style="padding:10px;">
-							<textarea id="story" name="story" rows="8" cols="40">
-							</textarea>
-						</div>
+							<textarea id=story name="qreply" rows="8" cols="40" ></textarea>
+								</div>
 				</div>
 				<div class="btn" style="border-bottom:2px solid red;">
 					<input type="button" value="목록으로" onClick="location.href='phonetail.do?command=qnaList'">
-						<input type="button" value="답변완료" onClick="location.href='phonetail.do?command=adminQnaReply'">
-				</div>	
-					
-							
+					<input type="submit" value="답변완료" >
+				</div>				
 			</form>
 		</article>
 </body>

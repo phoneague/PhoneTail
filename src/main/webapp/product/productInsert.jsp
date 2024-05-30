@@ -39,18 +39,14 @@
 
 			<div>
 				<label>상품가격</label> <input type="text" name="price" />
-
 			</div>
-
 			<div>
 				<label>글 내용</label>
 				<textarea name="content" rows="8"></textarea>
 			</div>
-
 			<div>
 				<label>이미지</label> <input type="file" name="image">
 			</div>
-
 			<div>
 				<input type="button" value="상품등록" onClick="go_insert()"> 
 				<input

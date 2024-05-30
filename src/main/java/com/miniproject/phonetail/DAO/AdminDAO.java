@@ -96,7 +96,7 @@ public class AdminDAO {
 		}
 		return list;
 	}
-
+  
 	public ArrayList<MemberDTO> adminMemberList(Paging paging, String key) {
 		ArrayList<MemberDTO> list = new ArrayList<MemberDTO>();
 		String sql = "select * from member "
@@ -158,3 +158,17 @@ public class AdminDAO {
     }
 
 }
+
+	public void questionReply(int qseq, String qreply) {
+		con = DB.getConnection();
+		 String sql = "UPDATE question SET qreply=? WHERE qseq=?";
+		 try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, qreply);
+			pstmt.setInt(2, qseq);
+			pstmt.executeUpdate();
+		} catch (SQLException e) { e.printStackTrace();
+		} finally { DB.close(con, pstmt, rs);  }
+	}
+	}
+

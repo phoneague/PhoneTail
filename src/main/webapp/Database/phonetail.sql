@@ -39,16 +39,13 @@ CREATE TABLE admin
 
 CREATE TABLE chat
 (
-    cseq int NOT NULL AUTO_INCREMENT,
-    content varchar(300) NOT NULL,
-    indate datetime DEFAULT now() NOT NULL,
-    userid varchar(45) NOT NULL,
-    pseq int NOT NULL,
-    lseq int,
-    PRIMARY KEY (cseq)
+	cseq int not null AUTO_INCREMENT,
+	lseq int not null,
+	userid varchar(45) not null,
+	indate datetime not null DEFAULT now(),
+	content varchar(500) not null,
+	PRIMARY KEY (cseq)
 );
-
- 
 
 CREATE TABLE member
 (
@@ -102,7 +99,8 @@ CREATE TABLE report
    --1 - 상품정보 부정확
    --2 - 안전거래를 거부해요
    --3 - 사기가 의심돼요(외부 채널 유도)
-   --4 - 전문업자 같아요',
+   --4 - 전문업자 같아요
+   --5 - 기타',
     recontent varchar(300) NOT NULL,
     restate char(1) DEFAULT 'N' NOT NULL COMMENT 'N:대기상태 Y:처리완료',
     -- 24.05.29 신고시 해당 날짜 추가해서 list에서 정렬기준을 삼을수 있게 필드 추가했습니다
@@ -115,20 +113,16 @@ CREATE TABLE chatlist(
  lseq INT NOT NULL AUTO_INCREMENT,
  sid varchar(45) NOT NULL,
  bid varchar(45) NOT NULL,
- indate datetime DEFAULT now() NOT NULL,
+ indate datetime,
  pseq int NOT NULL,
  PRIMARY KEY (lseq)
 );
 
 -- 외래 키 추가
 ALTER TABLE chat
-    ADD FOREIGN KEY (userid) REFERENCES member (userid) ON UPDATE CASCADE ON DELETE CASCADE;
-
-ALTER TABLE chat
-    ADD FOREIGN KEY (lseq) REFERENCES chatlist (lseq) ON UPDATE CASCADE ON DELETE CASCADE;    
-    
-ALTER TABLE product
-    ADD FOREIGN KEY (userid) REFERENCES member (userid) ON UPDATE CASCADE ON DELETE CASCADE;
+ADD CONSTRAINT fk_chat_chatlist
+FOREIGN KEY (lseq)
+REFERENCES chatlist(lseq);
 
 ALTER TABLE question
     ADD FOREIGN KEY (userid) REFERENCES member (userid) ON UPDATE CASCADE ON DELETE CASCADE;
@@ -167,13 +161,20 @@ INSERT INTO member (userid, pwd, name, phone, email, address1, address2, usersta
 
 
 INSERT INTO product (brand, series, model, price, comment, image, saveimagefile, sellstate, indate, userid) VALUES
-('Apple', 'iPhone', 'iPhone 13', 1000000, '최신 아이폰 모델', 'iphone13.jpg', 'iphone13.jpg', 'Y', now(), 'user1'),
-('Samsung', 'Galaxy', 'Galaxy S21', 900000, '최신 갤럭시 모델', 'galaxys21.jpg', 'galaxys21.jpg', 'N', now(), 'user2');
+('Apple', 'iPhone', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
+('Samsung', 'S Series', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
+('Samsung', 'Z Series', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
+('LG', 'G8', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'user1'),
+('Samsung', 'S Series', 'GalaxyS24', 900000, '최신 모델', 'GalaxyS24.jpg', 'GalaxyS24.jpg', 'N', now(), 'user2');
+
+-- chatlist 테이블에 예시 데이터 삽입
+INSERT INTO chatlist (sid, bid, pseq) VALUES ('user1', 'a', 1);
+INSERT INTO chatlist (sid, bid, pseq) VALUES ('user2', 'ad', 2);
+INSERT INTO chatlist (sid, bid, pseq) VALUES ('user2', 'a', 2);
 
 INSERT INTO chat (content, indate, userid, pseq, lseq) VALUES
-('이 제품에 대해 질문이 있습니다.', now(), 'user2', 1 , 1),
-('언제 배송되나요?', now(), 'user1', 2, 1);
-('왜 읽씹하시나요?', now(), 'user1', 1, 1);
+('언제 배송되나요?', now(), 'user2', 2, 1),
+('왜 읽씹하시나요?', now(), 'a', 2, 2);
 
 INSERT INTO question (title, content, indate, userid, qreply) VALUES
 ('제품 문의', '이 제품의 기능에 대해 알고 싶습니다.', now(), 'user1', '답변 대기 중'),
@@ -187,13 +188,6 @@ INSERT INTO report (pseq, userid, retype, recontent, restate,indate) VALUES
 
 
 
-
-
-
--- chatlist 테이블에 예시 데이터 삽입
-INSERT INTO chatlist (sid, bid, pseq) VALUES ('S123', 'B456', 1);
-INSERT INTO chatlist (sid, bid, pseq) VALUES ('S456', 'B789', 2);
-INSERT INTO chatlist (sid, bid, pseq) VALUES ('S456', 'B123', 2);
 
 
 -- report 테이블 샘플 데이터 40개 삽입 (pseq를 1 또는 2로 설정하고 restate를 모두 'N'으로 설정)
@@ -305,4 +299,13 @@ INSERT INTO member (userid, pwd, name, phone, email, address1, address2, usersta
 
 
 SELECT * FROM question;
+
+-- qna 쿼리문 답변 공백으로 세팅
 UPDATE question SET qreply='';
+
+
+-- 채팅게시판 뷰
+CREATE VIEW hak AS
+SELECT cl.lseq, cl.sid, cl.bid, p.pseq, p.model, p.price
+FROM chatlist cl
+JOIN product p ON cl.pseq = p.pseq;

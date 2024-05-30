@@ -32,7 +32,7 @@
 								</c:otherwise>
 						</c:choose>
 						<a href="phonetail.do?command=productList">PRODUCT LIST</a>
-						<a href="phonetail.do?command=">SELL</a>
+						<a href="phonetail.do?command=productInsertForm">SELL</a>
 						<a href="phonetail.do?command=mypage">MY PAGE</a>
 						<a href="phonetail.do?command=qnaList">QnA</a>	
 						<a href="phonetail.do?command=chatList">CHAT</a>	
@@ -40,9 +40,10 @@
 				<div class="hmenu"><div></div>	<div></div>	<div></div> 	</div>
 		</nav>
 		<nav id="category_menu">
-				<a href="phonetail.do?command=">Apple</a>
-				<a href="phonetail.do?command=">Galaxy</a>
-				<a href="phonetail.do?command=">Others</a>
+				<a href="phonetail.do?command=productList&brand=">All Products</a>
+				<a href="phonetail.do?command=productList&brand=Apple">Apple</a>
+				<a href="phonetail.do?command=productList&brand=Samsung">Galaxy</a>
+				<a href="phonetail.do?command=productList&brand=LG">Others</a>
 		</nav>
 	</header>
 

@@ -22,5 +22,4 @@ public class AdminQnaReplyFormAction implements Action {
 		request.setAttribute("QuestionDTO", qdto);
 		request.getRequestDispatcher("admin/qna/adminQnaReplyForm.jsp").forward(request, response);
 	}
-
 }

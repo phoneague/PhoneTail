@@ -15,15 +15,12 @@
 </head>
 <body>
 
-<br>관리자 접속상태:
-<c:choose>
-<c:when test="${!empty adminUser.adminid}">O(${adminUser.adminid})<br>
-<a href="phonetail.do?command=adminReportList">▶관리자 페이지로 이동◀</a>
-</c:when>
-<c:otherwise>X(<a href="phonetail.do?command=admin">관리자로그인</a>)</c:otherwise>
-</c:choose>
-<br><br>
 
 
+<h2>당신 주변 3명 중 1명은 중고폰을 구매했다.</h2>
+<div id="container" style="display:flex;width=100%;justify-contents:center; align-items:center;">
+<img src="images/mainimg.jpg" width="80%" >
+
+</div>
 <%@ include file="footer.jsp" %>
 
