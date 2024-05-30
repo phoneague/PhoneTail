@@ -1,1 +1,19 @@
-h1 {display:flex; font-size: 300%;}
+h2 {
+	display:flex; 
+	font-size: 200%; 
+	font-family: "Noto Sans KR", sans-serif;
+  	font-optical-sizing: auto;
+  	font-weight: weight;
+  	font-style: normal;
+	justify-content:center; 
+	color:#3f4549;
+	}
+
+.container {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+  }
+
+

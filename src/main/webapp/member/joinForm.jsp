@@ -7,8 +7,10 @@
 <title>joinForm</title>
 <script src="script/jquery-3.7.1.min.js"></script>
 <script src="member/script/member.js"></script>
+<link rel="stylesheet" href="css/login.css">
 </head>
 <body>
+<div id="wrap">
 <section>
 		<article>
 				<form action="phonetail.do?command=join" method="post" name="joinForm">
@@ -49,3 +51,5 @@
 		</article>
 	</div>
 </section>
+</div>
+</body>

@@ -21,10 +21,14 @@ footer{
 	display: flex;
 	justify-content: space-between;
 }
+
+#top_menu a:hover {
+    color: #1c02f9;
+}
 #logo{ flex:1; cursor:pointer;}
 
 .gnb{ 
-	flex:5;
+	flex:7;
 	display: flex;
 	justify-content: flex-end;
 	align-items:center;
@@ -46,6 +50,10 @@ footer{
 	margin-bottom:10px;
 }
 
+#category_menu a:hover {
+    color: #1c02f9;
+}
+
 #category_menu a:nth-child(1){
 	width:300px;
 	display:flex;
@@ -58,6 +66,12 @@ footer{
 	flex :1;
 }
 #category_menu a:nth-child(3){
+	width:300px;
+	display:flex;
+	flex :1;
+}
+
+#category_menu a:nth-child(4){
 	width:300px;
 	display:flex;
 	flex :1;

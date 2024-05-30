@@ -212,9 +212,9 @@ INSERT INTO chatlist (sid, bid, pseq) VALUES
 ('user2', 'a', 6),
 ('user2', 'ad', 6);
 
-INSERT INTO chat (content, indate, userid, pseq, lseq) VALUES
-('언제 배송되나요?', now(), 'user2', 6, 1),
-('왜 읽씹하시나요?', now(), 'a', 6, 2);
+INSERT INTO chat (content, indate, userid, lseq) VALUES
+('언제 배송되나요?', now(), 'user2', 1),
+('왜 읽씹하시나요?', now(), 'a', 2);
 
 INSERT INTO question (title, content, indate, userid, qreply) VALUES
 ('제품 문의', '이 제품의 기능에 대해 알고 싶습니다.', now(), 'user1', '답변 대기 중'),

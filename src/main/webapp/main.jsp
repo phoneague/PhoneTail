@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 <%@ include file="header.jsp" %>
 <html>
 <head>
@@ -17,10 +20,9 @@
 
 
 
-<h2>당신 주변 3명 중 1명은 중고폰을 구매했다.</h2>
-<div id="container" style="display:flex;width=100%;justify-contents:center; align-items:center;">
-<img src="images/mainimg.jpg" width="80%" >
-
+<h2>당신 주변 3명 중 1명은 중고폰을 구매했다</h2>
+<div id="container">
+<img src="images/mainimg.jpg">
 </div>
 <%@ include file="footer.jsp" %>
 
