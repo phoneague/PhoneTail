@@ -21,7 +21,7 @@ public class InsertChatAction implements Action {
 		cdto.setContent(request.getParameter("content"));
 		
 		ChatListDAO ldto = ChatListDAO.getInstance();
-		ldto.insertReply(cdto);
+		ldto.insertChat(cdto);
 		
 		request.getRequestDispatcher("phonetail.do?command=chating&lseq=" + cdto.getLseq()).forward(request, response);
 	}

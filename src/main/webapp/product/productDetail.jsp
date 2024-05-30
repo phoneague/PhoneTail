@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="report/script/report.js"></script>
 </head>
 <body>
 
@@ -49,6 +50,7 @@
 		<input type="button" value="상품수정" onClick="go_updateForm(${productDTO.pseq})" />
 		<input type="button" value="상품삭제" onClick="go_delete(${productDTO.pseq})" />
 		<input type="button" value="댓글쓰기_학현" onClick="go_chat(${productDTO.pseq})" /> 
+    <input type="button" onClick="go_report(${productDTO.pseq},'${login.userid}')" value="신고하기">
 	</div>
 
 </body>

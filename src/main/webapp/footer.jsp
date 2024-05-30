@@ -13,7 +13,15 @@
 			Contact mail : phonetail@abc.com  Tel : +82 02 1234 1234	Fax : +82 02 1233 1233 &nbsp;
 		</div>
 		<div id="admin">
-			<a href="phonetail.do?command=admin">admin</a> admin : ${adminUser.adminid} 
+			관리자 접속상태:
+			<c:choose>
+				<c:when test="${!empty adminUser.adminid}">O(${adminUser.adminid})
+					<a href="phonetail.do?command=adminReportList">▶관리자 페이지로 이동◀</a>
+				</c:when>
+			<c:otherwise>
+				X<br><a href="phonetail.do?command=admin">관리자로그인</a>
+			</c:otherwise>
+</c:choose> 
 		</div>
 	</footer>
 	</div>

@@ -1,5 +1,7 @@
 package com.miniproject.phonetail.DTO;
 
+import java.sql.Timestamp;
+
 public class ReportDTO {
 	private int reseq;
 	private int pseq;
@@ -7,6 +9,7 @@ public class ReportDTO {
 	private int retype;
 	private String recontent;
 	private String restate;
+	private Timestamp indate;
 	
 	public int getReseq() {
 		return reseq;
@@ -44,11 +47,20 @@ public class ReportDTO {
 	public void setRestate(String restate) {
 		this.restate = restate;
 	}
+	public Timestamp getIndate() {
+		return indate;
+	}
+	public void setIndate(Timestamp indate) {
+		this.indate = indate;
+	}
 	@Override
 	public String toString() {
 		return "ReportDTO [reseq=" + reseq + ", pseq=" + pseq + ", userid=" + userid + ", retype=" + retype
-				+ ", recontent=" + recontent + ", restate=" + restate + "]";
+				+ ", recontent=" + recontent + ", restate=" + restate + ", indate=" + indate + "]";
 	}
+	
+	
+	
 	
 	
 }

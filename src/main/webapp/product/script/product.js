@@ -23,7 +23,6 @@ function go_insert(){
 		Form.submit();
 	}
 }
-
 function go_search(command){
 	let Form = document.productListForm;
 	var url="phonetail.do?command="	+command+"&page=1"
@@ -52,3 +51,4 @@ function go_delete(pseq){
 function go_chat(pseq){
 	
 }
+
