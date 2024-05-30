@@ -7,25 +7,21 @@
 <head>
 <meta charset="UTF-8">
 <script src="product/script/product.js"></script>
-
-
 <title>productInsert</title>
 </head>
 <body>
-
-	<article>
-		<form name="productInsertForm" method="post"
-			enctype="multipart/form-data">
-			<h2>Product Insert Form</h2>
+		<h2>Product Insert Form</h2>
+		<form name="productInsertForm" method="post" enctype="multipart/form-data">
 			<div>
 				<label>판매자명</label> ${loginUser}
+				<input type="hidden" name="userid" value="${loginUser}" />
 			</div>
 
 			<div>
 				<label>상품분류</label>
 				<div>
 					<select name="brand">
-						<option value="">선택하세요</option>
+						<option>선택하세요</option>
 						<c:forEach items="${brandList}" var="brand" varStatus="status">
 							<option value="${brand}">${brand}</option>
 						</c:forEach>
@@ -56,17 +52,12 @@
 			</div>
 
 			<div>
-				<input type="button" value="상품등록" onClick="go_insert()"> <input
+				<input type="button" value="상품등록" onClick="go_insert()"> 
+				<input
 					type="button" value="목록으로"
 					onClick="location.href='phonetail.do?command=productList'">
-
 			</div>
-
-
-
 		</form>
-	</article>
-
 
 </body>
 </html>

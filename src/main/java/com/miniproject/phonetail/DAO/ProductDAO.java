@@ -81,12 +81,12 @@ public class ProductDAO {
 	public void insertProduct(ProductDTO pdto) {
 		
 		con = DB.getConnection();
-		String sql = "insert into product(brand, series, model, price, comment, image, saveimagefile, userid) values(?,?,?,?,?,?,?,?)";
+		String sql = "insert into product(series, brand, model, price, comment, image, saveimagefile, userid) values(?,?,?,?,?,?,?,?)";
 		
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, pdto.getBrand());
-			pstmt.setString(2, pdto.getSeries());
+			pstmt.setString(1, pdto.getSeries());
+			pstmt.setString(2, pdto.getBrand());
 			pstmt.setString(3, pdto.getModel());
 			pstmt.setInt(4, pdto.getPrice());
 			pstmt.setString(5, pdto.getComment());

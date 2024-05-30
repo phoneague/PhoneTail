@@ -5,7 +5,7 @@ function go_insert(){
 		Form.brand.focus();
 	} else if (Form.series.value == "") {
 		alert('시리즈명을 입력하세요.'); 
-		Form.seires.focus();
+		Form.series.focus();
 	} else if (Form.model.value == "") {
 		alert('모델명을 입력하세요.'); 
 		Form.model.focus();
@@ -19,7 +19,7 @@ function go_insert(){
 		alert('상품이미지들 입력하세요.'); 
 		Form.image.focus();
 	} else {
-		Form.action="phonetail.do?command=productInsert";
+		Form.action="phonetail.do?command=productInsert"
 		Form.submit();
 	}
 }
