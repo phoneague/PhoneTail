@@ -12,6 +12,7 @@ import com.miniproject.phonetail.controller.mypage.MyPageAction;
 import com.miniproject.phonetail.controller.action.chat.ChatListAction;
 import com.miniproject.phonetail.controller.action.chat.ChatingAction;
 import com.miniproject.phonetail.controller.action.chat.InsertChatAction;
+import com.miniproject.phonetail.controller.action.chat.InsertChatListAction;
 import com.miniproject.phonetail.controller.product.ProductDetailAction;
 import com.miniproject.phonetail.controller.product.ProductInsertAction;
 import com.miniproject.phonetail.controller.product.ProductInsertFormAction;
@@ -93,7 +94,8 @@ public class ActionFactory {
 		// chat 
 		else if(command.equals("chatList")) ac = new ChatListAction(); 
 		else if(command.equals("chating")) ac = new ChatingAction();
-		else if(command.equals("insertChat")) ac = new InsertChatAction();
+		else if(command.equals("insertChat")) ac = new InsertChatAction(); //채팅 내용 추가되는거
+		else if(command.equals("insertChatList")) ac = new InsertChatListAction();
 		
 		//product (정빈)
 		else if(command.equals("productList")) ac = new ProductListAction();
