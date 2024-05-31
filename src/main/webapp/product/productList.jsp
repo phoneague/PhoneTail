@@ -1,15 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="product/script/product.js"></script>
-</head>
-<body>
+<%@ include file="/header.jsp" %>
 
 <!-- 서브메뉴창 상품등록 -->
 	<a href="phonetail.do?command=productInsertForm">내폰팔기(상품등록)</a>
@@ -67,8 +58,4 @@
 	</form>
 </article>
 
-
-
-
-</body>
-</html>
+<%@ include file="/footer.jsp"%>

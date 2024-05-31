@@ -154,6 +154,29 @@ public class ProductDAO {
 	}
 
 
+	public void updateProduct(ProductDTO pdto) {
+		con = DB.getConnection();
+		String sql = "update product set brand=?, series=?, model=?, price=?, comment=?, image=?, saveimagefile=? where pseq=?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, pdto.getBrand());
+			pstmt.setString(2, pdto.getSeries());
+			pstmt.setString(3, pdto.getModel());
+			pstmt.setInt(4, pdto.getPrice());
+			pstmt.setString(5, pdto.getComment());
+			pstmt.setString(6, pdto.getImage());
+			pstmt.setString(7, pdto.getSaveimagefile());
+			pstmt.setInt(8, pdto.getPseq());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+	}
+
+
 	
 		
 
