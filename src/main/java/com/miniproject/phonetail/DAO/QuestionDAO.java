@@ -96,7 +96,7 @@ public class QuestionDAO {
 			}
 
 			public void insertQna(QuestionDTO qdto) {
-				String sql = "INSERT INTO question (title, content, userid) VALUES (?, ?, ?)";
+				String sql = "INSERT INTO question (title, content, userid, qrepl) VALUES (?, ?, ?)";
 				con = DB.getConnection();
 				try {
 					pstmt = con.prepareStatement(sql);
@@ -111,7 +111,7 @@ public class QuestionDAO {
 
 			public void deleteQna(int qseq) {
 				
-				String sql = "DELETE  FROM question WHERE qseq = ?";
+				String sql = "DELETE FROM question WHERE qseq = ?";
 				con = DB.getConnection();
 				 try {
 				        pstmt = con.prepareStatement(sql);
@@ -139,7 +139,7 @@ public class QuestionDAO {
 				}
 				return count;
 			}
-
+            
 			public ArrayList<QuestionDTO> getMyAllQuestions(Paging paging, String key, String myId) {
 				ArrayList<QuestionDTO> questionList = new ArrayList<>();
 		        try {
