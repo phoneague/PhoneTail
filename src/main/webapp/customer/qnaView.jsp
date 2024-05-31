@@ -36,15 +36,15 @@
 						<label>질문내용</label><div>${QuestionDTO.content}</div>
 				</div>
 				<div class="field" style="border-top:2px solid gold; border-bottom:2px solid gold;">
-						<label>답변내용</label><div style="padding:10px;">${QuestionDTO.qreply == ''? '답변 대기중' : QuestionDTO.qreply}</div>
+						<label>답변내용</label><div style="padding:10px;">${QuestionDTO.qreply == '' ? '답변 대기중' : QuestionDTO.qreply}</div>
 				</div>
 				<div class="btn" style="border-bottom:2px solid gold;">
 					<input type="button" value="목록으로" onClick="location.href='phonetail.do?command=qnaList'">
+					
           <c:if test="${!empty adminUser.adminid}">
 						<input type="button" value="답변하기" onClick="location.href='phonetail.do?command=adminQnaReplyForm&qseq=${QuestionDTO.qseq}'">
 					</c:if>	
 				</div>		
-					
 			</form>
 		</article>
 </body>
