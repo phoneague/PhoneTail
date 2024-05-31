@@ -105,18 +105,6 @@ public class MemberDAO {
 		return result;
 	}
 	
-	public int blackMember(String userid) {
-		int result = 0;
-		con = DB.getConnection();
-		String sql = "UPDATE member SET userstate='B' where userid=?";
-		try {
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1,  userid);
-			result = pstmt.executeUpdate();
-		} catch (SQLException e) { e.printStackTrace();
-		} finally { DB.close(con, pstmt, rs);	}
-		return result;
-	}
 
 	public int updateMember(MemberDTO mdto) {
 		int result = 0;
@@ -140,7 +128,7 @@ public class MemberDAO {
 	public int stateChangeBtoY(String userid) {
 		int result = 0;
 		con = DB.getConnection();
-		String sql = "UPDATE member SET userstate='Y' where userid=?";
+		String sql = "UPDATE member SET userstate = 'Y' WHERE userid = ? AND userstate = 'B'";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1,  userid);
@@ -154,7 +142,7 @@ public class MemberDAO {
 	public int stateChangeNtoY(String userid) {
 		int result = 0;
 		con = DB.getConnection();
-		String sql = "UPDATE member SET userstate='Y' where userid=?";
+		String sql = "UPDATE member SET userstate = 'Y' WHERE userid = ? AND userstate = 'N'";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1,  userid);
@@ -169,7 +157,7 @@ public class MemberDAO {
 		
 		int result = 0;
 		con = DB.getConnection();
-		String sql = "UPDATE member SET userstate='B' where userid=?";
+		String sql = "UPDATE member SET userstate = 'B' WHERE userid = ? AND userstate = 'Y'";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1,  userid);
