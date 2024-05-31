@@ -36,8 +36,10 @@ import com.miniproject.phonetail.controller.action.member.LoginFormAction;
 import com.miniproject.phonetail.controller.action.member.LogoutAction;
 import com.miniproject.phonetail.controller.action.member.UpdateMemberAction;
 import com.miniproject.phonetail.controller.action.member.UpdateMemberFormAction;
+import com.miniproject.phonetail.controller.action.report.ProcessReportAction;
 import com.miniproject.phonetail.controller.action.report.ReportAction;
 import com.miniproject.phonetail.controller.action.report.ReportFormAction;
+import com.miniproject.phonetail.controller.action.report.ReportViewAction;
 
 
 public class ActionFactory {
@@ -101,6 +103,8 @@ public class ActionFactory {
 		//report
 		else if(command.equals("reportForm")) ac = new ReportFormAction();
 		else if(command.equals("report")) ac = new ReportAction();
+		else if(command.equals("reportView")) ac = new ReportViewAction();
+		else if(command.equals("processReport")) ac = new ProcessReportAction();
 		
 		
 		// mypage

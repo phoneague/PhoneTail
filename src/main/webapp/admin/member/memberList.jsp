@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="/admin/header.jsp"%>
+<%@ include file="/header.jsp"%>
 <%@ include file="../sub_menu.jsp"%>
-<script src="admin/script/admin.js"></script>
+
 <h2>
 Member List
 </h2>
@@ -55,4 +55,4 @@ Member List
 </article>
 
 
-<%@ include file="/admin/footer.jsp"%>
+<%@ include file="/footer.jsp"%>

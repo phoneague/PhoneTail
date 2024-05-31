@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/admin/header.jsp"%>
+<%@ include file="/header.jsp"%>
 <%@ include file="../sub_menu.jsp"%>
 <h2>
 Report List
@@ -39,4 +39,4 @@ Report List
 		</div>
 	</form>
 </article>
-<%@ include file="/admin/footer.jsp"%>
+<%@ include file="/footer.jsp"%>

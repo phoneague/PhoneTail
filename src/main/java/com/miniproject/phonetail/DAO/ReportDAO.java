@@ -31,5 +31,40 @@ public class ReportDAO {
 		} finally { DB.close(con, pstmt, rs);  }
 		
 	}
+
+	public ReportDTO getReport(int reseq) {
+		ReportDTO rdto = new ReportDTO();
+		String sql = "SELECT r.*, p.userid AS pid FROM report r JOIN product p ON r.pseq = p.pseq WHERE r.reseq = ?;";
+		con = DB.getConnection();
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, reseq);
+			rs = pstmt.executeQuery();
+			if( rs.next() ) {
+				rdto.setReseq(reseq);
+				rdto.setPseq(rs.getInt("pseq"));
+				rdto.setUserid(rs.getString("userid"));
+				rdto.setRetype(rs.getInt("retype"));
+				rdto.setRecontent(rs.getString("recontent"));
+				rdto.setRestate(rs.getString("restate"));
+				rdto.setIndate(rs.getTimestamp("indate"));
+				rdto.setPid(rs.getString("pid"));
+			}
+		} catch (SQLException e) { e.printStackTrace();
+		} finally { DB.close(con, pstmt, rs); }	
+		return rdto;
+	}
+
+	public void updateReport(String restate, int reseq) {
+		con = DB.getConnection();
+		String sql = "UPDATE report SET restate=? WHERE reseq=? ";
+		try {
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, restate);
+			pstmt.setInt(2, reseq);
+			pstmt.executeUpdate();
+		}catch (SQLException e) { e.printStackTrace();
+		} finally { DB.close(con, pstmt, rs);  }
+	}
 	
 }
