@@ -131,35 +131,6 @@ public class AdminDAO {
 	}
 
 
-	public String adminUserStateChangeB(String userid) {
-        String result = "failure"; // 초기값을 실패로 설정
-        Connection con = null;
-        PreparedStatement pstmt = null;
-        
-        try {
-            con = DB.getConnection();
-            String sql = "UPDATE member SET userstate='B' WHERE userid=?";
-            pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, userid);
-            
-            int rowsUpdated = pstmt.executeUpdate();
-            if (rowsUpdated > 0) {
-                result = "success"; // 변경 성공
-                System.out.println("(DAO)다음 회원을 블랙리스트에 올린다 userid: " + userid); // 로그 추가
-            } else {
-                System.out.println("(DAO)다음 회원을 블랙리스트에 올리는 데에 실패했다 userid: " + userid); // 로그 추가
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            DB.close(con, pstmt, null);
-        }
-        
-        return result;
-    }
-
-
-
 	public void questionReply(int qseq, String qreply) {
 		con = DB.getConnection();
 		 String sql = "UPDATE question SET qreply=? WHERE qseq=?";

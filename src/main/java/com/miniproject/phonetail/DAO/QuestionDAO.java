@@ -120,7 +120,6 @@ public class QuestionDAO {
 				    } catch (SQLException e) { e.printStackTrace();
 				    } finally { DB.close(con, pstmt, rs); }	
 				}		
-         }
 
 			public int getMyAllCount(String tablename, String myId, String fieldname, String key) {
 				int count = 0;
