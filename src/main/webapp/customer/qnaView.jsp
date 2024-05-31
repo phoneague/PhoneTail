@@ -41,9 +41,14 @@
 				<div class="btn" style="border-bottom:2px solid gold;">
 					<input type="button" value="목록으로" onClick="location.href='phonetail.do?command=qnaList'">
 					
-          <c:if test="${!empty adminUser.adminid}">
+					<c:if test="${QuestionDTO.userid eq login.userid}">
+                  <input type="button" value="삭제하기"  onClick ="if(confirm('정말로 삭제하시겠습니까?')) location.href='phonetail.do?command=deleteQna=${QuestionDTO.qseq}'""> 
+                       </c:if>
+
+                   <c:if test="${!empty adminUser.adminid}">
 						<input type="button" value="답변하기" onClick="location.href='phonetail.do?command=adminQnaReplyForm&qseq=${QuestionDTO.qseq}'">
 					</c:if>	
+					
 				</div>		
 			</form>
 		</article>

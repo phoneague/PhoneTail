@@ -37,8 +37,6 @@ public class LoginAction implements Action {
 		}else 
 			request.setAttribute("message", "관리자에게 문의하세요");
 		
-		request.getRequestDispatcher(url).forward(request, response);
-
+		    request.getRequestDispatcher(url).forward(request, response);
 	}
-
 }

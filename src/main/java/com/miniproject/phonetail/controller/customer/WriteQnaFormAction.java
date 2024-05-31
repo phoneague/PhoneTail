@@ -24,7 +24,5 @@ public class WriteQnaFormAction implements Action {
 			request.setAttribute("loginUser", mdto.getUserid());
 		}
 		request.getRequestDispatcher("customer/writeQnaForm.jsp").forward(request, response);
-
-	}
-
+	    }
 }

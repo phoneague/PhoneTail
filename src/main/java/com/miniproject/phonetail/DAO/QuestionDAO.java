@@ -109,6 +109,19 @@ public class QuestionDAO {
 				
 			}
 
+			public void deleteQna(int qseq) {
+				
+				String sql = "DELETE  FROM question WHERE qseq = ?";
+				con = DB.getConnection();
+				 try {
+				        pstmt = con.prepareStatement(sql);
+				        pstmt.setInt(1, qseq);
+				        pstmt.executeUpdate();
+				    } catch (SQLException e) { e.printStackTrace();
+				    } finally { DB.close(con, pstmt, rs); }	
+				}		
+         }
+
 			public int getMyAllCount(String tablename, String myId, String fieldname, String key) {
 				int count = 0;
 				con = DB.getConnection();
@@ -158,7 +171,6 @@ public class QuestionDAO {
 			}
 			
 }
-
 
 
 
