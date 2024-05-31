@@ -5,6 +5,7 @@ SET SESSION FOREIGN_KEY_CHECKS=0;
 
 select*from member;
 select*from product;
+select*from question;
 
 -- 기존 테이블 삭제
 --DROP TABLE IF EXISTS address;
@@ -307,6 +308,7 @@ INSERT INTO report (pseq, userid, retype, recontent, restate) VALUES
 
 
 UPDATE question SET qreply='';
+
 
 
 

@@ -30,7 +30,7 @@ Report List
 					<div class="col">${qnaDTO.userid}</div>
 					<div class="col"><a href="phonetail.do?command=qnaView&qseq=${qnaDTO.qseq}">${qnaDTO.title}</a></div>
 					<div class="col"><fmt:formatDate value="${qnaDTO.indate}" type="date"/></div>
-					<div class="col">${qnaDTO.qreply == '답변 대기중' ? 'NO' : 'YES'}</div>
+					<div class="col">${qnaDTO.qreply=='' ? 'NO' : 'YES'}</div>
 				</div>
 			</c:forEach>
 			<jsp:include page="/admin/paging/paging.jsp">
