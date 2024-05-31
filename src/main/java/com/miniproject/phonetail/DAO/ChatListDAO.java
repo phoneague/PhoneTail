@@ -107,4 +107,19 @@ public class ChatListDAO {
 		} catch (SQLException e) {e.printStackTrace();
 		} finally {DB.close(con, pstmt, rs);}
 	}
+
+	public void insertChatList(ChatListDTO cdto) {
+		con = DB.getConnection();
+		String sql = "insert into ChatList(sid,bid,pseq) " 
+				+ "values(?,?,?)";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, cdto.getSid());
+			pstmt.setString(2, cdto.getBid());
+			pstmt.setInt(3, cdto.getPseq());
+			
+			pstmt.executeUpdate();
+		}catch (SQLException e) {e.printStackTrace();
+		}finally {DB.close(con, pstmt, rs); }
+	}
 }

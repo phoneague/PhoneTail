@@ -15,6 +15,8 @@ DROP TABLE IF EXISTS report;
 DROP TABLE IF EXISTS product;
 DROP TABLE IF EXISTS question;
 DROP TABLE IF EXISTS member;
+DROP VIEW IF EXISTS hak;
+
 
 
 -- 테이블 생성
