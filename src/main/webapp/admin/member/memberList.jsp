@@ -47,10 +47,10 @@ Member List
 				</jsp:include>
 			</div>
 		</div> 
-			<div class="btn">
+			 <div class="btn">
     			<input type="button" style="width: 200px" value="블랙리스트" onClick="go_userstate_change()"/>
 			</div>
-	</div>
+		</div>
 <form>
 </article>
 
