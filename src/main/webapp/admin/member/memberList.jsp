@@ -27,11 +27,7 @@ Member List
 			<div class="row">
 				<div class="col" style="flex:1">
 					${memberDTO.userid}(${memberDTO.userstate}) 
-					<c:choose>
-			      		<c:when test='${memberDTO.userstate=="Y"}'>
-			        		<input type="checkbox" name="userstate" value="${status.index}">
-				        </c:when>
-			    	</c:choose>
+			        <input type="checkbox" name="userstate" value="${memberDTO.userid}"/>
 				</div>
 				<div class="col" style="flex:1">${memberDTO.name}</div>
 				<div class="col" style="flex:2">${memberDTO.email} </div>
@@ -46,12 +42,17 @@ Member List
 					<jsp:param value="phonetail.do?command=adminMemberList" name="address"/>
 				</jsp:include>
 			</div>
+		</div>
 		</div> 
 			 <div class="btn">
-    			<input type="button" style="width: 200px" value="블랙리스트" onClick="go_userstate_change()"/>
+    			<input type="button" style="width: 200px" value="블랙리스트" 
+    			 name="blacklistButton" onClick="userstate_YtoB()"/>
+    			<input type="button" style="width: 200px" value="블랙해제" 
+    			 name="UnblacklistButton" onClick="userstate_BtoY()"/>
+    			<input type="button" style="width: 200px" value="휴면해제" 
+    			 name="UnblacklistButton" onClick="userstate_NtoY()"/>
 			</div>
-		</div>
-<form>
+</form>
 </article>
 
 

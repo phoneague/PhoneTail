@@ -18,20 +18,74 @@ function go_search(command){
 	document.frm.submit();
 }
 
-function go_userstate_change() {
-    var count = 0;
-	// 혹시라도 체크박스에 체크를 하나도 안넣고 삭제버튼을 눌렀는지 검사
+function userstate_YtoB() {
+var count = 0;
 	if( document.frm.userstate.length == undefined ){
-		// 체크박스가 한개라면, 체크박스가 단일 변수로 인식
-		if( document.frm.userstate.checked==true){
+		if( document.frm.userstate.checked==true) {
 			count++;
 		}		
 	}else{
-		// 체크박스가 두개이상이라면,  체크박스들이 배열이라면
 		for(var i=0; i<document.frm.userstate.length; i++){
 			if( document.frm.userstate[i].checked== true){
 				count++;
 			}
+		}
+	}	
+	if( count == 0){
+		alert("블랙할 회원을 선택하세요");
+	}else{
+		var ans = confirm("선택한 회원을 블랙할까요?");
+		if( ans ){
+			document.frm.action = "phonetail.do?command=adminUserStateChangeYtoB";
+			document.frm.submit();
+		}
+	}
+}
+
+function userstate_BtoY(){
+	var count = 0;
+	if( document.frm.userstate.length == undefined ){
+		if( document.frm.userstate.checked==true) {
+			count++;
+		}		
+	}else{
+		for(var i=0; i<document.frm.userstate.length; i++){
+			if( document.frm.userstate[i].checked== true){
+				count++;
+			}
+		}
+	}	
+	if( count == 0){
+		alert("블랙해제할 회원을 선택하세요");
+	}else{
+		var ans = confirm("선택한 회원을 블랙해제할까요?");
+		if( ans ){
+			document.frm.action = "phonetail.do?command=adminUserStateChangeBtoY";
+			document.frm.submit();
+		}
+	}
+}
+
+function userstate_NtoY(){
+		var count = 0;
+	if( document.frm.userstate.length == undefined ){
+		if( document.frm.userstate.checked==true) {
+			count++;
+		}		
+	}else{
+		for(var i=0; i<document.frm.userstate.length; i++){
+			if( document.frm.userstate[i].checked== true){
+				count++;
+			}
+		}
+	}	
+	if( count == 0){
+		alert("휴면해제할 회원을 선택하세요");
+	}else{
+		var ans = confirm("선택한 회원을 휴면해제할까요?");
+		if( ans ){
+			document.frm.action = "phonetail.do?command=adminUserStateChangeNtoY";
+			document.frm.submit();
 		}
 	}
 }
