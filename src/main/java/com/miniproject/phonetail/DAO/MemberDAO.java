@@ -95,7 +95,20 @@ public class MemberDAO {
 		
 		int result = 0;
 		con = DB.getConnection();
-		String sql = "delete from member where userid=?";
+		String sql = "UPDATE member SET userstate='N' where userid=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,  userid);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) { e.printStackTrace();
+		} finally { DB.close(con, pstmt, rs);	}
+		return result;
+	}
+	
+	public int blackMember(String userid) {
+		int result = 0;
+		con = DB.getConnection();
+		String sql = "UPDATE member SET userstate='B' where userid=?";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1,  userid);

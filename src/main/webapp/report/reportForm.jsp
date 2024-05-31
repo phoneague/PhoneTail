@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h2>상품 신고</h2>
-	<form name="reportForm" method="post" >
+	<form name="reportViewForm" method="post" >
 	<div>
 		<select name="retype">
 			<option value="-1">신고사유를 선택하세요</option>

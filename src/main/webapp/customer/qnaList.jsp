@@ -43,10 +43,9 @@
             <tr>
                 <td>${qna.qseq}</td>
                 <td>${qna.userid}</td>
-                <%-- <td><a href="qnaView.jsp?qseq=${qna.qseq}">${qna.title}</a></td> --%>
                <td><a href="phonetail.do?command=qnaView&qseq=${qna.qseq}">${qna.title}</a></td> 
                 <td><fmt:formatDate value="${qna.indate}" type="date"/></td>
-                <td>${empty qna.qreply ? 'NO' : 'YES'}</td>
+                <td>${qna.qreply == '' ? 'NO' : 'YES '}</td>
             </tr>
         </c:forEach>
     </table>
