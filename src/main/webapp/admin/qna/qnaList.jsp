@@ -30,6 +30,7 @@ Report List
 					<div class="col">${qnaDTO.userid}</div>
 					<div class="col"><a href="phonetail.do?command=qnaView&qseq=${qnaDTO.qseq}">${qnaDTO.title}</a></div>
 					<div class="col"><fmt:formatDate value="${qnaDTO.indate}" type="date"/></div>
+<<<<<<< Updated upstream
 					<div class="col">${qnaDTO.qreply=='' ? 'NO' : 'YES'}</div>
 				</div>
 			</c:forEach>
