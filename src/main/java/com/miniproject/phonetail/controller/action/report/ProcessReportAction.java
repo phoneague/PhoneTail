@@ -21,7 +21,7 @@ public class ProcessReportAction implements Action {
 			String pid = request.getParameter("pid");
 //			System.out.println(pid+"을 블랙리스트에 추가합니다");
 			MemberDAO mdao = MemberDAO.getInstance();
-			mdao.blackMember(pid);
+			mdao.stateChangeYtoB(pid);
 		}
 		ReportDAO rdao =ReportDAO.getInstace();
 		rdao.updateReport(restate,reseq);
