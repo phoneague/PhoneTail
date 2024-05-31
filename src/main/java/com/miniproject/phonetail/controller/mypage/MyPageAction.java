@@ -24,7 +24,6 @@ public class MyPageAction implements Action {
 		if( mdto == null) {
 			response.sendRedirect("phonetail.do?command=loginForm");
 		}else {
-			request.setAttribute("loginUserName", mdto.getName());
 			RequestDispatcher rd = request.getRequestDispatcher("mypage/mypage.jsp");
 			rd.forward(request, response);
 		}

@@ -15,7 +15,7 @@ Report List
 						value="검색" onClick="go_search('adminReportList')" />
 					&nbsp;&nbsp;&nbsp; <input type="button" style="margin-left: auto;"
 						value="신고처리" onClick="go_wrt();">
-				</div>
+				</div>	
 			</div>
 			<div class="row">
 				<div class="coltitle">번호</div>

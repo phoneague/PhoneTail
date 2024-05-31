@@ -108,6 +108,54 @@ public class QuestionDAO {
 				} finally { DB.close(con, pstmt, rs); }	
 				
 			}
+
+			public int getMyAllCount(String tablename, String myId, String fieldname, String key) {
+				int count = 0;
+				con = DB.getConnection();
+				String sql = "SELECT COUNT(*) AS cnt FROM " + tablename + " WHERE " + fieldname + " LIKE CONCAT('%', ?, '%') AND userid LIKE ?";
+				try {
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, key);
+					pstmt.setString(2, myId);
+					rs = pstmt.executeQuery();
+					if (rs.next())
+						count = rs.getInt("cnt");
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					DB.close(con, pstmt, rs);
+				}
+				return count;
+			}
+
+			public ArrayList<QuestionDTO> getMyAllQuestions(Paging paging, String key, String myId) {
+				ArrayList<QuestionDTO> questionList = new ArrayList<>();
+		        try {
+		            con = DB.getConnection();
+		            String sql =  "SELECT * FROM question WHERE title LIKE CONCAT('%',?,'%') AND userid LIKE ? "
+		    				+ " ORDER BY indate DESC, qseq DESC LIMIT ? OFFSET ?";
+		        	pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, key);
+					pstmt.setString(2, myId);
+					pstmt.setInt(3, paging.getDisplayRow());
+					pstmt.setInt(4, paging.getStartNum() - 1);
+		            rs = pstmt.executeQuery();
+		            while (rs.next()) {
+		                QuestionDTO question = new QuestionDTO();
+		                question.setQseq(rs.getInt("qseq"));
+		                question.setUserid(rs.getString("userid"));
+		                question.setTitle(rs.getString("title"));
+		                question.setIndate(rs.getTimestamp("indate"));
+		                question.setContent(rs.getString("content"));
+		                question.setQreply(rs.getString("qreply"));
+		                // 필요한 다른 속성들도 마찬가지로 설정해주세요.
+		                questionList.add(question);
+		            }
+		        } catch (SQLException e) { e.printStackTrace();
+		        } finally { DB.close(con, pstmt, rs); }
+
+		          return questionList;
+			}
 			
 }
 
