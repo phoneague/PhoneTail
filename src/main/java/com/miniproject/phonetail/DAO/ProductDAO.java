@@ -177,6 +177,25 @@ public class ProductDAO {
 	}
 
 
+	public int getMyAllcount(String tablename, String fieldname, String key, String myId) {
+		int count = 0;
+		con = DB.getConnection();
+//		System.out.println(tablename+"/"+fieldname+"/"+key+"/"+brand);
+		String sql = "SELECT COUNT(*) AS cnt FROM " + tablename + " WHERE " + fieldname + " LIKE CONCAT('%', ?, '%') AND brand LIKE CONCAT('%', ?, '%')";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, key);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt("cnt");
+			}
+		} catch (SQLException e) { e.printStackTrace();
+		} finally { DB.close(con, pstmt, rs);  }
+
+		return count;
+	}
+
+
 	
 		
 

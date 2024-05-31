@@ -15,11 +15,11 @@ public class ProcessReportAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String restate = request.getParameter("newRestate");
-		System.out.println(restate);
+//		System.out.println(restate);
 		int reseq = Integer.parseInt(request.getParameter("reseq"));
 		if(restate.equals("Y")) {
 			String pid = request.getParameter("pid");
-			System.out.println(pid+"을 블랙리스트에 추가합니다");
+//			System.out.println(pid+"을 블랙리스트에 추가합니다");
 			MemberDAO mdao = MemberDAO.getInstance();
 			mdao.blackMember(pid);
 		}
