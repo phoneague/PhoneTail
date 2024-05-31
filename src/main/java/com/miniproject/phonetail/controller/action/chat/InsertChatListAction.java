@@ -19,15 +19,15 @@ public class InsertChatListAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ChatListDAO cdao = ChatListDAO.getInstance();
-		ChatListDTO cdto = new ChatListDTO();
+		
 		ProductDAO pdao = ProductDAO.getInstance();
 		ProductDTO pdto = pdao.getProduct(Integer.parseInt(request.getParameter("pseq")));
 		HttpSession session = request.getSession();
 		MemberDTO mdto = (MemberDTO)session.getAttribute("login");
+		ChatListDTO fdto = cdao.filter(pdto.getPseq(), mdto.getUserid());
 		
-		if(mdto.getUserid()=="a"){
-			
-		}else {
+		if(fdto.getBid()=="hakhyun" && fdto.getPseq()==980623){
+			ChatListDTO cdto = new ChatListDTO();
 			cdto.setBid(mdto.getUserid());
 			System.out.println( "userid : " + mdto.getUserid());
 			cdto.setPseq(Integer.parseInt(request.getParameter("pseq")));
@@ -37,6 +37,8 @@ public class InsertChatListAction implements Action {
 			cdao.insertChatList(cdto);
 			request.setAttribute("loginUser", mdto.getUserid());
 			response.sendRedirect("phonetail.do?command=chatList");
+		}else {
+			response.sendRedirect("phonetail.do?command=chating&lseq="+fdto.getLseq());
 		}
 	}
 
