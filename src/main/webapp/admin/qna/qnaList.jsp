@@ -32,6 +32,9 @@ Report List
 					<div class="col"><fmt:formatDate value="${qnaDTO.indate}" type="date"/></div>
 <<<<<<< Updated upstream
 					<div class="col">${qnaDTO.qreply=='' ? 'NO' : 'YES'}</div>
+=======
+					<div class="col">${qnaDTO.qreply == null ? 'NO' : 'YES'}</div>
+>>>>>>> Stashed changes
 				</div>
 			</c:forEach>
 			<jsp:include page="/admin/paging/paging.jsp">
