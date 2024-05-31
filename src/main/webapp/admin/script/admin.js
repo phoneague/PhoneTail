@@ -33,5 +33,5 @@ function go_userstate_change() {
 				count++;
 			}
 		}
-}
+	}
 }

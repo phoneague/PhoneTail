@@ -19,6 +19,11 @@ function report(){
 	}
 }
 
+function processReport(){
+	document.reportViewForm.action="phonetail.do?command=processReport";
+	document.reportViewForm.submit();
+}
+
 function close(){
 	self.close();
 }

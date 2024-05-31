@@ -45,6 +45,7 @@ public class QuestionDAO {
 		                question.setTitle(rs.getString("title"));
 		                question.setIndate(rs.getTimestamp("indate"));
 		                question.setContent(rs.getString("content"));
+		                question.setQreply(rs.getString("qreply"));
 		                // 필요한 다른 속성들도 마찬가지로 설정해주세요.
 		                questionList.add(question);
 		            }
