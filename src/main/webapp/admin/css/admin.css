@@ -5,8 +5,6 @@
 a{text-decoration:none;}
 
 article{
-   /* border:2px solid dimgray; */
-   /* margin:2px;*/
    width:100%;
    flex:4;
    display: flex;
@@ -15,8 +13,6 @@ article{
 
 article form{
    flex:1;
-   /*border:2px solid red;
-   margin:2px;*/
    display: flex;
    flex-direction: column;
 }

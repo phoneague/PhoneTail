@@ -1,0 +1,7 @@
+.sub_menu {
+    width: 200px;
+    background-color: #e0e0e0;
+    padding: 1em;
+    text-align: center;
+    margin-left: auto; /* 자동으로 오른쪽 정렬 */
+}
