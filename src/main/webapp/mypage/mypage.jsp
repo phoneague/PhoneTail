@@ -3,8 +3,8 @@
 <%@ include file="/header.jsp"%>
 <%@ include file="mypage_submenu.jsp"%>
 <link rel="stylesheet" href="mypage/css/mypage.css">
-<h2>${login.name}'sMY PAGE</h2>
-<h3><a href="phonetail.do?command=updateMemberForm">회원정보수정</a></h3>
+<h2>${login.name}'s MY PAGE</h2>
+
 <section>
 	<article>
 		
@@ -40,4 +40,6 @@
 		</form>
 	</article>
 </section>
+<h3><a href="phonetail.do?command=updateMemberForm">회원정보수정</a></h3>
+<h3><a onClick="withDraw()">회원탈퇴</a></h3>
 <%@ include file="../footer.jsp"%>

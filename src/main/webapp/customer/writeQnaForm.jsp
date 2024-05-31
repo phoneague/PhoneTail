@@ -30,7 +30,6 @@
 				</div>
 				<div class="btn" >
 					<input type="button" value="제출하기"  onClick="go_write()">
-					<input type="button" value="삭제하기" onClick="go_delete()">
 					 <input type="button" value="목록으로" onClick="location.href='phonetail.do?command=qnaList'">
 				</div>													
 			</form>
