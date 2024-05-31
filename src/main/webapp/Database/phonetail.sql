@@ -17,7 +17,7 @@ DROP TABLE IF EXISTS question;
 DROP TABLE IF EXISTS member;
 DROP VIEW IF EXISTS hak;
 
-
+select * from chatList where pseq=1 and bid='user1';
 
 -- 테이블 생성
 --CREATE TABLE address

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ include file="../header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,7 @@
 </head>
 <body>
 <div id="main_container">
-	<h2>채팅방</h2>			
+	<h2>${chatList.sid} 와 ${chatList.bid} 의 채팅방</h2>			
 		<div class="login-button">
             <input type="button" class="btn-login" value="뒤로가기" 
             	onClick="location.href='phonetail.do?command=chatList'"/>
@@ -49,3 +50,4 @@
 </div>
 </body>
 </html>
+<%@ include file="../footer.jsp" %>

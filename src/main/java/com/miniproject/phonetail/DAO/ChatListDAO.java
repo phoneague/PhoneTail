@@ -122,4 +122,29 @@ public class ChatListDAO {
 		}catch (SQLException e) {e.printStackTrace();
 		}finally {DB.close(con, pstmt, rs); }
 	}
+
+	public ChatListDTO filter(int int1, String userid) {
+		ChatListDTO flist = null;
+		con = DB.getConnection();
+		String sql = "select * from chatList where pseq=? and bid=?";
+		try {
+			pstmt = con.prepareStatement(sql); 
+			pstmt.setInt(1, int1);
+			pstmt.setString(2, userid);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				flist = new ChatListDTO();
+				flist.setPseq(rs.getInt("pseq"));
+				flist.setBid(rs.getString("bid"));
+				flist.setLseq(rs.getInt("lseq"));
+			}else {
+				flist = new ChatListDTO();
+				flist.setPseq(980623);
+				flist.setBid("hakhyun");
+			}
+		}catch (SQLException e) {e.printStackTrace();
+		}finally {DB.close(con, pstmt, rs);}		
+		return flist;
+	}
+	
 }

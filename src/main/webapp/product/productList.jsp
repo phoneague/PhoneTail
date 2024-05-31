@@ -7,7 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="product/script/product.js"></script>
 </head>
 <body>
 
