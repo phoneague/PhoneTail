@@ -108,8 +108,19 @@ public class QuestionDAO {
 				} finally { DB.close(con, pstmt, rs); }	
 				
 			}
-			
-}
+
+			public void deleteQna(int qseq) {
+				
+				String sql = "DELETE  FROM question WHERE qseq = ?";
+				con = DB.getConnection();
+				 try {
+				        pstmt = con.prepareStatement(sql);
+				        pstmt.setInt(1, qseq);
+				        pstmt.executeUpdate();
+				    } catch (SQLException e) { e.printStackTrace();
+				    } finally { DB.close(con, pstmt, rs); }	
+				}		
+         }
 
 
 

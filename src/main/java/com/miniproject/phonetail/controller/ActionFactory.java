@@ -3,7 +3,7 @@ package com.miniproject.phonetail.controller;
 import com.miniproject.phonetail.controller.action.Action;
 import com.miniproject.phonetail.controller.action.IndexAction;
 import com.miniproject.phonetail.controller.action.MainAction;
-import com.miniproject.phonetail.controller.customer.DeleteQnaForm;
+import com.miniproject.phonetail.controller.customer.DeleteQnaAction;
 import com.miniproject.phonetail.controller.customer.QnaListAction;
 import com.miniproject.phonetail.controller.customer.QnaViewAction;
 import com.miniproject.phonetail.controller.customer.WriteQnaAction;
@@ -76,8 +76,10 @@ public class ActionFactory {
 		else if(command.equals("qnaView"))ac = new QnaViewAction();
 		else if(command.equals("writeQnaForm"))ac = new WriteQnaFormAction();
 		else if(command.equals("writeQna"))ac = new WriteQnaAction();
-		else if(command.equals("deleteQnaForm"))ac = new DeleteQnaForm();
-    
+		else if(command.equals("deleteQna"))ac = new DeleteQnaAction();
+		
+		
+		
 		//admin
 		else if(command.equals("admin")) ac = new AdminAction();
 		else if(command.equals("adminLogin")) ac = new AdminLoginAction();
