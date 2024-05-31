@@ -139,7 +139,7 @@ SELECT cl.lseq, cl.sid, cl.bid, p.pseq, p.model, p.price
 FROM chatlist cl
 JOIN product p ON cl.pseq = p.pseq;
 
-    
+
     
 INSERT INTO admin (adminid, pwd, name, phone) VALUES
 ('admin1', 'password1', '관리자1', '010-1234-5678'),

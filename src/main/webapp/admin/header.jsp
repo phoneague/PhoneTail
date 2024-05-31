@@ -7,8 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="admin/css/admin.css">
-<script src="admin/script/admin.js"></script>
+
+
 </head>
 <body>
 <div id="wrap">
