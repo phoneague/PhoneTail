@@ -10,6 +10,7 @@ public class ReportDTO {
 	private String recontent;
 	private String restate;
 	private Timestamp indate;
+	private String pid;
 	
 	public int getReseq() {
 		return reseq;
@@ -53,11 +54,19 @@ public class ReportDTO {
 	public void setIndate(Timestamp indate) {
 		this.indate = indate;
 	}
+	public String getPid() {
+		return pid;
+	}
+	public void setPid(String pid) {
+		this.pid = pid;
+	}
 	@Override
 	public String toString() {
 		return "ReportDTO [reseq=" + reseq + ", pseq=" + pseq + ", userid=" + userid + ", retype=" + retype
-				+ ", recontent=" + recontent + ", restate=" + restate + ", indate=" + indate + "]";
+				+ ", recontent=" + recontent + ", restate=" + restate + ", indate=" + indate + ", pid=" + pid + "]";
 	}
+	
+	
 	
 	
 	
