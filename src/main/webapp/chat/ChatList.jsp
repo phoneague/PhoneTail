@@ -36,7 +36,6 @@
 
 					
 					<div class="col"><input type="button" value="입장" onClick="location.href='phonetail.do?command=chating&lseq=${chatList.lseq}'"></div>
-					<div class="col"><input type="button" value="나가기" onClick="deleteChating('')"></div> <!-- 딜리트 lseq 하면됨 -->
 				</div>
 		</c:forEach>
 	</div>

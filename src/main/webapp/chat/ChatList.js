@@ -14,3 +14,4 @@ function go_chat(pseq,userid){
 		location.href='phonetail.do?command=insertChatList&pseq='+pseq;
 	}
 }
+

@@ -6,7 +6,7 @@ SET SESSION FOREIGN_KEY_CHECKS=0;
 select*from member;
 select*from product;
 select*from question;
-
+SELECT * FROM hak WHERE sid = 'a' OR bid = 'a' ORDER BY lseq DESC;
 -- 기존 테이블 삭제
 --DROP TABLE IF EXISTS address;
 DROP TABLE IF EXISTS admin;
@@ -18,7 +18,6 @@ DROP TABLE IF EXISTS question;
 DROP TABLE IF EXISTS member;
 DROP VIEW IF EXISTS hak;
 
-select * from chatList where pseq=1 and bid='user1';
 
 -- 테이블 생성
 --CREATE TABLE address

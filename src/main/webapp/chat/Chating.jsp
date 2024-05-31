@@ -40,7 +40,7 @@
 				<input type="hidden" name="loginUser" value="${loginUser}" />
 				<input type="hidden" name="lseq" value="${chatList.lseq}" />
 				<div class="reply_row">
-						<div class="reply_coll"><input type="text" name="content" size="75"></div>
+						<div class="reply_coll"><input type="text" name="content" size="75" autofocus></div>
 						<div class="reply_coll">
 							<input type="submit" value="전송" onClick="return replyCheck();">
 						</div>
