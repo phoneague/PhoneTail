@@ -5,6 +5,7 @@ SET SESSION FOREIGN_KEY_CHECKS=0;
 
 select*from member;
 select*from product;
+select*from question;
 
 -- 기존 테이블 삭제
 --DROP TABLE IF EXISTS address;
@@ -141,7 +142,7 @@ SELECT cl.lseq, cl.sid, cl.bid, p.pseq, p.model, p.price
 FROM chatlist cl
 JOIN product p ON cl.pseq = p.pseq;
 
-    
+
     
 INSERT INTO admin (adminid, pwd, name, phone) VALUES
 ('admin1', 'password1', '관리자1', '010-1234-5678'),
@@ -309,6 +310,7 @@ INSERT INTO report (pseq, userid, retype, recontent, restate) VALUES
 
 
 UPDATE question SET qreply='';
+
 
 
 

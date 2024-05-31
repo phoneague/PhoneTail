@@ -1,15 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<script src="product/script/product.js"></script>
-<title>productInsert</title>
-</head>
-<body>
+<%@ include file="/header.jsp" %>
 		<h2>Product Insert Form</h2>
 		<form name="productInsertForm" method="post" enctype="multipart/form-data">
 			<div>
@@ -42,7 +33,7 @@
 			</div>
 			<div>
 				<label>글 내용</label>
-				<textarea name="content" rows="8"></textarea>
+				<textarea name="comment" rows="8"></textarea>
 			</div>
 			<div>
 				<label>이미지</label> <input type="file" name="image">
@@ -55,5 +46,5 @@
 			</div>
 		</form>
 
-</body>
-</html>
+
+<%@ include file="/footer.jsp"%>

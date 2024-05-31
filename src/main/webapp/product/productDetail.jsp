@@ -1,17 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="report/script/report.js"></script>
-<script src="chat/ChatList.js"></script>
-</head>
-<body>
-
+<%@ include file="/header.jsp" %>
 	<h2>Product Details</h2>
 	<article>
 		<div class="tb">
@@ -28,7 +17,7 @@
 				<div class="coltitle">판매상태</div>
 				<div class="coltitle">등록일</div>
 			</div>
-			
+
 			<div>
 				<div class="col">${productDTO.pseq}</div>
 				<div class="col">${productDTO.userid}</div>
@@ -37,7 +26,9 @@
 				<div class="col">${productDTO.model}</div>
 				<div class="col">${productDTO.price}</div>
 				<div class="col">${productDTO.comment}</div>
-				<div class="col">	<img src="product/images/${productDTO.saveimagefile}" width="300" /></div>
+				<div class="col">
+					<img src="product/images/${productDTO.saveimagefile}" width="300" />
+				</div>
 				<div class="col">${productDTO.image}</div>
 				<div class="col">${productDTO.sellstate}</div>
 				<div class="col">${productDTO.userid}</div>
@@ -53,6 +44,4 @@
 		<input type="button" value="채팅방 입성~" onClick="go_chat(${productDTO.pseq},'${login.userid}')" /> 
     <input type="button" onClick="go_report(${productDTO.pseq},'${login.userid}')" value="신고하기">
 	</div>
-
-</body>
-</html>
+<%@ include file="/footer.jsp"%>

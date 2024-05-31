@@ -3,6 +3,7 @@ package com.miniproject.phonetail.controller;
 import com.miniproject.phonetail.controller.action.Action;
 import com.miniproject.phonetail.controller.action.IndexAction;
 import com.miniproject.phonetail.controller.action.MainAction;
+import com.miniproject.phonetail.controller.customer.DeleteQnaForm;
 import com.miniproject.phonetail.controller.customer.QnaListAction;
 import com.miniproject.phonetail.controller.customer.QnaViewAction;
 import com.miniproject.phonetail.controller.customer.WriteQnaAction;
@@ -37,8 +38,10 @@ import com.miniproject.phonetail.controller.action.member.LoginFormAction;
 import com.miniproject.phonetail.controller.action.member.LogoutAction;
 import com.miniproject.phonetail.controller.action.member.UpdateMemberAction;
 import com.miniproject.phonetail.controller.action.member.UpdateMemberFormAction;
+import com.miniproject.phonetail.controller.action.report.ProcessReportAction;
 import com.miniproject.phonetail.controller.action.report.ReportAction;
 import com.miniproject.phonetail.controller.action.report.ReportFormAction;
+import com.miniproject.phonetail.controller.action.report.ReportViewAction;
 
 
 public class ActionFactory {
@@ -73,6 +76,7 @@ public class ActionFactory {
 		else if(command.equals("qnaView"))ac = new QnaViewAction();
 		else if(command.equals("writeQnaForm"))ac = new WriteQnaFormAction();
 		else if(command.equals("writeQna"))ac = new WriteQnaAction();
+		else if(command.equals("deleteQnaForm"))ac = new DeleteQnaForm();
     
 		//admin
 		else if(command.equals("admin")) ac = new AdminAction();
@@ -84,6 +88,7 @@ public class ActionFactory {
 		else if(command.equals("adminQnaReply")) ac = new AdminQnaReplyAction();
 		else if(command.equals("adminMemberList")) ac = new AdminMemberListAction();
 		else if(command.equals("adminUserStateChangeB")) ac = new AdminUserStateChangeBAction();
+		
 		
 	
 		// chat 
@@ -103,6 +108,8 @@ public class ActionFactory {
 		//report
 		else if(command.equals("reportForm")) ac = new ReportFormAction();
 		else if(command.equals("report")) ac = new ReportAction();
+		else if(command.equals("reportView")) ac = new ReportViewAction();
+		else if(command.equals("processReport")) ac = new ProcessReportAction();
 		
 		
 		// mypage

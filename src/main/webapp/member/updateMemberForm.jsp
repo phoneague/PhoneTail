@@ -7,8 +7,10 @@
 <title>joinForm</title>
 <script src="script/jquery-3.7.1.min.js"></script>
 <script src="member/script/member.js"></script>
+<link rel="stylesheet" href="css/login.css">
 </head>
 <body>
+<div id="wrap">
 <section>
 		<article>
 				<form name="joinForm" action="phonetail.do" method="post">
@@ -22,7 +24,7 @@
 					<div class="field">
 						<label>Retype Password</label><input type="password"  name="pwdCheck"></div>
 					<div class="field"><label>name</label><input type="text" name="name" value="${login.name}"></div>
-					<label>Phone</label><input type="text" name="phone" value="${login.phone}"></div>
+					<div class="field"><label>Phone</label><input type="text" name="phone" value="${login.phone}"></div>
 					<div class="field"><label>E-mail</label><input type="text" name="email" value="${login.email}"></div>
 					<div class="field">
 						<label>Zip Code</label>
@@ -42,8 +44,7 @@
 			   			<input type="submit" value="수정" onClick="return updateCheck()">
 			   			<input type="button" value="Main" onClick="location.href='phonetail.do?command=main'">	
 			   		</div>
-					
 				</form>
 		</article>
-	</div>
 </section>
+</div>

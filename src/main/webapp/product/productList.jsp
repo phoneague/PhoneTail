@@ -10,6 +10,8 @@
 </head>
 <body>
 
+<%@ include file="/header.jsp" %>
+
 <!-- 서브메뉴창 상품등록 -->
 	<a href="phonetail.do?command=productInsertForm">내폰팔기(상품등록)</a>
 	
@@ -66,8 +68,4 @@
 	</form>
 </article>
 
-
-
-
-</body>
-</html>
+<%@ include file="/footer.jsp"%>
