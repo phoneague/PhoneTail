@@ -27,7 +27,9 @@ import com.miniproject.phonetail.controller.action.admin.AdminQnaListAction;
 import com.miniproject.phonetail.controller.action.admin.AdminQnaReplyAction;
 import com.miniproject.phonetail.controller.action.admin.AdminQnaReplyFormAction;
 import com.miniproject.phonetail.controller.action.admin.AdminReportListAction;
-import com.miniproject.phonetail.controller.action.admin.AdminUserStateChangeBAction;
+import com.miniproject.phonetail.controller.action.admin.AdminUserStateChangeBtoYACtion;
+import com.miniproject.phonetail.controller.action.admin.AdminUserStateChangeNtoYAction;
+import com.miniproject.phonetail.controller.action.admin.AdminUserStateChangeYtoBAction;
 import com.miniproject.phonetail.controller.action.member.DeleteMemberAction;
 import com.miniproject.phonetail.controller.action.member.FindZipNumAction;
 import com.miniproject.phonetail.controller.action.member.IdCheckAction;
@@ -87,7 +89,9 @@ public class ActionFactory {
 		else if(command.equals("adminQnaReplyForm")) ac = new AdminQnaReplyFormAction();
 		else if(command.equals("adminQnaReply")) ac = new AdminQnaReplyAction();
 		else if(command.equals("adminMemberList")) ac = new AdminMemberListAction();
-		else if(command.equals("adminUserStateChangeB")) ac = new AdminUserStateChangeBAction();
+		else if(command.equals("adminUserStateChangeYtoB")) ac = new AdminUserStateChangeYtoBAction();
+		else if(command.equals("adminUserStateChangeBtoY")) ac = new AdminUserStateChangeBtoYACtion();
+		else if(command.equals("adminUserStateChangeNtoY")) ac = new AdminUserStateChangeNtoYAction();
 		
 		
 	

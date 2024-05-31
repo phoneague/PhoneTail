@@ -6,10 +6,10 @@
 <div id="wrap">
     <section>
         <article>
-            <h2>${loginUserName}'s MY PAGE</h2><h3><a href="phonetail.do?command=updateMemberForm">회원정보수정</a></h3>
-            <div class="tb">
+        <%@ include file="sub_menu.jsp" %>
+           	 	<div class="tb">
                 <div class="row">
-                	<div class="coltitle">My Product List</div>
+                	<div class="coltitle" >My Product List</div>
                     <div class="coltitle">My Report List</div>
                     <div class="coltitle">My QnA List</div>
                 </div>
