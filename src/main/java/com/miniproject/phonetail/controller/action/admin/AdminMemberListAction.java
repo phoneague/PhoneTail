@@ -16,51 +16,61 @@ import jakarta.servlet.http.HttpSession;
 
 public class AdminMemberListAction implements Action {
 
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		HttpSession session = request.getSession();
-		AdminDTO adto = (AdminDTO)session.getAttribute("adminUser");
-		if( adto == null ) {
-			response.sendRedirect("phonetail.do?command=admin"); 
-		}else {
-			 
-			Paging paging = new Paging(); 
-			if( request.getParameter("page")!=null) {
-					paging.setPage( Integer.parseInt( request.getParameter("page") ) );
-					session.setAttribute("page", Integer.parseInt( request.getParameter("page")  ) );
-			} else if( session.getAttribute("page") != null ) {
-					paging.setPage( (Integer)session.getAttribute("page") );
-			} else {
-					paging.setPage(1);
-					session.removeAttribute("page");
-			}
-			
-			String key="";
-			if( request.getParameter("key") != null ) {
-				key = request.getParameter("key");
-				session.setAttribute("key", key);
-			} else if( session.getAttribute("key") != null ) {
-				key = (String)session.getAttribute("key");
-			} else {
-				key="";
-				session.removeAttribute("key");
-			}
-			AdminDAO adao = AdminDAO.getInstance();
-			
-			int count = adao.getAllCount( "member", "name", key);
-			paging.setTotalCount(count);
-				
-			ArrayList<MemberDTO> memberList = adao.adminMemberList( paging , key);
-			
-			request.setAttribute("paging", paging);
-			request.setAttribute("memberList", memberList);
-			request.setAttribute("key", key);
-			
-			request.getRequestDispatcher("admin/member/memberList.jsp").forward(request, response);
-		}
-		
-		
-	}
+    @Override
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        HttpSession session = request.getSession();
+        AdminDTO adto = (AdminDTO)session.getAttribute("adminUser");
+        if (adto == null) {
+            response.sendRedirect("phonetail.do?command=admin");
+        } else {
+            
+            Paging paging = new Paging();
+            if (request.getParameter("page") != null) {
+                paging.setPage(Integer.parseInt(request.getParameter("page")));
+                session.setAttribute("page", Integer.parseInt(request.getParameter("page")));
+            } else if (session.getAttribute("page") != null) {
+                paging.setPage((Integer)session.getAttribute("page"));
+            } else {
+                paging.setPage(1);
+                session.removeAttribute("page");
+            }
+            
+            String key = "";
+            if (request.getParameter("key") != null) {
+                key = request.getParameter("key");
+                session.setAttribute("key", key);
+            } else if (session.getAttribute("key") != null) {
+                key = (String)session.getAttribute("key");
+            } else {
+                key = "";
+                session.removeAttribute("key");
+            }
 
+            String userstate = "";
+            if (request.getParameter("userstate") != null) {
+                userstate = request.getParameter("userstate");
+                session.setAttribute("userstate", userstate);
+            } else if (session.getAttribute("userstate") != null) {
+                userstate = (String)session.getAttribute("userstate");
+            } else {
+                userstate = "";
+                session.removeAttribute("userstate");
+            }
+            
+            AdminDAO adao = AdminDAO.getInstance();
+            
+            int count = adao.getAllCount("member", "name", key, userstate);
+            paging.setTotalCount(count);
+                
+            ArrayList<MemberDTO> memberList = adao.adminMemberList(paging, key, userstate);
+            
+            request.setAttribute("paging", paging);
+            request.setAttribute("memberList", memberList);
+            request.setAttribute("key", key);
+            request.setAttribute("userstate", userstate);
+            
+            request.getRequestDispatcher("admin/member/memberList.jsp").forward(request, response);
+        }
+    }
 }
