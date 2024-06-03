@@ -168,6 +168,7 @@ public class ProductDAO {
 			pstmt.setString(6, pdto.getImage());
 			pstmt.setString(7, pdto.getSaveimagefile());
 			pstmt.setInt(8, pdto.getPseq());
+			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
