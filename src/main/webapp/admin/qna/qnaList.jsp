@@ -3,7 +3,7 @@
 <%@ include file="/header.jsp"%>
 <%@ include file="../sub_menu.jsp"%>
 <h2>
-Report List
+QnA List
 </h2>
 <article>
 	<form method="post" name="frm">
@@ -33,7 +33,7 @@ Report List
 					<div class="col">${qnaDTO.qreply=='' ? 'NO' : 'YES'}</div>
 				</div>
 			</c:forEach>
-			<jsp:include page="/admin/paging/paging.jsp">
+			<jsp:include page="/paging/paging.jsp">
 				<jsp:param value="phonetail.do?command=adminQnaList" name="address" />
 			</jsp:include>
 		</div>

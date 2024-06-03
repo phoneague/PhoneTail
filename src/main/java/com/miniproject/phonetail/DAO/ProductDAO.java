@@ -178,14 +178,14 @@ public class ProductDAO {
 	}
 
 
-	public int getMyAllcount(String tablename, String fieldname, String key, String myId) {
+	public int getMyAllcount(String tablename, String myId) {
 		int count = 0;
 		con = DB.getConnection();
 //		System.out.println(tablename+"/"+fieldname+"/"+key+"/"+brand);
-		String sql = "SELECT COUNT(*) AS cnt FROM " + tablename + " WHERE " + fieldname + " LIKE CONCAT('%', ?, '%') AND brand LIKE CONCAT('%', ?, '%')";
+		String sql = "SELECT COUNT(*) AS cnt FROM " + tablename + " WHERE userid LIKE ?";
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, key);
+			pstmt.setString(1, myId);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				count = rs.getInt("cnt");
@@ -208,7 +208,6 @@ public class ProductDAO {
 		} finally { DB.close(con, pstmt, rs);  }
 	}
 
-
 	public void soldProduct(int pseq) {
 		con = DB.getConnection();
 		String sql = "update product set sellstate='Y' where pseq=?";
@@ -218,10 +217,37 @@ public class ProductDAO {
 			pstmt.executeUpdate();
 		}  catch (SQLException e) { e.printStackTrace();
 		} finally { DB.close(con, pstmt, rs);  }
-	}
-
-
-	
-		
-
+  
+	public ArrayList<ProductDTO> myProudctList(Paging paging, String myId) {
+		ArrayList<ProductDTO> list = new ArrayList<>();
+		con = DB.getConnection();
+		String sql = "SELECT * FROM product WHERE userid LIKE ? "
+				+ " ORDER BY indate DESC, pseq DESC LIMIT ? OFFSET ?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, myId);
+			pstmt.setInt(2, paging.getDisplayRow());
+			pstmt.setInt(3, paging.getStartNum() - 1);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				ProductDTO pdto = new ProductDTO();
+				pdto.setPseq(rs.getInt("pseq") );
+				pdto.setBrand(rs.getString("brand") );
+				pdto.setSeries(rs.getString("series") );
+				pdto.setModel(rs.getString("model") );
+				pdto.setPrice(rs.getInt("price"));
+				pdto.setComment(rs.getString("comment") );
+				pdto.setImage(rs.getString("image") );
+				pdto.setSaveimagefile(rs.getString("saveimagefile") );
+				pdto.setSellstate(rs.getString("sellstate") );
+				pdto.setIndate(rs.getTimestamp("indate") );
+				pdto.setUserid(rs.getString("userid") );
+				list.add(pdto);
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DB.close(con, pstmt, rs);
+		}
+		return list;
 }

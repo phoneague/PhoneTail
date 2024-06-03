@@ -1,0 +1,20 @@
+
+#sub_menu {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    width:200px;
+    height: 500px;
+    justify-content:center;
+}
+
+#sub_menu div {
+    padding: 10px;
+    margin: 3px;
+}
+
+#sub_menu div a {
+    font-size: 120%;
+    font-weight: bold;
+    text-decoration: none;
+}

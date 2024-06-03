@@ -25,7 +25,6 @@ public class QuestionDAO {
 	    	PreparedStatement pstmt = null;
 	    	ResultSet rs = null;
 	    	
-		    // 모든 질문을 가져오는 메서드
 		    public ArrayList<QuestionDTO> getAllQuestions(Paging paging, String key) {
 		        ArrayList<QuestionDTO> questionList = new ArrayList<>();
 
@@ -45,8 +44,9 @@ public class QuestionDAO {
 		                question.setTitle(rs.getString("title"));
 		                question.setIndate(rs.getTimestamp("indate"));
 		                question.setContent(rs.getString("content"));
+						question.setReadCount(rs.getInt("readCount"));
 		                question.setQreply(rs.getString("qreply"));
-		                // 필요한 다른 속성들도 마찬가지로 설정해주세요.
+
 		                questionList.add(question);
 		            }
 		        } catch (SQLException e) { e.printStackTrace();
@@ -70,13 +70,14 @@ public class QuestionDAO {
 						question.setTitle(rs.getString("title"));
 						question.setContent(rs.getString("content"));
 						question.setIndate(rs.getTimestamp("indate"));
+						question.setReadCount(rs.getInt("readCount"));
 						question.setQreply(rs.getString("qreply"));
 					}
 				} catch (SQLException e) { e.printStackTrace();
 				} finally { DB.close(con, pstmt, rs); }	
 				return question;
 			}
-
+             
 			public int getAllCount(String tablename, String fieldname, String key) {
 				int count = 0;
 				con = DB.getConnection();
@@ -161,7 +162,7 @@ public class QuestionDAO {
 		                question.setIndate(rs.getTimestamp("indate"));
 		                question.setContent(rs.getString("content"));
 		                question.setQreply(rs.getString("qreply"));
-		                // 필요한 다른 속성들도 마찬가지로 설정해주세요.
+
 		                questionList.add(question);
 		            }
 		        } catch (SQLException e) { e.printStackTrace();
@@ -170,7 +171,17 @@ public class QuestionDAO {
 		          return questionList;
 			}
 			
-}
+			public void updateReadCount(int qseq) {
+				String sql = "UPDATE question SET readCount = readCount + 1 WHERE qseq = ?";
+			    try {
+			    	     con = DB.getConnection();
+			    		 pstmt = con.prepareStatement(sql);
+			             pstmt.setInt(1, qseq);
+			             pstmt.executeUpdate();
+			    } catch (SQLException e) { e.printStackTrace();
+			    } finally { DB.close(con, pstmt, rs); }
+			}
+}		
 
 
 

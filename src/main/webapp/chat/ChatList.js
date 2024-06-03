@@ -15,3 +15,9 @@ function go_chat(pseq,userid){
 	}
 }
 
+function go_search(command) {
+	let Form = document.chatListForm;
+	var url = "phonetail.do?command=" + command + "&page=1"
+	Form.action = url;
+	Form.submit();
+}

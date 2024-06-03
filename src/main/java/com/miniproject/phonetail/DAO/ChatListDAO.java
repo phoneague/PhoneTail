@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import com.miniproject.phonetail.DTO.ChatListDTO;
 import com.miniproject.phonetail.DTO.ChatingDTO;
 import com.miniproject.phonetail.util.DB;
+import com.miniproject.phonetail.util.Paging;
 
 public class ChatListDAO {
 
@@ -146,5 +147,54 @@ public class ChatListDAO {
 		}finally {DB.close(con, pstmt, rs);}		
 		return flist;
 	}
+
+	public int AllList(String string, String string2, String key, int price, String userid) {
+		int count = 0;
+		con = DB.getConnection();
+		String sql = "select count(*) as cnt from " + string +" where sid = ? OR bid = ? AND " + string2 + "  LIKE CONCAT('%', ?, '%') or price LIKE CONCAT('%', ?, '%')";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			pstmt.setString(2, userid);
+			pstmt.setString(3, key);
+			pstmt.setInt(4, price);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt("cnt");
+			}
+		}catch (SQLException e) { e.printStackTrace();
+		}finally {DB.close(con,pstmt, rs); }
+		return count;
+	}
 	
+	public ArrayList<ChatListDTO> chatList(Paging paging, String key, int price, String userid){
+		ArrayList<ChatListDTO> list = new ArrayList<ChatListDTO>();
+		con = DB.getConnection();
+		String sql = "select * from hak WHERE model LIKE CONCAT('%',?,'%') AND price LIKE CONCAT('%', ?, '%') AND sid = ? OR bid = ? "
+				+ "ORDER BY lseq DESC LIMIT ? OFFSET ?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, key);
+			pstmt.setInt(2, price);
+			pstmt.setString(3, userid);
+			pstmt.setString(4, userid);
+			pstmt.setInt(5, paging.getDisplayRow());
+			pstmt.setInt(6, paging.getStartNum() - 1);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ChatListDTO cdto = new ChatListDTO();
+				cdto.setLseq(rs.getInt("lseq"));
+				cdto.setSid(rs.getString("sid"));
+				cdto.setBid(rs.getString("bid"));
+				cdto.setPseq(rs.getInt("pseq"));
+				cdto.setModel(rs.getString("model"));
+				cdto.setPrice(rs.getInt("price"));
+				list.add(cdto);
+			}
+		} catch(SQLException e) {e.printStackTrace();		
+		} finally { DB.close(con, pstmt, rs);
+		}
+		return list;
+	}
 }
+
