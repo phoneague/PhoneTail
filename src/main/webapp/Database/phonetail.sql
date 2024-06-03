@@ -142,7 +142,6 @@ FROM chatlist cl
 JOIN product p ON cl.pseq = p.pseq;
 
 
-    
 INSERT INTO admin (adminid, pwd, name, phone) VALUES
 ('admin1', 'password1', '관리자1', '010-1234-5678'),
 ('admin2', 'password2', '관리자2', '010-8765-4321'),

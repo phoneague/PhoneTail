@@ -1,5 +1,7 @@
 package com.miniproject.phonetail.DTO;
 
+import java.sql.Timestamp;
+
 public class ChatListDTO {
 
 	private int lseq;
@@ -8,7 +10,7 @@ public class ChatListDTO {
 	private int pseq;
 	private String model;
 	private int price;
-
+	
 	public int getPrice() {
 		return price;
 	}
