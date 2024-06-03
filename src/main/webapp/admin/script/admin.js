@@ -37,8 +37,8 @@ function userstate_YtoB() {
  
     } else { // 체크박스가 여러 개 있는 경우 처리
         for (var i = 0; i < checkboxes.length; i++) {
-            if (checkboxes[i].checked == true) {
-                if (checkboxes[i].dataset.userstate === "B") {
+            if (checkboxes[0].checked == true) {
+                if (checkboxes[0].dataset.userstate === "B") {
                     alert("해당 회원은 이미 블랙회원입니다");
                     return;
                 } else if (checkboxes[i].dataset.userstate === "N") {
