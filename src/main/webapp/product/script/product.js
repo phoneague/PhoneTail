@@ -88,3 +88,26 @@ function go_chat(pseq) {
 
 }
 
+function sold(pseq){
+	let answer = confirm("거래를 완료하셨나요?");
+	if(answer) {
+		window.location.href = "phonetail.do?command=productSold&pseq=" + pseq;
+	}
+	
+}
+
+function previewImage(){
+	document.getElementById('image').addEventListener('change', function(event) {
+       const file = event.target.files[0];
+       const reader = new FileReader();
+       reader.onload = function(e) {
+            const preview = document.getElementById('preview');
+           preview.src = e.target.result;
+       }
+       if (file) {
+           reader.readAsDataURL(file);
+       }
+   });
+}
+
+

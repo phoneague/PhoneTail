@@ -209,6 +209,18 @@ public class ProductDAO {
 	}
 
 
+	public void soldProduct(int pseq) {
+		con = DB.getConnection();
+		String sql = "update product set sellstate='Y' where pseq=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, pseq);
+			pstmt.executeUpdate();
+		}  catch (SQLException e) { e.printStackTrace();
+		} finally { DB.close(con, pstmt, rs);  }
+	}
+
+
 	
 		
 

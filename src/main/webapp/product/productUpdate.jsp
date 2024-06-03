@@ -4,7 +4,6 @@
 
 <h2>Product Insert Form</h2>
 		<form name="productUpdateForm" method="post" enctype="multipart/form-data">
-		<h3>pseq는 ${ProductDTO.pseq}</h3>
 		<input type="hidden" name="pseq" value="${ProductDTO.pseq}">
 		<input type="hidden" name="oldimage" value="${ProductDTO.image}">
 		<input type="hidden" name="oldsaveimagefile" value="${ProductDTO.saveimagefile}">
@@ -46,10 +45,14 @@
 			</div>
 			<div>
 				<label>글 내용</label>
-				<textarea name="comment" rows="8">"${ProductDTO.comment}"</textarea>
+				<textarea name="comment" rows="8">${ProductDTO.comment}</textarea>
 			</div>
 			<div>
-				<label>이미지</label> <input type="file" name="image" value="${ProductDTO.saveimagefile}">
+				<label>이미지</label> <input type="file" name="image" onClick="previewImage()">
+				<img id='preview' src="product/images/${ProductDTO.saveimagefile}" width="200" />
+				
+				
+				
 			</div>
 			<div>
 				<input type="button" value="상품수정" onClick="go_update()"> 

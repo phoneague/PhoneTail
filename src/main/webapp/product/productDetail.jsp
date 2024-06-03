@@ -37,6 +37,19 @@
 			</div>
 		</div>
 	</article>
+	
+		<c:choose>
+			<c:when test="${productDTO.userid eq login.userid}">
+				<input  type="button" value="판매확정" onClick="sold(${productDTO.pseq})"/>
+			</c:when>
+			
+			<c:otherwise>
+				<input type="button" value="사러가기" onClick="buy()" />
+			</c:otherwise>
+		
+		</c:choose>
+	
+	
 
 	<div>
 		<input type="button" value="상품수정" onClick="go_updateForm(${productDTO.pseq}, '${productDTO.userid}', '${login.userid}')" />
