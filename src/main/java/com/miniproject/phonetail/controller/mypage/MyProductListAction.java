@@ -1,9 +1,11 @@
 package com.miniproject.phonetail.controller.mypage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import com.miniproject.phonetail.DAO.ProductDAO;
 import com.miniproject.phonetail.DTO.MemberDTO;
+import com.miniproject.phonetail.DTO.ProductDTO;
 import com.miniproject.phonetail.controller.action.Action;
 import com.miniproject.phonetail.util.Paging;
 
@@ -12,7 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-public class myProductListAction implements Action {
+public class MyProductListAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,23 +32,24 @@ public class myProductListAction implements Action {
 				page = (Integer) session.getAttribute("page"); // 바로 세션에다가 투입
 			}
 
-			String key = "";
-			if (request.getParameter("key") != null) {
-				key = request.getParameter("key");
-				session.setAttribute("key", key);
-			} else if (session.getAttribute("key") != null) {
-				key = (String) session.getAttribute("key");
-			} else {
-				session.removeAttribute("key");
-			}
+			
 			Paging paging = new Paging();
 			paging.setPage(page);
 
 			String myId = mdto.getUserid();
 			
 			ProductDAO pdao = ProductDAO.getInstance();
-			int count = pdao.getMyAllcount("product", "model", key, myId);
-			
+			int count = pdao.getMyAllcount("product", myId);
+			paging.setTotalCount(count);
+			if(count==0) {
+				 request.setAttribute("message", "내가 등록한 상품이 없습니다.");
+			}else {
+				ArrayList<ProductDTO> productList = pdao.myProudctList(paging,myId);
+				
+				request.setAttribute("paging", paging);
+				request.setAttribute("productList", productList);
+			}
+			request.getRequestDispatcher("mypage/myProductList.jsp").forward(request, response);
 		}
 	}
 

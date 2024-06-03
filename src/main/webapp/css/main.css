@@ -11,11 +11,13 @@ h2 {
 	color:#3f4549;
 	}
 
-.container {
+#container {
     display: flex; 
     justify-content: center; 
-    align-items: center; 
-    height: 100vh; 
   }
 
+#container img{
+	width:60%;
+	height:60%;
+}
 
