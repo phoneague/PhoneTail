@@ -45,7 +45,7 @@
                 </c:forEach>
                 <div class="row_scroll">
                     <div class="col_scroll" >
-                        <jsp:include page="/admin/paging/paging.jsp">
+                        <jsp:include page="/paging/paging.jsp">
                             <jsp:param value="phonetail.do?command=adminMemberList" name="address" />
                         </jsp:include>
                     </div>
