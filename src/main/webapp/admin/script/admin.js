@@ -23,16 +23,17 @@ function userstate_YtoB() {
     var checkboxes = document.getElementsByName('userstate');
 
     // 체크박스가 한 개만 있는 경우 처리
-    if (checkboxes.length == undefined) {
-        if (checkboxes.checked == true) {
-            if (checkboxes.dataset.userstate === "B") {
+    if (checkboxes.length === 1) { // 여기를 수정했습니다
+        if (checkboxes[0].checked == true) {
+            if (checkboxes[0].dataset.userstate === "B") {
                 alert("해당 회원은 이미 블랙회원입니다");
                 return;
-            } else if(checkboxes.dataset.userstate === "N"){
+            } else if(checkboxes[0].dataset.userstate === "N"){
 				alert("해당 회원은 탈퇴(휴면)회원입니다");
+				return;
 			}
-                count++;
-            }
+            count++;
+        }
  
     } else { // 체크박스가 여러 개 있는 경우 처리
         for (var i = 0; i < checkboxes.length; i++) {
@@ -68,9 +69,9 @@ function userstate_BtoY(){
 	var checkboxes = document.getElementsByName('userstate');
 
     // 체크박스가 한 개만 있는 경우 처리
-    if (checkboxes.length == undefined) {
-        if (checkboxes.checked == true) {
-            if (checkboxes.dataset.userstate === "Y") {
+    if (checkboxes.length === 1) {
+        if (checkboxes[0].checked == true) {
+            if (checkboxes[0].dataset.userstate === "Y") {
                 alert("해당 회원은 이미 활성회원입니다");
                 return;
             } else if(checkboxes.dataset.userstate==="N"){
@@ -81,11 +82,11 @@ function userstate_BtoY(){
             }
     } else { // 체크박스가 여러 개 있는 경우 처리
         for (var i = 0; i < checkboxes.length; i++) {
-            if (checkboxes[i].checked == true) {
-                if (checkboxes[i].dataset.userstate === "Y") {
+            if (checkboxes.checked == true) {
+                if (checkboxes[0].dataset.userstate === "Y") {
                     alert("해당 회원은 이미 활성회원입니다");
                     return;
-                } else if (checkboxes[i].dataset.userstate === "N") {
+                } else if (checkboxes[0].dataset.userstate === "N") {
                     alert("해당 회원은 탈퇴(휴면)회원입니다");
                     return;
                 } else {
@@ -121,12 +122,12 @@ function userstate_NtoY(){
 		var checkboxes = document.getElementsByName('userstate');
 
     // 체크박스가 한 개만 있는 경우 처리
-    if (checkboxes.length == undefined) {
+    if (checkboxes.length === 1) {
         if (checkboxes.checked == true) {
-            if (checkboxes.dataset.userstate === "Y") {
+            if (checkboxes[0].dataset.userstate === "Y") {
                 alert("해당 회원은 이미 활성회원입니다");
                 return;
-            } else if(checkboxes.dataset.userstate==="B"){
+            } else if(checkboxes[0].dataset.userstate==="B"){
 				alert("해당 회원은 블랙회원입니다. 블랙해제를 하시려면 블랙해제 버튼을 눌러주세요");
                 return;
 			}
@@ -134,11 +135,11 @@ function userstate_NtoY(){
             }
     } else { // 체크박스가 여러 개 있는 경우 처리
         for (var i = 0; i < checkboxes.length; i++) {
-            if (checkboxes[i].checked == true) {
-                if (checkboxes[i].dataset.userstate === "Y") {
+            if (checkboxes.checked == true) {
+                if (checkboxes[0].dataset.userstate === "Y") {
                     alert("해당 회원은 이미 활성회원입니다");
                     return;
-                } else if (checkboxes[i].dataset.userstate === "B") {
+                } else if (checkboxes[0].dataset.userstate === "B") {
                     alert("해당 회원은 블랙회원입니다. 블랙해제를 하시려면 블랙해제 버튼을 눌러주세요");
                     return;
                 } else {
