@@ -46,26 +46,28 @@ public class AdminDAO {
 		return adto;
 	}
 
-	public int getAllCount(String tablename, String fieldname, String key) {
-		int count = 0;
-		con = DB.getConnection();
-		System.out.println(tablename+"/"+fieldname+"/"+key);
-		String sql = "SELECT COUNT(*) AS cnt FROM " + tablename + " WHERE " + fieldname + " LIKE CONCAT('%', ?, '%')";
-		// 검색어가 '부츠' CONCAT의 결과 '%부츠%' -> 부츠를 포함한 상품명 검색
-		// 검색어가 '' CONCAT의 결과 '%%' -> 모두검색
-		try {
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, key);
-			rs = pstmt.executeQuery();
-			if (rs.next())
-				count = rs.getInt("cnt");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			DB.close(con, pstmt, rs);
-		}
-		return count;
-	}
+	public int getAllCount(String tableName, String fieldName, String key, String userstate) {
+        int count = 0;
+        String sql = "SELECT COUNT(*) FROM " + tableName + " WHERE " + fieldName + " LIKE ?";
+        if (userstate != null && !userstate.isEmpty()) {
+            sql += " AND userstate = ?";
+        }
+        
+        try (Connection con = DB.getConnection();
+             PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setString(1, "%" + key + "%");
+            if (userstate != null && !userstate.isEmpty()) {
+                pstmt.setString(2, userstate);
+            }
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
 
 	public ArrayList<ReportDTO> adminReportList(Paging paging, String key) {
 		ArrayList<ReportDTO>list = new ArrayList<>();
@@ -98,37 +100,48 @@ public class AdminDAO {
 		return list;
 	}
   
-	public ArrayList<MemberDTO> adminMemberList(Paging paging, String key) {
-		ArrayList<MemberDTO> list = new ArrayList<MemberDTO>();
-		String sql = "select * from member "
-				+ " where name like concat('%', ? , '%') "
-				+ " order by indate desc "
-				+ " limit ? offset ?";
-		con = DB.getConnection();
-		try {
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, key);
-			pstmt.setInt(2,  paging.getDisplayRow() );
-			pstmt.setInt(3,  paging.getStartNum()-1);
-			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				MemberDTO mdto = new MemberDTO();
-				mdto.setUserid( rs.getString("userid") );
-				mdto.setPwd(rs.getString("pwd"));
-				mdto.setName(rs.getString("name"));
-				mdto.setEmail(rs.getString("email"));
-				mdto.setAddress1(rs.getString("address1"));
-				mdto.setAddress2(rs.getString("address2"));
-				mdto.setPhone(rs.getString("phone"));
-				mdto.setUserstate(rs.getString("userstate"));
-				mdto.setIndate(rs.getTimestamp("indate"));
-				
-				list.add(mdto);
-			}
-		} catch (SQLException e) { e.printStackTrace();
-		} finally { DB.close(con, pstmt, rs);  }
-		return list;
+	public ArrayList<MemberDTO> adminMemberList(Paging paging, String key, String userstate) {
+	    ArrayList<MemberDTO> list = new ArrayList<>();
+	    String sql = "SELECT * FROM member WHERE userid LIKE ? ";
+	    if (userstate != null && !userstate.isEmpty()) {
+	        sql += "AND userstate = ? ";
+	    }
+	    sql += "ORDER BY indate DESC LIMIT ? OFFSET ?";
+	    
+	    try {
+	        con = DB.getConnection();
+	        pstmt = con.prepareStatement(sql);
+	        pstmt.setString(1, "%" + key + "%");
+	        int paramIndex = 2;
+	        if (userstate != null && !userstate.isEmpty()) {
+	            pstmt.setString(paramIndex++, userstate);
+	        }
+	        pstmt.setInt(paramIndex++, paging.getDisplayRow());
+	        pstmt.setInt(paramIndex, paging.getStartNum() - 1);
+	        rs = pstmt.executeQuery();
+	        
+	        while (rs.next()) {
+	            MemberDTO mdto = new MemberDTO();
+	            mdto.setUserid(rs.getString("userid"));
+	            mdto.setPwd(rs.getString("pwd"));
+	            mdto.setName(rs.getString("name"));
+	            mdto.setEmail(rs.getString("email"));
+	            mdto.setAddress1(rs.getString("address1"));
+	            mdto.setAddress2(rs.getString("address2"));
+	            mdto.setPhone(rs.getString("phone"));
+	            mdto.setUserstate(rs.getString("userstate"));
+	            mdto.setIndate(rs.getTimestamp("indate"));
+	            
+	            list.add(mdto);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        DB.close(con, pstmt, rs);
+	    }
+	    return list;
 	}
+
 
 
 	public void questionReply(int qseq, String qreply) {
