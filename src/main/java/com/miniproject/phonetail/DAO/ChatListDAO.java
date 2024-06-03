@@ -28,7 +28,7 @@ public class ChatListDAO {
 	public ArrayList<ChatListDTO> getAllList(String id) {
 		ArrayList<ChatListDTO> list = new ArrayList<ChatListDTO>();
 		con = DB.getConnection();
-		String sql = "SELECT * FROM hak WHERE sid = ? OR bid = ? ORDER BY lseq DESC;";
+		String sql = "SELECT * FROM hak WHERE sid = ? OR bid = ? ORDER BY lseq DESC";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
