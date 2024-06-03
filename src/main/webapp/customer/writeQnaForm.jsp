@@ -1,18 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="customer/script/customer.js">
-</script>
-
-
-</head>
-<body>
+<%@ include file="/header.jsp"%>
 <section>
-
 		<article>
 			<form name="qnaWriteForm"  method="post">
 				<h2> QnA Write </h2>
@@ -26,7 +15,7 @@
 				</div>			
 				<div class="field" >
 						<label>질문내용</label>
-						<textarea name="content" rows="10" cols="85"></textarea>
+						<textarea name="content" rows="10" cols="150"></textarea>
 				</div>
 				<div class="btn" >
 					 <input type="button" value="제출하기"  onClick="go_write()">
@@ -36,7 +25,5 @@
 		</article>
 		
 </section>
-
-</body>
-</html>
+<%@ include file="/footer.jsp"%>
 

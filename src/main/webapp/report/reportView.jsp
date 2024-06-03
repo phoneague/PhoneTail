@@ -1,17 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/header.jsp"%>
-<style>
-table, th, td {
-	border: 1px solid black;
-	border-collapse: collapse;
-	padding: 8px;
-}
 
-th {
-	background-color: #3f4549;
-}
-</style>
 </head>
 <body>
 		<h2>Report View</h2>
@@ -65,7 +55,7 @@ th {
 				<a href="phonetail.do?command=productDetail&pseq=${reportDTO.pseq}">신고 대상 게시글 확인하기</a>
 			</div>
 			<input name="pid" type="hidden" value="${reportDTO.pid}" />
-			
+			<c:if test="${!empty adminUser.adminid}">
 				<h2>신고처리</h2>
 				<select name="newRestate" style="width:250px;">
 					<option value="${reportDTO.restate}">--신고처리하기--</option>
@@ -73,6 +63,7 @@ th {
 					<option value="S">보류하기</option>
 				</select>
 				<input type="button" style="width:200px;" value="처리하기" onClick="processReport()">
+				</c:if>
 		</form>
 	</article>
-	<%@ include file="/footer.jsp"%>
+<%@ include file="/footer.jsp"%>

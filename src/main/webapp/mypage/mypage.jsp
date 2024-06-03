@@ -41,5 +41,5 @@
 	</article>
 </section>
 <h3><a href="phonetail.do?command=updateMemberForm">회원정보수정</a></h3>
-<h3><a onClick="withDraw()">회원탈퇴</a></h3>
+<h3><a style="cursor: pointer;" onClick="withDraw()">회원탈퇴</a></h3>
 <%@ include file="../footer.jsp"%>
