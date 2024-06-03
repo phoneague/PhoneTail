@@ -140,8 +140,6 @@ CREATE VIEW hak AS
 SELECT cl.lseq, cl.sid, cl.bid, p.pseq, p.model, p.price
 FROM chatlist cl
 JOIN product p ON cl.pseq = p.pseq;
-DROP VIEW hak;
-
 
 
 INSERT INTO admin (adminid, pwd, name, phone) VALUES
