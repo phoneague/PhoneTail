@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/header.jsp"%>
-<%@ include file="mypage_submenu.jsp"%>
+
 <h2>My Product List</h2>
+<div class="content-wrapper">
+<%@ include file="mypage_submenu.jsp"%>  
 <article>
 	<form name="productListForm" method="post">
 		<div class="tb">
@@ -26,8 +28,6 @@
 					<div class="col">${productDTO.sellstate}</div>
 					<div class="col">${productDTO.indate}</div>
 				</div>
-				
-				
 			</c:forEach>
 			<jsp:include page="/paging/paging.jsp">
 				<jsp:param value="phonetail.do?command=myProductList" name="address" />
@@ -35,4 +35,5 @@
 		</div>
 	</form>
 </article>
+</div>
 <%@ include file="/footer.jsp"%>
