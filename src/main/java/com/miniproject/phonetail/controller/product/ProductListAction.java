@@ -52,6 +52,7 @@ public class ProductListAction implements Action {
 		
 		Paging paging = new Paging();
 		paging.setPage(page);
+		paging.setDisplayRow(20);
 		
 		
 		ProductDAO pdao = ProductDAO.getInstance();
