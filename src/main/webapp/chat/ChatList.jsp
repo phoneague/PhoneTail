@@ -11,6 +11,17 @@
 <body>
 	<div class="board">
 		<h2>${loginUser}님의 채팅방</h2>
+		
+		<form name="chatListForm" method="post">
+		
+				<div class="col" style="display: flex; align-items:center;">
+					모델명 &nbsp; <input type="text" name="key" value="${key}" /> &nbsp;
+					&nbsp; &nbsp; <input class="btn" type="button" name="btn_search"
+						value="검색" onClick="go_search('chatList')" />
+					&nbsp;&nbsp;&nbsp; 
+				</div>
+		</form>
+		
 		<div class="title_row">
 			<div class="title_col">채팅방번호</div>
 			<div class="title_col">제품넘버</div>
@@ -38,6 +49,9 @@
 					<div class="col"><input type="button" value="입장" onClick="location.href='phonetail.do?command=chating&lseq=${chatList.lseq}'"></div>
 				</div>
 		</c:forEach>
+		<jsp:include page="/paging/paging.jsp">
+				<jsp:param value="phonetail.do?command=chatList" name="address" />
+		</jsp:include>
 	</div>
 </body>
 </html>
