@@ -17,8 +17,7 @@ DROP TABLE IF EXISTS product;
 DROP TABLE IF EXISTS question;
 DROP TABLE IF EXISTS member;
 DROP VIEW IF EXISTS hak;
-
-
+ 
 -- 테이블 생성
 --CREATE TABLE address
 --(
@@ -200,11 +199,11 @@ INSERT INTO product (brand, series, model, price, comment, image, saveimagefile,
 ('Apple', 'iPhone', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
 ('Samsung', 'S Series', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
 ('Samsung', 'Z Series', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
-('LG', 'G8', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'user1'),
+('LG', 'G8', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'uuser1'),
 ('Apple', 'iPhone', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
 ('Samsung', 'S Series', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
 ('Samsung', 'Z Series', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
-('LG', 'G8', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'user1'),
+('LG', 'G8', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'uuser1'),
 ('Samsung', 'S Series', 'GalaxyS24', 900000, '최신 모델', 'GalaxyS24.jpg', 'GalaxyS24.jpg', 'N', now(), 'user2');
 
 
