@@ -1,0 +1,177 @@
+.content-wrapper {
+    display: flex;
+    font-family:"Noto Sans KR", sans-serif;
+}
+
+h2 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-family: "Roboto", sans-serif;
+    font-size: 200%;
+    margin: 30px;
+}
+
+a {
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+}
+
+article {
+    width: 100%;
+    flex: 4;
+    display: flex;
+}
+
+article form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+article form h2 {
+    margin: 0;
+    margin-bottom: 20px;
+    font-weight: normal;
+    font-size: 28px;
+}
+
+article form .field {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 5px;
+}
+
+article form .field label,
+article form .field input {
+    flex: 1;
+}
+
+article form .field label {
+    margin-right: 10px; /* 아이디와 실제 아이디 값의 간격 조정 */
+}
+
+article form .field input {
+    padding: 5px;
+    border-radius: 3px;
+}
+
+article form .field div {
+    flex: 1;
+    display: flex;
+}
+
+article form .field div input[type=text] {
+    flex: 1;
+}
+
+article form .field div input[type=button] {
+    flex: 1;
+}
+
+article form .btn {
+    flex: 1;
+    display: flex;
+    margin: 10px 0;
+    justify-content: center;
+}
+
+article form .btn input {
+    flex: 1;
+    margin: 10px 3px;
+    background-color: gray;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+#logo {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logo img {
+    vertical-align: middle;
+}
+
+#logo input {
+    padding: 5px;
+    font-weight: bold;
+    font-size: 120%;
+}
+
+.tb {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.row {
+    display: flex;
+}
+
+.coltitle {
+    display: flex;
+    flex: 1; /* 동일한 flex 값으로 설정 */
+    background: #3f4549;
+    margin: 1px;
+    padding: 10px;
+    color: white;
+    text-align: center;
+    justify-content: center;
+}
+
+.col {
+    display: flex;
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    justify-content: center;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+}
+
+.row_scroll{
+	display: flex;
+    flex: 1;
+    margin: 1px;
+    padding: 10px;
+    text-align: center;
+    justify-content: center;
+}
+
+.col_scroll{
+	display: flex;
+    flex: 1;
+    margin: 1px;
+    padding: 10px;
+    text-align: center;
+    justify-content: center;
+	
+}
+
+footer {
+    width: 100%;
+}
+
+footer div {
+    font-size: 110%;
+}
+
+.btn input {
+    text-align: center;
+}
