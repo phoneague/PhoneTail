@@ -1,14 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="admin/css/admin.css">
-<script src="admin/script/admin.js"></script>
-</head>
-<body>
+<%@ include file="/header.jsp"%>
 	<div id="wrap">
 		<article>
 			<form method="post" action="phonetail.do?command=adminLogin"
@@ -30,5 +22,4 @@
 			</form>
 		</article>
 	</div>
-</body>
-</html>
+<%@ include file="/footer.jsp"%>

@@ -43,7 +43,7 @@ Member List
 		</c:forEach>
 		<div class="row">
 			<div class="col">
-		 		<jsp:include page="/admin/paging/paging.jsp" >
+		 		<jsp:include page="/paging/paging.jsp" >
 					<jsp:param value="phonetail.do?command=adminMemberList" name="address"/>
 				</jsp:include>
 			</div>
