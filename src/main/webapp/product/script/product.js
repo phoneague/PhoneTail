@@ -77,8 +77,10 @@ function go_delete(pseq, sellerId, loginId) {
 		alert("본인이 쓴 글만 삭제할 수 있습니다.");
 		document.loginForm.userid.focus();
 	}
-	alert("상품을 수정하시겠습니까?");
-	window.location.href = "phonetail.do?command=productDelete&pseq=" + pseq;
+	let answer = confirm("정말로 삭제하시겠습니까?");
+	if(answer) {
+			window.location.href = "phonetail.do?command=productDelete&pseq=" + pseq;
+	} 
 }
 
 

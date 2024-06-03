@@ -197,6 +197,18 @@ public class ProductDAO {
 	}
 
 
+	public void deleteProduct(int pseq) {
+		con = DB.getConnection();
+		String sql = "delete from product where pseq=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, pseq);
+			pstmt.executeUpdate();
+		} catch (SQLException e) { e.printStackTrace();
+		} finally { DB.close(con, pstmt, rs);  }
+	}
+
+
 	
 		
 
