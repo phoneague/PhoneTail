@@ -18,6 +18,7 @@ public class QnaViewAction implements Action {
 		int qseq = Integer.parseInt( request.getParameter("qseq"));
 		
 		QuestionDAO qdao =  QuestionDAO.getInstance();
+		qdao.updateReadCount(qseq);
 		QuestionDTO qdto  = qdao.getQna(qseq);
 		
 		request.setAttribute("QuestionDTO", qdto);

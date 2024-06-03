@@ -94,6 +94,7 @@ CREATE TABLE question
     content varchar(1000) NOT NULL,
     indate datetime DEFAULT now() NOT NULL,
     userid varchar(45) NOT NULL,
+    readCount int default 0,
     qreply varchar(1000),
     PRIMARY KEY (qseq)
 );
