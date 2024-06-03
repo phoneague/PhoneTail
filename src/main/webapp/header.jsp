@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>PhoneTail</title>
+<link rel="stylesheet" href="admin/css/adminReport.css">
 <link rel="stylesheet" href="css/header_footer.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +16,7 @@
 <link rel="stylesheet" href="customer/css/qna.css">
 <link rel="stylesheet" href="admin/css/sub_menu.css">
 <link rel="stylesheet" href="admin/css/admin_member.css">
+<link rel="stylesheet" href="admin/css/adminReportView.css">
   
 <script src="script/jquery-3.7.1.min.js"></script>
 <script src="product/script/product.js"></script>

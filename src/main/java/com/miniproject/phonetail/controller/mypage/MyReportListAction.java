@@ -31,15 +31,7 @@ public class MyReportListAction implements Action {
 	            page = (Integer) session.getAttribute("page"); // 바로 세션에다가 투입
 	        }
 	        
-	        String key="";
-			if(request.getParameter("key")!=null) {
-				key=request.getParameter("key");
-				session.setAttribute("key",key);
-			}else if(session.getAttribute("key") !=null) {
-				key = (String)session.getAttribute("key");
-			}else {
-				session.removeAttribute("key");
-			}
+	        
 			Paging paging = new Paging();
 			paging.setPage(page);
 			
