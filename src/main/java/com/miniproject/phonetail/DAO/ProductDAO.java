@@ -217,6 +217,7 @@ public class ProductDAO {
 			pstmt.executeUpdate();
 		}  catch (SQLException e) { e.printStackTrace();
 		} finally { DB.close(con, pstmt, rs);  }
+	}
   
 	public ArrayList<ProductDTO> myProudctList(Paging paging, String myId) {
 		ArrayList<ProductDTO> list = new ArrayList<>();
@@ -250,4 +251,5 @@ public class ProductDAO {
 			DB.close(con, pstmt, rs);
 		}
 		return list;
+	}
 }
