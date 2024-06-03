@@ -168,6 +168,7 @@ public class ProductDAO {
 			pstmt.setString(6, pdto.getImage());
 			pstmt.setString(7, pdto.getSaveimagefile());
 			pstmt.setInt(8, pdto.getPseq());
+			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -193,6 +194,18 @@ public class ProductDAO {
 		} finally { DB.close(con, pstmt, rs);  }
 
 		return count;
+	}
+
+
+	public void deleteProduct(int pseq) {
+		con = DB.getConnection();
+		String sql = "delete from product where pseq=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, pseq);
+			pstmt.executeUpdate();
+		} catch (SQLException e) { e.printStackTrace();
+		} finally { DB.close(con, pstmt, rs);  }
 	}
 
 

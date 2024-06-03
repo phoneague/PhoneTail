@@ -16,6 +16,7 @@ import com.miniproject.phonetail.controller.action.chat.ChatListAction;
 import com.miniproject.phonetail.controller.action.chat.ChatingAction;
 import com.miniproject.phonetail.controller.action.chat.InsertChatAction;
 import com.miniproject.phonetail.controller.action.chat.InsertChatListAction;
+import com.miniproject.phonetail.controller.product.ProductDeleteAction;
 import com.miniproject.phonetail.controller.product.ProductDetailAction;
 import com.miniproject.phonetail.controller.product.ProductInsertAction;
 import com.miniproject.phonetail.controller.product.ProductInsertFormAction;
@@ -113,7 +114,8 @@ public class ActionFactory {
 		else if(command.equals("productInsert")) ac = new ProductInsertAction();
 		else if(command.equals("productUpdate")) ac = new ProductUpdateAction();
 		else if(command.equals("productUpdateForm")) ac = new ProductUpdateFormAction();
-		
+		else if(command.equals("productDelete")) ac = new ProductDeleteAction();
+
 		//report
 		else if(command.equals("reportForm")) ac = new ReportFormAction();
 		else if(command.equals("report")) ac = new ReportAction();

@@ -4,10 +4,10 @@
 
 <h2>Product Insert Form</h2>
 		<form name="productUpdateForm" method="post" enctype="multipart/form-data">
-		<h3>pseq는 ${pseq}</h3>
-		<input type="hidden" name="pseq" value="${productDTO.pseq}">
-		<input type="hidden" name="oldimage" value="${productDTO.image}">
-		<input type="hidden" name="oldsaveimagefile" value="${productDTO.saveimagefile}">
+		<h3>pseq는 ${ProductDTO.pseq}</h3>
+		<input type="hidden" name="pseq" value="${ProductDTO.pseq}">
+		<input type="hidden" name="oldimage" value="${ProductDTO.image}">
+		<input type="hidden" name="oldsaveimagefile" value="${ProductDTO.saveimagefile}">
 			<div>
 				<label>판매자명</label> ${loginUser}
 				<input type="hidden" name="userid" value="${loginUser}" />

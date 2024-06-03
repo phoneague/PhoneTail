@@ -39,8 +39,8 @@
 	</article>
 
 	<div>
-		<input type="button" value="상품수정" onClick="go_updateForm(${productDTO.pseq})" />
-		<input type="button" value="상품삭제" onClick="go_delete(${productDTO.pseq})" />
+		<input type="button" value="상품수정" onClick="go_updateForm(${productDTO.pseq}, '${productDTO.userid}', '${login.userid}')" />
+		<input type="button" value="상품삭제" onClick="go_delete(${productDTO.pseq}, '${productDTO.userid}', '${login.userid}')"/>
 		<input type="button" value="채팅방 입성~" onClick="go_chat(${productDTO.pseq},'${login.userid}')" /> 
     <input type="button" onClick="go_report(${productDTO.pseq},'${login.userid}')" value="신고하기">
 	</div>
