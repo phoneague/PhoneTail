@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/header.jsp"%>
-<%@ include file="../sub_menu.jsp"%>
 <h2>
 Report List
 </h2>
-<div class="recontainer">
+<div class="content-wrapper">
+    <%@ include file="../sub_menu.jsp"%>
 	<form method="post" name="frm">
 		<div class="retb">
 			<div class="rerow">
