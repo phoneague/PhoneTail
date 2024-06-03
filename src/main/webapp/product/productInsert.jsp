@@ -36,7 +36,8 @@
 				<textarea name="comment" rows="8"></textarea>
 			</div>
 			<div>
-				<label>이미지</label> <input type="file" name="image">
+				<label>이미지</label> <input type="file" name="image" onClick="show_preview()">
+				
 			</div>
 			<div>
 				<input type="button" value="상품등록" onClick="go_insert()"> 

@@ -1,6 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/header.jsp" %>
+
+
+<div id="productWrap">
+	<div class="row">
+		<div class="title">Product List</div>
+	</div>
+	<div class="row">
+		<div class="detailImage"></div>
+		<div class="detailInfos">
+			<div class="infoRow">
+				<div class="infotitle">상품번호</div>
+				<div class="info"></div>
+			</div>
+		</div>
+	</div>
+
+</div>
 	<h2>Product Details</h2>
 	<article>
 		<div class="tb">
@@ -37,6 +54,19 @@
 			</div>
 		</div>
 	</article>
+	
+		<c:choose>
+			<c:when test="${productDTO.userid eq login.userid}">
+				<input  type="button" value="판매확정" onClick="sold(${productDTO.pseq})"/>
+			</c:when>
+			
+			<c:otherwise>
+				<input type="button" value="사러가기" onClick="buy()" />
+			</c:otherwise>
+		
+		</c:choose>
+	
+	
 
 	<div>
 		<input type="button" value="상품수정" onClick="go_updateForm(${productDTO.pseq}, '${productDTO.userid}', '${login.userid}')" />

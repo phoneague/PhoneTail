@@ -208,7 +208,16 @@ public class ProductDAO {
 		} finally { DB.close(con, pstmt, rs);  }
 	}
 
-
+	public void soldProduct(int pseq) {
+		con = DB.getConnection();
+		String sql = "update product set sellstate='Y' where pseq=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, pseq);
+			pstmt.executeUpdate();
+		}  catch (SQLException e) { e.printStackTrace();
+		} finally { DB.close(con, pstmt, rs);  }
+  
 	public ArrayList<ProductDTO> myProudctList(Paging paging, String myId) {
 		ArrayList<ProductDTO> list = new ArrayList<>();
 		con = DB.getConnection();
@@ -241,10 +250,4 @@ public class ProductDAO {
 			DB.close(con, pstmt, rs);
 		}
 		return list;
-	}
-
-
-	
-		
-
 }

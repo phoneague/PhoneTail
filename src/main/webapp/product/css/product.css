@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+#productWrap{width:100%; display:flex; flex-direction:column; border:1px solid blue;}
+
+.tb{ width:100%; display: flex; flex-direction: column; margin-bottom:30px;}
+.row{  display: flex; justify-content:center; }
+.coltitle{  background: #3f4549; margin:1px; padding:10px; color:white; text-align: center;}
+.col{ border:1px dotted #3f4549; margin:1px; padding:10px;  text-align: center;}
+.title{flex:1; border:1px dotted black; text-align:center;}
+.btn{flex:1; border:1px dotted black; align-items:center;}
+
+
+.products{display: flex; flex-wrap:wrap; align-content:flex-start; flex-direction:row;}
+
+.product{width:350px; height:500px; border:1px dotted red; box-sizing:border-box;}
+.productImage{width:350px; height:400px; overflow:hidden;}
