@@ -96,13 +96,14 @@ public class QuestionDAO {
 			}
 
 			public void insertQna(QuestionDTO qdto) {
-				String sql = "INSERT INTO question (title, content, userid, qrepl) VALUES (?, ?, ?)";
+				String sql = "INSERT INTO question (title, content, userid, qreply) VALUES (?, ?, ? ,?)";
 				con = DB.getConnection();
 				try {
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, qdto.getTitle());
 					pstmt.setString(2, qdto.getContent());
 					pstmt.setString(3, qdto.getUserid());
+					pstmt.setString(4, "" );
 					pstmt.executeUpdate();
 				} catch (SQLException e) { e.printStackTrace();
 				} finally { DB.close(con, pstmt, rs); }	
@@ -129,7 +130,7 @@ public class QuestionDAO {
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, key);
 					pstmt.setString(2, myId);
-					rs = pstmt.executeQuery();
+					rs = pstmt.executeQuery();         
 					if (rs.next())
 						count = rs.getInt("cnt");
 				} catch (SQLException e) {
