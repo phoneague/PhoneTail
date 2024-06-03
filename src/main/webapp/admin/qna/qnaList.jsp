@@ -33,7 +33,7 @@ Report List
 					<div class="col">${qnaDTO.qreply=='' ? 'NO' : 'YES'}</div>
 				</div>
 			</c:forEach>
-			<jsp:include page="/admin/paging/paging.jsp">
+			<jsp:include page="/paging/paging.jsp">
 				<jsp:param value="phonetail.do?command=adminQnaList" name="address" />
 			</jsp:include>
 		</div>
