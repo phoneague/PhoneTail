@@ -17,10 +17,10 @@
 				<div class="col" style="display: flex; align-items:center;">
 					모델명 &nbsp; <input type="text" name="key" value="${key}" /> &nbsp;
 					&nbsp; &nbsp; <input class="btn" type="button" name="btn_search"
-						value="검색" onClick="go_search('chatList')" />
+						value="검색" onClick="go_searcha('chatList')" />
 					&nbsp;&nbsp;&nbsp; 
 				</div>
-		</form>
+		
 		
 		<div class="title_row">
 			<div class="title_col">채팅방번호</div>
@@ -43,16 +43,17 @@
    						<c:when test="${chatList.bid == loginUser}">구매자</c:when>
     					<c:otherwise>판매자</c:otherwise>
 					</c:choose>
-
-
-					
+		
 					<div class="col"><input type="button" value="입장" onClick="location.href='phonetail.do?command=chating&lseq=${chatList.lseq}'"></div>
 				</div>
-		</c:forEach>
-		<jsp:include page="/paging/paging.jsp">
+					
+			</c:forEach>
+		<%-- <jsp:include page="/paging/paging.jsp">
 				<jsp:param value="phonetail.do?command=chatList" name="address" />
-		</jsp:include>
+		</jsp:include> --%>
+	</form>
 	</div>
+	
 </body>
 </html>
 

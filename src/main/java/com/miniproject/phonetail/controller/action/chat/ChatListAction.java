@@ -7,7 +7,7 @@ import com.miniproject.phonetail.DAO.ChatListDAO;
 import com.miniproject.phonetail.DTO.ChatListDTO;
 import com.miniproject.phonetail.DTO.MemberDTO;
 import com.miniproject.phonetail.controller.action.Action;
-import com.miniproject.phonetail.util.Paging;
+
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -25,15 +25,14 @@ public class ChatListAction implements Action {
 		if( mdto == null) {
 			response.sendRedirect("phonetail.do?command=loginForm");
 		}else {
-			int page=1;
-			if(request.getParameter("page")!=null) {
-				page=Integer.parseInt(request.getParameter("page"));
-				session.setAttribute("page", page);
-			}else if(session.getAttribute("page")!=null) {
-				page=(Integer)session.getAttribute("page");
-			}else {
-				session.removeAttribute("page");
-			}
+			/*
+			 * int page=1; if(request.getParameter("page")!=null) {
+			 * page=Integer.parseInt(request.getParameter("page"));
+			 * session.setAttribute("page", page); }else
+			 * if(session.getAttribute("page")!=null) {
+			 * page=(Integer)session.getAttribute("page"); }else {
+			 * session.removeAttribute("page"); }
+			 */
 			
 			String key="";
 			if(request.getParameter("key")!=null) {
@@ -45,36 +44,27 @@ public class ChatListAction implements Action {
 				session.removeAttribute("key");
 			}
 			
-			int price = 1;
-			if(request.getParameter("price")!=null) {
-				price=Integer.parseInt(request.getParameter("price"));
-				session.setAttribute("price",price);
-			}else if(session.getAttribute("price") !=null) {
-				price = (int)session.getAttribute("price");
-			}else {
-				session.removeAttribute("price");
-			}
-			
-			Paging paging = new Paging();
-			paging.setPage(page);
-			
-
-			
+			//Paging paging = new Paging();
+			//paging.setPage(page);
 			
 			
 			ChatListDAO cdao = ChatListDAO.getInstance();
-			ArrayList<ChatListDTO> cList = new ArrayList<ChatListDTO>();
-			int count = cdao.AllList("hak","model", key, price, mdto.getUserid());
-			paging.setTotalCount(count);
-			cList = cdao.chatList(paging, key, price, mdto.getUserid());
+			ArrayList<ChatListDTO> clist = new ArrayList<ChatListDTO>();
+			//int count = cdao.AllList("hak","model", key, mdto.getUserid());
+			
+			//paging.setTotalCount(count);
+			clist = cdao.chatList( key, mdto.getUserid(), mdto.getUserid());
+			
+			
+			
 			
 			request.setAttribute("loginUser", mdto.getUserid()); // 기존에 있던거
-			//ArrayList<ChatListDTO> list = ldao.getAllList(mdto.getUserid()); // 기존에 있던거
-			//request.setAttribute("chatList", list); // 기존에 있던거
+			
+			request.setAttribute("chatList", clist); // 기존에 있던거
 			
 			
-			request.setAttribute("paging", paging);
-			request.setAttribute("chatList", cList);
+			//request.setAttribute("paging", paging);
+			//request.setAttribute("chatList", cList);
 			
 			// 기존에 있던거
 			RequestDispatcher rd = request.getRequestDispatcher("chat/ChatList.jsp");
