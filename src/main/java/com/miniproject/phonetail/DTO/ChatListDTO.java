@@ -1,6 +1,5 @@
 package com.miniproject.phonetail.DTO;
 
-import java.sql.Timestamp;
 
 public class ChatListDTO {
 

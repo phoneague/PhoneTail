@@ -16,7 +16,7 @@ public class ProductDTO {
 	private String userid;
 	private Timestamp indate;
 	
-	
+
 	public int getPseq() {
 		return pseq;
 	}

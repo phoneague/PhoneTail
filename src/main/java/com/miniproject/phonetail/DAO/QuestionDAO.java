@@ -46,6 +46,7 @@ public class QuestionDAO {
 		                question.setContent(rs.getString("content"));
 						question.setReadCount(rs.getInt("readCount"));
 		                question.setQreply(rs.getString("qreply"));
+		                question.setSecret(rs.getBoolean("secret"));
 
 		                questionList.add(question);
 		            }
@@ -72,6 +73,7 @@ public class QuestionDAO {
 						question.setIndate(rs.getTimestamp("indate"));
 						question.setReadCount(rs.getInt("readCount"));
 						question.setQreply(rs.getString("qreply"));
+						question.setSecret(rs.getBoolean("secret"));
 					}
 				} catch (SQLException e) { e.printStackTrace();
 				} finally { DB.close(con, pstmt, rs); }	
@@ -97,7 +99,7 @@ public class QuestionDAO {
 			}
 
 			public void insertQna(QuestionDTO qdto) {
-				String sql = "INSERT INTO question (title, content, userid, qreply) VALUES (?, ?, ? ,?)";
+				String sql = "INSERT INTO question (title, content, userid, qreply, secret) VALUES (?, ?, ? ,? ,?)";
 				con = DB.getConnection();
 				try {
 					pstmt = con.prepareStatement(sql);
@@ -105,6 +107,7 @@ public class QuestionDAO {
 					pstmt.setString(2, qdto.getContent());
 					pstmt.setString(3, qdto.getUserid());
 					pstmt.setString(4, "" );
+					pstmt.setBoolean(5, qdto.getSecret());
 					pstmt.executeUpdate();
 				} catch (SQLException e) { e.printStackTrace();
 				} finally { DB.close(con, pstmt, rs); }	
@@ -162,6 +165,7 @@ public class QuestionDAO {
 		                question.setIndate(rs.getTimestamp("indate"));
 		                question.setContent(rs.getString("content"));
 		                question.setQreply(rs.getString("qreply"));
+		                question.setSecret(rs.getBoolean("secret"));
 
 		                questionList.add(question);
 		            }
@@ -181,6 +185,7 @@ public class QuestionDAO {
 			    } catch (SQLException e) { e.printStackTrace();
 			    } finally { DB.close(con, pstmt, rs); }
 			}
+
 }		
 
 
