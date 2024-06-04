@@ -15,9 +15,13 @@ function go_chat(pseq,userid){
 	}
 }
 
-function go_search(command) {
-	let Form = document.chatListForm;
-	var url = "phonetail.do?command=" + command + "&page=1"
-	Form.action = url;
-	Form.submit();
+function go_searcha(command) {
+    let Form = document.forms["chatListForm"];
+    if (Form) {
+        var url = "phonetail.do?command=" + command + "&page=1"
+        Form.action = url;
+        Form.submit();
+    } else {
+        console.error("폼이 정의되지 않았습니다.");
+    }
 }

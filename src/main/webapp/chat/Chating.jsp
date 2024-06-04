@@ -8,9 +8,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link rel="stylesheet" type="text/css" href="chat/chat.css">
-<script src="chat/ChatList.js"></script>
-
 </head>
 <body>
 <div id="main_container">
@@ -47,7 +44,7 @@
 				</div>
 		</form>
 	</div>
-</div>
+
 </body>
 </html>
 <%@ include file="../footer.jsp" %>
