@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import com.miniproject.phonetail.DTO.ChatListDTO;
 import com.miniproject.phonetail.DTO.ChatingDTO;
 import com.miniproject.phonetail.util.DB;
-import com.miniproject.phonetail.util.Paging;
 
 public class ChatListDAO {
 
@@ -26,7 +25,7 @@ public class ChatListDAO {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 
-	public ArrayList<ChatListDTO> getAllList(String id) {
+	public ArrayList<ChatListDTO> getAllList(String id , String key) {
 		ArrayList<ChatListDTO> list = new ArrayList<ChatListDTO>();
 		con = DB.getConnection();
 		String sql = "SELECT * FROM hak WHERE sid = ? OR bid = ? ORDER BY lseq DESC";
@@ -148,38 +147,36 @@ public class ChatListDAO {
 		return flist;
 	}
 
-	public int AllList(String string, String string2, String key, int price, String userid) {
+	public int AllList(String string, String string2, String key, String userid) {
 		int count = 0;
 		con = DB.getConnection();
-		String sql = "select count(*) as cnt from " + string +" where sid = ? OR bid = ? AND " + string2 + "  LIKE CONCAT('%', ?, '%') or price LIKE CONCAT('%', ?, '%')";
+		String sql = "select count(*) as cnt from " + string +" where sid = ? OR bid = ? AND " + string2 + "  LIKE CONCAT('%', ?, '%')";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, userid);
 			pstmt.setString(2, userid);
 			pstmt.setString(3, key);
-			pstmt.setInt(4, price);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				count = rs.getInt("cnt");
 			}
 		}catch (SQLException e) { e.printStackTrace();
 		}finally {DB.close(con,pstmt, rs); }
+		System.out.println(count);
 		return count;
 	}
 	
-	public ArrayList<ChatListDTO> chatList(Paging paging, String key, int price, String userid){
+	public ArrayList<ChatListDTO> chatList( String key, String userid1, String userid2){
 		ArrayList<ChatListDTO> list = new ArrayList<ChatListDTO>();
 		con = DB.getConnection();
-		String sql = "select * from hak WHERE model LIKE CONCAT('%',?,'%') AND price LIKE CONCAT('%', ?, '%') AND sid = ? OR bid = ? "
-				+ "ORDER BY lseq DESC LIMIT ? OFFSET ?";
+		String sql = "select * from hak WHERE model LIKE CONCAT('%', ?, '%') AND (sid = ? OR bid = ?) "
+				+ "ORDER BY lseq DESC ";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, key);
-			pstmt.setInt(2, price);
-			pstmt.setString(3, userid);
-			pstmt.setString(4, userid);
-			pstmt.setInt(5, paging.getDisplayRow());
-			pstmt.setInt(6, paging.getStartNum() - 1);
+			pstmt.setString(2, userid1);
+			pstmt.setString(3, userid2);
+
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				ChatListDTO cdto = new ChatListDTO();
