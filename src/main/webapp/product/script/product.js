@@ -96,18 +96,14 @@ function sold(pseq){
 	
 }
 
-function previewImage(){
-	document.getElementById('image').addEventListener('change', function(event) {
-       const file = event.target.files[0];
-       const reader = new FileReader();
-       reader.onload = function(e) {
-            const preview = document.getElementById('preview');
-           preview.src = e.target.result;
-       }
-       if (file) {
-           reader.readAsDataURL(file);
-       }
-   });
+function show_preview(event) {
+    var input = event.target;
+    var reader = new FileReader();
+    reader.onload = function() {
+        var dataURL = reader.result;
+        var output = document.getElementById('preview');
+        output.src = dataURL;
+    };
+    reader.readAsDataURL(input.files[0]);
 }
-
 
