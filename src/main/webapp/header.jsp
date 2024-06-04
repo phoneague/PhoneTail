@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>PhoneTail</title>
 <link rel="stylesheet" href="css/header_footer.css">
-
 <script src="script/jquery-3.7.1.min.js"></script>
 <script src="product/script/product.js"></script>
 <script src="admin/script/admin.js"></script>

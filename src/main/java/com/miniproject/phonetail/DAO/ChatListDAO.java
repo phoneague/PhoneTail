@@ -53,7 +53,7 @@ public class ChatListDAO {
 	  public ChatListDTO getChatList(int lseq) { 
 		  ChatListDTO cdto = null; 
 		  con =  DB.getConnection();
-		  String sql = "select * from hak where lseq=?"; 
+		  String sql = "select * from hak where lseq=? "; 
 		  try {
 			  pstmt = con.prepareStatement(sql); 
 			  pstmt.setInt(1, lseq); 
@@ -75,7 +75,7 @@ public class ChatListDAO {
 	  public ArrayList<ChatingDTO> getChating(int num) {
 			ArrayList<ChatingDTO> list = new ArrayList<ChatingDTO>();
 			con = DB.getConnection();
-			String sql = "select * from chat where lseq=? order by cseq asc";
+			String sql = "select * from chat where lseq=? order by cseq desc";
 			try {
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, num);
