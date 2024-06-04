@@ -12,7 +12,8 @@
 <link rel="stylesheet" href="css/list.css"> <!-- product, chat제외 list 들 css 통합 -->
 <link rel="stylesheet" href="css/view.css"><!-- product, chat제외 view 들 css 통합 --> 
 <link rel="stylesheet" href="css/login.css"> <!-- admin,일반 로그인 폼들 css 통합 -->
-<link rel="stylesheet" type="text/css" href="chat/chat.css"> <!-- chat css 통합 -->
+<link rel="stylesheet" href="css/chat.css"> <!-- chat css 통합 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
 <script src="script/jquery-3.7.1.min.js"></script>
 <script src="product/script/product.js"></script>
