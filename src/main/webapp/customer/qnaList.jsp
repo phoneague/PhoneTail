@@ -24,11 +24,16 @@
             <tr>
                 <td>${qna.qseq}</td>
                 <td>${qna.userid}</td>
-                <td><a href="phonetail.do?command=qnaView&qseq=${qna.qseq}">${qna.title}</a></td> 
+                <c:if test="${qna.userid eq login.userid}">
+                <td><a href="phonetail.do?command=qnaView&qseq=${qna.qseq}">${qna.title}</a></td>
+               </c:if>
+                <c:if test="${qna.userid ne login.userid}">
+                <td><a href="javascript:void(0);" onclick="alert('작성자만 비밀글을 열람할 수 있습니다')">비밀글</a></td>
+               </c:if>
                 <td><fmt:formatDate value="${qna.indate}" type="date"/></td>
                 <td>${qna.qreply == '' ? 'NO' : 'YES'}</td>
                 <td>${qna.readCount}</td> 
-                <td>${qna.secret == '?' '비밀글입니다' : ''}</td>
+                <td>${qna.secret == true ? '비밀글입니다' : ''}</td>
             </tr>
         </c:forEach>
     </table>

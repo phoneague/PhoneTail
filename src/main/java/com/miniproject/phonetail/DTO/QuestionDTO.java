@@ -10,16 +10,8 @@ public class QuestionDTO {
 	private Timestamp indate;
 	private String userid;
 	private String qreply;
-	private boolean secret; 
-	
-	public boolean isSecret() {
-		return secret;
-	}
-	public void setSecret(boolean secret) {
-		this.secret = secret;
-	}
+	private boolean secret;
 	private int readCount;
-	
 	
 	public int getQseq() {
 		return qseq;
@@ -57,12 +49,21 @@ public class QuestionDTO {
 	public void setQreply(String qreply) {
 		this.qreply = qreply;
 	}
+	public boolean getSecret() {
+		return secret;
+	}
+	public void setSecret(boolean secret) {
+		this.secret = secret;
+	}
 	public int getReadCount() {
 		return readCount;
 	}
 	public void setReadCount(int readCount) {
 		this.readCount = readCount;
 	}
+	
+	
+	
 	
 	
 
