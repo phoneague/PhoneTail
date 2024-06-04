@@ -20,7 +20,7 @@ public class QnaViewAction implements Action {
 		QuestionDAO qdao =  QuestionDAO.getInstance();
 		qdao.updateReadCount(qseq);
 		QuestionDTO qdto  = qdao.getQna(qseq);
-		
+
 		request.setAttribute("QuestionDTO", qdto);
 		request.getRequestDispatcher("customer/qnaView.jsp").forward(request, response);
 	}

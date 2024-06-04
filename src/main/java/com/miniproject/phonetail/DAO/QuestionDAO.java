@@ -54,7 +54,7 @@ public class QuestionDAO {
 
 		          return questionList;
 		    }
-
+		    
 			public QuestionDTO getQna(int qseq) {
 	
 				QuestionDTO question = new QuestionDTO();

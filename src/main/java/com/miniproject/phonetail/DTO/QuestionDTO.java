@@ -10,6 +10,14 @@ public class QuestionDTO {
 	private Timestamp indate;
 	private String userid;
 	private String qreply;
+	private boolean secret; 
+	
+	public boolean isSecret() {
+		return secret;
+	}
+	public void setSecret(boolean secret) {
+		this.secret = secret;
+	}
 	private int readCount;
 	
 	
