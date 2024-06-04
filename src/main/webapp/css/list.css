@@ -129,6 +129,19 @@ header{ width:100%; margin-bottom:30px;}
 .litb .col a{
   text-decoration: none;
 	color: red;
+	
+}
+.litb .col a:hover {
+	color: red !important;
+	text-decoration:underline !important;
+}
+
+.litb .row .searchbtn{
+	background-color: black;
+	border:none;
+	color:white;
+	border-radius: 5px;
+	width:120px;
 }
 
 #paging{

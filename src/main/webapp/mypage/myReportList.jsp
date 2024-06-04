@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/header.jsp"%>
+<div class="lititle">
 <h2>My Report List</h2>
+</div>
 <div class="content-wrapper">
 <%@ include file="mypage_submenu.jsp"%>  
 <div class="container">

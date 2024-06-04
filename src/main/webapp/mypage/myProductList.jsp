@@ -2,9 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/header.jsp"%>
 <link rel="stylesheet" href="product/css/product.css">
-
-
+<div class="lititle">
 <h2>My Product List</h2>
+</div>
 <div class="content-wrapper">
 	<%@ include file="mypage_submenu.jsp"%>
 	<article>

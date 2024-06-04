@@ -4,8 +4,8 @@
 <div class="lititle">
 <h2>My Q&A List</h2>
 </div>
-<!-- <div class="content-wrapper"> -->
-<%-- 	<%@ include file="mypage_submenu.jsp"%> --%>
+<div class="content-wrapper">
+	<%@ include file="mypage_submenu.jsp"%>
 	<div class="container">
 		<form method="post" name="frm">
 			<div class="litb">

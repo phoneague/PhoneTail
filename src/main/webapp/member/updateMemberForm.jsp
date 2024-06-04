@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/header.jsp"%>
-<div id="wrap">
+<div id="loginwrap">
 <section>
 		<article>
 				<form name="joinForm" action="phonetail.do" method="post">
@@ -21,7 +21,7 @@
 						<label>Zip Code</label>
 						<div>
 							 <input type="text" name="zip_num" readonly>
-							 <input type="button" value="우편번호 찾기" onclick="post_zip()">
+							 <input class="checkbtn" type="button" value="우편번호 찾기" onclick="post_zip()">
 						</div>
 					</div>
 					<div class="field">
@@ -31,9 +31,9 @@
 						<label>detail Address</label><input type="text" name="address2" value="${login.address2}">
 					</div>
 					
-					<div class="btn">
-			   			<input type="submit" value="수정" onClick="return updateCheck()">
-			   			<input type="button" value="Main" onClick="location.href='phonetail.do?command=main'">	
+					<div class="loginbtn">
+			   			<input type="submit" value="정보수정" onClick="return updateCheck()">
+			   			<input type="button" value="목록으로" onClick="location.href='phonetail.do?command=main'">	
 			   		</div>
 				</form>
 		</article>

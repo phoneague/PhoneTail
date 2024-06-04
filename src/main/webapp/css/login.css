@@ -59,9 +59,19 @@ article form .loginbtn{
 	display: flex;
 	margin:10px 0;
 }
+
 article form .loginbtn input{
 	flex:1;
 	margin:10px 3px;
+	background-color: black;
+	border:none;
+	color:white;
+	border-radius: 5px;
+	padding:10px 0;
+}
+
+article form .checkbtn{
+	flex:1;
 	background-color: black;
 	border:none;
 	color:white;
