@@ -18,8 +18,10 @@
 						<textarea name="content" rows="10" cols="150"></textarea>
 				</div>
 				<div>
-                <input type="checkbox" id="secretCheckbox" value="secret" name="secret" onclick="submitForm()">
-                <label for="secretCheckbox">비밀글</label>
+               <div>
+                     <input type="checkbox"  id="secretCheckbox"  value="True"  name="secret">
+                      <label for="secretCheckbox">비밀글</label>
+              </div>
                 </div>
 				<div class="btn" >
 					 <input type="button" value="제출하기"  onClick="go_write()">
