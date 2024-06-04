@@ -18,4 +18,7 @@ function go_write(){
 		Form.submit();
 	
 	}
+function submitForm() {
+    document.getElementById("myForm").submit();
+}
 }

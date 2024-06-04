@@ -18,6 +18,7 @@
             <th>작성일</th>
             <th>답변여부</th>
             <th>조회수</th>
+            <th>비밀글</th>
         </tr>
         <c:forEach items="${questionList}" var="qna" varStatus="status">
             <tr>
@@ -27,6 +28,7 @@
                 <td><fmt:formatDate value="${qna.indate}" type="date"/></td>
                 <td>${qna.qreply == '' ? 'NO' : 'YES'}</td>
                 <td>${qna.readCount}</td> 
+                <td>${qna.secret == ? '비밀글입니다' : ''}</td>
             </tr>
         </c:forEach>
     </table>

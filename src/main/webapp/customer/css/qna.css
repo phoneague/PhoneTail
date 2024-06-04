@@ -33,3 +33,7 @@
         text-align: center;
         margin-top: 20px;
     }
+    .secret-label {
+        color: gray;
+        font-size: 12px;
+    }

@@ -16,9 +16,11 @@
 				<div class="field" style="border-top:1px solid gold;">
 						<label>질문내용</label><div>${QuestionDTO.content}</div>
 				</div>
+				
 				<div class="field" style="border-top:2px solid gold; border-bottom:2px solid gold;">
 						<label>답변내용</label><div style="padding:10px;">${QuestionDTO.qreply == '' ? '답변 대기중' : QuestionDTO.qreply}</div>
 				</div>
+				
 				<div class="btn" style="border-bottom:2px solid gold;">
 					<input type="button" value="목록으로" onClick="location.href='phonetail.do?command=qnaList'">
 					 
