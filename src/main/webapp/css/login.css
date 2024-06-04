@@ -1,51 +1,51 @@
 @charset "UTF-8";
 
-#wrap{ width:1024px; margin: 0 auto; }
+#loginwrap{ width:1024px; margin: 0 auto; }
 
-article{
+#loginwrap article{
 	flex:4;
 	display: flex;
 	margin:100px auto;
 	
 }
 
-article form{
+#loginwrap article form{
 	flex:1;
 	display: flex;
 	flex-direction: column;
 }
 
-article form h2{
+#loginwrap article form h2{
 	margin:0;
 	margin-bottom:20px;
 	font-weight: normal;
 	font-size: 28px;
 }
 
-article form{padding:10px;}
+#loginwrap article form{padding:10px;}
 
-article form .field{
+#loginwrap article form .field{
 	display: flex;
 	margin:10px 0;
 }
-article form .field label{
+#loginwrap article form .field label{
 	flex:1;
 }
-article form .field input{
+#loginwrap article form .field input{
 	flex:4;
 	padding: 5px;
     border-radius: 3px;
     border: 1px solid #AAA;
 }
 
-article form .field div{
+#loginwrap article form .field div{
 	flex:4;
 	display: flex;
 }
-article form .field div input[type=text]{
+#loginwrap article form .field div input[type=text]{
 	flex:4;
 }
-article form .field div input[type=button]{
+#loginwrap article form .field div input[type=button]{
 	flex:1;
 }
 
@@ -54,12 +54,12 @@ article form .field div input[type=button]{
 
 
 
-article form .btn{
+article form .loginbtn{
 	flex:1;
 	display: flex;
 	margin:10px 0;
 }
-article form .btn input{
+article form .loginbtn input{
 	flex:1;
 	margin:10px 3px;
 	background-color: black;

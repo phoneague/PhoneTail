@@ -6,17 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>PhoneTail</title>
-<link rel="stylesheet" href="admin/css/adminReport.css">
-<link rel="stylesheet" href="admin/css/sub_menu.css">
-<link rel="stylesheet" href="admin/css/admin_member.css">
-<link rel="stylesheet" href="admin/css/adminReportView.css">
-<link rel="stylesheet" href="css/header_footer.css">
-<link rel="stylesheet" href="css/login.css">
-<link rel="stylesheet" href="admin/css/admin.css">
-<link rel="stylesheet" href="customer/css/qna.css"> 
-<link rel="stylesheet" href="product/css/product.css"> 
-<link rel="stylesheet" href="customer/css/qna.css">
-<link rel="stylesheet" type="text/css" href="chat/chat.css">
+<link rel="stylesheet" href="css/submenu.css"> <!-- submenu들 css 통합  -->
+<link rel="stylesheet" href="css/header_footer.css"> <!-- header footer의 css 통합 -->
+<link rel="stylesheet" href="css/list.css"> <!-- product, chat제외 list 들 css 통합 -->
+<link rel="stylesheet" href="css/view.css"><!-- product, chat제외 view 들 css 통합 --> 
+<link rel="stylesheet" href="css/login.css"> <!-- admin,일반 로그인 폼들 css 통합 -->
+<link rel="stylesheet" type="text/css" href="chat/chat.css"> <!-- chat css 통합 -->
 
 <script src="script/jquery-3.7.1.min.js"></script>
 <script src="product/script/product.js"></script>

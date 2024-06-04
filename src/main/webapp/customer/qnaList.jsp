@@ -1,41 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/header.jsp"%>
-<form method="post" name="frm">
-    <h2>Q&A List</h2>
-    <div class="field" style="border-top: 2px solid gold;">
-        아이디 &nbsp; <input type="text" name="key" value="${key}" /> &nbsp;
-        &nbsp; &nbsp; <input class="btn" type="button" name="btn_search" value="검색" onClick="go_search('qnaList')"/>
-        <div class="btn">
-            <input type="button" value="글 작성" onclick="location.href='phonetail.do?command=writeQnaForm'"/>
-        </div>
-        &nbsp;&nbsp;&nbsp; 
-    </div>
-    <table>
-        <tr>
-            <th>번호</th>
-            <th>작성자</th>
-            <th>제목</th>
-            <th>작성일</th>
-            <th>답변여부</th>
-            <th>조회수</th>
-            <th>비밀글</th>
-        </tr>
-        <c:forEach items="${questionList}" var="qna" varStatus="status">
-            <tr>
-                <td>${qna.qseq}</td>
-                <td>${qna.userid}</td>
-                <td><a href="phonetail.do?command=qnaView&qseq=${qna.qseq}">${qna.title}</a></td> 
-                <td><fmt:formatDate value="${qna.indate}" type="date"/></td>
-                <td>${qna.qreply == '' ? 'NO' : 'YES'}</td>
-                <td>${qna.readCount}</td> 
-                <td>${qna.secret == ? '비밀글입니다' : ''}</td>
-            </tr>
-        </c:forEach>
-    </table>
-    <div class="pagination">
-        <jsp:include page="/paging/paging.jsp">
-            <jsp:param value="phonetail.do?command=qnaList" name="address" />
-        </jsp:include>
-    </div>
-</form>    
+<div class="container">
+	<form method="post" name="frm">
+		<div class="litb">
+			<div class="row">
+				<div class="col" style="display: flex; align-items:right;">
+					아이디 &nbsp; <input type="text" name="key" value="${key}" /> &nbsp;
+        			&nbsp; &nbsp; <input class="searchbtn" type="button" name="btn_search" value="검색" onClick="go_search('qnaList')"/>
+					<input class="searchbtn" type="button" name="btn_search" value="글 작성" onClick="location.href='phonetail.do?command=writeQnaForm'"/>
+        			&nbsp;&nbsp;&nbsp; 
+				</div>	
+			</div>
+			<div class="row">
+				<div class="coltitle">번호</div>
+				<div class="coltitle">작성자</div>
+				<div class="coltitle">제목</div>
+				<div class="coltitle">작성일</div>
+				<div class="coltitle">답변여부</div>
+				<div class="coltitle">조회수</div>
+				<div class="coltitle">비밀글</div>
+			</div>
+			<c:forEach items="${questionList}" var="qna" varStatus="status">
+				<div class="row">
+					<div class="col">${qna.qseq}</div>
+					<div class="col">${qna.userid}</div>
+					<div class="col"><a href="phonetail.do?command=qnaView&qseq=${qna.qseq}">${qna.title}</a></div>
+					<div class="col"><fmt:formatDate value="${qna.indate}" type="date"/></div>
+					<div class="col">${qna.qreply == '' ? 'NO' : 'YES'}</div>
+					<div class="col">${qna.readCount}</div>
+					<div class="col">${qna.secret == true ? '비밀글입니다' : ''}</div>
+				</div>
+			</c:forEach>
+			<div id="paging">
+				<jsp:include page="/paging/paging.jsp">
+            		<jsp:param value="phonetail.do?command=qnaList" name="address" />
+       			</jsp:include>
+			</div>
+		</div>
+	</form>
+</div>
 <%@ include file="/footer.jsp"%>

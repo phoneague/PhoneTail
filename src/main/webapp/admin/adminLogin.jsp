@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/header.jsp"%>
-	<div id="wrap">
+	<div id="loginwrap">
 		<article>
 			<form method="post" action="phonetail.do?command=adminLogin"
 				name="loginForm">
@@ -12,7 +12,7 @@
 				<div class="field">
 					<label>Password</label><input name="pwd" type="password">
 				</div>
-				<div class="btn">
+				<div class="loginbtn">
 					<input type="submit" value="LOGIN" onClick="return loginCheck()">
 					<input type="button" value="JOIN" onClick="">
 					<input

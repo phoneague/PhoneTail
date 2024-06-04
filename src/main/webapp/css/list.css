@@ -2,7 +2,19 @@
 
 /* #wrap{width:100%; margin: 0 auto; border:1px solid red; max-width:1024px; display:flex; flex-direction:column;} */
 
+.lititle h2 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-family: "Roboto", sans-serif;
+    font-size: 200%;
+    margin: 30px;
+}
 a{text-decoration:none;}
+.content-wrapper {
+    display: flex;
+    font-family:"Noto Sans KR", sans-serif;
+}
 
 .container{
    width:100%;
@@ -12,7 +24,7 @@ a{text-decoration:none;}
 }
 
 .container form{
-   flex:1;
+   flex:4;
    display: flex;
    flex-direction: column;
 }
@@ -71,6 +83,9 @@ a{text-decoration:none;}
    border-radius: 5px;
    padding:10px 0;
 }
+
+
+
 /* #searchbtn{
 	width:40px;
    margin:10px 3px;
@@ -88,19 +103,28 @@ header{ width:100%; margin-bottom:30px;}
 #logo input{  padding:5px; font-weight:bold;
    font-size:120%;}
 
-.tb{ width:100%; display: flex; flex-direction: column; margin-bottom:30px;}
-.row{  display: flex; border-top:1px solid #3f4549;border-bottom:1px solid #3f4549;}
-.coltitle{  background: #3f4549; /* margin:1px; */ padding:10px; color:white; text-align: center;}
-.col{ /* border:1px dotted #3f4549; */ margin:1px; padding:10px;  text-align: center;}
+.litb{ width:100%; display: flex; flex-direction: column; margin-bottom:30px;}
+.litb .row{  display: flex; border-top:1px solid #3f4549;border-bottom:1px solid #3f4549;}
+.litb .coltitle{  background: #3f4549; /* margin:1px; */ padding:10px; color:white; text-align: center;}
+.litb .col{ /* border:1px dotted #3f4549; */ margin:1px; padding:10px;  text-align: center;}
 
-.coltitle:nth-child(1), .col:nth-child(1){ flex:1}
-.coltitle:nth-child(2), .col:nth-child(2){flex:1}
-.coltitle:nth-child(3), .col:nth-child(3){flex:3;}
-.coltitle:nth-child(4), .col:nth-child(4){flex:1;}
-.coltitle:nth-child(5), .col:nth-child(5){flex:2}
-.coltitle:nth-child(6), .col:nth-child(6){flex:1}
 
-.col a{
+.litb .coltitle:nth-child(1), .litb .col:nth-child(1){ flex:1}
+.litb .coltitle:nth-child(2), .litb .col:nth-child(2){flex:1}
+.litb .coltitle:nth-child(3), .litb .col:nth-child(3){flex:3;}
+.litb .coltitle:nth-child(4), .litb .col:nth-child(4){flex:1;}
+.litb .coltitle:nth-child(5), .litb .col:nth-child(5){flex:2}
+.litb .coltitle:nth-child(6), .litb .col:nth-child(6){flex:1}
+
+.mrow{  display: flex; border-top:1px solid #3f4549;border-bottom:1px solid #3f4549;}
+.mrow .coltitle:nth-child(1), .mrow .col:nth-child(1){ flex:2}
+.mrow .coltitle:nth-child(2), .mrow .col:nth-child(2){flex:1}
+.mrow .coltitle:nth-child(3), .mrow .col:nth-child(3){flex:3;}
+.mrow .coltitle:nth-child(4), .mrow .col:nth-child(4){flex:3;}
+.mrow .coltitle:nth-child(5), .mrow .col:nth-child(5){flex:2}
+.mrow .coltitle:nth-child(6), .mrow .col:nth-child(6){flex:1}
+
+.litb .col a{
   text-decoration: none;
 	color: red;
 }
