@@ -1,12 +1,13 @@
 @charset "UTF-8";
 :root {
-    --primary-color: #3f4549;
-    --secondary-color: #f4f4f4;
+    --primary-color: white;
+    --secondary-color: #3f4549;
     --text-color: #333;
-    --background-color: #e0e0e0;
+    --background-color: white;
+    --font-family:"Noto Sans KR", sans-serif;
 }
 
-/* General styles */
+
 body {
     background-color: var(--background-color);
     font-family: Arial, sans-serif;

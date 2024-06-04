@@ -120,6 +120,8 @@ header {
 
 .row {
     display: flex;
+    border-top: 1px solid #3f4549;
+    border-bottom: 1px solid #3f4549;
 }
 
 .coltitle {

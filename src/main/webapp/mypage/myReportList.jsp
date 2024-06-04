@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/header.jsp"%>
-<%@ include file="mypage_submenu.jsp"%>
-<form method="post" name="frm">
-	<h2>My Report List</h2>
-	
+<h2>My Report List</h2>
+<div class="content-wrapper">
+<%@ include file="mypage_submenu.jsp"%>  
+<form method="post" name="frm">	
 	<table>
 		<tr>
 			<th>번호</th>
@@ -39,6 +39,6 @@
 	<jsp:include page="/paging/paging.jsp">
 		<jsp:param value="phonetail.do?command=myReportList" name="address" />
 	</jsp:include>
-	
 </form>
+</div>
 <%@ include file="/footer.jsp"%>

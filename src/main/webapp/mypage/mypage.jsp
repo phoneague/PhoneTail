@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/header.jsp"%>
-<%@ include file="mypage_submenu.jsp"%>
+
 <link rel="stylesheet" href="mypage/css/mypage.css">
 <h2>${login.name}'s MY PAGE</h2>
-
+<div class="content-wrapper">
+<%@ include file="mypage_submenu.jsp"%>
 <section>
 	<article>
 		
@@ -40,6 +41,7 @@
 		</form>
 	</article>
 </section>
-<h3><a href="phonetail.do?command=updateMemberForm">회원정보수정</a></h3>
-<h3><a style="cursor: pointer;" onClick="withDraw()">회원탈퇴</a></h3>
+<h3><a href="phonetail.do?command=updateMemberForm">회원정보수정</a></h3><br>
+<h3><a style="cursor: pointer;" onClick="withDraw()">회원탈퇴</a></h3><br>
+</div>
 <%@ include file="../footer.jsp"%>
