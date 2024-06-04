@@ -316,4 +316,3 @@ INSERT INTO report (pseq, userid, retype, recontent, restate) VALUES
 
 UPDATE question SET qreply='';
 
-

@@ -10,22 +10,30 @@
 	</div>
 	<div class="reply">
 	
-		<div class="reply_row">
-			<div class="reply_col reply_title">작성자</div>
-			<div class="reply_col reply_title">내용</div>
-			<div class="reply_col reply_title">작성일시</div>
-		</div>
+	
 		<div class="mydiv3">
-		
-			<c:forEach items="${chatingList}" var="chating">
+		<c:forEach items="${chatingList}" var="chating">
 				<div class="reply_row" >
-					<div class="reply_col">${chating.userid}</div>
-					<div class="reply_col">${chating.content}</div>
-					<div class="reply_col">
+					<div class="chat_reply_col"></div>
+					<c:set var="justify_contentValue" value="flex-start" />
+							<c:if test="${chating.userid eq loginUser}" >
+							    <c:set var="justify_contentValue" value="flex-end" />
+							</c:if>
+					<div class="chat_reply_col" style="justify-content: ${justify_contentValue};">
+						<c:set var="backgroundColor" value="#DCEBFF" />
+							<c:if test="${chating.userid eq loginUser}" >
+							    <c:set var="backgroundColor" value="yellow" />
+							</c:if>
+							<div class="plz" style="background-color: ${backgroundColor};">${chating.content}</div>
+						
+					</div>
+					<div class="chat_reply_col">
 						<fmt:formatDate value="${chating.indate}" pattern="MM/dd hh:mm"/>
 					</div>
 				</div>
 			</c:forEach>
+		
+			
 	
 		</div>
 		<form action="phonetail.do" name="chating">
