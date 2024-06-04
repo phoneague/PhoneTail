@@ -3,7 +3,9 @@ package com.miniproject.phonetail.controller.product;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.miniproject.phonetail.DAO.MemberDAO;
 import com.miniproject.phonetail.DAO.ProductDAO;
+import com.miniproject.phonetail.DTO.MemberDTO;
 import com.miniproject.phonetail.DTO.ProductDTO;
 import com.miniproject.phonetail.controller.action.Action;
 import com.miniproject.phonetail.util.Paging;
@@ -57,10 +59,17 @@ public class ProductListAction implements Action {
 		
 		ProductDAO pdao = ProductDAO.getInstance();
 		ArrayList<ProductDTO> productList = new ArrayList<ProductDTO>();
+		
 		int count = pdao.getAllCount("product", "model", key, brand);
 		System.out.println(count);
 		paging.setTotalCount(count);
 		productList = pdao.productList(paging, key, brand);
+		
+		
+		MemberDTO mdto = new MemberDTO();
+		MemberDAO mado = MemberDAO.getInstance();
+		mdto = mado.getMember(request.getParameter(mdto.getUserid()));
+		request.setAttribute("userid", mdto);
 		
 		
 		request.setAttribute("paging", paging);
