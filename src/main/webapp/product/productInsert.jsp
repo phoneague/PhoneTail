@@ -1,51 +1,66 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/header.jsp" %>
-		<h2>Product Insert Form</h2>
-		<form name="productInsertForm" method="post" enctype="multipart/form-data">
-			<div>
-				<label>판매자명</label> ${loginUser}
-				<input type="hidden" name="userid" value="${loginUser}" />
-			</div>
+<%@ include file="/header.jsp"%>
+<link rel="stylesheet" href="product/css/product.css"> 
 
-			<div>
-				<label>상품분류</label>
-				<div>
-					<select name="brand">
-						<option>선택하세요</option>
-						<c:forEach items="${brandList}" var="brand" varStatus="status">
-							<option value="${brand}">${brand}</option>
-						</c:forEach>
-					</select>
-				</div>
-			</div>
 
-			<div>
-				<label>상품시리즈</label> <input type="text" name="series" />
-			</div>
-
-			<div>
-				<label>모델명</label> <input type="text" name="model" />
-			</div>
-
-			<div>
-				<label>상품가격</label> <input type="text" name="price" />
-			</div>
-			<div>
-				<label>글 내용</label>
-				<textarea name="comment" rows="8"></textarea>
-			</div>
-			<div>
-				<label>이미지</label> <input type="file" name="image" onClick="show_preview()">
+<div id="productWrap">
+	<div class="row">
+		<div class="title">Product Insert Form</div>
+	</div>
+	<form name="productInsertForm" method="post"
+		enctype="multipart/form-data">
+		<div class="container">
+			<div class="detailImage">
+				<img id="preview" src="" width="600" />
 				
 			</div>
-			<div>
-				<input type="button" value="상품등록" onClick="go_insert()"> 
-				<input
-					type="button" value="목록으로"
-					onClick="location.href='phonetail.do?command=productList'">
+			<div class="detailInfos">
+				<div class="row">
+					<div class="coltitle">판매자</div>
+					<div class="col">${loginUser}
+						<input type="hidden" name="userid" value="${loginUser}" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="coltitle">브랜드</div>
+					<div class="col">
+						<select name="brand">
+							<option>선택하세요</option>
+							<c:forEach items="${brandList}" var="brand" varStatus="status">
+								<option value="${brand}">${brand}</option>
+							</c:forEach>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="coltitle">시리즈</div>
+					<div class="col"><input type="text" name="series" /></div>
+				</div>
+				<div class="row">
+					<div class="coltitle">모델명</div>
+					<div class="col"><input type="text" name="model" /></div>
+				</div>
+				<div class="row">
+					<div class="coltitle">가격</div>
+					<div class="col"><input type="text" name="price" /></div>
+				</div>
+				<div class="row">
+					<div class="coltitle">글 내용</div>
+					<div class="col"><textarea name="comment" rows="8"></textarea></div>
+				</div>
+				<div class="row">
+					<div class="coltitle">이미지 등록</div>
+					<div class="col"><input type="file" name="image"  onChange="show_preview(event)"></div>
+				</div>
 			</div>
-		</form>
-
+		</div>
+		<div class="row">
+			<input type="button" value="상품등록" onClick="go_insert()">
+			<input type="button" value="목록으로"
+			onClick="location.href='phonetail.do?command=productList'">
+		</div>
+	</form>
+</div>
 
 <%@ include file="/footer.jsp"%>
