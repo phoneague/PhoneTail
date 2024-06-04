@@ -22,6 +22,8 @@ public class ProductDetailAction implements Action {
 		
 		request.setAttribute("productDTO", pdto);
 		
+
+		
 		request.getRequestDispatcher("product/productDetail.jsp").forward(request, response);
 
 	}
