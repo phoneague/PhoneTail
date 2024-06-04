@@ -30,7 +30,7 @@
 				<div class="row">
 					<div class="col">${qna.qseq}</div>
 					<div class="col">${qna.userid}</div>
-					<div class="col"><a href="phonetail.do?command=qnaView&qseq=${qna.qseq}">${qna.title}</a></div>
+					<div class="col"><a href="phonetail.do?command=qnaView&qseq=${qna.qseq}">${qna.title}</a></div>	
 					<div class="col"><fmt:formatDate value="${qna.indate}" type="date"/></div>
 					<div class="col">${qna.qreply == '' ? 'NO' : 'YES'}</div>
 					<div class="col">${qna.readCount}</div>

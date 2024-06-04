@@ -7,6 +7,21 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
+-- 
+
+
+
+create or replace view new_pro_view
+as
+select pseq, name, price2, image from product  where useyn='Y'  order by indate desc limit 4;
+
+-- 베스트 상품 view 생성
+create or replace view best_pro_view
+as
+select pseq, name, price2, image from product  where bestyn='Y'  order by indate desc limit 4;
+
+
+
 -- APPLE 브랜드 삽입
 INSERT INTO product_info (model, series, brand) VALUES 
 ('아이폰 15 PRO MAX', '15시리즈', 'APPLE'),
@@ -38,8 +53,6 @@ INSERT INTO product_info (model, series, brand) VALUES
 ('아이폰7', '7,8 시리즈', 'APPLE');
 
 --Samsung 브랜드 삽입
-
--- Samsung 시리즈 삽입
 INSERT INTO product_info (model, series, brand) VALUES 
 ('갤럭시노트20 ULTRA', '노트시리즈', 'Samsung'),
 ('갤럭시노트20', '노트시리즈', 'Samsung'),
@@ -83,7 +96,7 @@ INSERT INTO product_info (model, series, brand) VALUES
 ('갤럭시 JUMP3', 'A 시리즈', 'Samsung'),
 ('갤럭시 JUMP2', 'A 시리즈', 'Samsung');
 
--- LG 시리즈 삽입
+-- LG 브랜드 삽입
 INSERT INTO product_info (model, series, brand) VALUES 
 ('LG G8 ThinQ', 'G 시리즈', 'LG'),
 ('LG G7 ThinQ', 'G 시리즈', 'LG'),

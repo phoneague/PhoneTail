@@ -69,13 +69,6 @@ public class MemberDTO {
 	public void setIndate(Timestamp indate) {
 		this.indate = indate;
 	}
-	@Override
-	public String toString() {
-		return "MemberDTO [userid=" + userid + ", pwd=" + pwd + ", name=" + name + ", phone=" + phone + ", email="
-				+ email + ", address1=" + address1 + ", address2=" + address2 + ", userstate=" + userstate + ", indate="
-				+ indate + "]";
-	}
 	
-    
-    
+   
 }

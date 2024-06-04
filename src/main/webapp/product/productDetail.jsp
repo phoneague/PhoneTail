@@ -58,25 +58,29 @@
 				<c:choose>
 				<c:when test="${productDTO.sellstate eq 'N'}">
 					<input type="button" value="판매확정" onClick="sold(${productDTO.pseq})" />
-					<input type="button" value="상품수정" id="styleButton"
+					<input type="button" value="상품수정" 
 					onClick="go_updateForm(${productDTO.pseq}, '${productDTO.userid}', '${login.userid}')" />
 				</c:when>
 				</c:choose>
-				<input type="button" value="상품삭제" id="styleButton"
+				<input type="button" value="상품삭제" 
 					onClick="go_delete(${productDTO.pseq}, '${productDTO.userid}', '${login.userid}')" />
 			</div>
 		</c:when>
-
 		<c:otherwise>
 			<div class = "row">
-				<input type="button" value="채팅방 입성~" id="styleButton"
+				<input type="button" value="채팅방 입성~"
 					onClick="go_chat(${productDTO.pseq},'${login.userid}')" /> 
-				<input type="button" id="styleButton"
+				<input type="button" 
 					onClick="go_report(${productDTO.pseq},'${login.userid}')"
 					value="신고하기">
 			</div>
 		</c:otherwise>
 	</c:choose>
+	<div class="row" style="position:relative; margin-bottom:20px;">
+		<input type="button" value="이전 상품" style="position:absolute; left:10px;" onclick="go_prev()"/>
+		<input type="button" value="다음 상품" style="position:absolute; right:10px;" onclick="go_next()"/>
+	</div>
+	
 
 </div>
 

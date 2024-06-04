@@ -193,5 +193,24 @@ public class ChatListDAO {
 		}
 		return list;
 	}
+
+	public int getProductChatList(int pseq) {
+		int chatCount=0;
+		con=DB.getConnection();
+		String sql = "SELECT count(lseq) AS cnt FROM hak WHERE pseq=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, pseq);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				chatCount = rs.getInt("cnt");
+			}
+			System.out.println(chatCount);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally { DB.close(con, pstmt, rs);
+		}
+		return chatCount;
+	}
 }
 

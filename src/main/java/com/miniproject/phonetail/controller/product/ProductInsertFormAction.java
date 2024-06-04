@@ -21,7 +21,7 @@ public class ProductInsertFormAction implements Action {
 		if( mdto == null) {
 			response.sendRedirect("phonetail.do?command=loginForm");
 		} else {
-			String[] brandList = {"Samsung","Apple","LG"};
+			String[] brandList = {"Samsung","Apple","LG", "기타"};
 			request.setAttribute("brandList", brandList);
 			request.setAttribute("loginUser", mdto.getUserid());
 			
