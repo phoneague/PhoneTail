@@ -107,3 +107,10 @@ function show_preview(event) {
     reader.readAsDataURL(input.files[0]);
 }
 
+function go_prev(){
+	
+}
+
+function go_next(){
+	
+}

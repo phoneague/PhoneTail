@@ -38,8 +38,6 @@ INSERT INTO product_info (model, series, brand) VALUES
 ('아이폰7', '7,8 시리즈', 'APPLE');
 
 --Samsung 브랜드 삽입
-
--- Samsung 시리즈 삽입
 INSERT INTO product_info (model, series, brand) VALUES 
 ('갤럭시노트20 ULTRA', '노트시리즈', 'Samsung'),
 ('갤럭시노트20', '노트시리즈', 'Samsung'),
@@ -83,7 +81,7 @@ INSERT INTO product_info (model, series, brand) VALUES
 ('갤럭시 JUMP3', 'A 시리즈', 'Samsung'),
 ('갤럭시 JUMP2', 'A 시리즈', 'Samsung');
 
--- LG 시리즈 삽입
+-- LG 브랜드 삽입
 INSERT INTO product_info (model, series, brand) VALUES 
 ('LG G8 ThinQ', 'G 시리즈', 'LG'),
 ('LG G7 ThinQ', 'G 시리즈', 'LG'),
