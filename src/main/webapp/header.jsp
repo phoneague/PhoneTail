@@ -6,17 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>PhoneTail</title>
-<link rel="stylesheet" href="admin/css/adminReport.css">
-<link rel="stylesheet" href="admin/css/sub_menu.css">
-<link rel="stylesheet" href="admin/css/admin_member.css">
-<link rel="stylesheet" href="admin/css/adminReportView.css">
 <link rel="stylesheet" href="css/header_footer.css">
-<link rel="stylesheet" href="css/login.css">
-<link rel="stylesheet" href="admin/css/admin.css">
-<link rel="stylesheet" href="customer/css/qna.css"> 
-<link rel="stylesheet" href="product/css/product.css"> 
-<link rel="stylesheet" href="customer/css/qna.css">
-<link rel="stylesheet" type="text/css" href="chat/chat.css">
 
 <script src="script/jquery-3.7.1.min.js"></script>
 <script src="product/script/product.js"></script>
