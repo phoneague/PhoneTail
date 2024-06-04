@@ -1,33 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/header.jsp"%>
-<h2>
-Report List
-</h2>
+<div class="lititle">
+<h2>Report List</h2>
+</div>
 <div class="content-wrapper">
-    <%@ include file="../sub_menu.jsp"%>
+    <%@ include file="../admin_submenu.jsp"%>
+   <div class="container">
 	<form method="post" name="frm">
-		<div class="retb">
-			<div class="rerow">
-				<div class="recol" style="display: flex; align-items:center;">
+		<div class="litb">
+			<div class="row">
+				<div class="col" style="display: flex; align-items:center;">
 					아이디 &nbsp; <input type="text" name="key" value="${key}" /> &nbsp;
 					&nbsp; &nbsp; <input class="searchbtn" type="button" name="btn_search"
 						value="검색" onClick="go_search('adminReportList')" />
 					&nbsp;&nbsp;&nbsp; 
 				</div>	
 			</div>
-			<div class="rerow">
-				<div class="recoltitle">번호</div>
-				<div class="recoltitle">아이디</div>
-				<div class="recoltitle">타입</div>
-				<div class="recoltitle">신고날짜</div>
-				<div class="recoltitle">상태</div>
+			<div class="row">
+				<div class="coltitle">번호</div>
+				<div class="coltitle">아이디</div>
+				<div class="coltitle">타입</div>
+				<div class="coltitle">신고날짜</div>
+				<div class="coltitle">상태</div>
 			</div>
 			<c:forEach items="${reportList}" var="reportDTO">
-				<div class="rerow">
-					<div class="recol">${reportDTO.reseq}</div>
-					<div class="recol"><a href="phonetail.do?command=reportView&reseq=${reportDTO.reseq}">${reportDTO.userid}님의 신고글</a></div>
-					<div class="recol">
+				<div class="row">
+					<div class="col">${reportDTO.reseq}</div>
+					<div class="col"><a style="hover{text-decoration:underline;}" href="phonetail.do?command=reportView&reseq=${reportDTO.reseq}">${reportDTO.userid}님의 신고글</a></div>
+					<div class="col">
 						<c:choose>
 								<c:when test="${reportDTO.retype==0}">광고성 콘텐츠(거래와 관련없는 글)[코드:${reportDTO.retype}]</c:when>
 								<c:when test="${reportDTO.retype==1}">상품정보 부정확[코드:${reportDTO.retype}]</c:when>
@@ -37,8 +38,8 @@ Report List
 								<c:when test="${reportDTO.retype==5}">기타[코드:${reportDTO.retype}]</c:when>
 						</c:choose>
 					</div>
-					<div class="recol"><fmt:formatDate value="${reportDTO.indate}" type="date" /></div>
-					<div class="recol">
+					<div class="col"><fmt:formatDate value="${reportDTO.indate}" type="date" /></div>
+					<div class="col">
 						<c:choose>
 							<c:when test="${reportDTO.restate=='N'}">처리 대기중</c:when>
 							<c:when test="${reportDTO.restate=='Y'}">처리완료</c:when>
@@ -47,12 +48,13 @@ Report List
 					</div>
 				</div>
 			</c:forEach>
-			<div id="repaging">
+			<div id="paging">
 				<jsp:include page="/paging/paging.jsp">
 					<jsp:param value="phonetail.do?command=adminReportList" name="address" />
 				</jsp:include>
 			</div>
 		</div>
 	</form>
+	</div>
 </div>
 <%@ include file="/footer.jsp"%>

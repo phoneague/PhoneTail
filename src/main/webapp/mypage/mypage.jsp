@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/header.jsp"%>
-
-<link rel="stylesheet" href="mypage/css/mypage.css">
+<!-- <link rel="stylesheet" href="mypage/css/mypage.css"> -->
+<div class="lititle">
 <h2>${login.name}'s MY PAGE</h2>
+</div>
 <div class="content-wrapper">
 <%@ include file="mypage_submenu.jsp"%>
+<div class="container">
 <section>
 	<article>
-		
 		<form>
 			<div class="field" style="border-top:2px solid #3f4549;">
 						<label>내 아이디</label><input type="text" name="userid"
@@ -40,8 +41,9 @@
 			</div>
 		</form>
 	</article>
+	<input class="searchbtn" type="button" name="btn_search" value="회원정보수정" onClick="location.href='phonetail.do?command=updateMemberForm'" />
+	<input class="searchbtn" type="button" name="btn_delete" value="회원탈퇴" onClick="withDraw()" />
 </section>
-<h3><a href="phonetail.do?command=updateMemberForm">회원정보수정</a></h3><br>
-<h3><a style="cursor: pointer;" onClick="withDraw()">회원탈퇴</a></h3><br>
+</div>
 </div>
 <%@ include file="../footer.jsp"%>

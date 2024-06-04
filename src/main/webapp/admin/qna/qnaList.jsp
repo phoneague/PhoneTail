@@ -1,21 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/header.jsp"%>
-<h2>
-QnA List
-</h2>
+<div class="lititle">
+<h2>QnA List</h2>
+</div>
 <div class="content-wrapper">
-<%@ include file="../sub_menu.jsp"%>
-<article>
+<%@ include file="../admin_submenu.jsp"%>
+<div class="container">
 	<form method="post" name="frm">
-		<div class="tb">
+		<div class="litb">
 			<div class="row">
-				<div class="col" style="display: flex; align-items:center;">
+				<div class="col" style="display: flex; align-items:right;">
 					아이디 &nbsp; <input type="text" name="key" value="${key}" /> &nbsp;
-					&nbsp; &nbsp; <input class="btn" type="button" name="btn_search"
+					&nbsp; &nbsp; <input class="searchbtn" type="button" name="btn_search"
 						value="검색" onClick="go_search('adminQnaList')" />
-					&nbsp;&nbsp;&nbsp; <input type="button" style="margin-left: auto;"
-						value="신고처리" onClick="go_wrt();">
+					&nbsp;&nbsp;&nbsp;<input class="searchbtn" type="button" value="글 작성" onclick="location.href='phonetail.do?command=writeQnaForm'"/>
 				</div>
 			</div>
 			<div class="row">
@@ -24,14 +23,18 @@ QnA List
 				<div class="coltitle">제목</div>
 				<div class="coltitle">작성일</div>
 				<div class="coltitle">답변여부</div>
+				<div class="coltitle">조회수</div>
+				<div class="coltitle">비밀글</div>
 			</div>
-			<c:forEach items="${qnaList}" var="qnaDTO">
+			<c:forEach items="${questionList}" var="qna" varStatus="status">
 				<div class="row">
-					<div class="col">${qnaDTO.qseq}</div>
-					<div class="col">${qnaDTO.userid}</div>
-					<div class="col"><a href="phonetail.do?command=qnaView&qseq=${qnaDTO.qseq}">${qnaDTO.title}</a></div>
-					<div class="col"><fmt:formatDate value="${qnaDTO.indate}" type="date"/></div>
-					<div class="col">${qnaDTO.qreply=='' ? 'NO' : 'YES'}</div>
+					<div class="col">${qna.qseq}</div>
+					<div class="col">${qna.userid}</div>
+					<div class="col"><a href="phonetail.do?command=qnaView&qseq=${qna.qseq}">${qna.title}</a></div>
+					<div class="col"><fmt:formatDate value="${qna.indate}" type="date"/></div>
+					<div class="col">${qna.qreply == '' ? 'NO' : 'YES'}</div>
+					<div class="col">${qna.readCount}</div>
+					<div class="col">${qna.secret == true ? '비밀글입니다' : ''}</div>
 				</div>
 			</c:forEach>
 			<jsp:include page="/paging/paging.jsp">
@@ -39,6 +42,6 @@ QnA List
 			</jsp:include>
 		</div>
 	</form>
-</article>
+</div>
 </div>
 <%@ include file="/footer.jsp"%>

@@ -48,12 +48,12 @@ public class AdminQnaListAction implements Action {
 			paging.setTotalCount(count);
 			
 	        // 질문 목록을 가져오는 코드 추가
-	        ArrayList<QuestionDTO> qnaList = new ArrayList<>();
-	        qnaList = qdao.getAllQuestions(paging,key); // 모든 질문을 가져옵니다. 이에 따른 메서드명은 적절히 변경해주세요.
+	        ArrayList<QuestionDTO> questionList = new ArrayList<>();
+	        questionList = qdao.getAllQuestions(paging,key); // 모든 질문을 가져옵니다. 이에 따른 메서드명은 적절히 변경해주세요.
 
 	        // 가져온 질문 목록을 request에 attribute로 저장합니다.
 	        request.setAttribute("paging", paging);
-	        request.setAttribute("qnaList", qnaList);
+	        request.setAttribute("questionList", questionList);
 
 	        // JSP 파일로 forward 합니다.
 	        request.getRequestDispatcher("admin/qna/qnaList.jsp").forward(request, response);
