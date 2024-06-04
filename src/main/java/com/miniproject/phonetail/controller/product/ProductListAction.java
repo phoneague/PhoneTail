@@ -2,9 +2,13 @@ package com.miniproject.phonetail.controller.product;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
+import com.miniproject.phonetail.DAO.ChatListDAO;
 import com.miniproject.phonetail.DAO.MemberDAO;
 import com.miniproject.phonetail.DAO.ProductDAO;
+import com.miniproject.phonetail.DTO.ChatListDTO;
 import com.miniproject.phonetail.DTO.MemberDTO;
 import com.miniproject.phonetail.DTO.ProductDTO;
 import com.miniproject.phonetail.controller.action.Action;
@@ -66,12 +70,28 @@ public class ProductListAction implements Action {
 		productList = pdao.productList(paging, key, brand);
 		
 		
-		MemberDTO mdto = new MemberDTO();
-		MemberDAO mado = MemberDAO.getInstance();
-		mdto = mado.getMember(request.getParameter(mdto.getUserid()));
-		request.setAttribute("userid", mdto);
-		
-		
+		MemberDAO mdao = MemberDAO.getInstance();
+        Map<String, String> userStates = new HashMap<>();
+        
+        for (ProductDTO product : productList) {
+            MemberDTO member = mdao.getMember(product.getUserid());
+            if (member != null) {
+                userStates.put(product.getUserid(), member.getUserstate());
+            }
+        }
+        
+        ChatListDAO cdao = ChatListDAO.getInstance();
+        Map<Integer, Integer> productChatList = new HashMap<>();
+        
+        for(ProductDTO product : productList) {
+        	int chatCount = cdao.getProductChatList(product.getPseq());
+        	if(chatCount != 0) {
+        		productChatList.put(product.getPseq(),chatCount);
+        	}
+        }
+        
+        request.setAttribute("productChatList", productChatList);
+		request.setAttribute("userStates", userStates);
 		request.setAttribute("paging", paging);
 		request.setAttribute("productList", productList);
 		request.getRequestDispatcher("product/productList.jsp").forward(request, response);
