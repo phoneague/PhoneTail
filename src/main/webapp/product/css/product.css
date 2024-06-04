@@ -3,14 +3,14 @@
 #productWrap{width:100%; display:flex; flex-direction:column; margin: 0 auto; padding:20px; box-sizing:border-box;}
 .row{ flex:1; display: flex; justify-content:center; margin-bottom:10px;}
 
-.title{font-size:24px; font-weight:bold; margin-bottom:20px;}
+.title{font-size:32px; font-weight:bold; margin-bottom:20px;}
 
 
 .tb{ width:100%; display: flex; flex-direction: column; margin-bottom:30px; }
 .coltitle{  background: #3f4549; margin:1px; padding:10px; color:white; text-align: center;}
 .col{ border:1px dotted #3f4549; margin:1px; padding:10px;  text-align: center;}
-.title{flex:1; border:1px dotted black; text-align:center;}
-.btn{flex:1; border:1px dotted black; align-items:center;}
+.title{flex:1; text-align:center;}
+.btn{flex:1; align-items:center;}
 
 
 .products{display: flex; flex-wrap:wrap; justify-content:space-between; gap:20px;}
@@ -28,7 +28,7 @@
 }
 
 .productSold {
-    color: red;
+    color: black;
     font-weight: bold;
 }
 

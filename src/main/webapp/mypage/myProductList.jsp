@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/header.jsp"%>
-<link rel="stylesheet" href="product/css/product.css"> 
+<link rel="stylesheet" href="product/css/product.css">
 
 
 <h2>My Product List</h2>
@@ -10,18 +10,17 @@
 	<article>
 		<form name="productListForm" method="post">
 			<div class="row">
-				<div class="col" style="display: flex; align-items: center;">
-					모델 &nbsp; <input type="text" name="key" value="${key}" /> &nbsp;
-					&nbsp; &nbsp; <input class="btn" type="button" name="btn_search"
-						value="검색" onClick="go_search('productList')" />
-					&nbsp;&nbsp;&nbsp;
-				</div>
-
 				<div class="col">
 					<div class="btn">
 						<input type="button" value="상품등록" id="sellButton"
 							onClick="location.href='phonetail.do?command=productInsertForm'" />
 					</div>
+				</div>
+				<div class="col" style="display: flex; align-items: center;">
+					모델 &nbsp; <input type="text" name="key" value="${key}" /> &nbsp;
+					&nbsp; &nbsp; <input class="btn" type="button" name="btn_search"
+						value="검색" onClick="go_search('productList')" />
+					&nbsp;&nbsp;&nbsp;
 				</div>
 			</div>
 			<div class="tb">
