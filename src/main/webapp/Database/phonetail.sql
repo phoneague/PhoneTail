@@ -327,3 +327,4 @@ WHERE (model LIKE '%Galaxy%')
 AND (sid = 'a' OR bid = 'a') 
 ORDER BY lseq DESC 
 LIMIT 10 OFFSET 1;
+
