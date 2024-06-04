@@ -5,7 +5,6 @@ function go_search(command){
 }
 
 function go_write(){
-    
 	let Form = document.qnaWriteForm;
 	if (Form.title.value == "") {
 		alert('제목을 입력하세요');
@@ -16,9 +15,5 @@ function go_write(){
 	} else {
 		Form.action="phonetail.do?command=writeQna"
 		Form.submit();
-	
-	}
-function submitForm() {
-    document.getElementById("myForm").submit();
-}
+	}	
 }

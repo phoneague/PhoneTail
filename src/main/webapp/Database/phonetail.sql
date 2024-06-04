@@ -317,6 +317,3 @@ INSERT INTO report (pseq, userid, retype, recontent, restate) VALUES
 UPDATE question SET qreply='';
 
 
-SELECT * FROM report WHERE userid LIKE 'user1' ORDER BY restate DESC, reseq DESC;
-
-select * from hak WHERE model LIKE CONCAT('%', '21', '%') AND (sid = 'user1' OR bid = 'user1') ORDER BY lseq DESC;
