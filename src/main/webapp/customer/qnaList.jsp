@@ -28,7 +28,7 @@
                 <td><fmt:formatDate value="${qna.indate}" type="date"/></td>
                 <td>${qna.qreply == '' ? 'NO' : 'YES'}</td>
                 <td>${qna.readCount}</td> 
-                <td>${qna.secret == ? '비밀글입니다' : ''}</td>
+                <td>${qna.secret == '?' '비밀글입니다' : ''}</td>
             </tr>
         </c:forEach>
     </table>

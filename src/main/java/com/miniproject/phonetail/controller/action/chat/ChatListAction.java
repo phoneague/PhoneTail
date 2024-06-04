@@ -25,15 +25,6 @@ public class ChatListAction implements Action {
 		if( mdto == null) {
 			response.sendRedirect("phonetail.do?command=loginForm");
 		}else {
-			/*
-			 * int page=1; if(request.getParameter("page")!=null) {
-			 * page=Integer.parseInt(request.getParameter("page"));
-			 * session.setAttribute("page", page); }else
-			 * if(session.getAttribute("page")!=null) {
-			 * page=(Integer)session.getAttribute("page"); }else {
-			 * session.removeAttribute("page"); }
-			 */
-			
 			String key="";
 			if(request.getParameter("key")!=null) {
 				key=request.getParameter("key");
@@ -43,32 +34,31 @@ public class ChatListAction implements Action {
 			}else {
 				session.removeAttribute("key");
 			}
-			
-			//Paging paging = new Paging();
-			//paging.setPage(page);
-			
-			
 			ChatListDAO cdao = ChatListDAO.getInstance();
 			ArrayList<ChatListDTO> clist = new ArrayList<ChatListDTO>();
-			//int count = cdao.AllList("hak","model", key, mdto.getUserid());
-			
-			//paging.setTotalCount(count);
 			clist = cdao.chatList( key, mdto.getUserid(), mdto.getUserid());
-			
-			
-			
-			
 			request.setAttribute("loginUser", mdto.getUserid()); // 기존에 있던거
-			
 			request.setAttribute("chatList", clist); // 기존에 있던거
-			
-			
-			//request.setAttribute("paging", paging);
-			//request.setAttribute("chatList", cList);
-			
-			// 기존에 있던거
 			RequestDispatcher rd = request.getRequestDispatcher("chat/ChatList.jsp");
 			rd.forward(request, response);
+			
+			
+			/*
+			 * int page=1; if(request.getParameter("page")!=null) {
+			 * page=Integer.parseInt(request.getParameter("page"));
+			 * session.setAttribute("page", page); }else
+			 * if(session.getAttribute("page")!=null) {
+			 * page=(Integer)session.getAttribute("page"); }else {
+			 * session.removeAttribute("page"); }
+			 */
+			//Paging paging = new Paging();
+			//paging.setPage(page);
+			//int count = cdao.AllList("hak","model", key, mdto.getUserid());
+			//paging.setTotalCount(count);
+			//request.setAttribute("paging", paging);
+			//request.setAttribute("chatList", cList);
+			// 기존에 있던거
+			
 		}
 	}
 
