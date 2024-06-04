@@ -115,6 +115,7 @@ header{ width:100%; margin-bottom:30px;}
 .litb .coltitle:nth-child(4), .litb .col:nth-child(4){flex:1;}
 .litb .coltitle:nth-child(5), .litb .col:nth-child(5){flex:2}
 .litb .coltitle:nth-child(6), .litb .col:nth-child(6){flex:1}
+.litb .coltitle:nth-child(7), .litb .col:nth-child(7){flex:1}
 
 .mrow{  display: flex; border-top:1px solid #3f4549;border-bottom:1px solid #3f4549;}
 .mrow .coltitle:nth-child(1), .mrow .col:nth-child(1){ flex:2}
@@ -127,6 +128,19 @@ header{ width:100%; margin-bottom:30px;}
 .litb .col a{
   text-decoration: none;
 	color: red;
+	
+}
+.litb .col a:hover {
+	color: red !important;
+	text-decoration:underline !important;
+}
+
+.litb .row .searchbtn{
+	background-color: black;
+	border:none;
+	color:white;
+	border-radius: 5px;
+	width:120px;
 }
 
 #paging{

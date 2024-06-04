@@ -26,7 +26,7 @@
 					<div class="col">${qna.userid}</div>
 					<c:if test="${qna.userid eq login.userid}">
                         <div class="col"><a href="phonetail.do?command=qnaView&qseq=${qna.qseq}">${qna.title}</a></div>
-               </c:if>
+               		</c:if>
                 <c:if test="${qna.userid ne login.userid}">
                     <div class="col"><a href="javascript:void(0);" onclick="alert('작성자만 비밀글을 열람할 수 있습니다')">비밀글</a></div>
                </c:if>

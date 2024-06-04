@@ -1,21 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/header.jsp"%>
-
-</head>
-<body>
+    
+    <div class="ViewContainer">
+    <div class="vititle">
     <h2>Report View</h2>
-    <div class="reportViewContainer">
+    </div>
         <form name="reportViewForm" method="post">
-            <div class="rvfields-horizontal">
-                <div class="rvfield">
+            <div class="vifields-horizontal">
+                <div class="vifield">
                     <label>Report No.</label>
                     <div>${reportDTO.reseq}</div>
                     <input name="reseq" type="hidden" value="${reportDTO.reseq}"/>
                 </div>
-                <div class="rvfield">
+                <div class="vifield">
                     <label>신고 사유</label>
-                    <div>
+                    <div>	
                         신고코드: ${reportDTO.retype}<br>
                         <c:choose>
                             <c:when test="${reportDTO.retype==0}">광고성 콘텐츠(거래와 관련없는 글)</c:when>
@@ -27,25 +27,17 @@
                         </c:choose>
                     </div>
                 </div>
-                <div class="rvfield">
+                <div class="vifield">
                 <label>작성자</label>
                 <div>${reportDTO.userid}</div>
             </div>
-                <div class="rvfield">
+                <div class="vifield">
                     <label>등록일</label>
                     <div>
                         <fmt:formatDate value="${reportDTO.indate}" type="date" />
                     </div>
                 </div>
-                </div>
-                
-            
-            
-            <div class="rvfield">
-                <label>상세 내용</label>
-                <div>${reportDTO.recontent}</div>
-            </div>
-            <div class="rvfield">
+                 <div class="vifield">
                 <label>처리상태</label>
                 <div>
                     ${reportDTO.restate}
@@ -56,26 +48,24 @@
                     </c:choose>
                 </div>
             </div>
-            <div class="rvfield">
-                    <label>신고 대상 아이디</label>
-                    <div>${reportDTO.pid}</div>
                 </div>
-            <div class="rvbtn">
-                <a href="phonetail.do?command=productDetail&pseq=${reportDTO.pseq}">신고 대상 게시글 확인하기</a>
+            <div class="vicontent">
+                <label>상세 내용</label>
+                <div>${reportDTO.recontent}</div>
             </div>
+            <input type="button" style="width:400px;" value="신고 대상 게시글 확인하기" onclick="location.href='phonetail.do?command=productDetail&pseq=${reportDTO.pseq}'"/>
             <input name="pid" type="hidden" value="${reportDTO.pid}" />
             <c:if test="${!empty adminUser.adminid}">
-                <h2>신고처리</h2>
-                <div class="rvfield">
+                <div class="vifield">
                     <label>신고처리</label>
                     <select name="newRestate">
-                        <option value="${reportDTO.restate}">--신고처리하기--</option>
+                        <option value="${reportDTO.restate}">신고분류</option>
                         <option value="Y">블랙처리</option>
                         <option value="S">보류하기</option>
                     </select>
-                    <div class="rvfields-horizontal">
-                    <input type="button" value="처리하기" onClick="processReport()">
-                    <input type="button" value="목록으로" onClick="location.href='phonetail.do?command=adminReportList'">
+                    <div class="vifields-horizontal">
+                    <input  type="button" value="처리하기" onClick="processReport()">
+                    <input  type="button" value="목록으로" onClick="location.href='phonetail.do?command=adminReportList'">
                     </div>
                 </div>
             </c:if>

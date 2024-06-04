@@ -27,7 +27,7 @@
 			<c:forEach items="${reportList}" var="reportDTO">
 				<div class="row">
 					<div class="col">${reportDTO.reseq}</div>
-					<div class="col"><a style="hover{text-decoration:underline;}" href="phonetail.do?command=reportView&reseq=${reportDTO.reseq}">${reportDTO.userid}님의 신고글</a></div>
+					<div class="col"><a  href="phonetail.do?command=reportView&reseq=${reportDTO.reseq}">${reportDTO.userid}님의 신고글</a></div>
 					<div class="col">
 						<c:choose>
 								<c:when test="${reportDTO.retype==0}">광고성 콘텐츠(거래와 관련없는 글)[코드:${reportDTO.retype}]</c:when>

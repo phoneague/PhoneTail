@@ -10,7 +10,6 @@
 	<div class="container">
 		<form method="post" name="frm">
 			<div class="litb">
-				
 				<div class="row">
 					<div class="col" style="display: flex; align-items: center;">
 						아이디&nbsp;&nbsp;&nbsp; <input type="text" name="key" value="${key}" />&nbsp;&nbsp;&nbsp;
