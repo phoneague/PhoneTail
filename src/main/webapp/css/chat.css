@@ -31,17 +31,9 @@
 }
 .reply_row{
 	display: flex;
-}
-.reply_col:nth-child(1){
-	width: 100px;
-	text-align: right;
-	margin-right:10px;
-}
-.reply_col:nth-child(2){
-	width: 80%;
-}
-.reply_col:nth-child(3){
-	float:right;
+	width: 100%;
+	padding: 5px;
+	
 }
 
 .mydiv3 {
@@ -49,4 +41,28 @@
   height: 500px;
   display:flex;
   flex-direction:column-reverse;
+}
+
+.chat_reply_col:nth-child(1){
+	flex:0.1;
+	margin-right:10px;
+	text-align: center;
+}
+.chat_reply_col:nth-child(2){
+	flex:5;
+	margin-right:10px;
+}
+.chat_reply_col:nth-child(3){
+	width: 20%;
+	float:right;
+	flex:1;
+}
+.chat_reply_col{
+	display:flex;
+	
+}
+.plz{
+	max-width:500px;
+	border-radius:1em;
+	padding:5px;
 }
