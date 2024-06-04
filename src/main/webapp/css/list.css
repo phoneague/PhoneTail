@@ -115,6 +115,7 @@ header{ width:100%; margin-bottom:30px;}
 .litb .coltitle:nth-child(4), .litb .col:nth-child(4){flex:1;}
 .litb .coltitle:nth-child(5), .litb .col:nth-child(5){flex:2}
 .litb .coltitle:nth-child(6), .litb .col:nth-child(6){flex:1}
+.litb .coltitle:nth-child(7), .litb .col:nth-child(7){flex:1}
 
 .mrow{  display: flex; border-top:1px solid #3f4549;border-bottom:1px solid #3f4549;}
 .mrow .coltitle:nth-child(1), .mrow .col:nth-child(1){ flex:2}
@@ -123,6 +124,7 @@ header{ width:100%; margin-bottom:30px;}
 .mrow .coltitle:nth-child(4), .mrow .col:nth-child(4){flex:3;}
 .mrow .coltitle:nth-child(5), .mrow .col:nth-child(5){flex:2}
 .mrow .coltitle:nth-child(6), .mrow .col:nth-child(6){flex:1}
+.mrow .coltitle:nth-child(7), .mrow .col:nth-child(7){flex:1}
 
 .litb .col a{
   text-decoration: none;
@@ -138,4 +140,4 @@ header{ width:100%; margin-bottom:30px;}
 footer{ width:100%;}
 footer div{ font-size:110%; }
 
-.btn input{text-align:center;	}
+.btn input{text-align:center;}
