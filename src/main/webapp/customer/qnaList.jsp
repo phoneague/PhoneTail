@@ -33,11 +33,6 @@
 								<c:when test="${qna.userid eq login.userid}">
 									<div class="col"><a href="phonetail.do?command=qnaView&qseq=${qna.qseq}">${qna.title}</a></div>
 								</c:when>
-								
-								<c:when test="${adminUser eq adminid}">
-									<div class="col"><a href="phonetail.do?command=qnaView&qseq=${qna.qseq}">${qna.title}</a></div>
-								</c:when>
-								
 								<c:otherwise>
 									<div class="col"><a href="javascript:void(0);" onclick="alert('작성자만 비밀글을 열람할 수 있습니다')">비밀글</a></div>
 								</c:otherwise>
