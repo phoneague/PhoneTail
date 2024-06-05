@@ -77,6 +77,9 @@
 								채팅방 수 : ${productChatList[productDTO.pseq]}
 							</c:if>
 						</div>
+						<div class="productDate">
+							${timeList[productDTO.pseq]}시간 전
+						</div>
 					</div>
 				</c:forEach>
 			</div>
