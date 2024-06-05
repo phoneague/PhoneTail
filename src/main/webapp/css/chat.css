@@ -108,13 +108,13 @@
 	text-align:center;
 
 	margin-left:15px;
-	font-size: 120%;
+	font-size: 100%;
 	color:#464646;
 }
 
 .chatcol:nth-child(3){
 	flex:4;
-	font-size: 120%;
+	font-size: 100%;
 	margin-top:5px;
 	margin-bottom:5px;
 	color:#464646;

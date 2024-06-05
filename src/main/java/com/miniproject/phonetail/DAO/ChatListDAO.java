@@ -123,6 +123,7 @@ public class ChatListDAO {
 		}finally {DB.close(con, pstmt, rs); }
 	}
 
+	
 	public ChatListDTO filter(int int1, String userid) {
 		ChatListDTO flist = null;
 		con = DB.getConnection();
@@ -211,5 +212,6 @@ public class ChatListDAO {
 		}
 		return chatCount;
 	}
+
 }
 
