@@ -38,7 +38,7 @@
 									: ${productDTO.model}</a>
 							</div>
 							<div class="productPrice">가격 : ${productDTO.price}</div>
-							<div class="productUserid"0>판매자 : ${productDTO.userid}</div>
+							<div class="productUserid">판매자 : ${productDTO.userid}</div>
 							<div class="productSold">
 								<c:choose>
 									<c:when test="${productDTO.sellstate eq 'Y'}">

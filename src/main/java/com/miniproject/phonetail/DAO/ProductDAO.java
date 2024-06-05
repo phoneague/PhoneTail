@@ -121,15 +121,17 @@ public class ProductDAO {
 		} finally { DB.close(con, pstmt, rs);  }
 	}
 
-	public int getAllCount(String tablename, String fieldname, String key, String brand) {
+	public int getAllCount(String tablename, String fieldname, String key, String brand, String sellstate) {
 		int count = 0;
 		con = DB.getConnection();
 //		System.out.println(tablename+"/"+fieldname+"/"+key+"/"+brand);
-		String sql = "SELECT COUNT(*) AS cnt FROM " + tablename + " WHERE " + fieldname + " LIKE CONCAT('%', ?, '%') AND brand LIKE CONCAT('%', ?, '%')";
+		String sql = "SELECT COUNT(*) AS cnt FROM " + tablename + 
+				" WHERE " + fieldname + " LIKE CONCAT('%', ?, '%') AND brand LIKE CONCAT('%', ?, '%') AND sellstate LIKE CONCAT('%', ?, '%')";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, key);
 			pstmt.setString(2, brand);
+			pstmt.setString(3, sellstate);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				count = rs.getInt("cnt");
@@ -140,17 +142,18 @@ public class ProductDAO {
 		return count;
 	}
 	
-	public ArrayList<ProductDTO> productList(Paging paging, String key, String brand) {
+	public ArrayList<ProductDTO> productList(Paging paging, String key, String brand, String sellstate) {
 		ArrayList<ProductDTO> list = new ArrayList<ProductDTO>();
 		con = DB.getConnection();
-		String sql = "SELECT * FROM product WHERE model LIKE CONCAT('%',?,'%') AND brand LIKE CONCAT('%', ?, '%') "
+		String sql = "SELECT * FROM product WHERE model LIKE CONCAT('%',?,'%') AND brand LIKE CONCAT('%', ?, '%') AND sellstate LIKE CONCAT('%', ?, '%')"
 				+ " ORDER BY indate DESC LIMIT ? OFFSET ?";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, key);
 			pstmt.setString(2, brand);
-			pstmt.setInt(3, paging.getDisplayRow());
-			pstmt.setInt(4, paging.getStartNum() - 1);
+			pstmt.setString(3, sellstate);
+			pstmt.setInt(4, paging.getDisplayRow());
+			pstmt.setInt(5, paging.getStartNum() - 1);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				ProductDTO pdto = new ProductDTO();

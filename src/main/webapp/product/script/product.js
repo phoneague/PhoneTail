@@ -107,6 +107,14 @@ function show_preview(event) {
     reader.readAsDataURL(input.files[0]);
 }
 
+function handleSellstateChange() {
+        var selectBox = document.getElementById('sellstateSelect');
+        var selectedValue = selectBox.value;
+        alert(selectedValue);
+        window.location.href = 'phonetail.do?command=productList&sellstate=' + selectedValue
+      
+}
+
 function go_prev(){
 	
 }
