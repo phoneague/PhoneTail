@@ -15,12 +15,6 @@
 	flex-direction: column;
 }
 
-#loginwrap article form h2{
-	margin:0;
-	margin-bottom:20px;
-	font-weight: normal;
-	font-size: 28px;
-}
 
 #loginwrap article form{padding:10px;}
 

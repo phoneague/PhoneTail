@@ -3,10 +3,11 @@
 <%@ include file="/header.jsp"%>
 <div id="loginwrap">
 <section>
+<h2>Update Member</h2>
 		<article>
 				<form name="joinForm" action="phonetail.do" method="post">
 				<input type="hidden" name="command" value="updateMember" />
-        		<h2>Update Member</h2>
+        		
 					<div class="field">
 						<label>User ID</label>
 						<input type="text" name="userid" value="${login.userid}" readonly />

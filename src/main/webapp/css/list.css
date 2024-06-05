@@ -13,7 +13,6 @@ a{text-decoration:none;  color:#3f4549;}
 .content-wrapper {
   display: flex;
 	align-items: center;
-	justify-content: flex-end;
 	font-family: "Roboto", sans-serif;
 	margin: 30px;
 }

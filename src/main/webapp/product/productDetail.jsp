@@ -20,7 +20,20 @@
 			</div>
 			<div class="row">
 				<div class="coltitle">판매자</div>
-				<div class="col">${productDTO.userid}</div>
+				<div class="col">${productDTO.userid}
+				<c:choose>
+                                <c:when test="${userStates[productDTO.userid] eq 'B'}">
+                                    <span style="color: black; font-weight: bold;">
+                                       &nbsp; 블랙리스트
+                                    </span>
+                                </c:when>
+                                <c:when test="${userStates[productDTO.userid] eq 'N'}">
+                                	<span style="color: black; font-weight: bold;">
+                                       &nbsp; 탈퇴(휴면)회원
+                                    </span>
+                                </c:when>
+                </c:choose>
+              </div>
 			</div>
 			<div class="row">
 				<div class="coltitle">브랜드</div>
@@ -44,7 +57,20 @@
 			</div>
 			<div class="row">
 				<div class="coltitle">판매상태</div>
-				<div class="col">${productDTO.sellstate}</div>
+				<div class="col">
+				<c:choose>
+                                <c:when test="${productDTO.sellstate eq 'Y'}">
+                                    <span style="color: red; font-weight: bold;">
+                                       &nbsp; 판매완료
+                                    </span>
+                                </c:when>
+                                <c:when test="${productDTO.sellstate eq 'N'}">
+                                	<span style="color: black; font-weight: bold;">
+                                       &nbsp; 판매중
+                                    </span>
+                                </c:when>
+                </c:choose>
+				</div>
 			</div>
 			<div class="row">
 				<div class="coltitle">등록일</div>

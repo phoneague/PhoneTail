@@ -2,7 +2,11 @@ package com.miniproject.phonetail.controller.mypage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
+import com.miniproject.phonetail.DAO.ChatListDAO;
+import com.miniproject.phonetail.DAO.MemberDAO;
 import com.miniproject.phonetail.DAO.ProductDAO;
 import com.miniproject.phonetail.DTO.MemberDTO;
 import com.miniproject.phonetail.DTO.ProductDTO;
@@ -48,7 +52,30 @@ public class MyProductListAction implements Action {
 				
 				request.setAttribute("paging", paging);
 				request.setAttribute("productList", productList);
+				
+				MemberDAO mdao = MemberDAO.getInstance();
+				Map<String, String> userStates = new HashMap<>();
+	        
+				for (ProductDTO product : productList) {
+					MemberDTO member = mdao.getMember(product.getUserid());
+					if (member != null) {
+						userStates.put(product.getUserid(), member.getUserstate());
+					}
+				}
+	        
+				ChatListDAO cdao = ChatListDAO.getInstance();
+				Map<Integer, Integer> productChatList = new HashMap<>();
+	        
+				for(ProductDTO product : productList) {
+					int chatCount = cdao.getProductChatList(product.getPseq());
+					if(chatCount != 0) {
+						productChatList.put(product.getPseq(),chatCount);
+					}
+				}
+				request.setAttribute("productChatList", productChatList);
+				request.setAttribute("userStates", userStates);
 			}
+			
 			request.getRequestDispatcher("mypage/myProductList.jsp").forward(request, response);
 		}
 	}

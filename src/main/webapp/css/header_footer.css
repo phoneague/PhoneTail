@@ -35,7 +35,7 @@ footer{
 }
 
 #top_menu a:hover {
-    color: black;
+    color: #3259f7;
     font-weight:bold;
 }
 #logo{ flex:1; cursor:pointer;}
@@ -47,6 +47,7 @@ footer{
 	justify-content: flex-end;
 	align-items:center;
 	background-color: white;
+	
 }
 .gnb a{
 	text-decoration: none;
@@ -65,7 +66,7 @@ footer{
 }
 
 #category_menu a:hover {
-    color: black;
+    color: #3259f7;
     font-weight:bold;
 }
 

@@ -2,9 +2,9 @@
 <!DOCTYPE html>
 <%@ include file="/header.jsp"%>
 <div id="loginwrap">
+<h2>LogIn</h2>
 	<article>
 			<form method="post" action="phonetail.do?command=login" >
-					<h2>LogIn</h2>
 					<div class="field">
 							<label>User ID</label><input name="userid" type="text" />
 					</div>

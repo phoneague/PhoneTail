@@ -2,8 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/header.jsp"%>
 <link rel="stylesheet" href="css/product.css">
-
-
 <div id="productWrap">
 	<form name="productListForm" method="post">
 		<div class="row">
@@ -51,9 +49,6 @@
                                         탈퇴(휴면)회원
                                     </span>
                                 </c:when>
-                                <c:otherwise>
-                                    (${userStates[productDTO.userid]})
-                                </c:otherwise>
                             </c:choose>
                         </div>
 						<div class="productSold">

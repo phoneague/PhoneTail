@@ -12,6 +12,11 @@
 .title{flex:1; text-align:center;}
 .btn{flex:1; align-items:center;}
 
+.container {
+    flex-grow: 1;
+    margin-left: 20px;
+}
+
 
 .products{display: flex; flex-wrap:wrap; justify-content:space-between; gap:20px;}
 .product{width:300px; border-radius:10px; padding:10px; background-color:#fff; box-shadow:0 4px 8px rgba(0,0,0,0.1); display:flex; flex-direction:column; align-items:center; text-align:center; border:1px dotted black; box-sizing:border-box;}
