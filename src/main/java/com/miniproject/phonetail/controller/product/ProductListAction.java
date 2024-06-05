@@ -1,6 +1,10 @@
 package com.miniproject.phonetail.controller.product;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -99,10 +103,32 @@ public class ProductListAction implements Action {
         	}
         }
         
-        // soldview 변수를 확인해서 sell이면 판매중, sold면 판매완료 상품만 보여주기
+        // 몇시간 전 게시글인지 띄울 수 있을까?
+        LocalDateTime now = LocalDateTime.now(ZoneId.of("Asia/Seoul"));
+        Map<Integer, String> timeList = new HashMap<>();
+        for(ProductDTO product : productList) {
+        	Timestamp timestamp = product.getIndate();
+            LocalDateTime productIndate = timestamp.toLocalDateTime();
+            Duration duration = Duration.between(productIndate, now);
+            int minutes = (int) duration.toMinutes();
+            int hours = (int) duration.toHours();
+            int days = (int) duration.toDays();
+            if(minutes<60) {
+                timeList.put(product.getPseq(), minutes+"분 전");
+            } else if (hours < 24) { 
+                timeList.put(product.getPseq(), hours+"시간 전");
+            }else {
+            	timeList.put(product.getPseq(), days+"일 전");
+            }
+            
+
+        }
+        
 
         
-        
+        request.setAttribute("timeList", timeList);
+
+        //
         
         request.setAttribute("productChatList", productChatList);
 		request.setAttribute("userStates", userStates);

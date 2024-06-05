@@ -10,9 +10,6 @@
 	</div>
 
 	<div class="container">
-		<div class="detailImage">
-			<img src="product/images/${productDTO.saveimagefile}" width="600" />
-		</div>
 		<div class="detailInfos">
 			<div class="row">
 				<div class="coltitle">상품번호</div>
@@ -77,10 +74,13 @@
 				<div class="col">${productDTO.indate}</div>
 			</div>
 		</div>
+		<div class="detailImage">
+			<img src="product/images/${productDTO.saveimagefile}" width="600" />
+		</div>
 	</div>
 	<c:choose>
 		<c:when test="${productDTO.userid eq login.userid}">
-			<div class = "row">
+			<div class="button_box">
 				<c:choose>
 				<c:when test="${productDTO.sellstate eq 'N'}">
 					<input type="button" value="판매확정" onClick="sold(${productDTO.pseq})" />
@@ -90,12 +90,10 @@
 				</c:choose>
 				<input type="button" value="상품삭제" 
 					onClick="go_delete(${productDTO.pseq}, '${productDTO.userid}', '${login.userid}')" />
-				<input type="button" value="1:1 대화"
-					onClick="go_chat(${productDTO.pseq},'${login.userid}')" /> 
 			</div>
 		</c:when>
 		<c:otherwise>
-			<div class = "row">
+			<div class="button_box">
 				<input type="button" value="1:1 대화"
 					onClick="go_chat(${productDTO.pseq},'${login.userid}')" /> 
 				<input type="button" 
@@ -104,10 +102,6 @@
 			</div>
 		</c:otherwise>
 	</c:choose>
-	<div class="row" style="position:relative; margin-bottom:20px;">
-		<input type="button" value="이전 상품" style="position:absolute; left:10px;" onclick="go_prev()"/>
-		<input type="button" value="다음 상품" style="position:absolute; right:10px;" onclick="go_next()"/>
-	</div>
 	
 
 </div>

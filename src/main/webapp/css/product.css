@@ -66,6 +66,14 @@
     border-radius: 5px;
 }
 
+.button_box{
+	display:flex;
+	width:700px;
+	margin : 0 auto;
+	justify-content: center;
+	
+}
+
 .col {
     width: 70%;
     padding: 10px;
