@@ -9,47 +9,36 @@
 <title>채팅</title>
 </head>
 <body>
-	<div class="board">
+	<div class="reply">
 		<h2>${loginUser} 채팅목록</h2>
 		
 		<form name="chatListForm" method="post">
-				<div class="col" style="display: flex; align-items:center;">
+				<div class="searching" style="display: flex; align-items:center;">
 					모델명 &nbsp; <input type="text" name="key" value="${key}" /> &nbsp;
 					&nbsp; &nbsp; 
 					<button type="button" class="btn btn-dark" onClick="go_searcha('chatList')">검색</button>
 					&nbsp;&nbsp;&nbsp; 
+					<br />
 				</div>
-		
-		
-		<div class="title_row">
-			<div class="title_col">제품넘버</div>
-			<div class="title_col">채팅방 이름</div>
-			<div class="title_col">모델명</div>
-			<div class="title_col">제품가격</div>
-			<div class="title_col">신분? </div>
-		</div>
-		<h2></h2>
 
 		<c:forEach items="${chatList}" var="chatList">
-				<div class="chat_row">
+				<div class="chat_row" onClick="location.href='phonetail.do?command=chating&lseq=${chatList.lseq}'">
 					<div class="chatcol">${chatList.pseq}</div>
+					<div class="chatcol"> ${chatList.sid},${chatList.bid } 의 채팅방</div>
 					<div class="chatcol">
 						<div class="phonename">
-							${chatList.model}
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;상품 정보
 						</div>
 						<div class="phoneprice">
+							${chatList.model}
 							<fmt:formatNumber value="${chatList.price}" pattern="#,###"/>원							
 						</div>
 					</div>
-					<div class="chatcol"> ${chatList.sid},${chatList.bid } 의 채팅방</div>
 					<div class="chatcol">
 					<c:choose>
    						<c:when test="${chatList.bid == loginUser}"><h5><span class="badge text-bg-success">구매자</span></h5></c:when>
     					<c:otherwise><h5><span class="badge text-bg-danger">판매자</span></h5></c:otherwise>
 					</c:choose>
-					</div>
-					<div class="chatcol">
-					<button type="button" class="btn btn-secondary" onClick="location.href='phonetail.do?command=chating&lseq=${chatList.lseq}'">입장</button>
 					</div>
 				</div>
 					
