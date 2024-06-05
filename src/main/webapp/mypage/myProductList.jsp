@@ -73,9 +73,6 @@
 			<jsp:param value="phonetail.do?command=myProductList" name="address" />
 			</jsp:include>
 		</form>
-		<jsp:include page="/paging/paging.jsp">
-			<jsp:param value="phonetail.do?command=myProductList" name="address" />
-		</jsp:include>
 </div>
 </div>
 <%@ include file="/footer.jsp"%>
