@@ -58,6 +58,7 @@ article form .loginbtn{
 	flex:1;
 	display: flex;
 	margin:10px 0;
+	font-family: "Noto Sans KR", sans-serif;
 }
 
 article form .loginbtn input{
@@ -68,6 +69,7 @@ article form .loginbtn input{
 	color:white;
 	border-radius: 5px;
 	padding:10px 0;
+	font-family: "Noto Sans KR", sans-serif;
 }
 
 article form .checkbtn{
@@ -77,6 +79,7 @@ article form .checkbtn{
 	color:white;
 	border-radius: 5px;
 	padding:10px 0;
+	font-family: "Noto Sans KR", sans-serif;
 }
 
 

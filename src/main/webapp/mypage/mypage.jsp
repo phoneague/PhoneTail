@@ -3,8 +3,8 @@
 <%@ include file="/header.jsp"%>
 
 <div class="content-wrapper">
-<%@ include file="mypage_submenu.jsp"%>
-<div id="loginwrap">
+	<%@ include file="mypage_submenu.jsp"%>
+	<div id="loginwrap">
 		<section>
 			<article>
 				<form>
@@ -28,7 +28,6 @@
 						<label>이메일</label><input type="text" name="email"
 							value="${login.email}" readonly />
 					</div>
-
 					<div class="field">
 						<label>주소 </label><input type="text" name="address1"
 							value="${login.address1}" readonly />
@@ -50,10 +49,8 @@
 			</article>
 		</section>
 	</div>
-</section>
 </div>
 <%@ include file="../footer.jsp"%>
-</div>
 
 
 
