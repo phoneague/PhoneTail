@@ -20,6 +20,28 @@ public class ProductDAO {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	
+	public ArrayList<ProductDTO> newList() {
+		ArrayList<ProductDTO> list = new ArrayList<ProductDTO>();
+		con = DB.getConnection();
+		String sql = "select * from new_product";
+		try {
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while( rs.next() ) {
+				ProductDTO pdto = new ProductDTO();
+				pdto.setPseq( rs.getInt("pseq") );
+				pdto.setModel( rs.getString("model") );
+				pdto.setPrice( rs.getInt("price") );
+				pdto.setImage( rs.getString("image") );
+				pdto.setSaveimagefile( rs.getString("saveimagefile"));
+				pdto.setUserid( rs.getString("userid"));
+				list.add(pdto);
+			}
+		} catch (SQLException e) { e.printStackTrace();
+		} finally { 	DB.close(con, pstmt, rs);  }
+		return list;
+	}
+	
 	
 	public ArrayList<ProductDTO> selectBrandProduct() {
 		ArrayList<ProductDTO> list = new ArrayList<ProductDTO>();
