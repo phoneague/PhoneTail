@@ -28,7 +28,8 @@
 .productPrice,
 .productUserid,
 .productSold ,
-.productChat{
+.productChat,
+.productDate{
     margin-bottom: 10px;
     font-size: 16px;
 }
