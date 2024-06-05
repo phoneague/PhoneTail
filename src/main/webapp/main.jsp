@@ -12,34 +12,34 @@
     
     <div class="box">
         <div class="box-inner">
-            <img src="images/img.jpg">
+            <img src="images/1.png">
         </div>
         <div class="box-inner">
-            <img src="images/apple.jpg">      
+            <img src="images/2.png"">      
               </div>
         <div class="box-inner">
-            <img src="images/g1.jpg">  
+            <img src="images/3.png">  
         </div>
     </div>
     
     <div class="box">
         <div class="box-inner">
-            <img src="images/any.png">     
+            <img src="images/4.png"">     
         </div>
         <div class="box-inner">
-            <img src="images/a1.jpg">      
+            <img src="images/5.png">      
         </div>
         <div class="box-inner">
-            <img src="images/galaxy.jpg">  
+            <img src="images/6.png"">  
         </div>
     </div>
     
    <div class="box">
-        <h2>판매시장</h2>
+        <h2></h2>
     </div>
      
     <div class="box">
-        <!-- <img src="images/mainimg.jpg"> -->
+         <img src="images/">
     </div>
     
     <div class="box">
@@ -47,11 +47,12 @@
     </div>
     
     <div class="box">
-       
+       <h2>PhoneTail 에서 사야하는 이유</h2>
     </div>
     
     <div class="box">
-       
+       <h2>안전한 직거래</h2>
+       <img src="images/55.jpg">
     </div>
     
     <div class="box">
