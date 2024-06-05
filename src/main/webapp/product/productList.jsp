@@ -9,8 +9,6 @@
 		<div class="row">
 			<div class="title"><h1>Product List</h1></div>
 		</div>
-
-
 		<div class="row">
 			<div class="col">
 				<div class="btn">
@@ -19,14 +17,12 @@
 				</div>
 			</div>
 			<div class="col" style="display: flex; align-items: center;">
-				모델 &nbsp; <input type="text" name="key" value="${key}" /> &nbsp;
+				&nbsp; <input type="text" name="key" value="${key}" /> &nbsp;
 				&nbsp; &nbsp; <input class="btn" type="button" name="btn_search"
 					value="검색" onClick="go_search('productList')" />
 				&nbsp;&nbsp;&nbsp;
 			</div>
 		</div>
-
-
 		<div class="tb">
 			<div class="products">
 				<c:forEach items="${productList}" var="productDTO">
@@ -46,12 +42,12 @@
                             판매자 : ${productDTO.userid} 
                             <c:choose>
                                 <c:when test="${userStates[productDTO.userid] eq 'B'}">
-                                    <span style="color: green; font-weight: bold;">
+                                    <span style="color: black; font-weight: bold;">
                                         블랙리스트
                                     </span>
                                 </c:when>
                                 <c:when test="${userStates[productDTO.userid] eq 'N'}">
-                                	<span style="color: blueviolet; font-weight: bold;">
+                                	<span style="color: black; font-weight: bold;">
                                         탈퇴(휴면)회원
                                     </span>
                                 </c:when>
@@ -69,7 +65,6 @@
 									판매중
 								</c:otherwise>
 							</c:choose>
-							${productDTO.sellstate}
 						</div>
 						<div class="productChat">
 						채팅방 수 : ${productChatList[productDTO.pseq]}

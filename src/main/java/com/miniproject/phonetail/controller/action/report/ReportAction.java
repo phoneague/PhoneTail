@@ -25,7 +25,7 @@ public class ReportAction implements Action {
 		rdto.setRecontent(request.getParameter("recontent"));
 		rdto.setUserid(id);
 		rdto.setRetype(Integer.parseInt(request.getParameter("retype")));
-		System.out.println(rdto.toString());;
+		/* System.out.println(rdto.toString()); */
 		ReportDAO rdao = ReportDAO.getInstace();
 		rdao.insertReport(rdto);
 		response.sendRedirect("report/reportResult.jsp");

@@ -2,7 +2,16 @@
 
 /* #wrap{width:100%; margin: 0 auto; border:1px solid red; max-width:1024px; display:flex; flex-direction:column;} */
 .lititle h2 {
-	display: flex;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 200%;
+    margin: 30px;
+}
+a{text-decoration:none;  color:#3f4549;}
+.content-wrapper {
+  display: flex;
 	align-items: center;
 	justify-content: flex-end;
 	font-family: "Roboto", sans-serif;

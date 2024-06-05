@@ -1,8 +1,12 @@
 @charset "UTF-8";
 
+:root {
+    --font-family: "Noto Sans KR", sans-serif;
+}
+
 #wrap{ width:1400px; margin: 0 auto;}
 
-#wrap a{ text-decoration: none; color:#3f4549; font-size: 90%;
+#wrap a{text-decoration: none; color:#3f4549; font-size: 90%;
 }
 
 header{
@@ -31,11 +35,13 @@ footer{
 }
 
 #top_menu a:hover {
-    color: #1c02f9;
+    color: black;
+    font-weight:bold;
 }
 #logo{ flex:1; cursor:pointer;}
 
 .gnb{ 
+	margin-top:30px;
 	flex:7;
 	display: flex;
 	justify-content: flex-end;
@@ -59,7 +65,8 @@ footer{
 }
 
 #category_menu a:hover {
-    color: #1c02f9;
+    color: black;
+    font-weight:bold;
 }
 
 #category_menu a:nth-child(1){

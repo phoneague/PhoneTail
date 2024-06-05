@@ -40,7 +40,6 @@ public class MemberDAO {
 				mdto.setPhone(rs.getString("phone"));
 				mdto.setUserstate(rs.getString("userstate"));
 				mdto.setIndate(rs.getTimestamp("indate"));
-				System.out.println(mdto.toString());
 			}
 		} catch (SQLException e) { e.printStackTrace();
 		} finally { DB.close(con, pstmt, rs); }

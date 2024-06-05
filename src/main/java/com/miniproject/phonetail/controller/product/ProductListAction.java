@@ -65,7 +65,6 @@ public class ProductListAction implements Action {
 		ArrayList<ProductDTO> productList = new ArrayList<ProductDTO>();
 		
 		int count = pdao.getAllCount("product", "model", key, brand);
-		System.out.println(count);
 		paging.setTotalCount(count);
 		productList = pdao.productList(paging, key, brand);
 		

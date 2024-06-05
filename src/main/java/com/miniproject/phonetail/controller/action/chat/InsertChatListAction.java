@@ -29,7 +29,6 @@ public class InsertChatListAction implements Action {
 		if(fdto.getBid()=="hakhyun" && fdto.getPseq()==980623){
 			ChatListDTO cdto = new ChatListDTO();
 			cdto.setBid(mdto.getUserid());
-			System.out.println( "userid : " + mdto.getUserid());
 			cdto.setPseq(Integer.parseInt(request.getParameter("pseq")));
 			cdto.setPrice(pdto.getPrice());
 			cdto.setModel(pdto.getModel());
