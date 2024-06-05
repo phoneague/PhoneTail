@@ -1,11 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 <div id="main_container">
-	<h2>${chatList.sid} 와 ${chatList.bid} 의 채팅방</h2>		
-		
-		<div class="login-button">
-            <input type="button" class="btn-login" value="뒤로가기" 
-            	onClick="location.href='phonetail.do?command=chatList'"/>
+	<h2> ${chatList.sid} , ${chatList.bid} 의 채팅방</h2>			
+		<div class="close-button">
+        	<button type="button" class="btn-close" aria-label="Close" onClick="location.href='phonetail.do?command=chatList'"></button>
         </div>
 	</div>
 	<div class="reply">
@@ -20,15 +18,17 @@
 							    <c:set var="justify_contentValue" value="flex-end" />
 							</c:if>
 					<div class="chat_reply_col" style="justify-content: ${justify_contentValue};">
-						<c:set var="backgroundColor" value="#DCEBFF" />
+						<c:set var="backgroundColor" value="#646464" />
 							<c:if test="${chating.userid eq loginUser}" >
-							    <c:set var="backgroundColor" value="yellow" />
+							    <c:set var="backgroundColor" value="#828282" />
 							</c:if>
 							<div class="plz" style="background-color: ${backgroundColor};">${chating.content}</div>
-						
+							<div class="chatdate">
+								<fmt:formatDate value="${chating.indate}" pattern="MM/dd hh:mm"/>
+							</div>
 					</div>
 					<div class="chat_reply_col">
-						<fmt:formatDate value="${chating.indate}" pattern="MM/dd hh:mm"/>
+						
 					</div>
 				</div>
 			</c:forEach>
