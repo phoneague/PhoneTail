@@ -48,12 +48,10 @@
 					<div class="col">${qna.secret == true ? '비밀글입니다' : ''}</div>
 				</div>
 			</c:forEach>
-			<div id="paging">
+		</div>
 				<jsp:include page="/paging/paging.jsp">
             		<jsp:param value="phonetail.do?command=qnaList" name="address" />
        			</jsp:include>
-			</div>
-		</div>
 	</form>
 </div>
 <%@ include file="/footer.jsp"%>
