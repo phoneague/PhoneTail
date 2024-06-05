@@ -93,6 +93,16 @@
     width:120px;
     
 }
+.ViewContainer input[type="submit"] {
+    padding: 5px 10px;
+    background-color: #2e3438;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width:120px;
+    
+}
 
 .vifield input[type="button"]:hover {
     background-color: #2e3438;
@@ -116,6 +126,8 @@
    border-radius: 5px;
    padding:10px 0;
 }
+
+
 
 /* Responsive design */
 @media (max-width: 768px) {
