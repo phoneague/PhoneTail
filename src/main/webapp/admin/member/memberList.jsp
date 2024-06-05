@@ -25,11 +25,10 @@
 				</div>
 				<div class="row"
 					style="justify-content: right; border-top: none; border-bottom: none;">
-					선택한 회원을 &nbsp;&nbsp;
-					<input class="searchbtn" type="button" value="블랙리스트"
-						name="userstateYtoB" onClick="userstate_YtoB()" />&nbsp;&nbsp; <input
-						class="searchbtn" type="button" value="블랙해제" name="userstateBtoY"
-						onClick="userstate_BtoY()" />&nbsp;&nbsp; <input
+					선택한 회원을 &nbsp;&nbsp; <input class="searchbtn" type="button"
+						value="블랙리스트" name="userstateYtoB" onClick="userstate_YtoB()" />&nbsp;&nbsp;
+					<input class="searchbtn" type="button" value="블랙해제"
+						name="userstateBtoY" onClick="userstate_BtoY()" />&nbsp;&nbsp; <input
 						class="searchbtn" type="button" value="휴면해제" name="userstateNtoY"
 						onClick="userstate_NtoY()" />&nbsp;&nbsp;
 				</div>
@@ -57,15 +56,11 @@
 						</div>
 					</div>
 				</c:forEach>
-
-				<div class="col">
-					<jsp:include page="/paging/paging.jsp">
-						<jsp:param value="phonetail.do?command=adminMemberList"
-							name="address" />
-					</jsp:include>
-				</div>
 			</div>
-
+			<jsp:include page="/paging/paging.jsp">
+				<jsp:param value="phonetail.do?command=adminMemberList"
+					name="address" />
+			</jsp:include>
 		</form>
 	</div>
 </div>
