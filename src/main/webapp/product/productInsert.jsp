@@ -11,10 +11,6 @@
 	<form name="productInsertForm" method="post"
 		enctype="multipart/form-data">
 		<div class="container">
-			<div class="detailImage">
-				<img id="preview" src="" width="600" />
-				
-			</div>
 			<div class="detailInfos">
 				<div class="row">
 					<div class="coltitle">판매자</div>
@@ -54,8 +50,11 @@
 					<div class="col"><input type="file" name="image"  onChange="show_preview(event)"></div>
 				</div>
 			</div>
+			<div class="detailImage">
+				<img id="preview" src="" width="600" />
+			</div>
 		</div>
-		<div class="row">
+		<div class="button_box">
 			<input type="button" value="상품등록" onClick="go_insert()">
 			<input type="button" value="목록으로"
 			onClick="location.href='phonetail.do?command=productList'">

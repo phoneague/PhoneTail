@@ -110,15 +110,19 @@ function show_preview(event) {
 function handleSellstateChange() {
         var selectBox = document.getElementById('sellstateSelect');
         var selectedValue = selectBox.value;
-        alert(selectedValue);
-        window.location.href = 'phonetail.do?command=productList&sellstate=' + selectedValue
+        window.location.href = 'phonetail.do?command=productList&sellstate=' + selectedValue;
       
 }
 
-function go_prev(){
-	
+function go_prev(pseq){
+	var go = pseq-1;
+	window.location.href = 'phonetail.do?command=productDetail&pseq=' + go;
+
 }
 
-function go_next(){
+function go_next(pseq){
+	var go = pseq+1;
+	window.location.href = 'phonetail.do?command=productDetail&pseq=' + go;
+
 	
 }

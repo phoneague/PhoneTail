@@ -10,9 +10,6 @@
 	</div>
 		<form name="productUpdateForm" method="post" enctype="multipart/form-data">
 		<div class="container">
-			<div class="detailImage">
-				<img id="preview" src="product/images/${ProductDTO.saveimagefile}" width="600" />
-			</div>
 			<div class="detailInfos">
 				<div class="row">
 					<div class="coltitle">판매자</div>
@@ -62,8 +59,11 @@
 				<input type="hidden" name="oldimage" value="${ProductDTO.image}">
 				<input type="hidden" name="oldsaveimagefile" value="${ProductDTO.saveimagefile}">
 			</div>
+			<div class="detailImage">
+				<img id="preview" src="product/images/${ProductDTO.saveimagefile}" width="600" />
+			</div>
 		</div>
-		<div>
+		<div class="button_box">
 			<input type="button" value="상품수정" onClick="go_update()"> 
 			<input
 				type="button" value="목록으로"
