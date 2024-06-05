@@ -25,7 +25,6 @@ public class ProductListAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		
 		int page=1;
 		if(request.getParameter("page")!=null) {
 			page=Integer.parseInt(request.getParameter("page"));
@@ -56,6 +55,18 @@ public class ProductListAction implements Action {
 			session.removeAttribute("brand");
 		}
 		
+		String sellstate="";
+		if(request.getParameter("sellstate")!=null) {
+			sellstate=request.getParameter("sellstate");
+			session.setAttribute("sellstate",sellstate);
+		}else if(session.getAttribute("sellstate") !=null) {
+			sellstate = (String)session.getAttribute("sellstate");
+		}else {
+			session.removeAttribute("sellstate");
+		}
+		System.out.println(sellstate);
+		
+		
 		Paging paging = new Paging();
 		paging.setPage(page);
 		paging.setDisplayRow(20);
@@ -64,9 +75,9 @@ public class ProductListAction implements Action {
 		ProductDAO pdao = ProductDAO.getInstance();
 		ArrayList<ProductDTO> productList = new ArrayList<ProductDTO>();
 		
-		int count = pdao.getAllCount("product", "model", key, brand);
+		int count = pdao.getAllCount("product", "model", key, brand, sellstate);
 		paging.setTotalCount(count);
-		productList = pdao.productList(paging, key, brand);
+		productList = pdao.productList(paging, key, brand, sellstate);
 		
 		
 		MemberDAO mdao = MemberDAO.getInstance();
@@ -88,6 +99,11 @@ public class ProductListAction implements Action {
         		productChatList.put(product.getPseq(),chatCount);
         	}
         }
+        
+        // soldview 변수를 확인해서 sell이면 판매중, sold면 판매완료 상품만 보여주기
+
+        
+        
         
         request.setAttribute("productChatList", productChatList);
 		request.setAttribute("userStates", userStates);
