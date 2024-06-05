@@ -38,7 +38,7 @@
 									: ${productDTO.model}</a>
 							</div>
 							<div class="productPrice">가격 : ${productDTO.price}</div>
-							<div class="productUserid"0>판매자 : ${productDTO.userid}</div>
+							<div class="productUserid">판매자 : ${productDTO.userid}</div>
 							<div class="productSold">
 								<c:choose>
 									<c:when test="${productDTO.sellstate eq 'Y'}">
@@ -57,7 +57,7 @@
 			</div>
 		</form>
 		<jsp:include page="/paging/paging.jsp">
-			<jsp:param value="phonetail.do?command=productList" name="address" />
+			<jsp:param value="phonetail.do?command=myProductList" name="address" />
 		</jsp:include>
 </div>
 

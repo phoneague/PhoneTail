@@ -67,7 +67,9 @@
 							</c:choose>
 						</div>
 						<div class="productChat">
-						채팅방 수 : ${productChatList[productDTO.pseq]}
+							<c:if test ="${productChatList[productDTO.pseq]!=null}">
+								채팅방 수 : ${productChatList[productDTO.pseq]}
+							</c:if>
 						</div>
 					</div>
 				</c:forEach>
