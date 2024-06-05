@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>idcheck</title>
+<link rel="stylesheet" href="css/login.css"> <!-- admin,일반 로그인 폼들 css 통합 -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 <script type="text/javascript">
 	function idok(userid){
 		opener.document.joinForm.userid.value = userid;
@@ -14,7 +16,23 @@
 </script>
 
 <style type="text/css">
-body{ display: flex; flex-direction:column; height:100vh; align-items:center; padding:20px;}
+body{
+display: flex; flex-direction:column; height:100vh; align-items:center; padding:20px;
+font-family: "Noto Sans KR", sans-serif;
+height:200px;
+}
+input[type=text]{
+box-sizing: border-box;
+border: solid 2px black;
+border-radius: 5px;
+font-family: "Noto Sans KR", sans-serif;
+}
+input[type=submit], input[type=button]{
+font-family: "Noto Sans KR", sans-serif;
+background:black;
+color:white;
+border-radius: 5px;
+}
 </style>
 
 </head>

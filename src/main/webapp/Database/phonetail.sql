@@ -3,6 +3,7 @@ CREATE SCHEMA `phonetail` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_
 USE phonetail;
 SET SESSION FOREIGN_KEY_CHECKS=0;
 
+
 SELECT * FROM hak WHERE model LIKE CONCAT('%Galaxy%') AND (sid = 'a' OR bid = 'a' ) ORDER BY lseq DESC;
 SELECT * FROM hak WHERE model LIKE '%Galaxy%' AND (sid = 'a' OR bid = 'a') ORDER BY lseq DESC;
 

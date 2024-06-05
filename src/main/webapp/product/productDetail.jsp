@@ -90,13 +90,13 @@
 				</c:choose>
 				<input type="button" value="상품삭제" 
 					onClick="go_delete(${productDTO.pseq}, '${productDTO.userid}', '${login.userid}')" />
-				<input type="button" value="채팅방 입성~"
+				<input type="button" value="1:1 대화"
 					onClick="go_chat(${productDTO.pseq},'${login.userid}')" /> 
 			</div>
 		</c:when>
 		<c:otherwise>
 			<div class = "row">
-				<input type="button" value="채팅방 입성~"
+				<input type="button" value="1:1 대화"
 					onClick="go_chat(${productDTO.pseq},'${login.userid}')" /> 
 				<input type="button" 
 					onClick="go_report(${productDTO.pseq},'${login.userid}')"

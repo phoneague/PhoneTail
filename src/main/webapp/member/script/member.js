@@ -5,7 +5,7 @@ function idcheck(){
 		return;
 	}
 	var url = "phonetail.do?command=idcheck&userid=" + document.joinForm.userid.value;
-	var opt = "toolbar=no, menubar=no, resizable=no, width=500, height=250, scrollbars=no";
+	var opt = "toolbar=no, menubar=no, resizable=no, width=500, height=300, scrollbars=no";
 	
 	window.open(url, "idcheck", opt);
 }

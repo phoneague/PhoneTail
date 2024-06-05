@@ -20,8 +20,8 @@
 <link rel="stylesheet" href="css/chat.css"> <!-- chat css 통합 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-<script src="script/phonetail.js"></script>
 <script src="script/jquery-3.7.1.min.js"></script>
+<script src="script/phonetail.js"></script>
 <script src="product/script/product.js"></script>
 <script src="admin/script/admin.js"></script>
 <script src="report/script/report.js"></script>
