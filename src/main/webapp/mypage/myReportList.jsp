@@ -48,7 +48,7 @@
 				</c:forEach>
 			</div>
 				<jsp:include page="/paging/paging.jsp">
-					<jsp:param value="phonetail.do?command=myQnaList" name="address" />
+					<jsp:param value="phonetail.do?command=myReportList" name="address" />
 				</jsp:include>
 		</form>
 	</div>

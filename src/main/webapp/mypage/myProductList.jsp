@@ -57,7 +57,7 @@
 			</div>
 		</form>
 		<jsp:include page="/paging/paging.jsp">
-			<jsp:param value="phonetail.do?command=productList" name="address" />
+			<jsp:param value="phonetail.do?command=myProductList" name="address" />
 		</jsp:include>
 </div>
 
