@@ -41,6 +41,7 @@
   height: 500px;
   display:flex;
   flex-direction:column-reverse;
+  background-color:#bebebe;
 }
 
 .chat_reply_col:nth-child(1){
@@ -55,7 +56,8 @@
 .chat_reply_col:nth-child(3){
 	width: 20%;
 	float:right;
-	flex:1;
+	flex:0.1;
+	
 }
 .chat_reply_col{
 	display:flex;
@@ -64,5 +66,44 @@
 .plz{
 	max-width:500px;
 	border-radius:1em;
-	padding:5px;
+	padding:10px;
+	color:white;
+}
+.close-button{
+	float:right;
+}
+.chatdate{
+	color:white;
+	line-height:45px;
+	margin-left:10px;
+}
+#main_container h2 {
+	padding:10px;
+}
+
+.chat_row{
+	display:flex;
+	flex-direction:row;
+}
+.chatcol:nth-child(1){
+	flex:1;
+	text-align:center;
+}
+.chatcol:nth-child(2){
+	flex:2;
+}
+.chatcol:nth-child(3){
+	flex:2;
+	text-align:center;
+}
+.chatcol:nth-child(4){
+	flex:1;
+	text-align:center;
+}
+.chatcol:nth-child(5){
+	flex:1;
+	text-align:center;
+}
+.phonename{
+	text-size-adjust:1.2rem;
 }
