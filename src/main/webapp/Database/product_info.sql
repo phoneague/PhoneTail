@@ -1,3 +1,22 @@
+-- 신상품 정렬 View
+create or replace view new_product
+as
+select pseq, model, price, image, saveimagefile, userid from product where sellstate='N'  order by indate desc limit 3;
+
+select * from new_product;
+
+-- 가격순 정렬 View
+create or replace view cheap_product
+as
+select pseq, model, price, image from product where sellstate='N'  order by price, indate desc limit 6;
+
+-- 관심순 정렬 View
+
+-- 챗팅순 정렬 View
+
+
+
+-- 상품사전정보
 CREATE TABLE `phonetail`.`product_info` (
   `model` VARCHAR(100) NOT NULL,
   `series` VARCHAR(100) NULL DEFAULT '',
@@ -6,21 +25,6 @@ CREATE TABLE `phonetail`.`product_info` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
-
--- 
-
-
-
-create or replace view new_pro_view
-as
-select pseq, name, price2, image from product  where useyn='Y'  order by indate desc limit 4;
-
--- 베스트 상품 view 생성
-create or replace view best_pro_view
-as
-select pseq, name, price2, image from product  where bestyn='Y'  order by indate desc limit 4;
-
-
 
 -- APPLE 브랜드 삽입
 INSERT INTO product_info (model, series, brand) VALUES 

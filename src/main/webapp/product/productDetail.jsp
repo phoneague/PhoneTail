@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/header.jsp"%>
-<link rel="stylesheet" href="product/css/product.css"> 
+<link rel="stylesheet" href="css/product.css"> 
 
 
 <div id="productWrap">
@@ -64,6 +64,8 @@
 				</c:choose>
 				<input type="button" value="상품삭제" 
 					onClick="go_delete(${productDTO.pseq}, '${productDTO.userid}', '${login.userid}')" />
+				<input type="button" value="채팅방 입성~"
+					onClick="go_chat(${productDTO.pseq},'${login.userid}')" /> 
 			</div>
 		</c:when>
 		<c:otherwise>
