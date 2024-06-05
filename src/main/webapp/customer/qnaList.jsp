@@ -9,7 +9,9 @@
 			<div class="row">
 				<div class="col" style="display: flex; align-items:right;">
 					아이디 &nbsp; <input type="text" name="key" value="${key}" /> &nbsp;
-        			&nbsp; &nbsp; <input class="searchbtn" type="button" name="btn_search" value="검색" onClick="go_search('qnaList')"/>
+        			&nbsp; &nbsp;
+        			<input class="searchbtn" type="button" name="btn_search" value="검색" onClick="go_search('qnaList')"/>
+        			&nbsp;&nbsp;&nbsp;
 					<input class="searchbtn" type="button" name="btn_search" value="글 작성" onClick="location.href='phonetail.do?command=writeQnaForm'"/>
         			&nbsp;&nbsp;&nbsp; 
 				</div>	

@@ -53,7 +53,7 @@
                 <label>상세 내용</label>
                 <div>${reportDTO.recontent}</div>
             </div>
-            <input type="button" style="width:400px;" value="신고 대상 게시글 확인하기" onclick="location.href='phonetail.do?command=productDetail&pseq=${reportDTO.pseq}'"/>
+            <input type="button" style="width:400px; margin-top:5px; margin-left:15px;" value="신고 대상 게시글 확인하기" onclick="location.href='phonetail.do?command=productDetail&pseq=${reportDTO.pseq}'"/>
             <input name="pid" type="hidden" value="${reportDTO.pid}" />
             <c:if test="${!empty adminUser.adminid}">
                 <div class="vifield">
@@ -63,7 +63,7 @@
                         <option value="Y">블랙처리</option>
                         <option value="S">보류하기</option>
                     </select>
-                    <div class="vifields-horizontal">
+                    <div class="vifields-horizontal" style="border:none;">
                     <input  type="button" value="처리하기" onClick="processReport()">
                     <input  type="button" value="목록으로" onClick="location.href='phonetail.do?command=adminReportList'">
                     </div>
