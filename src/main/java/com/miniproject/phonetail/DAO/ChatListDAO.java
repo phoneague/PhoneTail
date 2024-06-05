@@ -205,7 +205,6 @@ public class ChatListDAO {
 			if(rs.next()) {
 				chatCount = rs.getInt("cnt");
 			}
-			System.out.println(chatCount);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally { DB.close(con, pstmt, rs);

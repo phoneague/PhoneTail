@@ -102,7 +102,7 @@ public class ProductDAO {
 	public int getAllCount(String tablename, String fieldname, String key, String brand) {
 		int count = 0;
 		con = DB.getConnection();
-		System.out.println(tablename+"/"+fieldname+"/"+key+"/"+brand);
+//		System.out.println(tablename+"/"+fieldname+"/"+key+"/"+brand);
 		String sql = "SELECT COUNT(*) AS cnt FROM " + tablename + " WHERE " + fieldname + " LIKE CONCAT('%', ?, '%') AND brand LIKE CONCAT('%', ?, '%')";
 		try {
 			pstmt = con.prepareStatement(sql);

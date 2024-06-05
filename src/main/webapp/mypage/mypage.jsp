@@ -37,11 +37,7 @@
 	</div>
 </section>
 </div>
-</div>
-</div>
--------------------------------
-
+<%@ include file="../footer.jsp"%>
 <!-- <link rel="stylesheet" href="mypage/css/mypage.css"> -->
 
 
-<%@ include file="../footer.jsp"%>

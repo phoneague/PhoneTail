@@ -7,6 +7,11 @@
 <meta charset="UTF-8">
 <title>PhoneTail</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+
 <link rel="stylesheet" href="css/submenu.css"> <!-- submenu들 css 통합  -->
 <link rel="stylesheet" href="css/header_footer.css"> <!-- header footer의 css 통합 -->
 <link rel="stylesheet" href="css/list.css"> <!-- product, chat제외 list 들 css 통합 -->
