@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/header.jsp"%>
-<link rel="stylesheet" href="product/css/product.css">
+<link rel="stylesheet" href="css/product.css">
 <div class="lititle">
 <h2>My Product List</h2>
 </div>
