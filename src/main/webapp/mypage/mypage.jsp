@@ -6,9 +6,9 @@
 	<%@ include file="mypage_submenu.jsp"%>
 	<div id="loginwrap">
 		<section>
+		<h2>My Info</h2>
 			<article>
 				<form>
-					<h2>My Info</h2>
 					<div class="field">
 						<label>User ID</label>
 						<div>

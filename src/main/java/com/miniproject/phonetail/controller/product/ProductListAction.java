@@ -8,7 +8,6 @@ import java.util.Map;
 import com.miniproject.phonetail.DAO.ChatListDAO;
 import com.miniproject.phonetail.DAO.MemberDAO;
 import com.miniproject.phonetail.DAO.ProductDAO;
-import com.miniproject.phonetail.DTO.ChatListDTO;
 import com.miniproject.phonetail.DTO.MemberDTO;
 import com.miniproject.phonetail.DTO.ProductDTO;
 import com.miniproject.phonetail.controller.action.Action;

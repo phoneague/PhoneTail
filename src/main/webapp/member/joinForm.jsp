@@ -3,9 +3,9 @@
 <%@ include file="/header.jsp"%>
 <div id="loginwrap">
 <section>
+<h2>Join Us</h2>
 		<article>
 				<form action="phonetail.do?command=join" method="post" name="joinForm">
-					<h2>Join Us</h2>
 					<div class="field">
 						<label>User ID</label>
 						<div>

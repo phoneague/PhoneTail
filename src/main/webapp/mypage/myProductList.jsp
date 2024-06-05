@@ -7,7 +7,7 @@
 </div>
 <div class="content-wrapper">
 	<%@ include file="mypage_submenu.jsp"%>
-	<article>
+	<div class="container">
 		<form name="productListForm" method="post">
 			<div class="row">
 				<div class="col">
@@ -17,7 +17,7 @@
 					</div>
 				</div>
 				<div class="col" style="display: flex; align-items: center;">
-					모델 &nbsp; <input type="text" name="key" value="${key}" /> &nbsp;
+					&nbsp; <input type="text" name="key" value="${key}" /> &nbsp;
 					&nbsp; &nbsp; <input class="btn" type="button" name="btn_search"
 						value="검색" onClick="go_search('productList')" />
 					&nbsp;&nbsp;&nbsp;
@@ -38,7 +38,23 @@
 									: ${productDTO.model}</a>
 							</div>
 							<div class="productPrice">가격 : ${productDTO.price}</div>
-							<div class="productUserid">판매자 : ${productDTO.userid}</div>
+							<div class="productUserid">판매자 : ${productDTO.userid}
+							<c:choose>
+                                <c:when test="${userStates[productDTO.userid] eq 'B'}">
+                                    <span style="color: black; font-weight: bold;">
+                                        블랙리스트
+                                    </span>
+                                </c:when>
+                                <c:when test="${userStates[productDTO.userid] eq 'N'}">
+                                	<span style="color: black; font-weight: bold;">
+                                        탈퇴(휴면)회원
+                                    </span>
+                                </c:when>
+                                <c:otherwise>
+                                    (${userStates[productDTO.userid]})
+                                </c:otherwise>
+                            </c:choose>
+							</div>
 							<div class="productSold">
 								<c:choose>
 									<c:when test="${productDTO.sellstate eq 'Y'}">
@@ -48,17 +64,18 @@
 									판매중
 								</c:otherwise>
 								</c:choose>
-								${productDTO.sellstate}
 							</div>
 						</div>
 					</c:forEach>
 				</div>
-
 			</div>
+			<jsp:include page="/paging/paging.jsp">
+			<jsp:param value="phonetail.do?command=myProductList" name="address" />
+			</jsp:include>
 		</form>
 		<jsp:include page="/paging/paging.jsp">
 			<jsp:param value="phonetail.do?command=myProductList" name="address" />
 		</jsp:include>
 </div>
-
+</div>
 <%@ include file="/footer.jsp"%>

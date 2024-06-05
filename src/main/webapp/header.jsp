@@ -48,7 +48,7 @@
 						</c:choose>
 						<a href="phonetail.do?command=productInsertForm">SELL</a>
 						<a href="phonetail.do?command=mypage">MY PAGE</a>
-						<a href="phonetail.do?command=qnaList">QnA</a>	
+						<a href="phonetail.do?command=qnaList">Q&A</a>	
 						<a href="phonetail.do?command=chatList">CHAT</a>	
 				</div>
 				<div class="hmenu"><div></div>	<div></div>	<div></div> 	</div>

@@ -1,11 +1,18 @@
+.sub_menu_wrap {
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    margin-block-end: auto;
+}
 
 #sub_menu {
     display: flex;
     flex-direction: column;
-    margin-left: 20px;
-    width:250px;
-    height: 500px;
-    justify-content:center;
+    width: 250px;
+}
+
+#sub_menu a:hover{
+	color: #3259f7;
 }
 
 #sub_menu div {
