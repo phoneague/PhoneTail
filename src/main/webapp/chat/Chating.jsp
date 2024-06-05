@@ -7,8 +7,6 @@
         </div>
 	</div>
 	<div class="reply">
-	
-	
 		<div class="mydiv3">
 		<c:forEach items="${chatingList}" var="chating">
 				<div class="reply_row" >
