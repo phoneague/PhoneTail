@@ -10,6 +10,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+
 
 
 <link rel="stylesheet" href="css/submenu.css"> <!-- submenu들 css 통합  -->
@@ -34,7 +39,7 @@
 <div id="wrap">
 	<header>
 		<nav id="top_menu">
-				<div id="logo"><img src="images/logo.png" height="150" onClick="location.href='phonetail.do?command=main'"></div>
+				<div id="logo"><img src="images/phonetail_logo2.png" height="150" onClick="location.href='phonetail.do?command=main'"></div>
 				<div class="gnb">
 						<c:choose>
 								<c:when test="${empty login}">
@@ -52,13 +57,14 @@
 						<a href="phonetail.do?command=chatList">CHAT</a>	
 				</div>
 				<div class="hmenu"><div></div>	<div></div>	<div></div> 	</div>
-		</nav>
+		</nav><br>
 		<nav id="category_menu">
 				<a href="phonetail.do?command=productList&brand=">All Products</a>
 				<a href="phonetail.do?command=productList&brand=Apple">Apple</a>
 				<a href="phonetail.do?command=productList&brand=Samsung">Galaxy</a>
 				<a href="phonetail.do?command=productList&brand=LG">Others</a>
 		</nav>
+		<hr>
 	</header>
 
 

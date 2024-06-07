@@ -32,6 +32,7 @@ footer{
 #top_menu{
 	display: flex;
 	justify-content: space-between;
+	font-family:"Roboto Mono", monospace;
 }
 
 #top_menu a:hover {
@@ -47,12 +48,13 @@ footer{
 	justify-content: flex-end;
 	align-items:center;
 	background-color: white;
+	font-family:"Roboto Mono", monospace;
 	
 }
 .gnb a{
 	text-decoration: none;
 	margin-left:20px;
-	font-family: "Roboto", sans-serif;
+	font-family:"Roboto Mono", monospace;
 	color:#3f4549;
 	display:flex;
 	justify-content:center;
@@ -60,14 +62,17 @@ footer{
 
 #category_menu{
 	display: flex;
-	padding: 50px;
+	padding: 20px;
 	background-color:white;
 	margin-bottom:10px;
+	font-size:18px;
+	font-family:"Roboto Mono", monospace;
 }
 
 #category_menu a:hover {
     color: #3259f7;
     font-weight:bold;
+    font-family:"Roboto Mono", monospace;
 }
 
 #category_menu a:nth-child(1){
@@ -96,7 +101,7 @@ footer{
 #category_menu a{
 	text-decoration: none;
 	color: #3f4549;
-	font-family: "Roboto", sans-serif;
+	font-family:"Roboto Mono", monospace;
 	font-size:1.2em;
 	justify-content:center;
 }

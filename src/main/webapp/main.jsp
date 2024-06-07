@@ -6,8 +6,10 @@
 
 <div class="container">
     <div class="box">
-        <h2>PhoneTail-세상을 묶다</h2>
-        <h3>하나로 묶여있는 너와 나의 연결고리 동네에서 함께 해요</h3>
+        <h2>PhoneTail-세상을 묶다</h2><br>
+        <h3>하나로 묶여있는</h3>
+        <h3>너와 나의 연결고리</h3> 
+        <h3>동네에서 함께 해요</h3>
     </div>
     
     <div class="box">
@@ -61,7 +63,7 @@
     </div>
 
     <div class="box">
-       <h2>남다른 PhoneTail 만의 회원관리</h2>
+       <h2>PhoneTail 만의 회원관리</h2>
     </div>
     
     <div class="box">

@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/header.jsp"%>
 <div class="lititle">
-<h2>My Q&A List</h2>
+<h2>My Q&A</h2>
 </div>
 <div class="content-wrapper">
 	<%@ include file="mypage_submenu.jsp"%>
