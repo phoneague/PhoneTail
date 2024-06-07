@@ -74,7 +74,7 @@
 						</div>
 						<div class="productChat">
 							<c:if test="${productChatList[productDTO.pseq]!=null}">
-								채팅방 수 : ${productChatList[productDTO.pseq]}
+								채팅방 : ${productChatList[productDTO.pseq]}
 							</c:if>
 						</div>
 						<div class="productDate" style="color:blue;">

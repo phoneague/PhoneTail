@@ -44,10 +44,6 @@
 }
 
 
-
-
-
-
 article form .loginbtn{
 	flex:1;
 	display: flex;
@@ -76,11 +72,13 @@ article form .checkbtn{
 	font-family: "Noto Sans KR", sans-serif;
 }
 
-
-
-
-
-
+@media (min-width: 768px) and (max-width: 1024px) {
+	#loginwrap{
+	width:100%;
+	
+	}
+	
+}
 
 
 

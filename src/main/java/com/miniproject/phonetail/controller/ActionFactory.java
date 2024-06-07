@@ -109,6 +109,8 @@ public class ActionFactory {
 		else if(command.equals("insertChat")) ac = new InsertChatAction(); //채팅 내용 추가되는거
 		else if(command.equals("insertChatList")) ac = new InsertChatListAction();
 		else if(command.equals("gochatList")) ac = new GochatListAction();
+		
+		
 		//product (정빈)
 		else if(command.equals("productList")) ac = new ProductListAction();
 		else if(command.equals("productDetail")) ac = new ProductDetailAction();
