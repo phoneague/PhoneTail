@@ -8,8 +8,6 @@ SELECT * FROM hak WHERE model LIKE CONCAT('%Galaxy%') AND (sid = 'a' OR bid = 'a
 SELECT * FROM hak WHERE model LIKE '%Galaxy%' AND (sid = 'a' OR bid = 'a') ORDER BY lseq DESC;
 
 
-
-
 select*from member;
 select*from product;
 select*from question;

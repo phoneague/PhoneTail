@@ -35,7 +35,8 @@ public class InsertChatListAction implements Action {
 			cdto.setSid(pdto.getUserid());
 			cdao.insertChatList(cdto);
 			request.setAttribute("loginUser", mdto.getUserid());
-			response.sendRedirect("phonetail.do?command=chatList");
+			response.sendRedirect("phonetail.do?command=gochatList");
+			//response.sendRedirect("phonetail.do?command=chatList");
 		}else {
 			response.sendRedirect("phonetail.do?command=chating&lseq="+fdto.getLseq());
 		}
