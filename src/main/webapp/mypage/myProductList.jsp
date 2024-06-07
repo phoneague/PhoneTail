@@ -50,9 +50,6 @@
                                         탈퇴(휴면)회원
                                     </span>
                                 </c:when>
-                                <c:otherwise>
-                                    (${userStates[productDTO.userid]})
-                                </c:otherwise>
                             </c:choose>
 							</div>
 							<div class="productSold">

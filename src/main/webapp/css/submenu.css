@@ -1,18 +1,19 @@
 .sub_menu_wrap {
-    width: 250px;
+    width: 100%;
+    max-width: 250px;
     display: flex;
     justify-content: center;
-    margin-block-end: auto;
+    margin-bottom: auto; /* 더 일반적인 속성으로 조정 */
 }
 
 #sub_menu {
     display: flex;
     flex-direction: column;
-    width: 250px;
+    width: 100%;
 }
 
-#sub_menu a:hover{
-	color: #3259f7;
+#sub_menu a:hover {
+    color: #3259f7;
 }
 
 #sub_menu div {
@@ -21,7 +22,17 @@
 }
 
 #sub_menu div a {
-    font-size: 120%;
+    font-size: 1.2rem; /* 확장성을 위해 rem 사용 */
     font-weight: bold;
     text-decoration: none;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    #sub_menu_wrap {
+        width: 100%;
+    }
+
+    #sub_menu div a {
+        font-size: 0.8rem; /* rem 사용으로 조정 */
+    }
 }

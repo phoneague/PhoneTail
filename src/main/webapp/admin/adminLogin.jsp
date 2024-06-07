@@ -2,10 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/header.jsp"%>
 	<div id="loginwrap">
+	<h2>Admin LogIn</h2>
 		<article>
 			<form method="post" action="phonetail.do?command=adminLogin"
 				name="loginForm">
-				<h2>Admin LogIn</h2>
 				<div class="field">
 					<label>Admin ID</label><input name="adminid" type="text" />
 				</div>
