@@ -35,11 +35,11 @@
     </div>
     
    <div class="box">
-        <h2></h2>
+        <h2>New Items</h2>
     </div>
      
     <div class="box">
-         <img src="images/">
+         
     </div>
     
     <div class="box">
@@ -56,8 +56,25 @@
     </div>
     
     <div class="box">
-       
+       <h2>합리적인 가격</h2>
+       <img src="images/p1.png">
+    </div>
+
+    <div class="box">
+       <h2>남다른 PhoneTail 만의 회원관리</h2>
+    </div>
+    
+    <div class="box">
+       <h2>BLACKLIST</h2>
+       <img src="images/b1.jpg">
+    </div>
+    
+    <div class="box">
+    <div class="image-container">
+        <img src="images/m2.png" class="box-image">
+        <div class="red-border"></div>
     </div>
 </div>
+
 
 <%@ include file="footer.jsp"%>
