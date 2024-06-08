@@ -191,16 +191,29 @@ footer{
 		display:block;
 		position: absolute;
 		right:0;
-		top:25px;
+		top:55px;
 	}
 	#main_img img{
 		width:100%;
+	}
+	
+	#category_menu {
+	margin:20px;
+	
 	}
 	
 	#category_menu a{ 
 		font-size:0.9em;
 	}
 	
+	
+	footer{
+	margin: 10px;
+	}
+	
+	header{
+	margin: 10px;
+	}
 }
 
 

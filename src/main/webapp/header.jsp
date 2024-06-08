@@ -64,7 +64,7 @@
 				<a href="phonetail.do?command=productList&brand=Samsung">Galaxy</a>
 				<a href="phonetail.do?command=productList&brand=LG">Others</a>
 		</nav>
-		<hr>
+		<hr style="margin:10px;">
 	</header>
 
 

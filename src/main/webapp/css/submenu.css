@@ -30,10 +30,21 @@
 
 @media (max-width: 768px) {
     .sub_menu_wrap {
-        max-width: 100%; 
+        max-width: 100%;
     }
 
-    #sub_menu div a {
+    #sub_menu {
+        flex-direction: row; 
+        justify-content: center;
+        align-items: center;
+    }
+
+    #sub_menu div {
+        padding: 5px; 
+
+	}
+	
+	#sub_menu div a {
         font-size: 0.8rem;
     }
 }

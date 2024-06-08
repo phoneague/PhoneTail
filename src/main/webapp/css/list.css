@@ -310,7 +310,6 @@ footer div {
     flex: 1; /* 1:1 비율로 조정 */
     padding: 8px; /* 패딩 조정 */
     overflow: hidden; /* 넘치는 부분 감추기 */
-    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
     text-overflow: ellipsis; /* 넘칠 경우 ... 표시 */
 }
 
@@ -326,9 +325,6 @@ footer div {
     align-items: center; /* 가운데 정렬 */
 }
 
-.paging a {
-    margin: 5px; /* 마진 조정 */
-}
 
 }
 
