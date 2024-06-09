@@ -5,7 +5,7 @@
 #productWrap{width:100%; display:flex; flex-direction:column; margin: 0 auto; padding:20px; box-sizing:border-box; font-family: "Noto Sans KR", sans-serif;}
 .row{ flex:1; display: flex; justify-content:center; margin-bottom:10px; font-size:90%;}
 
-.title{font-size:32px; font-weight:bold; margin-bottom:20px; display:flex; justify-content:flex-end;}
+.title{font-size:32px; font-weight:bold; margin-bottom:20px; display:flex; justify-content:flex-end; font-family:"Roboto Mono", monospace;}
 
 
 .tb{ width:100%; display: flex; flex-direction: column; margin-bottom:30px; }
@@ -162,7 +162,59 @@ input[type="button"]:hover {
 
 
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (max-width: 767px) {
+    #productWrap {
+        padding: 10px;
+    }
 
+    .title {
+        font-size: 24px;
+        text-align: right;
+        margin-bottom: 10px;
+    }
+
+    .row {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 10px;
+    }
+
+    .tb {
+        margin-bottom: 20px;
+    }
+
+    .coltitle, .col {
+        width: 100%;
+        text-align: center;
+        margin: 5px 0;
+    }
+
+    .container {
+        flex-direction: column;
+        margin-left: 0;
+    }
+
+    .products {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product {
+        width: 300px;
+        margin-bottom: 10px;
+        padding:10px;
+    }
+
+    .detailImage, .detailInfos {
+        width: 100%;
+    }
+
+    .button_box {
+        width: 100%;
+    }
+
+    input[type="button"],
+    input[id="sellButton"] {
+        width: 100%;
+    }
 }
-

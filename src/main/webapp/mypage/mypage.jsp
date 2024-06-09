@@ -33,7 +33,7 @@
 							value="${login.address1}" readonly />
 					</div>
 					<div class="field">
-						<label>추가 주소</label><input type="text" name="address2"
+						<label>상세 주소</label><input type="text" name="address2"
 							value="${login.address2}" readonly />
 					</div>
 					<div class="field">

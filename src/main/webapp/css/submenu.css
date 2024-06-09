@@ -3,7 +3,7 @@
     max-width: 250px;
     display: flex;
     justify-content: center;
-    margin-bottom: auto; /* 더 일반적인 속성으로 조정 */
+    margin-bottom: auto;
 }
 
 #sub_menu {
@@ -22,17 +22,29 @@
 }
 
 #sub_menu div a {
-    font-size: 1.2rem; /* 확장성을 위해 rem 사용 */
+    font-size: 1.2rem; 
     font-weight: bold;
     text-decoration: none;
+    font-family:"Roboto Mono", monospace;
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
-    #sub_menu_wrap {
-        width: 100%;
+@media (max-width: 768px) {
+    .sub_menu_wrap {
+        max-width: 100%;
     }
 
-    #sub_menu div a {
-        font-size: 0.8rem; /* rem 사용으로 조정 */
+    #sub_menu {
+        flex-direction: row; 
+        justify-content: center;
+        align-items: center;
+    }
+
+    #sub_menu div {
+        padding: 5px; 
+
+	}
+	
+	#sub_menu div a {
+        font-size: 0.8rem;
     }
 }

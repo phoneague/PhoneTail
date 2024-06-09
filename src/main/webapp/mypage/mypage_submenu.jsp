@@ -4,8 +4,8 @@
 <div class="sub_menu_wrap">
 <nav id="sub_menu">
 	<div><a href="phonetail.do?command=mypage">My Info</a></div>
-	<div><a href="phonetail.do?command=myReportList">My ReportList</a></div>
-	<div><a href="phonetail.do?command=myProductList">My ProductList</a></div>
-	<div><a href="phonetail.do?command=myQnaList">My Q&AList</a></div>
+	<div><a href="phonetail.do?command=myReportList">My Report</a></div>
+	<div><a href="phonetail.do?command=myProductList">My Product</a></div>
+	<div><a href="phonetail.do?command=myQnaList">My Q&A</a></div>
 </nav>
 </div>

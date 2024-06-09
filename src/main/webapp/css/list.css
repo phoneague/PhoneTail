@@ -5,7 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    font-family: "Noto Sans KR", sans-serif;
+    font-family:"Roboto Mono", monospace;
     font-size: 200%;
     margin: 30px;
 }
@@ -262,5 +262,69 @@ footer {
 
 footer div {
 	font-size: 110%;
+}
+
+@media (max-width: 768px) {
+.lititle h2 {
+    font-size: 150%; /* 폰트 크기 조정 */
+    margin: 20px; /* 마진 조정 */
+    justify-content: center; /* 텍스트 중앙 정렬 */
+}
+
+/* content-wrapper */
+.content-wrapper {
+    flex-direction: column; /* 세로 방향으로 정렬 */
+    margin: 20px 10px; /* 마진 조정 */
+}
+
+/* container */
+.container {
+    flex-direction: column; /* 세로 방향으로 정렬 */
+}
+
+.container form h2 {
+    font-size: 24px; /* 폰트 크기 조정 */
+    margin-bottom: 15px; /* 마진 조정 */
+}
+
+.container form .field {
+    margin: 10px 0; /* 마진 조정 */
+    display: flex; /* 체크박스가 항상 표시되도록 설정 */
+    flex-direction: column; /* 세로 방향으로 정렬 */
+}
+
+.container form .field input {
+    width: 100%; /* 입력 필드 너비 조정 */
+    margin: 5px 0; /* 마진 조정 */
+}
+
+.litb .coltitle,
+    .litb .col {
+        font-size: 14px;
+}
+
+.container form .field input[type="checkbox"] {
+    margin-right: 5px; /* 체크박스와 텍스트 사이의 간격 조정 */
+}
+.litb .col {
+    flex: 1; /* 1:1 비율로 조정 */
+    padding: 8px; /* 패딩 조정 */
+    overflow: hidden; /* 넘치는 부분 감추기 */
+    text-overflow: ellipsis; /* 넘칠 경우 ... 표시 */
+}
+
+
+.litb .col a {
+    color: red; /* 링크 색상 변경 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+/* paging */
+.paging {
+    margin-top: 20px; /* 마진 조정 */
+    align-items: center; /* 가운데 정렬 */
+}
+
+
 }
 

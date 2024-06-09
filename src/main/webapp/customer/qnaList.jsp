@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/header.jsp"%>
 <div class="lititle">
-<h2>QnA List</h2>
+<h2>Q&A</h2>
 </div>
 <div class="container">
 	<form method="post" name="frm">

@@ -5,6 +5,6 @@
 <nav id="sub_menu">
 	<div><a href="phonetail.do?command=adminReportList">Report List</a></div>
 	<div><a href="phonetail.do?command=adminMemberList">Member List</a></div>
-	<div><a href="phonetail.do?command=adminQnaList">QnA List</a></div>
+	<div><a href="phonetail.do?command=adminQnaList">Q&A List</a></div>
 </nav>
 </div>
