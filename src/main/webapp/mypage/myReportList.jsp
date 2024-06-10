@@ -20,9 +20,7 @@
 					<div class="row">
 						<div class="col">${reportDTO.reseq}</div>
 						<div class="col">
-							<a
-								href="phonetail.do?command=reportView&reseq=${reportDTO.reseq}">${reportDTO.userid}님의
-								신고글</a>
+							<a href="phonetail.do?command=reportView&reseq=${reportDTO.reseq}">'${reportDTO.userid}' 님의 신고글</a>
 						</div>
 						<div class="col">
 							<c:choose>

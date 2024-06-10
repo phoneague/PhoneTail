@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Report result</title>
-<script src="report/script/report.js"></script>
+<script src="script/report.js"></script>
 <style>
 input[type=button] {
 
@@ -21,6 +21,6 @@ display: flex; flex-direction:column; height:100vh; align-items:center; padding:
 </head>
 <body>
 <h2>신고가 접수되었습니다.</h2>
-<input type="button" value="닫기" onClick="close()">
+<input type="button" value="닫기" onClick="closeWindow()">
 </body>
 </html>
