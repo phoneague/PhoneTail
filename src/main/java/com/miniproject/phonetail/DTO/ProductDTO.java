@@ -6,7 +6,6 @@ public class ProductDTO {
 	
 	private int pseq;
 	private String brand;
-	private String series;
 	private String model;
 	private int price;
 	private String comment;
@@ -15,8 +14,22 @@ public class ProductDTO {
 	private String sellstate;
 	private String userid;
 	private Timestamp indate;
+	private int readcount;
+	private int wantcount;
 	
 
+	public int getReadcount() {
+		return readcount;
+	}
+	public void setReadcount(int readcount) {
+		this.readcount = readcount;
+	}
+	public int getWantcount() {
+		return wantcount;
+	}
+	public void setWantcount(int wantcount) {
+		this.wantcount = wantcount;
+	}
 	public int getPseq() {
 		return pseq;
 	}
@@ -28,12 +41,6 @@ public class ProductDTO {
 	}
 	public void setBrand(String brand) {
 		this.brand = brand;
-	}
-	public String getSeries() {
-		return series;
-	}
-	public void setSeries(String series) {
-		this.series = series;
 	}
 	public String getModel() {
 		return model;

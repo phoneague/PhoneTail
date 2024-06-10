@@ -78,9 +78,9 @@ function go_delete(pseq, sellerId, loginId) {
 		document.loginForm.userid.focus();
 	}
 	let answer = confirm("정말로 삭제하시겠습니까?");
-	if(answer) {
-			window.location.href = "phonetail.do?command=productDelete&pseq=" + pseq;
-	} 
+	if (answer) {
+		window.location.href = "phonetail.do?command=productDelete&pseq=" + pseq;
+	}
 }
 
 
@@ -88,41 +88,39 @@ function go_chat(pseq) {
 
 }
 
-function sold(pseq){
+function go_want(pseq, userid) {
+	if (userid == "") {
+		alert("로그인해야 찜을 할 수 있습니다.");
+	} else {
+		let answer = confirm(pseq + "찜하시겠습니까?" + userid);
+		if (answer) {
+			window.location.href = "phonetail.do?command=productWant&pseq=" + pseq + "&userid=" + userid;
+		}
+	}
+}
+
+
+function sold(pseq) {
 	let answer = confirm("거래를 완료하셨나요?");
-	if(answer) {
+	if (answer) {
 		window.location.href = "phonetail.do?command=productSold&pseq=" + pseq;
 	}
-	
+
 }
 
 function show_preview(event) {
-    var input = event.target;
-    var reader = new FileReader();
-    reader.onload = function() {
-        var dataURL = reader.result;
-        var output = document.getElementById('preview');
-        output.src = dataURL;
-    };
-    reader.readAsDataURL(input.files[0]);
+	var input = event.target;
+	var reader = new FileReader();
+	reader.onload = function() {
+		var dataURL = reader.result;
+		var output = document.getElementById('preview');
+		output.src = dataURL;
+	};
+	reader.readAsDataURL(input.files[0]);
 }
 
 function handleSellstateChange() {
-        var selectBox = document.getElementById('sellstateSelect');
-        var selectedValue = selectBox.value;
-        window.location.href = 'phonetail.do?command=productList&sellstate=' + selectedValue;
-      
-}
-
-function go_prev(pseq){
-	var go = pseq-1;
-	window.location.href = 'phonetail.do?command=productDetail&pseq=' + go;
-
-}
-
-function go_next(pseq){
-	var go = pseq+1;
-	window.location.href = 'phonetail.do?command=productDetail&pseq=' + go;
-
-	
+	var selectBox = document.getElementById('sellstateSelect');
+	var selectedValue = selectBox.value;
+	window.location.href = 'phonetail.do?command=productList&sellstate=' + selectedValue;
 }

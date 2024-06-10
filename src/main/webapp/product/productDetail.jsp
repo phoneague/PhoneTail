@@ -3,6 +3,10 @@
 <%@ include file="/header.jsp"%>
 <link rel="stylesheet" href="css/product.css"> 
 
+<div>
+${message}
+</div>
+
 
 <div id="productWrap">
 	<div class="row">
@@ -37,10 +41,6 @@
 				<div class="col">${productDTO.brand}</div>
 			</div>
 			<div class="row">
-				<div class="coltitle">시리즈</div>
-				<div class="col">${productDTO.series}</div>
-			</div>
-			<div class="row">
 				<div class="coltitle">모델</div>
 				<div class="col">${productDTO.model}</div>
 			</div>
@@ -73,6 +73,14 @@
 				<div class="coltitle">등록일</div>
 				<div class="col">${productDTO.indate}</div>
 			</div>
+			<div class="row">
+				<div class="coltitle">조회수</div>
+				<div class="col">${productDTO.readcount}</div>
+			</div>
+			<div class="row">
+				<div class="coltitle">찜 수</div>
+				<div class="col">${productDTO.wantcount}</div>
+			</div>
 		</div>
 		<div class="detailImage">
 			<img src="product/images/${productDTO.saveimagefile}" width="600" />
@@ -94,6 +102,7 @@
 		</c:when>
 		<c:otherwise>
 			<div class="button_box">
+				<input type="button" value="찜하기" onClick="go_want(${productDTO.pseq}, '${login.userid}')"/>
 				<input type="button" value="1:1 대화"
 					onClick="go_chat(${productDTO.pseq},'${login.userid}')" /> 
 				<input type="button" 
