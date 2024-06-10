@@ -246,6 +246,26 @@ public class ProductDAO {
 
 		return count;
 	}
+	
+	public int getMyWantAllcount(String tablename, String myId) {
+		int count = 0;
+		con = DB.getConnection();
+//		System.out.println(tablename+"/"+fieldname+"/"+key+"/"+brand);
+		String sql = "SELECT COUNT(*) AS cnt FROM " + tablename + " WHERE wuserid LIKE ?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, myId);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				count = rs.getInt("cnt");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DB.close(con, pstmt, rs);
+		}
+		return count;
+	}
 
 	public void deleteProduct(int pseq) {
 		con = DB.getConnection();
@@ -275,7 +295,7 @@ public class ProductDAO {
 		}
 	}
 
-	public ArrayList<ProductDTO> myProudctList(Paging paging, String myId) {
+	public ArrayList<ProductDTO> myProductList(Paging paging, String myId) {
 		ArrayList<ProductDTO> list = new ArrayList<>();
 		con = DB.getConnection();
 		String sql = "SELECT * FROM product WHERE userid LIKE ? " + " ORDER BY indate DESC, pseq DESC LIMIT ? OFFSET ?";
@@ -360,6 +380,42 @@ public class ProductDAO {
 		}
 	}
 
+
+	public ArrayList<ProductDTO> myWantProductList(Paging paging, String myId) {
+		ArrayList<ProductDTO> list = new ArrayList<>();
+		con = DB.getConnection();
+		String sql = "SELECT * FROM wantlist_view WHERE wuserid=? ORDER BY indate DESC, pseq DESC LIMIT ? OFFSET ?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, myId);
+			pstmt.setInt(2, paging.getDisplayRow());
+			pstmt.setInt(3, paging.getStartNum() - 1);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				ProductDTO pdto = new ProductDTO();
+				pdto.setPseq(rs.getInt("pseq"));
+				pdto.setBrand(rs.getString("brand"));
+				pdto.setModel(rs.getString("model"));
+				pdto.setPrice(rs.getInt("price"));
+				pdto.setComment(rs.getString("comment"));
+				pdto.setImage(rs.getString("image"));
+				pdto.setSaveimagefile(rs.getString("saveimagefile"));
+				pdto.setSellstate(rs.getString("sellstate"));
+				pdto.setIndate(rs.getTimestamp("indate"));
+				pdto.setReadcount(rs.getInt("readcount"));
+				pdto.setWantcount(rs.getInt("wantcount"));
+				pdto.setUserid(rs.getString("puserid")); //판매자 아이디
+				list.add(pdto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DB.close(con, pstmt, rs);
+		}
+		return list;
+	}
+
+  
 	public void updateReadcount(int pseq) {
 		String sql = "UPDATE product SET readcount = readcount + 1 WHERE pseq = ?";
 	    try {
@@ -371,5 +427,6 @@ public class ProductDAO {
 	    } finally { DB.close(con, pstmt, rs); }
 	}
 		
+
 
 }

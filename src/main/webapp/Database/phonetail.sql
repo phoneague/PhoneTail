@@ -179,9 +179,33 @@ SELECT
     c.content AS content
 FROM product p JOIN chatlist cl ON p.pseq = cl.pseq JOIN chat c ON cl.lseq = c.lseq;
 
+
+CREATE OR REPLACE VIEW wantlist_view
+AS
+SELECT 
+    p.pseq,
+    p.brand,
+    p.model,
+    p.price,
+    p.comment,
+    p.image,
+    p.saveimagefile,
+    p.sellstate,
+    p.indate,
+    p.readcount,
+    p.wantcount,
+    p.userid AS puserid,
+    w.userid AS wuserid
+FROM 
+    product p
+JOIN 
+    wantlist w ON p.pseq = w.pseq;
+
+
 create or replace view new_product
 as
 select pseq, model, price, image, saveimagefile, userid from product where sellstate='N'  order by indate desc limit 3;
+
 
 INSERT INTO admin (adminid, pwd, name, phone) VALUES
 ('admin1', 'password1', '관리자1', '010-1234-5678'),
@@ -422,4 +446,8 @@ INSERT INTO report (pseq, userid, retype, recontent, restate) VALUES
 
 
 UPDATE question SET qreply='';
+
+create or replace view new_product
+as
+select pseq, model, price, image, saveimagefile, userid from product where sellstate='N'  order by indate desc limit 3;
 
