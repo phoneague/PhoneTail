@@ -37,25 +37,30 @@
             <img src="images/6.png">  
         </div>
     </div>
-                                   
-      	<c:forEach items="${newList}" var="newlist" varStatus="status">
-		<div class="box">
-			<div class="box-inner">
-				<a href="phonetail.do?command=productDetail&pseq=${newlist.pseq}">
-					<img src="product/images/${newlist.saveimagefile}" width="200">
-				</a>
-			</div>
-			<div class="box-inner">
-				<a href="phonetail.do?command=productDetail&pseq=${newlist.pseq}">
-					${newlist.model} - <fmt:formatNumber value="${newlist.price}"
-						type="currency" />
-				</a>
-			</div>
-		</div>
-	</c:forEach>
-                             
-                                   
     
+     <div class="container">
+    <div class="box">
+        <h2>New List</h2><br>
+    </div>
+    </div>
+                                   
+      	<div class="container">
+    <c:forEach items="${newList}" var="newlist" varStatus="status">
+        <div class="box">
+            <div class="box-inner">
+                <a href="phonetail.do?command=productDetail&pseq=${newlist.pseq}">
+                    <img src="product/images/${newlist.saveimagefile}" >
+                </a>
+            </div>
+            <h2>
+                <a href="phonetail.do?command=productDetail&pseq=${newlist.pseq}">
+                    ${newlist.model} - <fmt:formatNumber value="${newlist.price}" type="currency" />
+                </a>
+                </h2>
+        </div>
+    </c:forEach>
+</div>
+                   
      <div class="container">
     <div class="box">
        <h2>PhoneTail 에서 사야하는 이유</h2>
@@ -64,13 +69,17 @@
     
     <div class="container">
     <div class="box">
+    <div class="box-inner">
        <h2>안전한 직거래</h2>
        <img src="images/55.jpg">
+       </div>
     </div>
     
     <div class="box">
+    <div class="box-inner">
        <h2>합리적인 가격</h2>
        <img src="images/p1.png">
+       </div>
     </div>
     </div>
 
@@ -79,18 +88,22 @@
        <h2>PhoneTail 만의 회원관리</h2>
     </div>
     </div>
-    
-                    
+                  
      <div class="container">
     <div class="box">
+    <div class="box-inner">
        <h2>BLACKLIST</h2>
         <img src="images/b1.jpg" style="max-width: 100%; max-height: 90%;">
     </div>
+    </div>
     
     <div class="box">
+    <div class="box-inner">
         <div class="image-container">
              <img src="images/m2.png" class="box-image"> 
-            <div class="red-border"></div>
+            <div class="red-border">
+            </div>
+        </div>
         </div>
     </div>
     </div>
