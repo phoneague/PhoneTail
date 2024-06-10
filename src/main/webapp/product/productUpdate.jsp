@@ -36,10 +36,6 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="coltitle">시리즈</div>
-					<div class="col"><input type="text" name="series" value="${ProductDTO.series}" /></div>
-				</div>
-				<div class="row">
 					<div class="coltitle">모델명</div>
 					<div class="col"><input type="text" name="model"  value="${ProductDTO.model}" /></div>
 				</div>

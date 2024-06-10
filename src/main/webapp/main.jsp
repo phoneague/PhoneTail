@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ include file="header.jsp"%>
 <link rel="stylesheet" href="css/main.css">
@@ -36,6 +37,24 @@
             <img src="images/6.png">  
         </div>
     </div>
+                                   
+      	<c:forEach items="${newList}" var="newlist" varStatus="status">
+		<div class="box">
+			<div class="box-inner">
+				<a href="phonetail.do?command=productDetail&pseq=${newlist.pseq}">
+					<img src="product/images/${newlist.saveimagefile}" width="200">
+				</a>
+			</div>
+			<div class="box-inner">
+				<a href="phonetail.do?command=productDetail&pseq=${newlist.pseq}">
+					${newlist.model} - <fmt:formatNumber value="${newlist.price}"
+						type="currency" />
+				</a>
+			</div>
+		</div>
+	</c:forEach>
+                             
+                                   
     
      <div class="container">
     <div class="box">
@@ -61,6 +80,7 @@
     </div>
     </div>
     
+                    
      <div class="container">
     <div class="box">
        <h2>BLACKLIST</h2>

@@ -11,9 +11,11 @@ SELECT * FROM hak WHERE model LIKE '%Galaxy%' AND (sid = 'a' OR bid = 'a') ORDER
 select*from member;
 select*from product;
 select*from question;
+select * from wantlist;
 SELECT * FROM hak WHERE sid = 'a' OR bid = 'a' ORDER BY lseq DESC;
 -- 기존 테이블 삭제
 --DROP TABLE IF EXISTS address;
+DROP TABLE IF EXISTS wantlist;
 DROP TABLE IF EXISTS admin;
 DROP TABLE IF EXISTS chat;
 DROP TABLE IF EXISTS chatlist;
@@ -61,7 +63,6 @@ CREATE TABLE product
 (
     pseq int NOT NULL AUTO_INCREMENT,
     brand varchar(45) NOT NULL COMMENT 'company > brand로 수정',
-    series varchar(45) NOT NULL COMMENT '카테고리 필터 용',
     model varchar(45) NOT NULL COMMENT '카테고리 필터 용',
     price int NOT NULL,
     comment varchar(1000),
@@ -69,6 +70,8 @@ CREATE TABLE product
     saveimagefile varchar(200) COMMENT 'no image가 있을수 있어서',
     sellstate char(1) DEFAULT 'N' COMMENT 'YorN',
     indate datetime DEFAULT now() NOT NULL,
+    readcount int default 0,
+	wantcount int default 0,
     userid varchar(45) NOT NULL,
     PRIMARY KEY (pseq)
 );
@@ -122,7 +125,26 @@ CREATE TABLE report
     PRIMARY KEY (reseq)
 );
 
-
+CREATE TABLE `phonetail`.`wantlist` (
+  `wseq` INT NOT NULL AUTO_INCREMENT,
+  `pseq` INT NOT NULL,
+  `userid` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`wseq`),
+  INDEX `pk1_idx` (`pseq` ASC) VISIBLE,
+  INDEX `pk2_idx` (`userid` ASC) VISIBLE,
+  CONSTRAINT `pk1`
+    FOREIGN KEY (`pseq`)
+    REFERENCES `phonetail`.`product` (`pseq`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `pk2`
+    FOREIGN KEY (`userid`)
+    REFERENCES `phonetail`.`member` (`userid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
 -- 외래 키 추가
 ALTER TABLE chat
@@ -170,6 +192,11 @@ INSERT INTO admin (adminid, pwd, name, phone) VALUES
 INSERT INTO member (userid, pwd, name, phone, email, address1, address2, userstate, indate) VALUES
 ('user1', 'pwd1', '사용자1', '010-1111-2222', 'user1@example.com', '서울특별시 강남구 삼성동', '123-45', 'Y', now()),
 ('user2', 'pwd2', '사용자2', '010-3333-4444', 'user2@example.com', '부산광역시 해운대구 우동', '678-90', 'Y', now()),
+('user3', 'pwd3', '사용자3', '010-3333-4444', 'user2@example.com', '부산광역시 해운대구 우동', '678-90', 'Y', now()),
+('user4', 'pwd4', '사용자4', '010-3333-4444', 'user2@example.com', '부산광역시 해운대구 우동', '678-90', 'Y', now()),
+('user5', 'pwd5', '사용자5', '010-3333-4444', 'user2@example.com', '부산광역시 해운대구 우동', '678-90', 'Y', now()),
+('user6', 'pwd6', '사용자6', '010-3333-4444', 'user2@example.com', '부산광역시 해운대구 우동', '678-90', 'Y', now()),
+('user7', 'pwd7', '사용자7', '010-3333-4444', 'user2@example.com', '부산광역시 해운대구 우동', '678-90', 'Y', now()),
 ('a', 'a', '테스트계정', '010-3333-4444', 'user2@example.com', '부산광역시 해운대구 우동', '678-90', 'Y', now()),
 ('superman', 'kryptonite', 'Clark Kent', '123-456-7890', 'clark@dailyplanet.com', '123 Metropolis Lane', 'Apt 3B', 'Y', now()),
 ('batman', 'robin', 'Bruce Wayne', '987-654-3210', 'bruce@wayneenterprises.com', '456 Wayne Manor', 'Gotham City', 'Y', now()),
@@ -191,40 +218,108 @@ INSERT INTO member (userid, pwd, name, phone, email, address1, address2, usersta
 
 
 
-INSERT INTO product (brand, series, model, price, comment, image, saveimagefile, sellstate, indate, userid) VALUES
-('Apple', 'iPhone', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
-('Samsung', 'S Series', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
-('Samsung', 'Z Series', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
-('LG', 'G8', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'user1'),
-('Apple', 'iPhone', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
-('Samsung', 'S Series', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
-('Samsung', 'Z Series', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
-('LG', 'G8', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'user1'),
-('Apple', 'iPhone', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
-('Samsung', 'S Series', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
-('Samsung', 'Z Series', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
-('LG', 'G8', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'user1'),
-('Apple', 'iPhone', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
-('Samsung', 'S Series', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
-('Samsung', 'Z Series', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
-('LG', 'G8', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'user1'),
-('Apple', 'iPhone', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
-('Samsung', 'S Series', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
-('Samsung', 'Z Series', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
-('LG', 'G8', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'user1'),
-('Apple', 'iPhone', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
-('Samsung', 'S Series', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
-('Samsung', 'Z Series', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
-('LG', 'G8', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'user1'),
-('Apple', 'iPhone', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
-('Samsung', 'S Series', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
-('Samsung', 'Z Series', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
-('LG', 'G8', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'uuser1'),
-('Apple', 'iPhone', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
-('Samsung', 'S Series', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
-('Samsung', 'Z Series', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
-('LG', 'G8', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'uuser1'),
-('Samsung', 'S Series', 'GalaxyS24', 900000, '최신 모델', 'GalaxyS24.jpg', 'GalaxyS24.jpg', 'N', now(), 'user2');
+INSERT INTO product (brand, model, price, comment, image, saveimagefile, sellstate, indate, userid) VALUES
+('Apple', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
+('Samsung', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
+('Samsung', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
+('LG', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone14', 10000, '아이폰 5년사용', 'iphone14pro.jpg', 'iphone14pro.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone15', 300000, '아이폰 3년사용', 'iphone15.jpg', 'iphone15.jpg', 'N', now(), 'user1'),
+('Samsung', 'GalaxyS22', 500000, '흠집 있음', 'GalaxyS22.jpg', 'GalaxyS22.jpg', 'N', now(), 'user2'),
+('Samsung', 'GalaxyS24', 600000, '흠집 있음', 'GalaxyS24.jpg', 'GalaxyS24.jpg', 'N', now(), 'user2'),
+('Samsung', 'GalaxyZ fold 5', 500000, 'S급 상태', 'GalaxyZfold5.jpg', 'GalaxyZfold5.jpg', 'N', now(), 'user1'),
+('LG', 'V50', 300000, '물에 빠짐', 'LGV50SThinQ.jpg', 'LGV50SThinQ.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
+('Samsung', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
+('Samsung', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
+('LG', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone14', 10000, '아이폰 5년사용', 'iphone14pro.jpg', 'iphone14pro.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone15', 300000, '아이폰 3년사용', 'iphone15.jpg', 'iphone15.jpg', 'N', now(), 'user1'),
+('Samsung', 'GalaxyS22', 500000, '흠집 있음', 'GalaxyS22.jpg', 'GalaxyS22.jpg', 'N', now(), 'user2'),
+('Samsung', 'GalaxyS24', 600000, '흠집 있음', 'GalaxyS24.jpg', 'GalaxyS24.jpg', 'N', now(), 'user2'),
+('Samsung', 'GalaxyZ fold 5', 500000, 'S급 상태', 'GalaxyZfold5.jpg', 'GalaxyZfold5.jpg', 'N', now(), 'user1'),
+('LG', 'V50', 300000, '물에 빠짐', 'LGV50SThinQ.jpg', 'LGV50SThinQ.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
+('Samsung', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
+('Samsung', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
+('LG', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone14', 10000, '아이폰 5년사용', 'iphone14pro.jpg', 'iphone14pro.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone15', 300000, '아이폰 3년사용', 'iphone15.jpg', 'iphone15.jpg', 'N', now(), 'user1'),
+('Samsung', 'GalaxyS22', 500000, '흠집 있음', 'GalaxyS22.jpg', 'GalaxyS22.jpg', 'N', now(), 'user2'),
+('Samsung', 'GalaxyS24', 600000, '흠집 있음', 'GalaxyS24.jpg', 'GalaxyS24.jpg', 'N', now(), 'user2'),
+('Samsung', 'GalaxyZ fold 5', 500000, 'S급 상태', 'GalaxyZfold5.jpg', 'GalaxyZfold5.jpg', 'N', now(), 'user1'),
+('LG', 'V50', 300000, '물에 빠짐', 'LGV50SThinQ.jpg', 'LGV50SThinQ.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
+('Samsung', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
+('Samsung', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
+('LG', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone14', 10000, '아이폰 5년사용', 'iphone14pro.jpg', 'iphone14pro.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone15', 300000, '아이폰 3년사용', 'iphone15.jpg', 'iphone15.jpg', 'N', now(), 'user1'),
+('Samsung', 'GalaxyS22', 500000, '흠집 있음', 'GalaxyS22.jpg', 'GalaxyS22.jpg', 'N', now(), 'user2'),
+('Samsung', 'GalaxyS24', 600000, '흠집 있음', 'GalaxyS24.jpg', 'GalaxyS24.jpg', 'N', now(), 'user2'),
+('Samsung', 'GalaxyZ fold 5', 500000, 'S급 상태', 'GalaxyZfold5.jpg', 'GalaxyZfold5.jpg', 'N', now(), 'user1'),
+('LG', 'V50', 300000, '물에 빠짐', 'LGV50SThinQ.jpg', 'LGV50SThinQ.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
+('Samsung', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
+('Samsung', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
+('LG', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone14', 10000, '아이폰 5년사용', 'iphone14pro.jpg', 'iphone14pro.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone15', 300000, '아이폰 3년사용', 'iphone15.jpg', 'iphone15.jpg', 'N', now(), 'user1'),
+('Samsung', 'GalaxyS22', 500000, '흠집 있음', 'GalaxyS22.jpg', 'GalaxyS22.jpg', 'N', now(), 'user2'),
+('Samsung', 'GalaxyS24', 600000, '흠집 있음', 'GalaxyS24.jpg', 'GalaxyS24.jpg', 'N', now(), 'user2'),
+('Samsung', 'GalaxyZ fold 5', 500000, 'S급 상태', 'GalaxyZfold5.jpg', 'GalaxyZfold5.jpg', 'N', now(), 'user1'),
+('LG', 'V50', 300000, '물에 빠짐', 'LGV50SThinQ.jpg', 'LGV50SThinQ.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
+('Samsung', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
+('Samsung', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
+('LG', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone14', 10000, '아이폰 5년사용', 'iphone14pro.jpg', 'iphone14pro.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone15', 300000, '아이폰 3년사용', 'iphone15.jpg', 'iphone15.jpg', 'N', now(), 'user1'),
+('Samsung', 'GalaxyS22', 500000, '흠집 있음', 'GalaxyS22.jpg', 'GalaxyS22.jpg', 'N', now(), 'user2'),
+('Samsung', 'GalaxyS24', 600000, '흠집 있음', 'GalaxyS24.jpg', 'GalaxyS24.jpg', 'N', now(), 'user2'),
+('Samsung', 'GalaxyZ fold 5', 500000, 'S급 상태', 'GalaxyZfold5.jpg', 'GalaxyZfold5.jpg', 'N', now(), 'user1'),
+('LG', 'V50', 300000, '물에 빠짐', 'LGV50SThinQ.jpg', 'LGV50SThinQ.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
+('Samsung', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
+('Samsung', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
+('LG', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone14', 10000, '아이폰 5년사용', 'iphone14pro.jpg', 'iphone14pro.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone15', 300000, '아이폰 3년사용', 'iphone15.jpg', 'iphone15.jpg', 'N', now(), 'user1'),
+('Samsung', 'GalaxyS22', 500000, '흠집 있음', 'GalaxyS22.jpg', 'GalaxyS22.jpg', 'N', now(), 'user2'),
+('Samsung', 'GalaxyS24', 600000, '흠집 있음', 'GalaxyS24.jpg', 'GalaxyS24.jpg', 'N', now(), 'user2'),
+('Samsung', 'GalaxyZ fold 5', 500000, 'S급 상태', 'GalaxyZfold5.jpg', 'GalaxyZfold5.jpg', 'N', now(), 'user1'),
+('LG', 'V50', 300000, '물에 빠짐', 'LGV50SThinQ.jpg', 'LGV50SThinQ.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
+('Samsung', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
+('Samsung', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
+('LG', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone14', 10000, '아이폰 5년사용', 'iphone14pro.jpg', 'iphone14pro.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone15', 300000, '아이폰 3년사용', 'iphone15.jpg', 'iphone15.jpg', 'N', now(), 'user1'),
+('Samsung', 'GalaxyS22', 500000, '흠집 있음', 'GalaxyS22.jpg', 'GalaxyS22.jpg', 'N', now(), 'user2'),
+('Samsung', 'GalaxyS24', 600000, '흠집 있음', 'GalaxyS24.jpg', 'GalaxyS24.jpg', 'N', now(), 'user2'),
+('Samsung', 'GalaxyZ fold 5', 500000, 'S급 상태', 'GalaxyZfold5.jpg', 'GalaxyZfold5.jpg', 'N', now(), 'user1'),
+('LG', 'V50', 300000, '물에 빠짐', 'LGV50SThinQ.jpg', 'LGV50SThinQ.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
+('Samsung', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
+('Samsung', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
+('LG', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone14', 10000, '아이폰 5년사용', 'iphone14pro.jpg', 'iphone14pro.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone15', 300000, '아이폰 3년사용', 'iphone15.jpg', 'iphone15.jpg', 'N', now(), 'user1'),
+('Samsung', 'GalaxyS22', 500000, '흠집 있음', 'GalaxyS22.jpg', 'GalaxyS22.jpg', 'N', now(), 'user2'),
+('Samsung', 'GalaxyS24', 600000, '흠집 있음', 'GalaxyS24.jpg', 'GalaxyS24.jpg', 'N', now(), 'user2'),
+('Samsung', 'GalaxyZ fold 5', 500000, 'S급 상태', 'GalaxyZfold5.jpg', 'GalaxyZfold5.jpg', 'N', now(), 'user1'),
+('LG', 'V50', 300000, '물에 빠짐', 'LGV50SThinQ.jpg', 'LGV50SThinQ.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone13', 1000000, '아이폰 3년사용', 'iphone13.jpg', 'iphone13.jpg', 'N', now(), 'user1'),
+('Samsung', 'GalaxyS21', 700000, '흠집 있음', 'GalaxyS21.jpg', 'GalaxyS21.jpg', 'Y', now(), 'user2'),
+('Samsung', 'GalaxyZ flip5', 500000, 'S급 상태', 'GalaxyZflip5.jpg', 'GalaxyZflip5.jpg', 'N', now(), 'user1'),
+('LG', 'G8 ThinQ', 300000, '물에 빠짐', 'LGG8ThinQ.jpg', 'LGG8ThinQ.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone14', 10000, '아이폰 5년사용', 'iphone14pro.jpg', 'iphone14pro.jpg', 'N', now(), 'user1'),
+('Apple', 'iPhone15', 300000, '아이폰 3년사용', 'iphone15.jpg', 'iphone15.jpg', 'N', now(), 'user1'),
+('Samsung', 'GalaxyS22', 500000, '흠집 있음', 'GalaxyS22.jpg', 'GalaxyS22.jpg', 'N', now(), 'user2'),
+('Samsung', 'GalaxyS24', 600000, '흠집 있음', 'GalaxyS24.jpg', 'GalaxyS24.jpg', 'N', now(), 'user2'),
+('Samsung', 'GalaxyZ fold 5', 500000, 'S급 상태', 'GalaxyZfold5.jpg', 'GalaxyZfold5.jpg', 'N', now(), 'user1'),
+('LG', 'V50', 300000, '물에 빠짐', 'LGV50SThinQ.jpg', 'LGV50SThinQ.jpg', 'N', now(), 'user1');
+
 
 
 INSERT INTO chatlist (sid, bid, pseq) VALUES

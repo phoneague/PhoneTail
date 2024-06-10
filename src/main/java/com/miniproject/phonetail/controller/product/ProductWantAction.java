@@ -9,16 +9,25 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class ProductSoldAction implements Action {
+public class ProductWantAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		int pseq = Integer.parseInt( request.getParameter("pseq"));
+		int pseq = Integer.parseInt(request.getParameter("pseq"));
+		String userid = request.getParameter("userid");
 		
 		ProductDAO pdao = ProductDAO.getInstance();
-		pdao.soldProduct(pseq);
+		int check = pdao.checkWant(pseq, userid);
+		if(check==0) {
+			pdao.insertWant(pseq, userid);
+			pdao.updateWantCount(pseq);
+		} else {
+			request.setAttribute("message", "이미 찜함");
+			System.out.println("이미찜함");
+		}
 		response.sendRedirect("phonetail.do?command=productDetail&pseq=" + pseq);
+		
+		
 	}
 
 }

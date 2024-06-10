@@ -35,6 +35,10 @@ public class ProductDetailAction implements Action {
                 userStates.put(pdto.getUserid(), member.getUserstate());
             }
         }
+        
+        String mess = request.getParameter("message");
+        System.out.println(mess);
+        
         request.setAttribute("userStates", userStates);
         request.getRequestDispatcher("product/productDetail.jsp").forward(request, response);
 

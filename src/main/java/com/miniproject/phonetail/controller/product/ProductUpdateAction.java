@@ -27,7 +27,6 @@ public class ProductUpdateAction implements Action {
 		System.out.println("업데이트에서 상품번호 전달 확인" + pseq);
 		pdto.setPseq(Integer.parseInt(request.getParameter("pseq")));
 		pdto.setBrand(request.getParameter("brand"));
-		pdto.setSeries(request.getParameter("series"));
 		pdto.setModel(request.getParameter("model"));
 		pdto.setPrice(Integer.parseInt(request.getParameter("price")));
 		pdto.setComment(request.getParameter("comment"));
