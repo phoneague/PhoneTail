@@ -86,3 +86,18 @@ function withDraw(){
 		return;
 	}
 }
+
+function find_id(){
+	var url = "phonetail.do?command=findId";
+	var opt = "toolbar=no, menubar=no, resizable=no, width=500, height=300, scrollbars=no";
+	
+	window.open(url, "findId", opt);
+}
+
+function find_pw(){
+	var url = "phonetail.do?command=findPw";
+	var opt = "toolbar=no, menubar=no, resizable=no, width=500, height=300, scrollbars=no";
+	
+	window.open(url, "findPw", opt);
+}
+

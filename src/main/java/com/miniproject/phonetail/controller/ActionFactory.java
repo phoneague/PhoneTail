@@ -37,6 +37,8 @@ import com.miniproject.phonetail.controller.action.admin.AdminUserStateChangeBto
 import com.miniproject.phonetail.controller.action.admin.AdminUserStateChangeNtoYAction;
 import com.miniproject.phonetail.controller.action.admin.AdminUserStateChangeYtoBAction;
 import com.miniproject.phonetail.controller.action.member.DeleteMemberAction;
+import com.miniproject.phonetail.controller.action.member.FindIdAciton;
+import com.miniproject.phonetail.controller.action.member.FindPwAction;
 import com.miniproject.phonetail.controller.action.member.FindZipNumAction;
 import com.miniproject.phonetail.controller.action.member.IdCheckAction;
 import com.miniproject.phonetail.controller.action.member.JoinAction;
@@ -78,6 +80,8 @@ public class ActionFactory {
 		else if(command.equals("deleteMember")) ac = new DeleteMemberAction();
 		else if(command.equals("updateMemberForm")) ac = new UpdateMemberFormAction();
 		else if(command.equals("updateMember")) ac = new UpdateMemberAction();
+		else if(command.equals("findId")) ac = new FindIdAciton();
+		else if(command.equals("findPw")) ac = new FindPwAction();
 		
 		// customer
 		else if(command.equals("qnaList"))ac = new QnaListAction();

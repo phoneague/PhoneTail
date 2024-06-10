@@ -14,9 +14,6 @@
 				</div>
 				<div class="loginbtn">
 					<input type="submit" value="LOGIN" onClick="return loginCheck()">
-					<input type="button" value="JOIN" onClick="">
-					<input
-						type="button" value="FIND ID" onClick="">
 				</div>
 				<div style="font-size: 80%; font-weight: bold">${message}</div>
 			</form>
