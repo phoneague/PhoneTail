@@ -5,10 +5,6 @@
 
 
 <div id="productWrap">
-	<div class="row">
-		<div class="title">Product Detail</div>
-	</div>
-
 	<div class="container">
 		<div class="detailInfos">
 			<div class="row">
@@ -76,9 +72,6 @@
 			<div class="row">
 				<div class="coltitle">찜 수</div>
 				<div class="col">${productDTO.wantcount}</div>
-			</div>
-			<div class="row">
-				<div id="pmessage">${pmessage}</div>
 			</div>
 			
 		</div>
