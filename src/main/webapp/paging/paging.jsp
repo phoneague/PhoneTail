@@ -10,11 +10,11 @@
                               </c:if>
       <c:forEach begin="${paging.beginPage}" end="${paging.endPage}"
          var="index">
-         <c:if test="${index==paging.page}">
+         <c:if test="${index==paging.page && index!=0}">
             <%-- <span style="color: red">${index}&nbsp;</span> --%>
             <a style="font-weight:bold; border:1px solid black;" href="${action}&page=${index}">${index}&nbsp;</a>
          </c:if>
-         <c:if test="${index!=paging.page}">
+         <c:if test="${index!=paging.page && index!=0}">
             <a href="${action}&page=${index}">${index}&nbsp;</a>
          </c:if>
       </c:forEach>

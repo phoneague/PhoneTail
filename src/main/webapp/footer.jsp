@@ -13,7 +13,7 @@
 			관리자 접속상태:
 			<c:choose>
 				<c:when test="${!empty adminUser.adminid}">O(${adminUser.adminid})&nbsp;
-					<a href="phonetail.do?command=adminReportList">관리자 페이지로 이동</a>
+					<a href="phonetail.do?command=adminReportList&page=1">관리자 페이지로 이동</a>
 					&nbsp;/&nbsp;<a href="phonetail.do?command=adminLogout">로그아웃</a>
 					
 				</c:when>

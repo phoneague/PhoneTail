@@ -53,16 +53,16 @@
 						</c:choose>
 						<a href="phonetail.do?command=productInsertForm">SELL</a>
 						<a href="phonetail.do?command=mypage">MY PAGE</a>
-						<a href="phonetail.do?command=qnaList">Q&A</a>	
+						<a href="phonetail.do?command=qnaList&page=1">Q&A</a>	
 						<a href="phonetail.do?command=chatList">CHAT</a>	
 				</div>
 				<div class="hmenu"><div></div>	<div></div>	<div></div> 	</div>
 		</nav><br>
 		<nav id="category_menu">
-				<a href="phonetail.do?command=productList&brand=">All Products</a>
-				<a href="phonetail.do?command=productList&brand=Apple">Apple</a>
-				<a href="phonetail.do?command=productList&brand=Samsung">Galaxy</a>
-				<a href="phonetail.do?command=productList&brand=LG">Others</a>
+				<a href="phonetail.do?command=productList&page=1&brand=">All Products</a>
+				<a href="phonetail.do?command=productList&page=1&brand=Apple">Apple</a>
+				<a href="phonetail.do?command=productList&page=1&brand=Samsung">Galaxy</a>
+				<a href="phonetail.do?command=productList&page=1&brand=LG">Others</a>
 		</nav>
 		<hr style="margin:10px;">
 	</header>
