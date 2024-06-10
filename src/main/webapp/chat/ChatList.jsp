@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../header.jsp" %>
 <!DOCTYPE html>
@@ -34,6 +35,11 @@
 							<fmt:formatNumber value="${chatList.price}" pattern="#,###"/>원							
 						</div>
 					</div>
+					<div class="chatcol">
+    					<c:set var="shortenedContent" value="${fn:substring(chatList.content, 0, 20)}" />
+    					${shortenedContent}${fn:length(chatList.content) > 20 ? '...' : ''}
+					</div>
+					<div class="chatcol"><fmt:formatDate value="${chatList.indate}" pattern="MM/dd hh:mm"/></div>
 					<div class="chatcol">
 					<c:choose>
    						<c:when test="${chatList.bid == loginUser}"><h5><span class="badge text-bg-success">구매자</span></h5></c:when>

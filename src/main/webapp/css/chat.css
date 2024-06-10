@@ -113,18 +113,28 @@
 }
 
 .chatcol:nth-child(3){
-	flex:4;
+	flex:2;
 	font-size: 100%;
 	margin-top:5px;
 	margin-bottom:5px;
 	color:#464646;
 }
 .chatcol:nth-child(4){
+	flex:2;
+	text-align:center;
+	color:gray;
+	
+}
+.chatcol:nth-child(5){
 	flex:1;
 	text-align:center;
 	
 }
-
+.chatcol:nth-child(6){
+	flex:1;
+	text-align:center;
+	
+}
 .phonename{
 	text-size-adjust:1.2rem;
 	font-size:100%;
