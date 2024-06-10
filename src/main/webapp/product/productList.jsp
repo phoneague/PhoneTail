@@ -63,6 +63,11 @@
 								채팅방 : ${productChatList[productDTO.pseq]}
 							</c:if>
 						</div>
+						<div class="productWantcount" style="color:green">
+							<c:if test="${productDTO.wantcount != 0}">
+								찜 수 : ${productDTO.wantcount}
+							</c:if>
+						</div>
 						<div class="productDate" style="color:blue;">
 							${timeList[productDTO.pseq]}
 						</div>

@@ -360,4 +360,16 @@ public class ProductDAO {
 		}
 	}
 
+	public void updateReadcount(int pseq) {
+		String sql = "UPDATE product SET readcount = readcount + 1 WHERE pseq = ?";
+	    try {
+	    	     con = DB.getConnection();
+	    		 pstmt = con.prepareStatement(sql);
+	             pstmt.setInt(1, pseq);
+	             pstmt.executeUpdate();
+	    } catch (SQLException e) { e.printStackTrace();
+	    } finally { DB.close(con, pstmt, rs); }
+	}
+		
+
 }
