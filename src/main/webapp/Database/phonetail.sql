@@ -90,7 +90,7 @@ CREATE TABLE chat
 	lseq int not null,
 	userid varchar(45) not null,
 	indate datetime not null DEFAULT now(),
-	content varchar(500) not null,
+	content varchar(500),
 	PRIMARY KEY (cseq)
 );
 
@@ -168,6 +168,19 @@ CREATE VIEW hak AS
 SELECT cl.lseq, cl.sid, cl.bid, p.pseq, p.model, p.price
 FROM chatlist cl
 JOIN product p ON cl.pseq = p.pseq;
+
+CREATE VIEW hakk AS
+SELECT 
+    p.model AS model,
+    p.price AS price,
+    p.pseq AS pseq,
+    cl.lseq AS lseq,
+    cl.sid AS sid,
+    cl.bid AS bid,
+    c.indate AS indate,
+    c.content AS content
+FROM product p JOIN chatlist cl ON p.pseq = cl.pseq JOIN chat c ON cl.lseq = c.lseq;
+
 
 
 INSERT INTO admin (adminid, pwd, name, phone) VALUES

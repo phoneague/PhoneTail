@@ -34,6 +34,7 @@ public class GochatListAction implements Action {
 		        maxLseq = lseq; // 현재 값이 최대값보다 크면 최대값 업데이트
 		    }
 		}
+		
 		ChatListDTO cdto = cdao.getChatList(maxLseq);
 		ArrayList<ChatingDTO> list= cdao.getChating(maxLseq);
 		request.setAttribute("loginUser", mdto.getUserid());

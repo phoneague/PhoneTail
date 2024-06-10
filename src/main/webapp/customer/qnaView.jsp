@@ -2,28 +2,25 @@
 <%@ include file="/header.jsp"%>
    <div class="ViewContainer">
    <div class="vititle">
-		<h2>QnA View</h2>
+		<h2>${QuestionDTO.title}</h2>
 	</div>
 			<form>
-			<div class="vifields-horizontal">
+			<div class="vifields-horizontal" style="border-bottom: 1px solid #3f4549;">
 				<div class="vifield">
-						<label>작성자</label><div>${QuestionDTO.userid}</div>
+						<label>작성자 : ${QuestionDTO.userid}</label>
+						<fmt:formatDate value="${QuestionDTO.indate}" type="both" />
 				</div>
 				<div class="vifield">
-						<label>제 목</label><div>${QuestionDTO.title}</div>
-				</div>			
-				<div class="vifield">
-						<label>등록일</label><div><fmt:formatDate value="${QuestionDTO.indate}" type="date"/></div>
+					<label>${QuestionDTO.qreply == '' ? '답변대기' : '답변완료'} | ${QuestionDTO.secret == true ? '비밀글' : '공개글'}</label>
 				</div>
 			</div>
 				<div class="vicontent">
-						<label>질문내용</label><div>${QuestionDTO.content}</div>
+						<div>${QuestionDTO.content}</div>
 				</div>
-				
+				<hr>
 				<div class="vicontent">
-						<label>답변내용</label><div style="padding:10px;">${QuestionDTO.qreply == '' ? '답변 대기중' : QuestionDTO.qreply}</div>
+						<label>답변</label><div style="padding:10px;">${QuestionDTO.qreply == '' ? '답변 대기중' : QuestionDTO.qreply}</div>
 				</div>
-				
 				<div class="vifields-horizontal">
 					<div class="btn" >
 						<input type="button" value="목록으로" onClick="location.href='phonetail.do?command=qnaList'">

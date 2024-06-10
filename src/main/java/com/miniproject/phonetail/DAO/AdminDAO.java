@@ -73,7 +73,7 @@ public class AdminDAO {
 		ArrayList<ReportDTO>list = new ArrayList<>();
 		con = DB.getConnection();
 		String sql = "SELECT * FROM report WHERE userid LIKE CONCAT('%',?,'%') "
-				+ " ORDER BY restate DESC, reseq DESC LIMIT ? OFFSET ?";
+				+ " ORDER BY restate, reseq DESC LIMIT ? OFFSET ?";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, key);

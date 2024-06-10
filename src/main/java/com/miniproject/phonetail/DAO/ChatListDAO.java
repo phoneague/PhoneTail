@@ -112,13 +112,30 @@ public class ChatListDAO {
 		con = DB.getConnection();
 		String sql = "insert into ChatList(sid,bid,pseq) " 
 				+ "values(?,?,?)";
+		String chatingsql = "insert into Chat(indate,content,lseq,userid) "
+				+ "values(?, null,?,?)";
 		try {
-			pstmt = con.prepareStatement(sql);
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 			pstmt.setString(1, cdto.getSid());
 			pstmt.setString(2, cdto.getBid());
 			pstmt.setInt(3, cdto.getPseq());
-			
 			pstmt.executeUpdate();
+			
+			ResultSet generatedKeys = pstmt.getGeneratedKeys();
+	        int lseq = -1;
+	        if (generatedKeys.next()) {
+	            lseq = generatedKeys.getInt(1);
+	        }
+			pstmt.close();
+			
+			pstmt = con.prepareStatement(chatingsql);
+			pstmt.setTimestamp(1, cdto.getIndate());
+			pstmt.setInt(2, lseq);
+			pstmt.setString(3, cdto.getBid());
+			pstmt.executeUpdate();
+			
+			con.commit();
 		}catch (SQLException e) {e.printStackTrace();
 		}finally {DB.close(con, pstmt, rs); }
 	}
@@ -170,8 +187,14 @@ public class ChatListDAO {
 	public ArrayList<ChatListDTO> chatList( String key, String userid1, String userid2){
 		ArrayList<ChatListDTO> list = new ArrayList<ChatListDTO>();
 		con = DB.getConnection();
-		String sql = "select * from hak WHERE model LIKE CONCAT('%', ?, '%') AND (sid = ? OR bid = ?) "
-				+ "ORDER BY lseq DESC ";
+		String sql = "SELECT * FROM ("
+	            + "SELECT  model, price, pseq, lseq, sid, bid, indate,\r\n"
+	            + "       content,\r\n"
+	            + "        ROW_NUMBER() OVER (PARTITION BY lseq ORDER BY indate DESC) AS row_num\r\n"
+	            + "    FROM hakk"
+	            + " WHERE model LIKE CONCAT('%', ?, '%') AND (sid = ? OR bid = ?) "
+	            + ") AS subquery WHERE row_num = 1 ORDER BY indate desc;";
+
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, key);
@@ -187,6 +210,8 @@ public class ChatListDAO {
 				cdto.setPseq(rs.getInt("pseq"));
 				cdto.setModel(rs.getString("model"));
 				cdto.setPrice(rs.getInt("price"));
+				cdto.setContent(rs.getString("content"));
+				cdto.setIndate(rs.getTimestamp("indate"));
 				list.add(cdto);
 			}
 		} catch(SQLException e) {e.printStackTrace();		
