@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import com.miniproject.phonetail.DAO.ChatListDAO;
@@ -93,6 +94,16 @@ public class ProductListAction implements Action {
             }
         }
         
+        Iterator<ProductDTO> iterator = productList.iterator();
+        while (iterator.hasNext()) {
+            ProductDTO product = iterator.next();
+            String userstate = userStates.get(product.getUserid());
+            if ("B".equals(userstate) || "N".equals(userstate)) {
+                iterator.remove();
+            }
+        }
+        
+        
         ChatListDAO cdao = ChatListDAO.getInstance();
         Map<Integer, Integer> productChatList = new HashMap<>();
         
@@ -131,7 +142,6 @@ public class ProductListAction implements Action {
         //
         
         request.setAttribute("productChatList", productChatList);
-		request.setAttribute("userStates", userStates);
 		request.setAttribute("paging", paging);
 		request.setAttribute("productList", productList);
 		request.getRequestDispatcher("product/productList.jsp").forward(request, response);

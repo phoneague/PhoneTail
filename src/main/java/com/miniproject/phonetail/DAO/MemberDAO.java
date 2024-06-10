@@ -166,6 +166,39 @@ public class MemberDAO {
 		
 		return result;
 	}
+
+	public String findId(String name, String email) {
+        String sql = "SELECT userid FROM member WHERE name = ? AND email = ?";
+        try (Connection conn = DB.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, name);
+            pstmt.setString(2, email);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("userid");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally { DB.close(con, pstmt, rs);	}
+		
+        return null;
+    }
 	
+	
+	public String findPw(String userid, String email) {
+        String sql = "SELECT pwd FROM member WHERE userid = ? AND email = ?";
+        try (Connection conn = DB.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, userid);
+            pstmt.setString(2, email);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("pwd");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 	
 }

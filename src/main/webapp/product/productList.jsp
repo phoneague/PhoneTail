@@ -47,21 +47,7 @@
 								: ${productDTO.model}</a>
 						</div>
 						<div class="productPrice">가격 : ${productDTO.price}</div>
-						<div class="productUserid">
-                            판매자 : ${productDTO.userid} 
-                            <c:choose>
-                                <c:when test="${userStates[productDTO.userid] eq 'B'}">
-                                    <span style="color: black; font-weight: bold;">
-                                        블랙리스트
-                                    </span>
-                                </c:when>
-                                <c:when test="${userStates[productDTO.userid] eq 'N'}">
-                                	<span style="color: black; font-weight: bold;">
-                                        탈퇴(휴면)회원
-                                    </span>
-                                </c:when>
-                            </c:choose>
-                        </div>
+						<div class="productUserid"> 판매자 : ${productDTO.userid}</div>
 						<div class="productSold">
 							<c:choose>
 								<c:when test="${productDTO.sellstate eq 'Y'}">

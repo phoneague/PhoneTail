@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.miniproject.phonetail.DTO.MemberDTO;
 import com.miniproject.phonetail.DTO.ProductDTO;
 import com.miniproject.phonetail.util.DB;
 import com.miniproject.phonetail.util.Paging;
