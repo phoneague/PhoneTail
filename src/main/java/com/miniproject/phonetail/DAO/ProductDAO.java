@@ -365,8 +365,24 @@ public class ProductDAO {
 			DB.close(con, pstmt, rs);
 		}
 	}
+	
+	public void deleteWant(int wseq) {
+		con = DB.getConnection();
+		String sql = "delete from wantlist where wseq=?";
 
-	public void updateWantCount(int pseq) {
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, wseq);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DB.close(con, pstmt, rs);
+		}
+	}
+	
+
+	public void plusWantCount(int pseq) {
 		String sql = "UPDATE product SET wantcount = wantcount+1 where pseq = ?";
 		try {
 			con = DB.getConnection();
@@ -379,6 +395,21 @@ public class ProductDAO {
 			DB.close(con, pstmt, rs);
 		}
 	}
+	
+	public void minusWantCount(int pseq) {
+		String sql = "UPDATE product SET wantcount = wantcount-1 where pseq = ?";
+		try {
+			con = DB.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, pseq);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DB.close(con, pstmt, rs);
+		}
+	}
+	
 
 
 	public ArrayList<ProductDTO> myWantProductList(Paging paging, String myId) {

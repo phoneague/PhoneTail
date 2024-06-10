@@ -20,13 +20,16 @@ public class ProductWantAction implements Action {
 		request.setAttribute("pseq", pseq);
 		
 		ProductDAO pdao = ProductDAO.getInstance();
-		int check = pdao.checkWant(pseq, userid);
-		if(check==0) {
+		int wseq = pdao.checkWant(pseq, userid);
+		if(wseq==0) {
 			pdao.insertWant(pseq, userid);
-			pdao.updateWantCount(pseq);
-			request.setAttribute("pmessage", "찜하기 성공!");
+			pdao.plusWantCount(pseq);
+			request.setAttribute("pmessage", "찜 성공!");
 		} else {
-			request.setAttribute("pmessage", "이미 찜하신 제품입니다.");
+			pdao.deleteWant(wseq);
+			pdao.minusWantCount(pseq);
+			request.setAttribute("pmessage", "찜 취소!");
+
 		}
 		 request.getRequestDispatcher(url).forward(request, response);
 		

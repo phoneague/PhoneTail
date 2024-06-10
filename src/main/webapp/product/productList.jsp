@@ -19,6 +19,7 @@
 				<div class="select_btn">
 					<select id="sellstateSelect" onchange="handleSellstateChange()">
 						<option value="">-- Select State --</option>
+						<option value="">전체 상품보기</option>						
             	     	<option value="N">판매중 상품보기</option>
              	       <option value="Y">판매완료 상품보기</option>
 					</select>
@@ -46,29 +47,32 @@
 								href="phonetail.do?command=productDetail&pseq=${productDTO.pseq}">모델명
 								: ${productDTO.model}</a>
 						</div>
-						<div class="productPrice">가격 : ${productDTO.price}</div>
+						<div class="productPrice">가격 : <fmt:formatNumber value="${productDTO.price}" type="currency" /></div>
 						<div class="productUserid"> 판매자 : ${productDTO.userid}</div>
-						<div class="productSold">
+						
 							<c:choose>
 								<c:when test="${productDTO.sellstate eq 'Y'}">
+						<div class="productSold">
 									판매완료
 								</c:when>
 								<c:otherwise>
+							<div class="productSold" style="color:#CD426B;">
 									판매중
 								</c:otherwise>
 							</c:choose>
 						</div>
-						<div class="productChat">
-							<c:if test="${productChatList[productDTO.pseq]!=null}">
-								채팅방 : ${productChatList[productDTO.pseq]}
-							</c:if>
-						</div>
-						<div class="productWantcount" style="color:green">
-							<c:if test="${productDTO.wantcount != 0}">
-								찜 수 : ${productDTO.wantcount}
-							</c:if>
-						</div>
-						<div class="productDate" style="color:blue;">
+								<div class="productChat" float="left">
+								
+									<c:if test="${productChatList[productDTO.pseq]!=null}">
+										💬 ${productChatList[productDTO.pseq]}
+									</c:if>
+								</div>
+								<div class="productWantcount" style="color:red;">
+									<c:if test="${productDTO.wantcount != 0}">
+										♥ ${productDTO.wantcount}
+									</c:if>
+								</div>
+						<div class="productDate" style="color: gray;">
 							${timeList[productDTO.pseq]}
 						</div>
 					</div>

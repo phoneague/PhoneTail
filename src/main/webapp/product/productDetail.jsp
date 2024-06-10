@@ -42,7 +42,7 @@
 			</div>
 			<div class="row">
 				<div class="coltitle">가격</div>
-				<div class="col">${productDTO.price}</div>
+				<div class="col"><fmt:formatNumber value="${productDTO.price}" type="currency" /></div>
 			</div>
 			<div class="row">
 				<div class="coltitle">글 내용</div>
@@ -67,7 +67,7 @@
 			</div>
 			<div class="row">
 				<div class="coltitle">등록일</div>
-				<div class="col">${productDTO.indate}</div>
+				<div class="col"><fmt:formatDate value="${productDTO.indate}" pattern="yyyy/MM/dd hh:mm"/></div>
 			</div>
 			<div class="row">
 				<div class="coltitle">조회수</div>
