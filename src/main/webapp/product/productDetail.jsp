@@ -3,10 +3,6 @@
 <%@ include file="/header.jsp"%>
 <link rel="stylesheet" href="css/product.css"> 
 
-<div>
-${message}
-</div>
-
 
 <div id="productWrap">
 	<div class="row">
@@ -81,6 +77,10 @@ ${message}
 				<div class="coltitle">찜 수</div>
 				<div class="col">${productDTO.wantcount}</div>
 			</div>
+			<div class="row">
+				<div id="pmessage">${pmessage}</div>
+			</div>
+			
 		</div>
 		<div class="detailImage">
 			<img src="product/images/${productDTO.saveimagefile}" width="600" />
@@ -102,7 +102,9 @@ ${message}
 		</c:when>
 		<c:otherwise>
 			<div class="button_box">
+			<c:if test="${productDTO.sellstate eq 'N'}">
 				<input type="button" value="찜하기" onClick="go_want(${productDTO.pseq}, '${login.userid}')"/>
+			</c:if>
 				<input type="button" value="1:1 대화"
 					onClick="go_chat(${productDTO.pseq},'${login.userid}')" /> 
 				<input type="button" 

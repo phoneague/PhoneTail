@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.miniproject.phonetail.DTO.MemberDTO;
 import com.miniproject.phonetail.DTO.ProductDTO;
 import com.miniproject.phonetail.util.DB;
 import com.miniproject.phonetail.util.Paging;
@@ -136,65 +135,74 @@ public class ProductDAO {
 	}
 
 	public int getAllCount(String tablename, String fieldname, String key, String brand, String sellstate) {
-		int count = 0;
-		con = DB.getConnection();
-//		System.out.println(tablename+"/"+fieldname+"/"+key+"/"+brand);
-		String sql = "SELECT COUNT(*) AS cnt FROM " + tablename + " WHERE " + fieldname
-				+ " LIKE CONCAT('%', ?, '%') AND brand LIKE CONCAT('%', ?, '%') AND sellstate LIKE CONCAT('%', ?, '%')";
-		try {
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, key);
-			pstmt.setString(2, brand);
-			pstmt.setString(3, sellstate);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				count = rs.getInt("cnt");
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			DB.close(con, pstmt, rs);
-		}
-
-		return count;
+	    int count = 0;
+	    con = DB.getConnection();
+	    String sql = "SELECT COUNT(*) AS cnt FROM " + tablename + " p "
+	               + "JOIN member m ON p.userid = m.userid "
+	               + "WHERE p." + fieldname + " LIKE CONCAT('%', ?, '%') "
+	               + "AND p.brand LIKE CONCAT('%', ?, '%') "
+	               + "AND p.sellstate LIKE CONCAT('%', ?, '%') "
+	               + "AND m.userstate != 'B'";
+	    try {
+	        pstmt = con.prepareStatement(sql);
+	        pstmt.setString(1, key);
+	        pstmt.setString(2, brand);
+	        pstmt.setString(3, sellstate);
+	        rs = pstmt.executeQuery();
+	        if (rs.next()) {
+	            count = rs.getInt("cnt");
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        DB.close(con, pstmt, rs);
+	    }
+	    return count;
 	}
+
 
 	public ArrayList<ProductDTO> productList(Paging paging, String key, String brand, String sellstate) {
-		ArrayList<ProductDTO> list = new ArrayList<ProductDTO>();
-		con = DB.getConnection();
-		String sql = "SELECT * FROM product WHERE model LIKE CONCAT('%',?,'%') AND brand LIKE CONCAT('%', ?, '%') AND sellstate LIKE CONCAT('%', ?, '%')"
-				+ " ORDER BY indate DESC LIMIT ? OFFSET ?";
-		try {
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, key);
-			pstmt.setString(2, brand);
-			pstmt.setString(3, sellstate);
-			pstmt.setInt(4, paging.getDisplayRow());
-			pstmt.setInt(5, paging.getStartNum() - 1);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				ProductDTO pdto = new ProductDTO();
-				pdto.setPseq(rs.getInt("pseq"));
-				pdto.setBrand(rs.getString("brand"));
-				pdto.setModel(rs.getString("model"));
-				pdto.setPrice(rs.getInt("price"));
-				pdto.setComment(rs.getString("comment"));
-				pdto.setImage(rs.getString("image"));
-				pdto.setSaveimagefile(rs.getString("saveimagefile"));
-				pdto.setSellstate(rs.getString("sellstate"));
-				pdto.setIndate(rs.getTimestamp("indate"));
-				pdto.setReadcount(rs.getInt("readcount"));
-				pdto.setWantcount(rs.getInt("wantcount"));
-				pdto.setUserid(rs.getString("userid"));
-				list.add(pdto);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			DB.close(con, pstmt, rs);
-		}
-		return list;
+	    ArrayList<ProductDTO> list = new ArrayList<ProductDTO>();
+	    con = DB.getConnection();
+	    String sql = "SELECT p.* FROM product p "
+	               + "JOIN member m ON p.userid = m.userid "
+	               + "WHERE p.model LIKE CONCAT('%', ?, '%') "
+	               + "AND p.brand LIKE CONCAT('%', ?, '%') "
+	               + "AND p.sellstate LIKE CONCAT('%', ?, '%') "
+	               + "AND m.userstate != 'B' "
+	               + "ORDER BY p.indate DESC LIMIT ? OFFSET ?";
+	    try {
+	        pstmt = con.prepareStatement(sql);
+	        pstmt.setString(1, key);
+	        pstmt.setString(2, brand);
+	        pstmt.setString(3, sellstate);
+	        pstmt.setInt(4, paging.getDisplayRow());
+	        pstmt.setInt(5, paging.getStartNum() - 1);
+	        rs = pstmt.executeQuery();
+	        while (rs.next()) {
+	            ProductDTO pdto = new ProductDTO();
+	            pdto.setPseq(rs.getInt("pseq"));
+	            pdto.setBrand(rs.getString("brand"));
+	            pdto.setModel(rs.getString("model"));
+	            pdto.setPrice(rs.getInt("price"));
+	            pdto.setComment(rs.getString("comment"));
+	            pdto.setImage(rs.getString("image"));
+	            pdto.setSaveimagefile(rs.getString("saveimagefile"));
+	            pdto.setSellstate(rs.getString("sellstate"));
+	            pdto.setIndate(rs.getTimestamp("indate"));
+	            pdto.setReadcount(rs.getInt("readcount"));
+	            pdto.setWantcount(rs.getInt("wantcount"));
+	            pdto.setUserid(rs.getString("userid"));
+	            list.add(pdto);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        DB.close(con, pstmt, rs);
+	    }
+	    return list;
 	}
+
 
 	public void updateProduct(ProductDTO pdto) {
 		con = DB.getConnection();
@@ -372,6 +380,7 @@ public class ProductDAO {
 		}
 	}
 
+
 	public ArrayList<ProductDTO> myWantProductList(Paging paging, String myId) {
 		ArrayList<ProductDTO> list = new ArrayList<>();
 		con = DB.getConnection();
@@ -405,5 +414,19 @@ public class ProductDAO {
 		}
 		return list;
 	}
+
+  
+	public void updateReadcount(int pseq) {
+		String sql = "UPDATE product SET readcount = readcount + 1 WHERE pseq = ?";
+	    try {
+	    	     con = DB.getConnection();
+	    		 pstmt = con.prepareStatement(sql);
+	             pstmt.setInt(1, pseq);
+	             pstmt.executeUpdate();
+	    } catch (SQLException e) { e.printStackTrace();
+	    } finally { DB.close(con, pstmt, rs); }
+	}
+		
+
 
 }

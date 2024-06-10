@@ -16,16 +16,19 @@ public class ProductWantAction implements Action {
 		int pseq = Integer.parseInt(request.getParameter("pseq"));
 		String userid = request.getParameter("userid");
 		
+		String url ="phonetail.do?command=productDetail";
+		request.setAttribute("pseq", pseq);
+		
 		ProductDAO pdao = ProductDAO.getInstance();
 		int check = pdao.checkWant(pseq, userid);
 		if(check==0) {
 			pdao.insertWant(pseq, userid);
 			pdao.updateWantCount(pseq);
+			request.setAttribute("pmessage", "찜하기 성공!");
 		} else {
-			request.setAttribute("message", "이미 찜함");
-			System.out.println("이미찜함");
+			request.setAttribute("pmessage", "이미 찜하신 제품입니다.");
 		}
-		response.sendRedirect("phonetail.do?command=productDetail&pseq=" + pseq);
+		 request.getRequestDispatcher(url).forward(request, response);
 		
 		
 	}

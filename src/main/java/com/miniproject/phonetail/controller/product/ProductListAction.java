@@ -83,27 +83,7 @@ public class ProductListAction implements Action {
 		paging.setTotalCount(count);
 		productList = pdao.productList(paging, key, brand, sellstate);
 		
-		
-		MemberDAO mdao = MemberDAO.getInstance();
-        Map<String, String> userStates = new HashMap<>();
-        
-        for (ProductDTO product : productList) {
-            MemberDTO member = mdao.getMember(product.getUserid());
-            if (member != null) {
-                userStates.put(product.getUserid(), member.getUserstate());
-            }
-        }
-        
-        Iterator<ProductDTO> iterator = productList.iterator();
-        while (iterator.hasNext()) {
-            ProductDTO product = iterator.next();
-            String userstate = userStates.get(product.getUserid());
-            if ("B".equals(userstate) || "N".equals(userstate)) {
-                iterator.remove();
-            }
-        }
-        
-        
+         
         ChatListDAO cdao = ChatListDAO.getInstance();
         Map<Integer, Integer> productChatList = new HashMap<>();
         

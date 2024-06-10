@@ -7,12 +7,11 @@ SET SESSION FOREIGN_KEY_CHECKS=0;
 SELECT * FROM hak WHERE model LIKE CONCAT('%Galaxy%') AND (sid = 'a' OR bid = 'a' ) ORDER BY lseq DESC;
 SELECT * FROM hak WHERE model LIKE '%Galaxy%' AND (sid = 'a' OR bid = 'a') ORDER BY lseq DESC;
 
-
 select*from member;
 select*from product;
 select*from question;
 select * from wantlist;
-SELECT * FROM hak WHERE sid = 'a' OR bid = 'a' ORDER BY lseq DESC;
+
 -- 기존 테이블 삭제
 --DROP TABLE IF EXISTS address;
 DROP TABLE IF EXISTS wantlist;
@@ -23,8 +22,7 @@ DROP TABLE IF EXISTS report;
 DROP TABLE IF EXISTS product;
 DROP TABLE IF EXISTS question;
 DROP TABLE IF EXISTS member;
-DROP VIEW IF EXISTS hak;
- 
+
 -- 테이블 생성
 --CREATE TABLE address
 --(
@@ -181,6 +179,7 @@ SELECT
     c.content AS content
 FROM product p JOIN chatlist cl ON p.pseq = cl.pseq JOIN chat c ON cl.lseq = c.lseq;
 
+
 CREATE OR REPLACE VIEW wantlist_view
 AS
 SELECT 
@@ -201,6 +200,12 @@ FROM
     product p
 JOIN 
     wantlist w ON p.pseq = w.pseq;
+
+
+create or replace view new_product
+as
+select pseq, model, price, image, saveimagefile, userid from product where sellstate='N'  order by indate desc limit 3;
+
 
 INSERT INTO admin (adminid, pwd, name, phone) VALUES
 ('admin1', 'password1', '관리자1', '010-1234-5678'),

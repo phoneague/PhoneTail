@@ -22,6 +22,8 @@ public class ProductDetailAction implements Action {
         int pseq = Integer.parseInt(request.getParameter("pseq"));
 
         ProductDAO pdao = ProductDAO.getInstance();
+        pdao.updateReadcount(pseq);
+		
         ProductDTO pdto = pdao.getProduct(pseq);
 
         request.setAttribute("productDTO", pdto);
@@ -36,8 +38,8 @@ public class ProductDetailAction implements Action {
             }
         }
         
-        String mess = request.getParameter("message");
-        System.out.println(mess);
+        String pmessage = (String)request.getAttribute("pmessage");
+        request.setAttribute("pmessage", pmessage);
         
         request.setAttribute("userStates", userStates);
         request.getRequestDispatcher("product/productDetail.jsp").forward(request, response);
