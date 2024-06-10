@@ -9,6 +9,37 @@
 	<div class="reply">
 		<div class="mydiv3">
 		<c:forEach items="${chatingList}" var="chating">
+    <c:choose>
+        <c:when test="${not empty chating.content}">
+            <!-- 채팅 내용이 있는 경우에만 표시 -->
+            <div class="reply_row">
+                <div class="chat_reply_col"></div>
+                <c:set var="justify_contentValue" value="flex-start" />
+                <c:if test="${chating.userid eq loginUser}">
+                    <c:set var="justify_contentValue" value="flex-end" />
+                </c:if>
+                <div class="chat_reply_col" style="justify-content: ${justify_contentValue};">
+                    <c:set var="backgroundColor" value="#1E90FF" />
+                    <c:if test="${chating.userid eq loginUser}">
+                        <c:set var="backgroundColor" value="#00acee" />
+                    </c:if>
+                    <div class="plz" style="background-color: ${backgroundColor};">${chating.content}</div>
+                    <div class="chatdate">
+                        <fmt:formatDate value="${chating.indate}" pattern="MM/dd hh:mm" />
+                    </div>
+                </div>
+                <div class="chat_reply_col"></div>
+            </div>
+        </c:when>
+        <c:otherwise>
+            <!-- 채팅 내용이 없는 경우는 숨김 -->
+            <!-- 아무 작업도 하지 않음 -->
+        </c:otherwise>
+    </c:choose>
+</c:forEach>
+		
+		
+		<%-- <c:forEach items="${chatingList}" var="chating">
 				<div class="reply_row" >
 					<div class="chat_reply_col"></div>
 					<c:set var="justify_contentValue" value="flex-start" />
@@ -29,7 +60,7 @@
 						
 					</div>
 				</div>
-			</c:forEach>
+			</c:forEach> --%>
 		
 			
 	
