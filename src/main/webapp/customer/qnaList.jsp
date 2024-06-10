@@ -22,7 +22,7 @@
 				<div class="coltitle">제목</div>
 				<div class="coltitle">작성일</div>
 				<div class="coltitle">답변여부</div>
-				<div class="coltitle">조회수</div>
+			<div class="coltitle">조회수</div>	
 				<div class="coltitle">비밀글</div>
 			</div>
 			<c:forEach items="${questionList}" var="qna" varStatus="status">
