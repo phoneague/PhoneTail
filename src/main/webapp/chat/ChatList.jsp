@@ -36,8 +36,8 @@
 						</div>
 					</div>
 					<div class="chatcol">
-    					<c:set var="shortenedContent" value="${fn:substring(chatList.content, 0, 20)}" />
-    					${shortenedContent}${fn:length(chatList.content) > 20 ? '...' : ''}
+    					<c:set var="shortenedContent" value="${fn:substring(chatList.content, 0, 15)}" />
+    					${shortenedContent}${fn:length(chatList.content) > 15 ? '...' : ''}
 					</div>
 					<div class="chatcol"><fmt:formatDate value="${chatList.indate}" pattern="MM/dd hh:mm"/></div>
 					<div class="chatcol">

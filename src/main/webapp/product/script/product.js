@@ -3,9 +3,6 @@ function go_insert() {
 	if (Form.brand.value == "") {
 		alert('상품분류를 선택하세요');
 		Form.brand.focus();
-	} else if (Form.series.value == "") {
-		alert('시리즈명을 입력하세요.');
-		Form.series.focus();
 	} else if (Form.model.value == "") {
 		alert('모델명을 입력하세요.');
 		Form.model.focus();
