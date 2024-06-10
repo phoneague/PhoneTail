@@ -4,16 +4,14 @@
 <%@ include file="header.jsp"%>
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/header_footer.css">
-
+</div>
     <div class="container">
-    <div class="box">
-        <h2>PhoneTail-세상을 묶다</h2><br>
-        <h3>하나로 묶여있는</h3>
-        <h3>너와 나의 연결고리</h3> 
-        <h3>동네에서 함께 해요</h3>
+    <div class="box"><br>
+        <h1>PhoneTail</h1><br><br><br>
+        <h2>당신이 선택한 중고핸드폰 직거래 전문 플랫폼</h2><br>
     </div>
     </div>
-    
+<div class="wrap">
     <div class="box1">
         <div class="box-inner">
             <img src="images/1.png">
@@ -31,80 +29,51 @@
             <img src="images/4.png">     
         </div>
         <div class="box-inner">
-            <img src="images/5.png">      
+            <img src="images/5.png" style="object-position: top;">      
         </div>
         <div class="box-inner">
             <img src="images/6.png">  
         </div>
     </div>
-    
+ </div>   
      <div class="container">
     <div class="box">
-        <h2>New List</h2><br>
+        <br><h2>New List</h2><br>
     </div>
-    </div>
-                                   
-      	<div class="container">
+    </div>                               
+<div class="container new-list-container">
     <c:forEach items="${newList}" var="newlist" varStatus="status">
-        <div class="box">
+        <div class="box new-list-item">
             <div class="box-inner">
                 <a href="phonetail.do?command=productDetail&pseq=${newlist.pseq}">
-                    <img src="product/images/${newlist.saveimagefile}" >
+                    <img src="product/images/${newlist.saveimagefile}">
                 </a>
             </div>
             <h2>
                 <a href="phonetail.do?command=productDetail&pseq=${newlist.pseq}">
                     ${newlist.model} - <fmt:formatNumber value="${newlist.price}" type="currency" />
                 </a>
-                </h2>
+            </h2>
         </div>
     </c:forEach>
 </div>
-                   
      <div class="container">
     <div class="box">
-       <h2>PhoneTail 에서 사야하는 이유</h2>
+       <br><h2>PhoneTail 에서 사야하는 이유</h2><br>
     </div>
     </div>
-    
-    <div class="container">
-    <div class="box">
-    <div class="box-inner">
-       <h2>안전한 직거래</h2>
-       <img src="images/55.jpg">
-       </div>
+<div class="container">
+<div class="box">
+<div class="features-container">
+    <div class="features-box">
+        <h2>안전한 직거래</h2>
+        <img src="images/55.jpg">
     </div>
-    
-    <div class="box">
-    <div class="box-inner">
-       <h2>합리적인 가격</h2>
-       <img src="images/p1.png">
-       </div>
+    <div class="features-box">
+        <h2>합리적인 가격</h2>
+        <img src="images/p2.PNG" style="max-width:600px;" >
     </div>
-    </div>
-
- <div class="container">
-    <div class="box">
-       <h2>PhoneTail 만의 회원관리</h2>
-    </div>
-    </div>
-                  
-     <div class="container">
-    <div class="box">
-    <div class="box-inner">
-       <h2>BLACKLIST</h2>
-        <img src="images/b1.jpg" style="max-width: 100%; max-height: 90%;">
-    </div>
-    </div>
-    
-    <div class="box">
-    <div class="box-inner">
-        <div class="image-container">
-             <img src="images/m2.png" class="box-image"> 
-            <div class="red-border">
-            </div>
-        </div>
-        </div>
-    </div>
-    </div>
+</div>
+</div>
+</div>
 <%@ include file="footer.jsp"%>
