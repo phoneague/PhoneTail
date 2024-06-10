@@ -3,9 +3,6 @@ function go_insert() {
 	if (Form.brand.value == "") {
 		alert('상품분류를 선택하세요');
 		Form.brand.focus();
-	} else if (Form.series.value == "") {
-		alert('시리즈명을 입력하세요.');
-		Form.series.focus();
 	} else if (Form.model.value == "") {
 		alert('모델명을 입력하세요.');
 		Form.model.focus();
@@ -51,9 +48,6 @@ function go_update() {
 	if (Form.brand.value == "") {
 		alert('상품분류를 선택하세요');
 		Form.brand.focus();
-	} else if (Form.series.value == "") {
-		alert('시리즈명을 입력하세요.');
-		Form.series.focus();
 	} else if (Form.model.value == "") {
 		alert('모델명을 입력하세요.');
 		Form.model.focus();
@@ -92,7 +86,7 @@ function go_want(pseq, userid) {
 	if (userid == "") {
 		alert("로그인해야 찜을 할 수 있습니다.");
 	} else {
-		let answer = confirm(pseq + "찜하시겠습니까?" + userid);
+		let answer = confirm("찜하시겠습니까?");
 		if (answer) {
 			window.location.href = "phonetail.do?command=productWant&pseq=" + pseq + "&userid=" + userid;
 		}
