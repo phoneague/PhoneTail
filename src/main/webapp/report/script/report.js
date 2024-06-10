@@ -24,6 +24,6 @@ function processReport(){
 	document.reportViewForm.submit();
 }
 
-function close(){
+function closeWindow(){
 	window.close();
 }
