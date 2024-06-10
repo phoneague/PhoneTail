@@ -18,7 +18,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-public class MyProductListAction implements Action {
+public class MyWantListAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -43,12 +43,12 @@ public class MyProductListAction implements Action {
 			String myId = mdto.getUserid();
 			
 			ProductDAO pdao = ProductDAO.getInstance();
-			int count = pdao.getMyAllcount("product", myId);
+			int count = pdao.getMyWantAllcount("wantlist_view", myId);
 			paging.setTotalCount(count);
 			if(count==0) {
 				 request.setAttribute("message", "내가 등록한 상품이 없습니다.");
 			}else {
-				ArrayList<ProductDTO> productList = pdao.myProductList(paging,myId);
+				ArrayList<ProductDTO> productList = pdao.myWantProductList(paging,myId);
 				
 				request.setAttribute("paging", paging);
 				request.setAttribute("productList", productList);
@@ -75,9 +75,7 @@ public class MyProductListAction implements Action {
 				request.setAttribute("productChatList", productChatList);
 				request.setAttribute("userStates", userStates);
 			}
-			
-			request.getRequestDispatcher("mypage/myProductList.jsp").forward(request, response);
+			request.getRequestDispatcher("mypage/myWantList.jsp").forward(request, response);
 		}
 	}
-
 }

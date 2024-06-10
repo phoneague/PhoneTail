@@ -7,5 +7,6 @@
 	<div><a href="phonetail.do?command=myReportList">My Report</a></div>
 	<div><a href="phonetail.do?command=myProductList">My Product</a></div>
 	<div><a href="phonetail.do?command=myQnaList">My Q&A</a></div>
+	<div><a href="phonetail.do?command=myWantList">My Want</a></div>
 </nav>
 </div>

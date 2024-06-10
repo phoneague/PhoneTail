@@ -11,6 +11,7 @@ import com.miniproject.phonetail.controller.customer.WriteQnaFormAction;
 import com.miniproject.phonetail.controller.mypage.MyPageAction;
 import com.miniproject.phonetail.controller.mypage.MyQnaListAction;
 import com.miniproject.phonetail.controller.mypage.MyReportListAction;
+import com.miniproject.phonetail.controller.mypage.MyWantListAction;
 import com.miniproject.phonetail.controller.mypage.MyProductListAction;
 import com.miniproject.phonetail.controller.action.chat.ChatListAction;
 import com.miniproject.phonetail.controller.action.chat.ChatingAction;
@@ -140,6 +141,7 @@ public class ActionFactory {
 		else if(command.equals("myQnaList")) ac = new MyQnaListAction();
 		else if(command.equals("myProductList")) ac = new MyProductListAction();
 		else if(command.equals("myReportList")) ac = new MyReportListAction();
+		else if(command.equals("myWantList")) ac = new MyWantListAction();
 		
 		return ac;
 	}
