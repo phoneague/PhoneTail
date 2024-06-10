@@ -22,8 +22,7 @@ DROP TABLE IF EXISTS report;
 DROP TABLE IF EXISTS product;
 DROP TABLE IF EXISTS question;
 DROP TABLE IF EXISTS member;
-DROP VIEW IF EXISTS hak;
-DROP VIEW IF EXISTS hakk;
+
 -- 테이블 생성
 --CREATE TABLE address
 --(

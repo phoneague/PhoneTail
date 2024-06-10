@@ -169,8 +169,8 @@ public class MemberDAO {
 
 	public String findId(String name, String email) {
         String sql = "SELECT userid FROM member WHERE name = ? AND email = ?";
-        try (Connection conn = DB.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try (Connection con = DB.getConnection();
+             PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setString(1, name);
             pstmt.setString(2, email);
             ResultSet rs = pstmt.executeQuery();
@@ -187,8 +187,8 @@ public class MemberDAO {
 	
 	public String findPw(String userid, String email) {
         String sql = "SELECT pwd FROM member WHERE userid = ? AND email = ?";
-        try (Connection conn = DB.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try (Connection con = DB.getConnection();
+             PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setString(1, userid);
             pstmt.setString(2, email);
             ResultSet rs = pstmt.executeQuery();
@@ -200,5 +200,5 @@ public class MemberDAO {
         }
         return null;
     }
-	
+
 }
