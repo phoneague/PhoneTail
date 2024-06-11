@@ -10,14 +10,14 @@
 	<div class="container">
 		<form name="productListForm" method="post">
 			<div class="row">
-				<div class="col">
+				<div class="col" style="border:none;">
 					<div class="btn">
 						<input type="button" value="상품등록" id="sellButton"
 							onClick="location.href='phonetail.do?command=productInsertForm'" />
 					</div>
 				</div>
-				<div class="col" style="display: flex; align-items: center;">
-					&nbsp; <input type="text" name="key" value="${key}" /> &nbsp;
+				<div class="col" style="display: flex; align-items: center; border:none;">
+					&nbsp; <input type="text" name="key" value="${key}" style="border: 1px solid black;"/> &nbsp;
 					&nbsp; &nbsp; <input class="btn" type="button" name="btn_search"
 						value="검색" onClick="go_search('productList')" />
 					&nbsp;&nbsp;&nbsp;

@@ -17,7 +17,7 @@
 				</div>
 				
 				<div class="select_btn">
-					<select id="sellstateSelect" onchange="handleSellstateChange()">
+					<select id="sellstateSelect" onchange="handleSellstateChange()" style="border: 1px solid black;">
 						<option value="">-- Select State --</option>
 						<option value="">전체 상품보기</option>						
             	     	<option value="N">판매중 상품보기</option>
@@ -27,7 +27,7 @@
 			</div>
 			<div class="col"
 				style="display: flex; align-items: center; border: none;">
-				&nbsp; <input type="text" name="key" value="${key}" /> &nbsp;
+				&nbsp; <input type="text" name="key" value="${key}" style="border: 1px solid black;" /> &nbsp;
 				&nbsp; &nbsp; <input class="btn" type="button" name="btn_search"
 					value="검색" onClick="go_psearch('productList')" />
 				&nbsp;&nbsp;&nbsp;
