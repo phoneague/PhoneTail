@@ -201,11 +201,20 @@ FROM
 JOIN 
     wantlist w ON p.pseq = w.pseq;
 
-
+--수정 전 new_product
 create or replace view new_product
 as
-select pseq, model, price, image, saveimagefile, userid from product where sellstate='N'  order by indate desc limit 3;
+select pseq, model, price, image, saveimagefile, userid from product where sellstate='N' order by indate desc limit 3;
 
+--수정된 new_product
+CREATE OR REPLACE VIEW new_product AS
+SELECT p.pseq, p.model, p.price, p.image, p.saveimagefile, p.userid
+FROM product p
+JOIN member m ON p.userid = m.userid
+WHERE p.sellstate = 'N'
+  AND m.userstate != 'B'
+ORDER BY p.indate DESC
+LIMIT 3;
 
 INSERT INTO admin (adminid, pwd, name, phone) VALUES
 ('admin1', 'password1', '관리자1', '010-1234-5678'),
