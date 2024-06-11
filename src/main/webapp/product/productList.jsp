@@ -29,7 +29,7 @@
 				style="display: flex; align-items: center; border: none;">
 				&nbsp; <input type="text" name="key" value="${key}" /> &nbsp;
 				&nbsp; &nbsp; <input class="btn" type="button" name="btn_search"
-					value="검색" onClick="go_search('productList')" />
+					value="검색" onClick="go_psearch('productList')" />
 				&nbsp;&nbsp;&nbsp;
 			</div>
 		</div>

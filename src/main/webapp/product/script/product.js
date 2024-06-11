@@ -20,7 +20,7 @@ function go_insert() {
 		Form.submit();
 	}
 }
-function go_search(command) {
+function go_psearch(command) {
 	let Form = document.productListForm;
 	var url = "phonetail.do?command=" + command + "&page=1"
 	Form.action = url;
