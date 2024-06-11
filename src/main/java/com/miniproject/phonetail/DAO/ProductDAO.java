@@ -142,7 +142,7 @@ public class ProductDAO {
 	               + "WHERE p." + fieldname + " LIKE CONCAT('%', ?, '%') "
 	               + "AND p.brand LIKE CONCAT('%', ?, '%') "
 	               + "AND p.sellstate LIKE CONCAT('%', ?, '%') "
-	               + "AND m.userstate != 'B'";
+	               + "AND m.userstate NOT IN ('B', 'N')";
 	    try {
 	        pstmt = con.prepareStatement(sql);
 	        pstmt.setString(1, key);
@@ -169,7 +169,7 @@ public class ProductDAO {
 	               + "WHERE p.model LIKE CONCAT('%', ?, '%') "
 	               + "AND p.brand LIKE CONCAT('%', ?, '%') "
 	               + "AND p.sellstate LIKE CONCAT('%', ?, '%') "
-	               + "AND m.userstate != 'B' "
+	               + "AND m.userstate NOT IN ('B', 'N')"
 	               + "ORDER BY p.indate DESC LIMIT ? OFFSET ?";
 	    try {
 	        pstmt = con.prepareStatement(sql);
