@@ -16,7 +16,7 @@ function report(){
 	}else{
 		Form.action="phonetail.do?command=report";
 		Form.submit();	
-	}
+	}	
 }
 
 function processReport(){
