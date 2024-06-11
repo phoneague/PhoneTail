@@ -212,7 +212,7 @@ SELECT p.pseq, p.model, p.price, p.image, p.saveimagefile, p.userid
 FROM product p
 JOIN member m ON p.userid = m.userid
 WHERE p.sellstate = 'N'
-  AND m.userstate != 'B'
+AND m.userstate NOT IN ('B', 'N')
 ORDER BY p.indate DESC
 LIMIT 3;
 
