@@ -5,7 +5,10 @@
 #productWrap{width:100%; display:flex; flex-direction:column; margin: 0 auto; padding:20px; box-sizing:border-box; font-family: "Noto Sans KR", sans-serif;}
 .row{ flex:1; display: flex; justify-content:center; margin-bottom:10px; font-size:90%;}
 
-.title{font-size:32px; font-weight:bold; margin-bottom:20px; display:flex; justify-content:flex-end; font-family:"Roboto Mono", monospace;}
+.title{font-size:32px; font-weight:bold; margin-bottom:20px; display:flex; justify-content:flex-end; font-family: "Roboto Condensed", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;}
 
 
 .tb{ width:100%; display: flex; flex-direction: column; margin-bottom:30px; }
