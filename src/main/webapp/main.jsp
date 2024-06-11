@@ -7,11 +7,11 @@
 </div>
     <div class="container">
     <div class="box"><br>
-        <h1>PhoneTail</h1><br><br><br>
+        <h1>PhoneTail</h1><br>
         <h2>당신이 선택한 중고핸드폰 직거래 전문 플랫폼</h2><br>
     </div>
     </div>
-<div class="wrap">
+<div id="wrap">
     <div class="box1">
         <div class="box-inner">
             <img src="images/1.png">
@@ -38,9 +38,10 @@
  </div>   
      <div class="container">
     <div class="box">
-        <br><h2>New List</h2><br>
+        <br><h2 style="font-size:36px;">New List</h2><br>
     </div>
-    </div>                               
+    </div>
+    <div id="wrap">                           
 <div class="container new-list-container">
     <c:forEach items="${newList}" var="newlist" varStatus="status">
         <div class="box new-list-item">
@@ -57,23 +58,5 @@
         </div>
     </c:forEach>
 </div>
-     <div class="container">
-    <div class="box">
-       <br><h2>PhoneTail 에서 사야하는 이유</h2><br>
-    </div>
-    </div>
-<div class="container">
-<div class="box">
-<div class="features-container">
-    <div class="features-box">
-        <h2>안전한 직거래</h2>
-        <img src="images/55.jpg">
-    </div>
-    <div class="features-box">
-        <h2>합리적인 가격</h2>
-        <img src="images/p2.PNG" style="max-width:600px;" >
-    </div>
-</div>
-</div>
-</div>
+<div id="wrap">
 <%@ include file="footer.jsp"%>

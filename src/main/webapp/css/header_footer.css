@@ -17,7 +17,7 @@ header{
 
 
 footer{
-	font-family: "Roboto", sans-serif;
+	font-family: "Roboto Condensed", sans-serif;
 	font-size:80%;
 }
 
@@ -32,11 +32,14 @@ footer{
 #top_menu{
 	display: flex;
 	justify-content: space-between;
-	font-family:"Roboto Mono", monospace;
+	font-family: "Roboto Condensed", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
 }
 
 #top_menu a:hover {
-    color: #3259f7;
+    color: #342DBD;
     font-weight:bold;
 }
 #logo{ flex:1; cursor:pointer;}
@@ -48,13 +51,19 @@ footer{
 	justify-content: flex-end;
 	align-items:center;
 	background-color: white;
-	font-family:"Roboto Mono", monospace;
+	font-family: "Roboto Condensed", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
 	
 }
 .gnb a{
 	text-decoration: none;
 	margin-left:20px;
-	font-family:"Roboto Mono", monospace;
+	font-family: "Roboto Condensed", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
 	color:#3f4549;
 	display:flex;
 	justify-content:center;
@@ -66,13 +75,15 @@ footer{
 	background-color:white;
 	margin-bottom:10px;
 	font-size:18px;
-	font-family:"Roboto Mono", monospace;
+	font-family: "Roboto Condensed", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
 }
 
 #category_menu a:hover {
-    color: #3259f7;
+    color: #342DBD;
     font-weight:bold;
-    font-family:"Roboto Mono", monospace;
 }
 
 #category_menu a:nth-child(1){
@@ -101,7 +112,10 @@ footer{
 #category_menu a{
 	text-decoration: none;
 	color: #3f4549;
-	font-family:"Roboto Mono", monospace;
+	font-family: "Roboto Condensed", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
 	font-size:1.2em;
 	justify-content:center;
 }

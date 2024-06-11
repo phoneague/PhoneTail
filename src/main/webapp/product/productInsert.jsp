@@ -5,9 +5,6 @@
 
 
 <div id="productWrap">
-	<div class="row">
-		<div class="title">Product Insert Form</div>
-	</div>
 	<form name="productInsertForm" method="post"
 		enctype="multipart/form-data">
 		<div class="container">
