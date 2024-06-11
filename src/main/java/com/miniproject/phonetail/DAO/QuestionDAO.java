@@ -25,36 +25,39 @@ public class QuestionDAO {
 	    	PreparedStatement pstmt = null;
 	    	ResultSet rs = null;
 	    	
-		    public ArrayList<QuestionDTO> getAllQuestions(Paging paging, String key) {
-		        ArrayList<QuestionDTO> questionList = new ArrayList<>();
+	    	public ArrayList<QuestionDTO> getAllQuestions(Paging paging, String key) {
+	    	    ArrayList<QuestionDTO> questionList = new ArrayList<>();
 
-		        try {
-		            con = DB.getConnection();
-		            String sql =  "SELECT * FROM question WHERE userid LIKE CONCAT('%',?,'%') "
-		    				+ " ORDER BY indate DESC, qseq DESC LIMIT ? OFFSET ?";
-		        	pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, key);
-					pstmt.setInt(2, paging.getDisplayRow());
-					pstmt.setInt(3, paging.getStartNum() - 1);
-		            rs = pstmt.executeQuery();
-		            while (rs.next()) {
-		                QuestionDTO question = new QuestionDTO();
-		                question.setQseq(rs.getInt("qseq"));
-		                question.setUserid(rs.getString("userid"));
-		                question.setTitle(rs.getString("title"));
-		                question.setIndate(rs.getTimestamp("indate"));
-		                question.setContent(rs.getString("content"));
-						question.setReadCount(rs.getInt("readCount"));
-		                question.setQreply(rs.getString("qreply"));
-		                question.setSecret(rs.getBoolean("secret"));
+	    	    try {
+	    	        con = DB.getConnection();
+	    	        String sql = "SELECT * FROM question WHERE (userid LIKE CONCAT('%',?,'%') OR title LIKE CONCAT('%',?,'%') OR content LIKE CONCAT('%',?,'%')) "
+	    	                   + "ORDER BY indate DESC, qseq DESC LIMIT ? OFFSET ?";
+	    	        pstmt = con.prepareStatement(sql);
+	    	        pstmt.setString(1, key);
+	    	        pstmt.setString(2, key);
+	    	        pstmt.setString(3, key);
+	    	        pstmt.setInt(4, paging.getDisplayRow());
+	    	        pstmt.setInt(5, paging.getStartNum() - 1);
+	    	        rs = pstmt.executeQuery();
+	    	        while (rs.next()) {
+	    	            QuestionDTO question = new QuestionDTO();
+	    	            question.setQseq(rs.getInt("qseq"));
+	    	            question.setUserid(rs.getString("userid"));
+	    	            question.setTitle(rs.getString("title"));
+	    	            question.setIndate(rs.getTimestamp("indate"));
+	    	            question.setContent(rs.getString("content"));
+	    	            question.setReadCount(rs.getInt("readCount"));
+	    	            question.setQreply(rs.getString("qreply"));
+	    	            question.setSecret(rs.getBoolean("secret"));
 
-		                questionList.add(question);
-		            }
-		        } catch (SQLException e) { e.printStackTrace();
-		        } finally { DB.close(con, pstmt, rs); }
+	    	            questionList.add(question);
+	    	        }
+	    	    } catch (SQLException e) { e.printStackTrace();
+	    	    } finally { DB.close(con, pstmt, rs); }
 
-		          return questionList;
-		    }
+	    	    return questionList;
+	    	}
+
 		    
 			public QuestionDTO getQna(int qseq) {
 	
