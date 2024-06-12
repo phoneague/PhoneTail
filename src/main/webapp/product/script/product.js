@@ -86,10 +86,7 @@ function go_want(pseq, userid) {
 	if (userid == "") {
 		alert("로그인해야 찜을 할 수 있습니다.");
 	} else {
-		let answer = confirm("찜하시겠습니까?");
-		if (answer) {
-			window.location.href = "phonetail.do?command=productWant&pseq=" + pseq + "&userid=" + userid;
-		}
+		window.location.href = "phonetail.do?command=productWant&pseq=" + pseq + "&userid=" + userid;
 	}
 }
 
